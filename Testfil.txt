@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 hejsan
+=======
+ggggggg
+kjkdjkjd
+
+>>>>>>> 415b4b44fc53eeffe63a9d85e02eda00ee36d6c0

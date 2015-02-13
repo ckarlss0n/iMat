@@ -1,0 +1,18 @@
+13/2 - 2015 forts. prototyp-bygge
+
+Fortsätt arbetet med prototypen. Den är nu färdig för att testköras på onsdag den 18/2.
+Christoffer har även börjat lite med rapporten. 
+
+
+Vi har ändrat lite i uppgifterna till användaren, de ser nu ut såhär:
+
+1. Köp grönt te
+
+2. Registrera dig som kund (detta kan göras direkt efter köp)
+
+3. Lägg till en vara i favoriter 
+
+4. Ändra en personuppgift. (t.ex allergier till sökfilter )
+
+
+Nu tar vi hälja! 

@@ -1,5 +1,9 @@
 package application;
 	
+import java.util.List;
+
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Product;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -14,7 +18,11 @@ public class Main extends Application {
 			Group root = new Group();
 			MainPanel mp = new MainPanel();
 			root.getChildren().addAll(mp);
-			Scene scene = new Scene(root,1366,768);
+			Scene scene = new Scene(root,100,100);
+			
+			IMatDataHandler imdh = IMatDataHandler.getInstance();
+			
+			List<Product> list = imdh.getProducts();
 			
 			
 			primaryStage.setScene(scene);

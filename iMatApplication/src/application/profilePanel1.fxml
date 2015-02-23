@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="10.0" layoutY="10.0" prefHeight="655.0" prefWidth="866.0">
+         <content>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <right>
+                  <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </right>
+               <top>
+                  <Label text="Min profil" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets top="20.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </top>
+               <left>
+                  <Pane prefHeight="589.0" prefWidth="763.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
+                     <children>
+                        <Separator layoutY="430.0" prefHeight="3.0" prefWidth="750.0" />
+                        <TextField layoutX="110.0" layoutY="135.0" prefHeight="26.0" prefWidth="260.0" />
+                        <ProgressBar layoutX="18.0" layoutY="31.0" prefHeight="20.0" prefWidth="350.0" progress="0.0" />
+                        <Line endX="250.0" layoutX="119.0" layoutY="61.0" startX="-100.0" />
+                        <Line endX="10.0" layoutX="14.0" layoutY="61.0" rotate="90.0" />
+                        <Line endX="10.0" layoutX="84.0" layoutY="61.0" rotate="90.0" />
+                        <Line endX="10.0" layoutX="154.0" layoutY="61.0" rotate="90.0" />
+                        <Line endX="10.0" layoutX="224.0" layoutY="61.0" rotate="90.0" />
+                        <Line endX="10.0" layoutX="364.0" layoutY="61.0" rotate="90.0" />
+                        <Line endX="10.0" layoutX="293.0" layoutY="61.0" rotate="90.0" />
+                        <Label layoutX="15.0" layoutY="66.0" text="0" />
+                        <Label layoutX="85.0" layoutY="66.0" text="1" />
+                        <Label layoutX="155.0" layoutY="66.0" text="2" />
+                        <Label layoutX="225.0" layoutY="67.0" text="3" />
+                        <Label layoutX="295.0" layoutY="66.0" text="4" />
+                        <Label layoutX="366.0" layoutY="66.0" text="5" />
+                        <Label layoutX="18.0" layoutY="7.0" text="Bonusnivå:" />
+                        <Separator layoutX="7.0" layoutY="95.0" prefHeight="1.0" prefWidth="750.0" />
+                        <Label layoutX="18.0" layoutY="106.0" text="Mina uppgifter:" underline="true">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="38.0" layoutY="140.0" text="Förnamn:" />
+                        <Label layoutX="30.0" layoutY="180.0" text="Efternamn:" />
+                        <Label layoutX="51.0" layoutY="220.0" text="E-post:" />
+                        <Label layoutX="46.0" layoutY="260.0" text="Telefon:" />
+                        <Label layoutX="50.0" layoutY="300.0" text="Adress:" />
+                        <TextField layoutX="110.0" layoutY="255.0" prefHeight="26.0" prefWidth="260.0" />
+                        <TextField layoutX="110.0" layoutY="175.0" prefHeight="26.0" prefWidth="260.0" />
+                        <TextField layoutX="110.0" layoutY="215.0" prefHeight="26.0" prefWidth="260.0" />
+                        <TextField layoutX="110.0" layoutY="295.0" prefHeight="26.0" prefWidth="260.0" />
+                        <Label layoutX="16.0" layoutY="340.0" text="Postnummer:" />
+                        <TextField layoutX="110.0" layoutY="335.0" prefHeight="26.0" prefWidth="130.0" />
+                        <Label layoutX="47.0" layoutY="380.0" text="Postort:" />
+                        <TextField layoutX="110.0" layoutY="375.0" prefHeight="26.0" prefWidth="260.0" />
+                        <ImageView fx:id="questionMark" fitHeight="33.0" fitWidth="32.0" layoutX="384.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../questionmark.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="381.0" layoutY="23.0" prefHeight="38.0" prefWidth="37.0">
+                           <tooltip>
+                              <Tooltip text="Bonusnivå ger dig mycket&#10;schyssta priser på utvalda &#10;varor. Vid bonus nivå 5 får &#10;du allt  gratis! Nice va??!&#10;(Dock måste du köpa varor&#10;för en miljard kronor för att &#10;nå upp i den bonusnivån)" />
+                           </tooltip>
+                        </Label>
+                        <Button disable="true" layoutX="17.0" layoutY="439.0" mnemonicParsing="false" text="Spara ändringar" />
+                     </children>
+                  </Pane>
+               </left>
+            </BorderPane>
+         </content>
+      </ScrollPane>
+   </children>
+</fx:root>

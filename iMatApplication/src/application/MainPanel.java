@@ -30,7 +30,8 @@ public class MainPanel extends AnchorPane {
 	
 	public void buttonClicked(ActionEvent evt){
 		OfflinePanel op = new OfflinePanel();
-		stackPane.getChildren().addAll(op);
+		ProfilePanel pp = new ProfilePanel();
+		stackPane.getChildren().addAll(pp);
 		System.out.println("Click");
 	}
 	

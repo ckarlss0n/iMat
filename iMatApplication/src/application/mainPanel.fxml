@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="700.0" prefWidth="1250.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="300.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+               <content>
+                  <Pane prefHeight="708.0" prefWidth="127.0">
+                     <children>
+                        <TextField layoutX="14.0" layoutY="14.0" prefHeight="39.0" prefWidth="249.0" text="Sök..." />
+                        <Accordion layoutY="66.0" prefHeight="309.0" prefWidth="281.0">
+                          <panes>
+                            <TitledPane text="Sparade kundvagnar">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" collapsible="false" expanded="false" text="Mina favoriter">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" disable="true">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                                 <effect>
+                                    <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="-1.0" />
+                                 </effect>
+                            </TitledPane>
+                              <TitledPane text="Baljväxter">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </TitledPane>
+                              <TitledPane text="Mejeri">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </TitledPane>
+                              <TitledPane text="Kött">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                              </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </children>
+                  </Pane>
+               </content>
+            </ScrollPane>
+         </left>
+         <right>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <content>
+                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#buttonClicked" text="Visa" />
+               </content></ScrollPane>
+         </right>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <left>
+                  <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="301.0" text="Button" BorderPane.alignment="CENTER" />
+               </left>
+               <center>
+                  <ImageView pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../../../../../Desktop/iMatLogo.png" />
+                     </image>
+                  </ImageView>
+               </center>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </BorderPane>
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <items>
+                        <ChoiceBox prefWidth="150.0" />
+                        <Label text="Vy:" />
+                        <ComboBox prefWidth="150.0" />
+                        <Label text="Sortering:" />
+                     </items>
+                  </ToolBar>
+               </top>
+               <center>
+                  <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </children>
+</fx:root>

@@ -1,0 +1,10 @@
+CheckoutPreviewPanel - Center stage. Panelen som visas i center stage när man tryckt "Till kassan"
+CheckoutProgressPanel - Progressbaren som visas till höger när man tryckt "Till kassan"
+HomeOfflinePanel - Center stage. Startsidan när man är offline/inte inloggad
+HomeOnlinePanel - Center stage. Startsidan som visas när man är inloggad.
+LoginPanel - Liten panel (popup) med inmatning för att logga in.
+MainPanel - Huvudpanelen, innehåller de tre panelerna.
+PaymentPanel - Center stage, välj betalningsalternativ.
+ProfilePanel - Center stage. Din profil.
+RegistratonPanel - Center stage. Registrering.
+ShoppingCart - Right panel. Visar kundvagnen. 

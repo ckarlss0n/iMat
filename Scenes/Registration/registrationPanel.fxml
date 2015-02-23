@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="Register" fx:id="registrationPanel" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <bottom>
-            <Button mnemonicParsing="false" text="Slutför registrering" BorderPane.alignment="CENTER">
+            <Button fx:id="registrationBtn" mnemonicParsing="false" onAction="#registerCustomer" text="Slutför registrering" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
                </padding>
@@ -22,42 +22,42 @@
          <center>
             <GridPane BorderPane.alignment="CENTER">
                <children>
-                  <TextField promptText="Förnamn">
+                  <TextField fx:id="firstNameField" promptText="Förnamn">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Efternamn" GridPane.rowIndex="1">
+                  <TextField fx:id="lastNameField" promptText="Efternamn" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="E-post" GridPane.rowIndex="2">
+                  <TextField fx:id="emailField" promptText="E-post" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Adress" GridPane.rowIndex="3">
+                  <TextField fx:id="addressField" promptText="Adress" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Postkod" GridPane.rowIndex="4">
+                  <TextField fx:id="postalCodeField" promptText="Postkod" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Ort" GridPane.rowIndex="5">
+                  <TextField fx:id="cityField" promptText="Ort" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Telefon" GridPane.rowIndex="6">
+                  <TextField fx:id="phoneField" promptText="Telefon" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <PasswordField promptText="Lösenord" GridPane.rowIndex="7">
+                  <PasswordField fx:id="passwordField" promptText="Lösenord" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
@@ -81,14 +81,14 @@
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <center>
-                  <Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit urna eget erat condimentum pharetra." wrapText="true" BorderPane.alignment="CENTER">
+                  <Label fx:id="registrationDesc" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit urna eget erat condimentum pharetra." wrapText="true" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </BorderPane.margin>
                   </Label>
                </center>
                <top>
-                  <Label text="Registrering" BorderPane.alignment="CENTER">
+                  <Label fx:id="registrationTitle" text="Registrering" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -101,4 +101,4 @@
          </top>
       </BorderPane>
    </content>
-</ScrollPane>
+</fx:root>

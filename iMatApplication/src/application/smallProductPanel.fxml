@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="120.0" prefWidth="180.0">
+         <top>
+            <ImageView fx:id="imgProduct" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <Label fx:id="lblProductName" text="Produktnamn" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+         </center>
+         <bottom>
+            <AnchorPane prefHeight="52.0" prefWidth="180.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="118.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="42.0" text="Köp" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="15.0" />
+                  <Button layoutX="85.0" layoutY="16.0" mnemonicParsing="false" text="+" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="71.0" />
+                  <TextField layoutX="48.0" layoutY="16.0" prefHeight="26.0" prefWidth="27.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="105.0" />
+                  <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" text="-" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" />
+               </children>
+            </AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</fx:root>

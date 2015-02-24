@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root id="Welcome Screen" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="Welcome Screen" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="750.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <AnchorPane prefHeight="128.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="150.0" layoutY="50.0" text="Välkommen till iMat!">
+                     <font>
+                        <Font name="MavenProLight300-Regular" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
          <center>
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -23,7 +35,7 @@
                      <top>
                         <Pane prefHeight="25.0" prefWidth="864.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label layoutX="347.0" layoutY="-1.0" text="Dina erbjudanden!">
+                              <Label layoutX="279.0" layoutY="-2.0" text="Dina erbjudanden!">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
@@ -31,50 +43,74 @@
                            </children>
                         </Pane>
                      </top>
-                     <bottom>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="183.0" prefWidth="864.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                     <center>
+                        <ScrollPane hbarPolicy="ALWAYS" prefWidth="1300.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                            <content>
-                              <GridPane gridLinesVisible="true">
+                              <GridPane fx:id="gridPane" prefHeight="132.0" prefWidth="750.0">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="NEVER" maxWidth="161.0" minWidth="161.0" prefWidth="161.0" />
-                                    <ColumnConstraints hgrow="NEVER" maxWidth="161.0" minWidth="161.0" prefWidth="161.0" />
-                                    <ColumnConstraints hgrow="NEVER" maxWidth="161.0" minWidth="161.0" prefWidth="161.0" />
-                                  <ColumnConstraints hgrow="NEVER" maxWidth="161.0" minWidth="161.0" prefWidth="161.0" />
-                                    <ColumnConstraints hgrow="NEVER" maxWidth="161.0" minWidth="161.0" prefWidth="161.0" />
-                                    <ColumnConstraints hgrow="NEVER" maxWidth="161.0" minWidth="161.0" prefWidth="161.0" />
-                                    <ColumnConstraints hgrow="NEVER" maxWidth="161.0" minWidth="161.0" prefWidth="161.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </ScrollPane>
+                     </center>
+                  </BorderPane>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <top>
+                        <Pane prefHeight="25.0" prefWidth="864.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="308.0" layoutY="1.0" text="Lorem ipsum">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </top>
+                     <center>
+                        <ScrollPane hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                           <content>
+                              <GridPane prefHeight="132.0" prefWidth="750.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                               </GridPane>
                            </content></ScrollPane>
-                     </bottom>
-                  </BorderPane>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                     <top>
-                        <Pane prefHeight="25.0" prefWidth="864.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label layoutX="370.0" layoutY="2.0" text="Lorem ipsum">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </top>
-                     <center>
-                        <ScrollPane hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <center>
-                        <ScrollPane hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                        <ScrollPane hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                           <content>
+                              <GridPane prefHeight="132.0" prefWidth="750.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                           </content></ScrollPane>
                      </center>
                      <top>
                         <Pane prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label layoutX="359.0" layoutY="-3.0" text="Lorem ipsum">
+                              <Label layoutX="320.0" layoutY="3.0" text="Lorem ipsum">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
@@ -86,13 +122,6 @@
                </children>
             </GridPane>
          </center>
-         <top>
-            <Label text="Välkommen John!" textFill="#4a4a4a" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="48.0" />
-               </font>
-            </Label>
-         </top>
       </BorderPane>
    </content>
 </fx:root>

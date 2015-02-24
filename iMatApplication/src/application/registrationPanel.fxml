@@ -10,7 +10,7 @@
    <content>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <bottom>
-            <Button mnemonicParsing="false" text="Slutför registrering" BorderPane.alignment="CENTER">
+            <Button contentDisplay="RIGHT" mnemonicParsing="false" text="Slutför registrering" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
                </padding>
@@ -20,7 +20,7 @@
             </Button>
          </bottom>
          <center>
-            <GridPane BorderPane.alignment="CENTER">
+            <GridPane minHeight="350.0" BorderPane.alignment="CENTER">
                <children>
                   <TextField promptText="Förnamn">
                      <GridPane.margin>
@@ -42,32 +42,40 @@
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Postkod" GridPane.rowIndex="4">
+                  <TextField promptText="Telefon" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Ort" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets left="100.0" right="100.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField promptText="Telefon" GridPane.rowIndex="6">
-                     <GridPane.margin>
-                        <Insets left="100.0" right="100.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <PasswordField promptText="Lösenord" GridPane.rowIndex="7">
+                  <PasswordField promptText="Lösenord" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </PasswordField>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <left>
+                        <TextField prefHeight="39.0" prefWidth="86.0" promptText="Postkod" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                        </TextField>
+                     </left>
+                     <center>
+                        <TextField promptText="Ort" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="10.0" />
+                           </BorderPane.margin>
+                        </TextField>
+                     </center>
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                  </BorderPane>
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -81,7 +89,7 @@
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <center>
-                  <Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit urna eget erat condimentum pharetra." wrapText="true" BorderPane.alignment="CENTER">
+                  <Label maxHeight="120.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit urna eget erat condimentum pharetra." wrapText="true" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </BorderPane.margin>

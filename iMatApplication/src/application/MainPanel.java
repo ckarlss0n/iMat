@@ -20,6 +20,8 @@ public class MainPanel extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    	
+    	
 	}
 	
 	@FXML
@@ -27,11 +29,21 @@ public class MainPanel extends AnchorPane {
 	
 	
 	
-	
+	int i = 0;
 	public void buttonClicked(ActionEvent evt){
-		OfflinePanel op = new OfflinePanel();
-		ProfilePanel pp = new ProfilePanel();
-		stackPane.getChildren().addAll(pp);
+		
+		
+		if(i == 0){
+			
+			ProfilePanel pp = new ProfilePanel();
+			stackPane.getChildren().addAll(pp);
+			i++;
+		} else{
+			stackPane.getChildren().clear();
+			OfflinePanel op = new OfflinePanel();
+			stackPane.getChildren().addAll(op);
+		}
+		
 		System.out.println("Click");
 	}
 	

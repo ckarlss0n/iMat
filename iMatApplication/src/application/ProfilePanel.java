@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,6 +22,13 @@ public class ProfilePanel extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    	setProgress();
+    	
+	}
+	@FXML
+	private ProgressBar progressBar;
+	public void setProgress(){
+		progressBar.setProgress(0.4);
 	}
 	
 }

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root id="Welcome Screen" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="Welcome Screen" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="750.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
@@ -23,7 +23,7 @@
          <top>
             <AnchorPane prefHeight="128.0" prefWidth="864.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="217.0" layoutY="39.0" text="Välkommen till iMat!">
+                  <Label layoutX="176.0" layoutY="36.0" text="Välkommen till iMat!">
                      <font>
                         <Font name="MavenProLight300-Regular" size="48.0" />
                      </font>

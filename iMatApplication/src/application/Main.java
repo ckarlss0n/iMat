@@ -18,7 +18,7 @@ public class Main extends Application {
 			Group root = new Group();
 			MainPanel mp = new MainPanel();
 			root.getChildren().addAll(mp);
-			Scene scene = new Scene(root,100,100);
+			Scene scene = new Scene(root,1250,700);
 			
 			IMatDataHandler imdh = IMatDataHandler.getInstance();
 			

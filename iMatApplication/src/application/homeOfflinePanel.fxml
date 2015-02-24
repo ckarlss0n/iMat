@@ -23,7 +23,7 @@
          <top>
             <AnchorPane prefHeight="128.0" prefWidth="864.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="176.0" layoutY="36.0" text="Välkommen till iMat!">
+                  <Label layoutX="130.0" layoutY="35.0" text="Välkommen till iMat!">
                      <font>
                         <Font name="MavenProLight300-Regular" size="48.0" />
                      </font>

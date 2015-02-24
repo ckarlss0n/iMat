@@ -15,67 +15,66 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="mainPanel" prefHeight="768.0" prefWidth="1366.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="300.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+            <ScrollPane fx:id="panelLeft" fitToHeight="true" fitToWidth="true" prefWidth="300.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                <content>
-                  <Pane prefHeight="708.0" prefWidth="127.0">
-                     <children>
-                        <TextField layoutX="14.0" layoutY="14.0" prefHeight="39.0" prefWidth="249.0" text="Sök..." />
-                        <Accordion layoutY="66.0" prefHeight="309.0" prefWidth="281.0">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <BorderPane prefHeight="55.0" prefWidth="278.0" BorderPane.alignment="CENTER">
+                           <center>
+                              <TextField promptText="Sök..." BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets left="10.0" />
+                                 </BorderPane.margin>
+                              </TextField>
+                           </center>
+                           <right>
+                              <Button mnemonicParsing="false" text="Sök" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets right="10.0" />
+                                 </BorderPane.margin>
+                              </Button>
+                           </right>
+                        </BorderPane>
+                     </top>
+                     <center>
+                        <Accordion BorderPane.alignment="CENTER">
                           <panes>
-                            <TitledPane text="Sparade kundvagnar">
+                            <TitledPane animated="false" text="untitled 1">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </TitledPane>
-                            <TitledPane animated="false" collapsible="false" expanded="false" text="Mina favoriter">
+                            <TitledPane animated="false" text="untitled 2">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </TitledPane>
-                            <TitledPane animated="false" disable="true">
+                            <TitledPane animated="false" text="untitled 3">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
-                                 <effect>
-                                    <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="-1.0" />
-                                 </effect>
                             </TitledPane>
-                              <TitledPane text="Baljväxter">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </TitledPane>
-                              <TitledPane text="Mejeri">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </TitledPane>
-                              <TitledPane text="Kött">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </TitledPane>
                           </panes>
                         </Accordion>
-                     </children>
-                  </Pane>
+                     </center>
+                  </BorderPane>
                </content>
             </ScrollPane>
          </left>
          <right>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ScrollPane fx:id="panelRight" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </right>
          <top>
-            <BorderPane BorderPane.alignment="CENTER">
+            <BorderPane fx:id="topPanel" BorderPane.alignment="CENTER">
                <left>
-                  <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="301.0" text="Button" BorderPane.alignment="CENTER" />
+                  <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#returnHome" prefHeight="58.0" prefWidth="301.0" text="Gå till startsidan" BorderPane.alignment="CENTER" />
                </left>
                <center>
-                  <ImageView pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                  <ImageView fx:id="applicationLogo" onMouseClicked="#returnHome" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
                         <Image url="@../../../../../Desktop/iMatLogo.png" />
                      </image>
@@ -87,22 +86,22 @@
             </BorderPane>
          </top>
          <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane fx:id="panelCenter" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <top>
-                  <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                  <ToolBar fx:id="centerToolBar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <items>
-                        <ChoiceBox prefWidth="150.0" />
+                        <ChoiceBox fx:id="viewComboBox" prefWidth="150.0" />
                         <Label text="Vy:" />
-                        <ComboBox prefWidth="150.0" />
+                        <ComboBox fx:id="sortComboBox" prefWidth="150.0" />
                         <Label text="Sortering:" />
                      </items>
                   </ToolBar>
                </top>
                <center>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                  <StackPane fx:id="centerStack" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
          </center>
       </BorderPane>
    </children>
-</AnchorPane>
+</fx:root>

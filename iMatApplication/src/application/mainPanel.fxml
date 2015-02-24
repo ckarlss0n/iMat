@@ -21,48 +21,47 @@
          <left>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="250.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                <content>
-                  <Pane prefHeight="708.0" prefWidth="130.0">
-                     <children>
-                        <TextField layoutX="14.0" layoutY="14.0" prefHeight="39.0" prefWidth="205.0" text="Sök..." />
-                        <Accordion layoutY="66.0" prefHeight="309.0" prefWidth="281.0">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <BorderPane BorderPane.alignment="CENTER">
+                           <center>
+                              <TextField promptText="Sök..." BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </BorderPane.margin>
+                              </TextField>
+                           </center>
+                           <right>
+                              <Button mnemonicParsing="false" text="Sök" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets bottom="10.0" right="10.0" top="10.0" />
+                                 </BorderPane.margin>
+                              </Button>
+                           </right>
+                        </BorderPane>
+                     </top>
+                     <center>
+                        <Accordion BorderPane.alignment="CENTER">
                           <panes>
-                            <TitledPane text="Sparade kundvagnar">
+                            <TitledPane animated="false" text="untitled 1">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </TitledPane>
-                            <TitledPane animated="false" collapsible="false" expanded="false" text="Mina favoriter">
+                            <TitledPane animated="false" text="untitled 2">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
                             </TitledPane>
-                            <TitledPane animated="false" disable="true">
+                            <TitledPane animated="false" text="untitled 3">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
-                                 <effect>
-                                    <ColorAdjust brightness="-1.0" contrast="-1.0" hue="-1.0" saturation="-1.0" />
-                                 </effect>
                             </TitledPane>
-                              <TitledPane text="Baljväxter">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </TitledPane>
-                              <TitledPane text="Mejeri">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </TitledPane>
-                              <TitledPane text="Kött">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                </content>
-                              </TitledPane>
                           </panes>
                         </Accordion>
-                     </children>
-                  </Pane>
+                     </center>
+                  </BorderPane>
                </content>
             </ScrollPane>
          </left>
@@ -71,32 +70,16 @@
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="250.0">
                      <center>
-                        <GridPane BorderPane.alignment="CENTER">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
+                        <Accordion BorderPane.alignment="CENTER">
+                          <panes>
+                            <TitledPane animated="false" text="Kundvagn">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
                      </center>
-                     <top>
-                        <Pane prefHeight="40.0" prefWidth="299.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label layoutX="76.0" layoutY="7.0" text="Varukorg">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </top>
                   </BorderPane>
                </content>
             </ScrollPane>
@@ -104,7 +87,7 @@
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <left>
-                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" text="Button" BorderPane.alignment="CENTER" />
+                  <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" text="Start" BorderPane.alignment="CENTER" />
                </left>
                <center>
                   <ImageView fitHeight="60.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">

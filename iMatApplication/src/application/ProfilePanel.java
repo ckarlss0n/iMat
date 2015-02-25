@@ -5,15 +5,16 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class ProfilePanel extends AnchorPane{
+public class ProfilePanel extends ScrollPane{
 	
 	public ProfilePanel(){
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profilePanel1.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profilePanel.fxml"));
 	    fxmlLoader.setRoot(this);
     	fxmlLoader.setController(this);
 

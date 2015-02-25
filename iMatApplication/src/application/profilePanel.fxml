@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
@@ -28,7 +28,7 @@
                         <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
                      </bottom>
                      <center>
-                        <ProgressBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="27.0" prefWidth="9000.0" progress="0.27" BorderPane.alignment="CENTER">
+                        <ProgressBar fx:id="progressBar" nodeOrientation="LEFT_TO_RIGHT" prefHeight="27.0" prefWidth="9000.0" progress="0.27" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="10.0" left="10.0" />
                            </BorderPane.margin>
@@ -486,4 +486,4 @@
          </right>
       </BorderPane>
    </content>
-</ScrollPane>
+</fx:root>

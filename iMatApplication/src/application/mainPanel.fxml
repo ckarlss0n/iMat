@@ -114,7 +114,7 @@
                <center>
                   <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                     <content>
-                        <Accordion layoutX="8.0" layoutY="69.0" maxHeight="400.0" maxWidth="250.0">
+                        <Accordion layoutX="8.0" layoutY="69.0">
                           <panes>
                               <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="400.0" maxWidth="250.0" minHeight="400.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT">
                                  <content>
@@ -652,7 +652,7 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="650.0" BorderPane.alignment="CENTER" />
+                  <StackPane fx:id="stackPane" BorderPane.alignment="CENTER" />
                </center>
                <top>
                   <BorderPane BorderPane.alignment="CENTER">

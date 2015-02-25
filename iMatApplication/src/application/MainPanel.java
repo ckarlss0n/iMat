@@ -83,12 +83,12 @@ public class MainPanel extends AnchorPane{
 			stackPane.getChildren().clear();
 			
 			ShoppingCartBig scb = new ShoppingCartBig();
-			//ProcessIndicator pi = new ProcessIndicator();
+			ProcessIndicator pi = new ProcessIndicator();
 			
 			
 			
 			borderPane.getChildren().clear();
-			//borderPane.setCenter(pi);
+			borderPane.setCenter(pi);
 			
 			/*
 			OfflinePanel op = new OfflinePanel();

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="140.0" maxWidth="250.0" minHeight="140.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="140.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="140.0" maxWidth="250.0" minHeight="140.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="140.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT" type="TitledPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane nodeOrientation="LEFT_TO_RIGHT">
          <top>
@@ -74,4 +74,4 @@
    <padding>
       <Insets right="20.0" />
    </padding>
-</TitledPane>
+</fx:root>

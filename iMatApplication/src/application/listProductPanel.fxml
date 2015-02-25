@@ -50,7 +50,7 @@
             <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <children>
                   <ComboBox prefHeight="39.0" prefWidth="66.0" />
-                  <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="92.0" text="Lägg till" />
+                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addToCart" prefHeight="39.0" prefWidth="92.0" text="Lägg till" />
                </children>
             </HBox>
          </bottom>

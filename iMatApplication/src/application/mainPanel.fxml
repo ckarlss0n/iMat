@@ -73,7 +73,7 @@
             </ScrollPane>
          </left>
          <right>
-            <BorderPane prefHeight="200.0" prefWidth="250.0" stylesheets="@application.css">
+            <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="250.0" stylesheets="@application.css">
                <top>
                   <Label alignment="CENTER" contentDisplay="RIGHT" minHeight="54.0" prefHeight="54.0" prefWidth="303.0" styleClass="grayGradient" text="Kundvagn" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <graphic>
@@ -117,7 +117,7 @@
                <center>
                   <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
                     <content>
-                        <Accordion layoutX="8.0" layoutY="69.0" maxHeight="400.0" maxWidth="250.0" styleClass="redAccordion" stylesheets="@application.css" />
+                        <Accordion fx:id="shoppingCart" layoutX="8.0" layoutY="69.0" maxHeight="400.0" maxWidth="250.0" styleClass="redAccordion" stylesheets="@application.css" />
                     </content>
                   </ScrollPane>
                </center>

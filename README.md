@@ -1,2 +1,2 @@
-# imat
-iMat
+# iMat
+iMat - Projektarbete inom DAT216.

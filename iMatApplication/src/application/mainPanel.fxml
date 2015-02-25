@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="700.0" prefWidth="1250.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="250.0" BorderPane.alignment="CENTER">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <BorderPane BorderPane.alignment="CENTER">
+                           <center>
+                              <TextField promptText="Sök..." BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets bottom="8.0" left="10.0" top="8.0" />
+                                 </BorderPane.margin>
+                              </TextField>
+                           </center>
+                           <right>
+                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Sök" BorderPane.alignment="CENTER">
+                                 <BorderPane.margin>
+                                    <Insets bottom="8.0" right="10.0" top="8.0" />
+                                 </BorderPane.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../questionmark.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </right>
+                        </BorderPane>
+                     </top>
+                     <center>
+                        <Accordion BorderPane.alignment="CENTER">
+                          <panes>
+                            <TitledPane animated="false" text="untitled 1">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="untitled 2">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                            <TitledPane animated="false" text="untitled 3">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </TitledPane>
+                          </panes>
+                        </Accordion>
+                     </center>
+                  </BorderPane>
+               </content>
+            </ScrollPane>
+         </left>
+         <right>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="250.0">
+                     <top>
+                        <Label contentDisplay="RIGHT" text="Kundvagn" BorderPane.alignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../questionmark.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                     </top>
+                  </BorderPane>
+               </content>
+            </ScrollPane>
+         </right>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <left>
+                  <Button mnemonicParsing="false" text="Hem" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="10.0" />
+                     </BorderPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../questionmark.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </left>
+               <center>
+                  <ImageView fitHeight="60.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../../../../../Desktop/iMatLogo.png" />
+                     </image>
+                  </ImageView>
+               </center>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <right>
+                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#buttonClicked" text="Min profil" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="10.0" />
+                     </BorderPane.margin></Button>
+               </right>
+            </BorderPane>
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="650.0" BorderPane.alignment="CENTER" />
+               </center>
+               <top>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <left>
+                        <ToolBar BorderPane.alignment="CENTER">
+                          <items>
+                            <Button mnemonicParsing="false" text="Varma drycker" />
+                              <Button mnemonicParsing="false" text="Te" />
+                          </items>
+                        </ToolBar>
+                     </left>
+                     <center>
+                        <ToolBar nodeOrientation="RIGHT_TO_LEFT" BorderPane.alignment="CENTER">
+                           <items>
+                              <ChoiceBox prefWidth="150.0" />
+                              <ChoiceBox prefWidth="150.0" />
+                           </items>
+                        </ToolBar>
+                     </center>
+                  </BorderPane>
+               </top>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </children>
+</fx:root>

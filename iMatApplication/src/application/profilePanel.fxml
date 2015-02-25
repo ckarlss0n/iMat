@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <center>
+                  <Label text="Min profil" textFill="#404040" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets bottom="15.0" top="20.0" />
+                     </BorderPane.margin></Label>
+               </center>
+               <bottom>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <bottom>
+                        <Separator prefWidth="200.0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <ProgressBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="27.0" prefWidth="9000.0" progress="0.27" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" left="10.0" />
+                           </BorderPane.margin>
+                        </ProgressBar>
+                     </center>
+                     <right>
+                        <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                           <image>
+                              <Image url="@../../questionmark.png" />
+                           </image>
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
+                           </BorderPane.margin>
+                        </ImageView>
+                     </right>
+                  </BorderPane>
+               </bottom>
+            </BorderPane>
+         </top>
+         <center>
+            <BorderPane BorderPane.alignment="CENTER">
+               <bottom>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <bottom>
+                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="9000.0" text="Spara ändringar" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" />
+                           </BorderPane.margin>
+                        </Button>
+                     </bottom>
+                     <BorderPane.margin>
+                        <Insets top="20.0" />
+                     </BorderPane.margin>
+                  </BorderPane>
+               </bottom>
+               <center>
+                  <Accordion minHeight="441.0" BorderPane.alignment="CENTER">
+                    <panes>
+                      <TitledPane animated="false" text="Mina uppgifter">
+                           <content>
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <TextField promptText="Förnamn" />
+                                    <TextField promptText="Efternamn" GridPane.rowIndex="1" />
+                                    <TextField promptText="E-post" GridPane.rowIndex="2" />
+                                    <TextField promptText="Adress" GridPane.rowIndex="3" />
+                                    <TextField promptText="Telefon" GridPane.rowIndex="5" />
+                                    <PasswordField promptText="Lösenord" GridPane.rowIndex="6" />
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                       <left>
+                                          <TextField prefHeight="39.0" prefWidth="90.0" promptText="Postkod" BorderPane.alignment="CENTER">
+                                             <BorderPane.margin>
+                                                <Insets right="10.0" />
+                                             </BorderPane.margin>
+                                          </TextField>
+                                       </left>
+                                       <center>
+                                          <TextField promptText="Ort" BorderPane.alignment="CENTER">
+                                             <BorderPane.margin>
+                                                <Insets />
+                                             </BorderPane.margin>
+                                          </TextField>
+                                       </center>
+                                    </BorderPane>
+                                 </children>
+                              </GridPane>
+                           </content>
+                      </TitledPane>
+                      <TitledPane animated="false" expanded="false" text="Allergier">
+                           <content>
+                              <BorderPane prefWidth="200.0">
+                                 <top>
+                                    <Label text="Här kan du fylla i eventuella allergier för att varna eller dölja varor ur sortimentet." wrapText="true" BorderPane.alignment="CENTER_LEFT">
+                                       <BorderPane.margin>
+                                          <Insets bottom="10.0" />
+                                       </BorderPane.margin>
+                                    </Label>
+                                 </top>
+                                 <center>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="307.0" prefViewportWidth="734.0">
+                                       <content>
+                                          <GridPane BorderPane.alignment="CENTER">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <CheckBox mnemonicParsing="false" text="Nötter" />
+                                                <CheckBox mnemonicParsing="false" text="Baljväxter" GridPane.rowIndex="1" />
+                                                <CheckBox mnemonicParsing="false" text="Ägg" GridPane.rowIndex="4" />
+                                                <CheckBox mnemonicParsing="false" text="Vete" GridPane.rowIndex="2" />
+                                                <CheckBox mnemonicParsing="false" text="Skaldjur" GridPane.rowIndex="3" />
+                                             </children>
+                                             <padding>
+                                                <Insets left="10.0" right="10.0" />
+                                             </padding>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </center>
+                                 <bottom>
+                                    <FlowPane BorderPane.alignment="CENTER">
+                                       <children>
+                                          <RadioButton mnemonicParsing="false" text="Varna för produkter">
+                                             <FlowPane.margin>
+                                                <Insets right="10.0" top="15.0" />
+                                             </FlowPane.margin>
+                                          </RadioButton>
+                                          <RadioButton mnemonicParsing="false" text="Dölj produkter">
+                                             <FlowPane.margin>
+                                                <Insets top="15.0" />
+                                             </FlowPane.margin>
+                                          </RadioButton>
+                                       </children>
+                                    </FlowPane>
+                                 </bottom>
+                              </BorderPane>
+                           </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </center>
+            </BorderPane>
+         </center>
+         <right>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <Accordion BorderPane.alignment="CENTER">
+                    <panes>
+                      <TitledPane alignment="CENTER" animated="false" collapsible="false" expanded="false" text="Historik">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" expanded="false" text="2015-02-24 (2308 kr)">
+                           <content>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <center>
+                                    <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                       <children>
+                                          <Label text="Spaghetti - 1kg (25 kr)">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="5">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </center>
+                                 <bottom>
+                                    <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="239.0" text="Visa detaljer" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                           </content>
+                      </TitledPane>
+                        <TitledPane animated="false" expanded="false" text="2015-02-24 (2308 kr)">
+                           <content>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <bottom>
+                                    <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="239.0" text="Visa detaljer" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                                 <center>
+                                    <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Label text="Spaghetti - 1kg (25 kr)">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="5">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" expanded="false" text="2015-02-24 (2308 kr)">
+                           <content>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <bottom>
+                                    <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="239.0" text="Visa detaljer" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                                 <center>
+                                    <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Label text="Spaghetti - 1kg (25 kr)">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="5">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" expanded="false" text="2015-02-24 (2308 kr)">
+                           <content>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <bottom>
+                                    <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="239.0" text="Visa detaljer" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                                 <center>
+                                    <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Label text="Spaghetti - 1kg (25 kr)">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="5">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" expanded="false" text="2015-02-24 (2308 kr)">
+                           <content>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                 <bottom>
+                                    <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="239.0" text="Visa detaljer" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                                 <center>
+                                    <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Label text="Spaghetti - 1kg (25 kr)">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="3">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="4">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="Spaghetti - 1kg (25 kr)" GridPane.rowIndex="5">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" right="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" />
+                                       </padding>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
+                           </content>
+                        </TitledPane>
+                    </panes>
+                  </Accordion>
+               </center>
+               <left>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+               </left>
+            </BorderPane>
+         </right>
+      </BorderPane>
+   </content>
+</ScrollPane>

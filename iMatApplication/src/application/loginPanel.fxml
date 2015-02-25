@@ -8,9 +8,9 @@
    <children>
       <Button fx:id="btnLogIn" layoutX="143.0" layoutY="168.0" mnemonicParsing="false" onAction="#logIn" prefHeight="25.0" prefWidth="75.0" text="Logga in" />
       <TextField fx:id="txtfUsername" layoutX="71.0" layoutY="53.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="71.0" layoutY="30.0" text="Användarnamn:" />
+      <Label layoutX="71.0" layoutY="30.0" text="E-postadress:" />
       <Label layoutX="71.0" layoutY="87.0" text="Lösenord:" />
-      <CheckBox layoutX="71.0" layoutY="142.0" mnemonicParsing="false" text="Kom ihåg mig" />
+      <CheckBox fx:id="rememberMe" layoutX="71.0" layoutY="142.0" mnemonicParsing="false" text="Kom ihåg mig" />
       <PasswordField fx:id="txtfPassword" layoutX="71.0" layoutY="110.0" prefHeight="26.0" prefWidth="149.0" />
    </children>
 </fx:root>

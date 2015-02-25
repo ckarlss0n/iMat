@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -11,7 +12,10 @@
    <children>
       <BorderPane prefHeight="120.0" prefWidth="180.0">
          <top>
-            <ImageView fx:id="imgProduct" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="imgProduct" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="5.0" />
+               </BorderPane.margin></ImageView>
          </top>
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">

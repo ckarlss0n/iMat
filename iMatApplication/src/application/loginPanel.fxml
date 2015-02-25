@@ -4,14 +4,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane id="loginPanel" fx:id="loginPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="loginPanel" fx:id="loginPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="290.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="143.0" layoutY="168.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Logga in" />
-      <TextField layoutX="71.0" layoutY="53.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField layoutX="71.0" layoutY="110.0" />
+      <Button fx:id="btnLogIn" layoutX="143.0" layoutY="168.0" mnemonicParsing="false" onAction="#logIn" prefHeight="25.0" prefWidth="75.0" text="Logga in" />
+      <TextField fx:id="txtfUsername" layoutX="71.0" layoutY="53.0" prefHeight="25.0" prefWidth="149.0" />
       <Label layoutX="71.0" layoutY="30.0" text="Användarnamn:" />
       <Label layoutX="71.0" layoutY="87.0" text="Lösenord:" />
       <CheckBox layoutX="71.0" layoutY="142.0" mnemonicParsing="false" text="Kom ihåg mig" />
+      <PasswordField fx:id="txtfPassword" layoutX="71.0" layoutY="110.0" prefHeight="26.0" prefWidth="149.0" />
    </children>
-</Pane>
+</fx:root>

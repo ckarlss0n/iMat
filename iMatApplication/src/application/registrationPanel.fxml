@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<ScrollPane id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <bottom>
-            <Button contentDisplay="RIGHT" mnemonicParsing="false" text="Slutför registrering" BorderPane.alignment="CENTER">
+            <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#register" text="Slutför registrering" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
                </padding>
@@ -22,46 +22,46 @@
          <center>
             <GridPane minHeight="350.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField promptText="Förnamn">
+                  <TextField fx:id="txtfSurname" promptText="Förnamn">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Efternamn" GridPane.rowIndex="1">
+                  <TextField fx:id="txtfLastname" promptText="Efternamn" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="E-post" GridPane.rowIndex="2">
+                  <TextField fx:id="txtfEmail" promptText="E-post" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Adress" GridPane.rowIndex="3">
+                  <TextField fx:id="txtfAdress" promptText="Adress" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField promptText="Telefon" GridPane.rowIndex="5">
+                  <TextField fx:id="txtfPhone" promptText="Telefon" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <PasswordField promptText="Lösenord" GridPane.rowIndex="6">
+                  <PasswordField fx:id="txtfPassword" promptText="Lösenord" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </PasswordField>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                      <left>
-                        <TextField prefHeight="39.0" prefWidth="86.0" promptText="Postkod" BorderPane.alignment="CENTER">
+                        <TextField fx:id="txtfPostcode" prefHeight="28.0" prefWidth="86.0" promptText="Postkod" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets />
                            </BorderPane.margin>
                         </TextField>
                      </left>
                      <center>
-                        <TextField promptText="Ort" BorderPane.alignment="CENTER">
+                        <TextField fx:id="txtfCity" promptText="Ort" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets left="10.0" />
                            </BorderPane.margin>
@@ -109,4 +109,4 @@
          </top>
       </BorderPane>
    </content>
-</ScrollPane>
+</fx:root>

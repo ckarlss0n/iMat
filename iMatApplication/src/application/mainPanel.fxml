@@ -653,6 +653,7 @@
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
                   <StackPane fx:id="stackPane" prefHeight="150.0" BorderPane.alignment="CENTER" />
+
                </center>
                <top>
                   <BorderPane BorderPane.alignment="CENTER">

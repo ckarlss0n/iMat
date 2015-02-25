@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,12 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
+
+
 public class MainPanel extends AnchorPane {
+	
+	private List<Product> productList;
+	private IMatDataHandler dataHandler;
 	
 	public MainPanel(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
@@ -28,6 +34,13 @@ public class MainPanel extends AnchorPane {
             throw new RuntimeException(exception);
         }
     	
+		dataHandler = IMatDataHandler.getInstance();
+		productList = dataHandler.getProducts();
+		
+		User theUser = dataHandler.getUser();
+		
+		theUser.setUserName("Emil");
+		theUser.setPassword("123");
     	
 	}
 	
@@ -39,29 +52,35 @@ public class MainPanel extends AnchorPane {
 	int i = 0;
 	public void buttonClicked(ActionEvent evt){
 		
-		Product prod = new Product();
-		IMatDataHandler im = IMatDataHandler.getInstance();
-		List<Product> produ = im.getProducts();
-		
-		System.out.println(produ.size());
+		System.out.println(productList.size());
 		if(i == 0){
+			List_Nx1_view l = new List_Nx1_view();
 			
 			ProfilePanel pp = new ProfilePanel();
-			stackPane.getChildren().addAll(pp);
+			stackPane.getChildren().addAll(l);
 			i++;
-		} else{
+		}else if(i == 1){
+			
+			RegisterPanel rp = new RegisterPanel();
+			
+			stackPane.getChildren().clear();
+			LoginPanel lp = new LoginPanel();
+			stackPane.getChildren().add(rp);
+			
+		}else{
 			stackPane.getChildren().clear();
 			OfflinePanel op = new OfflinePanel();
 			OnlinePanel onp = new OnlinePanel();
 			
-			for(int i = 0; i < 4; i++){
+			onp.setWidth(5 * 190);
+			for(int i = 0; i < 5; i++){
 				SmallProductPanel smpp = new SmallProductPanel();
-				Product p = produ.get(i);
-				File fimg = new File(im.getImageIcon(p).getDescription());
-				System.out.println(fimg.toURI().toString());
-				Image image = new Image(fimg.toURI().toString());
-				smpp.setProductImage(image);
+				
+				Product p = productList.get(i);
+				File fimg = new File(dataHandler.getImageIcon(p).getDescription());
+				smpp.setProductImage(new Image(fimg.toURI().toString()));
 				smpp.setProductName(p.getName());
+				
 				onp.add(smpp, i);
 			}
 			stackPane.getChildren().addAll(onp);

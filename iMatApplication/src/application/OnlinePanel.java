@@ -27,6 +27,12 @@ public class OnlinePanel extends ScrollPane{
 	private GridPane gridPane;
 	
 	public void add(Node node, int col){
-		gridPane.add(node, col, 0);
+		gridPane.setConstraints(node, col, 0); 
+		gridPane.getChildren().addAll(node);
+		//gridPane.setPrefWidth(col*180);
+	}
+	
+	public void setWidth(int i){
+		gridPane.setPrefWidth(i);
 	}
 }

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="140.0" maxWidth="250.0" minHeight="140.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="140.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+         <top>
+            <HBox fillHeight="false" BorderPane.alignment="CENTER">
+               <children>
+                  <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon16/white/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon16/white/plus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon16/white/cross.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" text="Gå till produkt" BorderPane.alignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon16/white/info.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </bottom>
+      </BorderPane>
+   </content>
+   <font>
+      <Font size="14.0" />
+   </font>
+   <graphic>
+      <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icon16/white/bin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </graphic>
+   <padding>
+      <Insets right="20.0" />
+   </padding>
+</TitledPane>

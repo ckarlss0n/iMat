@@ -3,6 +3,8 @@
    -darkRed: #4d060e;
    -darkGray: #2f2f2f;
    -red: #7a0613;
+   -gray: #dedede;
+   -orange: #b47011;
 
    -gradDLR: #580d15;
    -gradDDR: #4b0009;
@@ -15,13 +17,23 @@
 }
 
 .leftBar {
-	-fx-background-color: blue;
+	
 }
 
 .redAccordion {
 	-fx-base: -red;
+	-fx-background-color: -gray;
 }
 
 .button{
-	-fx-base: -red;
+	-fx-base: #9a0819;
+}
+
+.middleToolbar{
+	-fx-base: #9a0819;
+}
+
+.grayGradient{
+	-fx-background-color: linear-gradient(#f8f8f8, #e7e7e7);
+
 }

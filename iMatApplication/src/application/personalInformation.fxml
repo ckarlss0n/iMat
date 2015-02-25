@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <bottom>
+            <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#register" text="Gå vidare" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="100.0" right="100.0" top="10.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+         <center>
+            <GridPane minHeight="350.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="txtfSurname" promptText="Förnamn">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="txtfLastname" promptText="Efternamn" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="txtfEmail" promptText="E-post" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="txtfAdress" promptText="Adress" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="txtfPhone" promptText="Telefon" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <left>
+                        <TextField fx:id="txtfPostcode" prefHeight="28.0" prefWidth="86.0" promptText="Postkod" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                        </TextField>
+                     </left>
+                     <center>
+                        <TextField fx:id="txtfCity" promptText="Ort" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="10.0" />
+                           </BorderPane.margin>
+                        </TextField>
+                     </center>
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                  </BorderPane>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </center>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <center>
+                  <Label maxHeight="120.0" text="Var vänlig fyll i dina personuppgifter nedan för att gå vidare i betalningen." wrapText="true" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </center>
+               <top>
+                  <Label text="Personuppgifter" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets top="20.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </top>
+            </BorderPane>
+         </top>
+      </BorderPane>
+   </content>
+</fx:root>

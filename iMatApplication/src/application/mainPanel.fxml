@@ -101,7 +101,10 @@
                            </graphic>
                            <font>
                               <Font size="24.0" />
-                           </font></Button>
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding></Button>
                      </bottom>
                      <center>
                         <Label alignment="CENTER" prefHeight="35.0" prefWidth="277.0" styleClass="grayGradient" text="35040 kr" textAlignment="CENTER" BorderPane.alignment="CENTER">
@@ -125,7 +128,7 @@
                <left>
                   <Button mnemonicParsing="false" text="Hem" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
-                        <Insets left="10.0" />
+                        <Insets left="20.0" />
                      </BorderPane.margin>
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
@@ -154,7 +157,7 @@
                <right>
                   <Button fx:id="nextButton" mnemonicParsing="false" onAction="#buttonClicked" text="Min profil" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
-                        <Insets right="10.0" />
+                        <Insets right="20.0" />
                      </BorderPane.margin>
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
@@ -182,7 +185,7 @@
                         </ToolBar>
                      </left>
                      <center>
-                        <ToolBar nodeOrientation="RIGHT_TO_LEFT" stylesheets="@application.css" BorderPane.alignment="CENTER">
+                        <ToolBar maxHeight="55.0" minHeight="55.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
                            <items>
                               <ChoiceBox prefWidth="150.0" />
                               <ChoiceBox prefWidth="150.0" />

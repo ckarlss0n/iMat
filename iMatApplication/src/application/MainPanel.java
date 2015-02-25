@@ -20,6 +20,7 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
@@ -54,6 +55,8 @@ public class MainPanel extends AnchorPane{
 	@FXML
 	private StackPane stackPane;
 	
+	@FXML 
+	private BorderPane borderPane;
 	
 	
 	int i = 0;
@@ -66,16 +69,28 @@ public class MainPanel extends AnchorPane{
 			ProfilePanel pp = new ProfilePanel();
 			stackPane.getChildren().addAll(l);
 			i++;
-		}else if(i == 1){
+		/*}else if(i == 1){
 			
 			RegisterPanel rp = new RegisterPanel();
 			
 			stackPane.getChildren().clear();
 			LoginPanel lp = new LoginPanel();
 			stackPane.getChildren().add(rp);
+		*/
 			
 		}else{
+			
 			stackPane.getChildren().clear();
+			
+			ShoppingCartBig scb = new ShoppingCartBig();
+			//ProcessIndicator pi = new ProcessIndicator();
+			
+			
+			
+			borderPane.getChildren().clear();
+			//borderPane.setCenter(pi);
+			
+			/*
 			OfflinePanel op = new OfflinePanel();
 			OnlinePanel onp = new OnlinePanel();
 			
@@ -89,8 +104,8 @@ public class MainPanel extends AnchorPane{
 				smpp.setProductName(p.getName());
 				
 				onp.add(smpp, i);
-			}
-			stackPane.getChildren().addAll(onp);
+			}*/
+			stackPane.getChildren().addAll(scb);
 		}
 		
 		System.out.println("Click");

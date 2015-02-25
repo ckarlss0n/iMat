@@ -3,12 +3,25 @@
    -darkRed: #4d060e;
    -darkGray: #2f2f2f;
    -red: #7a0613;
+
+   -gradDLR: #580d15;
+   -gradDDR: #4b0009;
+   -gradLLR: 800d1a;
+   -gradLDR: #74000e;
 }
 
 .topBar {
-	-fx-background-color: linear-gradient(#580d15, #4b0009);
+	-fx-background-color: linear-gradient(-gradDLR, -gradDDR);
 }
 
 .leftBar {
 	-fx-background-color: blue;
+}
+
+.redAccordion {
+	-fx-base: -red;
+}
+
+.button{
+	-fx-base: -red;
 }

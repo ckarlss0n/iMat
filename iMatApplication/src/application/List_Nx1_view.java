@@ -15,7 +15,7 @@ import javafx.scene.layout.GridPane;
 
 public class List_Nx1_view extends ScrollPane{
 	
-	public List_Nx1_view(){
+	public List_Nx1_view(MainPanel mainPanel){
 		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("itemListPanel.fxml"));
 	        fxmlLoader.setRoot(this);
 	        fxmlLoader.setController(this);
@@ -29,16 +29,11 @@ public class List_Nx1_view extends ScrollPane{
 	        
 	        List<Product> productList = dataHandler.getProducts();
 	        setHeight(6 * 140);
+	        
 	        for(int i = 0; i < 6; i++){
 	        	
-	        	ItemListPanel itp = new ItemListPanel();
 	        	Product p = productList.get(i+7);
-	        	itp.setProductName(p.getName());
-	        	itp.setPrice(p.getPrice());
-	        	File fimg = new File(dataHandler.getImageIcon(p).getDescription());
-				itp.setProductImage(new Image(fimg.toURI().toString()));
-				itp.setProductName(p.getName());
-				
+	        	ItemInList itp = new ItemInList(p, mainPanel);
 	        	add(itp, i);
 	        }
 	}

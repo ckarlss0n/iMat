@@ -177,7 +177,7 @@
                <top>
                   <BorderPane BorderPane.alignment="CENTER">
                      <left>
-                        <ToolBar BorderPane.alignment="CENTER">
+                        <ToolBar minHeight="55.0" prefHeight="55.0" BorderPane.alignment="CENTER">
                           <items>
                             <Button mnemonicParsing="false" text="Varma drycker" />
                               <Button mnemonicParsing="false" text="Te" />

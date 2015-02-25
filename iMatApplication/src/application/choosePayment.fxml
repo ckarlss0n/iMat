@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="912.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <content>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Label text="Välj betalsätt" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <center>
+            <Accordion BorderPane.alignment="CENTER">
+              <panes>
+                <TitledPane alignment="CENTER" animated="false">
+                     <graphic>
+                        <BorderPane>
+                           <top>
+                              <Label text="Faktura" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <bottom>
+                              <Label text="Kort beskrivning av faktura" BorderPane.alignment="CENTER" />
+                           </bottom>
+                        </BorderPane>
+                     </graphic>
+                     <content>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                </TitledPane>
+                  <TitledPane alignment="CENTER" animated="false">
+                     <graphic>
+                        <BorderPane>
+                           <bottom>
+                              <Label text="Kort beskrivning av kortbetalning" BorderPane.alignment="CENTER" />
+                           </bottom>
+                           <top>
+                              <Label text="Kortbetalning" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                        </BorderPane>
+                     </graphic>
+                     <content>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+                  <TitledPane alignment="CENTER" animated="false">
+                     <graphic>
+                        <BorderPane>
+                           <bottom>
+                              <Label text="Kort beskrivning av postförskott" BorderPane.alignment="CENTER" />
+                           </bottom>
+                           <top>
+                              <Label text="Postförskott" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                        </BorderPane>
+                     </graphic>
+                     <content>
+                        <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
+         </center>
+         <bottom>
+            <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="9000.0" text=" Slutför köp (22 kr)" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon32/checkmark.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </bottom>
+      </BorderPane>
+   </content>
+</ScrollPane>

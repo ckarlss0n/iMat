@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="875.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="875.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <GridPane gridLinesVisible="true" vgap="10.0">
         <columnConstraints>
@@ -75,7 +75,7 @@
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../questionmark.png" />
+                                    <Image url="@../../icon32/heart.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -93,4 +93,4 @@
          </children>
       </GridPane>
    </content>
-</ScrollPane>
+</fx:root>

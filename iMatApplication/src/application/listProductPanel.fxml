@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="140.0" minHeight="140.0" prefHeight="140.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="100.0" prefWidth="492.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Maträttens namn">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" text="Maträtens beskrivning" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets right="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+   <left>
+      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../../questionmark.png" />
+         </image>
+         <BorderPane.margin>
+            <Insets right="20.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </left>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <right>
+      <BorderPane BorderPane.alignment="CENTER">
+         <bottom>
+            <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
+               <children>
+                  <ComboBox prefHeight="39.0" prefWidth="66.0" />
+                  <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="92.0" text="Lägg till" />
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="489 kr " textAlignment="RIGHT" BorderPane.alignment="CENTER_RIGHT">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon32/heart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </Label>
+         </center>
+      </BorderPane>
+   </right>
+</BorderPane>

@@ -1,1 +1,14 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+* {
+   -darkRed: #4d060e;
+   -darkGray: #2f2f2f;
+   -red: #7a0613;
+}
+
+.topBar {
+	-fx-background-color: linear-gradient(#580d15, #4b0009);
+}
+
+.leftBar {
+	-fx-background-color: blue;
+}

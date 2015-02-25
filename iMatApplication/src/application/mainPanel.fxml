@@ -37,9 +37,9 @@
                                     <Insets bottom="8.0" right="10.0" top="8.0" />
                                  </BorderPane.margin>
                                  <graphic>
-                                    <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../questionmark.png" />
+                                          <Image url="@../../icon16/search.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -73,29 +73,548 @@
             </ScrollPane>
          </left>
          <right>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="250.0" BorderPane.alignment="CENTER">
-               <content>
-                  <BorderPane prefHeight="200.0" prefWidth="250.0">
-                     <top>
-                        <Label contentDisplay="RIGHT" text="Kundvagn" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" prefWidth="250.0">
+               <top>
+                  <Label contentDisplay="RIGHT" text="Kundvagn" BorderPane.alignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon32/cart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </top>
+               <bottom>
+                  <BorderPane BorderPane.alignment="CENTER">
+                     <bottom>
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="39.0" prefWidth="295.0" text="Gå till kassan" BorderPane.alignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../questionmark.png" />
+                                    <Image url="@../../icon32/circle-right.png" />
                                  </image>
                               </ImageView>
                            </graphic>
-                           <padding>
-                              <Insets bottom="10.0" top="10.0" />
-                           </padding>
-                        </Label>
-                     </top>
+                           <font>
+                              <Font size="24.0" />
+                           </font></Button>
+                     </bottom>
+                     <center>
+                        <Label text="35040 kr" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font></Label>
+                     </center>
                   </BorderPane>
-               </content>
-            </ScrollPane>
+               </bottom>
+               <center>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+                    <content>
+                        <Accordion layoutX="8.0" layoutY="69.0" maxHeight="400.0" maxWidth="250.0">
+                          <panes>
+                              <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="400.0" maxWidth="250.0" minHeight="400.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT">
+                                 <content>
+                                    <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+                                       <bottom>
+                                          <Button mnemonicParsing="false" text="Gå till produkt" BorderPane.alignment="CENTER">
+                                             <graphic>
+                                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../../icon16/info.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic></Button>
+                                       </bottom>
+                                       <center>
+                                          <BorderPane BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <Label text="Spaghetti, 2kg" wrapText="true" BorderPane.alignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </bottom>
+                                             <center>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                   <image>
+                                                      <Image url="@../../questionmark.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </center>
+                                             <top>
+                                                <Separator prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </BorderPane.margin>
+                                                </Separator>
+                                             </top>
+                                          </BorderPane>
+                                       </center>
+                                       <top>
+                                          <HBox fillHeight="false" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0">
+                                                   <graphic>
+                                                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon16/minus.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></Button>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0">
+                                                   <graphic>
+                                                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon16/plus.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></Button>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0">
+                                                   <graphic>
+                                                      <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../icon16/cross.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></Button>
+                                             </children>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                                 <graphic>
+                                    <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../icon16/bin.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </graphic>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TitledPane>
+                              <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="400.0" maxWidth="250.0" minHeight="400.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT">
+                                 <content>
+                                    <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+                                       <bottom>
+                                          <Button mnemonicParsing="false" text="Gå till produkt" BorderPane.alignment="CENTER" />
+                                       </bottom>
+                                       <center>
+                                          <BorderPane BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <Label text="Spaghetti, 2kg" wrapText="true" BorderPane.alignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </bottom>
+                                             <center>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                   <image>
+                                                      <Image url="@../../questionmark.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </center>
+                                             <top>
+                                                <Separator prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </BorderPane.margin>
+                                                </Separator>
+                                             </top>
+                                          </BorderPane>
+                                       </center>
+                                       <top>
+                                          <HBox fillHeight="false" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="-" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="+" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="x" />
+                                             </children>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../icon16/bin.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </graphic>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </TitledPane>
+                              <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="400.0" maxWidth="250.0" minHeight="400.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT">
+                                 <content>
+                                    <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+                                       <bottom>
+                                          <Button mnemonicParsing="false" text="Gå till produkt" BorderPane.alignment="CENTER" />
+                                       </bottom>
+                                       <center>
+                                          <BorderPane BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <Label text="Spaghetti, 2kg" wrapText="true" BorderPane.alignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </bottom>
+                                             <center>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                   <image>
+                                                      <Image url="@../../questionmark.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </center>
+                                             <top>
+                                                <Separator prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </BorderPane.margin>
+                                                </Separator>
+                                             </top>
+                                          </BorderPane>
+                                       </center>
+                                       <top>
+                                          <HBox fillHeight="false" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="-" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="+" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="x" />
+                                             </children>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../icon16/bin.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </graphic>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </TitledPane>
+                              <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="400.0" maxWidth="250.0" minHeight="400.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT">
+                                 <content>
+                                    <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+                                       <bottom>
+                                          <Button mnemonicParsing="false" text="Gå till produkt" BorderPane.alignment="CENTER" />
+                                       </bottom>
+                                       <center>
+                                          <BorderPane BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <Label text="Spaghetti, 2kg" wrapText="true" BorderPane.alignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </bottom>
+                                             <center>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                   <image>
+                                                      <Image url="@../../questionmark.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </center>
+                                             <top>
+                                                <Separator prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </BorderPane.margin>
+                                                </Separator>
+                                             </top>
+                                          </BorderPane>
+                                       </center>
+                                       <top>
+                                          <HBox fillHeight="false" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="-" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="+" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="x" />
+                                             </children>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../icon16/bin.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </graphic>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </TitledPane>
+                              <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="400.0" maxWidth="250.0" minHeight="400.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT">
+                                 <content>
+                                    <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+                                       <bottom>
+                                          <Button mnemonicParsing="false" text="Gå till produkt" BorderPane.alignment="CENTER" />
+                                       </bottom>
+                                       <center>
+                                          <BorderPane BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <Label text="Spaghetti, 2kg" wrapText="true" BorderPane.alignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </bottom>
+                                             <center>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                   <image>
+                                                      <Image url="@../../questionmark.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </center>
+                                             <top>
+                                                <Separator prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </BorderPane.margin>
+                                                </Separator>
+                                             </top>
+                                          </BorderPane>
+                                       </center>
+                                       <top>
+                                          <HBox fillHeight="false" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="-" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="+" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="x" />
+                                             </children>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../icon16/bin.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </graphic>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </TitledPane>
+                              <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="400.0" maxWidth="250.0" minHeight="400.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT">
+                                 <content>
+                                    <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+                                       <bottom>
+                                          <Button mnemonicParsing="false" text="Gå till produkt" BorderPane.alignment="CENTER" />
+                                       </bottom>
+                                       <center>
+                                          <BorderPane BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <Label text="Spaghetti, 2kg" wrapText="true" BorderPane.alignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </bottom>
+                                             <center>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                   <image>
+                                                      <Image url="@../../questionmark.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </center>
+                                             <top>
+                                                <Separator prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </BorderPane.margin>
+                                                </Separator>
+                                             </top>
+                                          </BorderPane>
+                                       </center>
+                                       <top>
+                                          <HBox fillHeight="false" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="-" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="+" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="x" />
+                                             </children>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../icon16/bin.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </graphic>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </TitledPane>
+                              <TitledPane alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="400.0" maxWidth="250.0" minHeight="400.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT">
+                                 <content>
+                                    <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+                                       <bottom>
+                                          <Button mnemonicParsing="false" text="Gå till produkt" BorderPane.alignment="CENTER" />
+                                       </bottom>
+                                       <center>
+                                          <BorderPane BorderPane.alignment="CENTER">
+                                             <bottom>
+                                                <Label text="Spaghetti, 2kg" wrapText="true" BorderPane.alignment="CENTER">
+                                                   <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </bottom>
+                                             <center>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                                   <effect>
+                                                      <DropShadow />
+                                                   </effect>
+                                                   <image>
+                                                      <Image url="@../../questionmark.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </center>
+                                             <top>
+                                                <Separator prefWidth="200.0" BorderPane.alignment="CENTER">
+                                                   <BorderPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </BorderPane.margin>
+                                                </Separator>
+                                             </top>
+                                          </BorderPane>
+                                       </center>
+                                       <top>
+                                          <HBox fillHeight="false" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="-" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="+" />
+                                                <Button maxWidth="72.0" minWidth="72.0" mnemonicParsing="false" prefWidth="72.0" text="x" />
+                                             </children>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+                                       <graphic>
+                                          <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../icon16/bin.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </graphic>
+                                 <padding>
+                                    <Insets right="20.0" />
+                                 </padding>
+                              </TitledPane>
+                          </panes>
+                        </Accordion>
+                    </content>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
          </right>
          <top>
-            <BorderPane BorderPane.alignment="CENTER">
+            <BorderPane styleClass="topBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
                <left>
                   <Button mnemonicParsing="false" text="Hem" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
@@ -104,16 +623,19 @@
                      <graphic>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../questionmark.png" />
+                              <Image url="@../../icon32/home3.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
                </left>
                <center>
-                  <ImageView fitHeight="60.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                  <ImageView fitHeight="45.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
-                        <Image url="@../../../../../Desktop/iMatLogo.png" />
+                        <Image url="@../../iMatLogo.png" />
                      </image>
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </BorderPane.margin>
                   </ImageView>
                </center>
                <BorderPane.margin>
@@ -152,6 +674,9 @@
                      </center>
                   </BorderPane>
                </top>
+               <right>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" BorderPane.alignment="CENTER" />
+               </right>
             </BorderPane>
          </center>
       </BorderPane>

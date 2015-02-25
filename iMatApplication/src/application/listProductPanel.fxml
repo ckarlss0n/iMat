@@ -12,7 +12,7 @@
    <center>
       <VBox prefHeight="100.0" prefWidth="492.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Maträttens namn">
+            <Label text="Maträttens namn här">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

@@ -28,7 +28,7 @@ import javafx.scene.layout.StackPane;
 
 
 
-public class MainPanel extends AnchorPane{
+public class MainPanel extends BorderPane implements PropertyChangeListener{
 	
 	private List<Product> productList;
 	private IMatDataHandler dataHandler;
@@ -46,6 +46,7 @@ public class MainPanel extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    	
     	
 		dataHandler = IMatDataHandler.getInstance();
 		productList = dataHandler.getProducts();
@@ -180,6 +181,12 @@ public class MainPanel extends AnchorPane{
 		
 		borderPane.getChildren().clear();
 		borderPane.setCenter(pi);
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		System.out.println("Hej");
+		
 	}
 	
 	

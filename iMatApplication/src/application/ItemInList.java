@@ -1,6 +1,7 @@
 package application;
 
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
 
@@ -29,7 +30,7 @@ public class ItemInList extends BorderPane {
 	@FXML
 	private Product theProduct;
 	
-	private PropertyChangeEvent changeListner;
+	private PropertyChangeSupport changeListner;
 	
 	private MainPanel mainPanel;
 	public ItemInList(Product p, MainPanel m){
@@ -43,7 +44,7 @@ public class ItemInList extends BorderPane {
             throw new RuntimeException(exception);
         }  
         
-        //changeListner = 
+        changeListner = new PropertyChangeSupport(this); 
         
         //mainPanel = m;
         theProduct = p;
@@ -56,7 +57,7 @@ public class ItemInList extends BorderPane {
         lblPrice.setText(String.valueOf(theProduct.getPrice()) + " kr");
         
         
-        
+        this.changeListner.addPropertyChangeListener(m);
 	}
 	
 	
@@ -75,6 +76,7 @@ public class ItemInList extends BorderPane {
 	
 	public void addToCart(ActionEvent evt){
 		mainPanel.changeShoppingCart(theProduct);
+		this.changeListner.firePropertyChange("Nytt", null, null);
 		IMatDataHandler.getInstance().addProduct(theProduct);
 		IMatDataHandler.getInstance().getShoppingCart().addProduct(theProduct, 1);
 		

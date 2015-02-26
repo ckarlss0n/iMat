@@ -17,7 +17,7 @@
 
 <fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="250.0" styleClass="leftBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
+      <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" styleClass="leftBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <top>
@@ -71,11 +71,11 @@
       </ScrollPane>
    </left>
    <right>
-      <BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="250.0" stylesheets="@application.css">
+      <BorderPane fx:id="borderPane" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" stylesheets="@application.css">
          <top>
-            <Label alignment="CENTER" contentDisplay="RIGHT" minHeight="54.0" prefHeight="54.0" prefWidth="303.0" styleClass="grayGradient" text="Kundvagn" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="RIGHT" styleClass="grayGradient" text="Kundvagn" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="32.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icon32/cart.png" />
                      </image>
@@ -106,7 +106,7 @@
                   </Button>
                </bottom>
                <center>
-                  <Label alignment="CENTER" prefHeight="35.0" prefWidth="277.0" styleClass="grayGradient" text="35040 kr" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                  <Label alignment="CENTER" styleClass="grayGradient" text="35040 kr" textAlignment="CENTER" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -117,7 +117,7 @@
          <center>
             <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
               <content>
-                  <Accordion fx:id="shoppingCart" layoutX="8.0" layoutY="69.0" maxHeight="400.0" maxWidth="250.0" styleClass="redAccordion" stylesheets="@application.css" />
+                  <Accordion fx:id="shoppingCart" layoutX="8.0" layoutY="69.0" styleClass="redAccordion" stylesheets="@application.css" />
               </content>
             </ScrollPane>
          </center>
@@ -172,9 +172,9 @@
       </BorderPane>
    </top>
    <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane BorderPane.alignment="CENTER">
          <center>
-            <StackPane fx:id="stackPane" prefHeight="150.0" BorderPane.alignment="CENTER" />
+            <StackPane fx:id="stackPane" BorderPane.alignment="CENTER" />
          </center>
          <top>
             <BorderPane BorderPane.alignment="CENTER">

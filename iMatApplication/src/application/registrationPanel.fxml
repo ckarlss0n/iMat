@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <bottom>
@@ -27,7 +27,7 @@
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="txtfLastname" promptText="Efternamn" GridPane.rowIndex="1">
+                  <TextField fx:id="txtfLastname" promptText="Efternamn" stylesheets="@application.css" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
@@ -88,13 +88,6 @@
          </center>
          <top>
             <BorderPane BorderPane.alignment="CENTER">
-               <center>
-                  <Label maxHeight="120.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit urna eget erat condimentum pharetra." wrapText="true" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets left="100.0" right="100.0" />
-                     </BorderPane.margin>
-                  </Label>
-               </center>
                <top>
                   <Label text="Registrering" BorderPane.alignment="CENTER">
                      <font>
@@ -105,6 +98,21 @@
                      </BorderPane.margin>
                   </Label>
                </top>
+               <center>
+                  <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" text="Här kan du registrera dig som kund hos iMat!" textAlignment="CENTER" wrapText="true" />
+                        <Label alignment="CENTER" text="Personliga erbjudanden, favoritmarkerade varor och sparade kundvagnar är bara några av förmånerna!" textAlignment="CENTER" wrapText="true" />
+                        <Label alignment="CENTER" text="Att registrera sig är enkelt och tar mindre än en minut." wrapText="true" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </center>
             </BorderPane>
          </top>
       </BorderPane>

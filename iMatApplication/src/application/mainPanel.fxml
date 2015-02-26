@@ -15,187 +15,188 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <left>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefWidth="250.0" styleClass="leftBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
-               <content>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <top>
-                        <BorderPane minHeight="54.0" prefHeight="54.0" styleClass="grayGradient" BorderPane.alignment="CENTER">
-                           <center>
-                              <TextField promptText="Sök..." BorderPane.alignment="CENTER">
-                                 <BorderPane.margin>
-                                    <Insets bottom="8.0" left="10.0" top="8.0" />
-                                 </BorderPane.margin>
-                              </TextField>
-                           </center>
-                           <right>
-                              <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Sök" BorderPane.alignment="CENTER">
-                                 <BorderPane.margin>
-                                    <Insets bottom="8.0" right="10.0" top="8.0" />
-                                 </BorderPane.margin>
-                                 <graphic>
-                                    <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../icon16/white/search.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                           </right>
-                        </BorderPane>
-                     </top>
-                     <center>
-                        <Accordion fx:id="categoryAccordation" styleClass="redAccordion" stylesheets="@application.css" BorderPane.alignment="CENTER">
-                          <panes>
-                            <TitledPane animated="false" stylesheets="@application.css" text="untitled 1">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </TitledPane>
-                            <TitledPane animated="false" text="untitled 2">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </TitledPane>
-                            <TitledPane animated="false" disable="true">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                            </TitledPane>
-                          </panes>
-                        </Accordion>
-                     </center>
-                  </BorderPane>
-               </content>
-            </ScrollPane>
-         </left>
-         <right>
-            <BorderPane fx:id="borderPane" stylesheets="@application.css">
+
+<fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" styleClass="leftBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
+         <content>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
                <top>
-                  <Label alignment="CENTER" contentDisplay="RIGHT" minHeight="54.0" prefHeight="54.0" prefWidth="303.0" styleClass="grayGradient" text="Kundvagn" textAlignment="CENTER" BorderPane.alignment="CENTER">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../icon32/cart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </Label>
-               </top>
-               <bottom>
-                  <BorderPane BorderPane.alignment="CENTER">
-                     <bottom>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#goToCheckOut" prefHeight="39.0" prefWidth="295.0" text="Gå till kassan" BorderPane.alignment="CENTER">
+                  <BorderPane minHeight="54.0" prefHeight="54.0" styleClass="grayGradient" BorderPane.alignment="CENTER">
+                     <center>
+                        <TextField promptText="Sök..." BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="8.0" left="10.0" top="8.0" />
+                           </BorderPane.margin>
+                        </TextField>
+                     </center>
+                     <right>
+                        <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Sök" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="8.0" right="10.0" top="8.0" />
+                           </BorderPane.margin>
                            <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../icon32/white/circle-right.png" />
+                                    <Image url="@../../icon16/white/search.png" />
                                  </image>
                               </ImageView>
                            </graphic>
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding></Button>
-                     </bottom>
-                     <center>
-                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="277.0" styleClass="grayGradient" text="35040 kr" textAlignment="CENTER" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font></Label>
-                     </center>
-                  </BorderPane>
-               </bottom>
-               <center>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
-                    <content>
-                        <Accordion fx:id="shoppingCart" layoutX="8.0" layoutY="69.0" maxHeight="400.0" maxWidth="250.0" styleClass="redAccordion" stylesheets="@application.css" />
-                    </content>
-                  </ScrollPane>
-               </center>
-            </BorderPane>
-         </right>
-         <top>
-            <BorderPane styleClass="topBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
-               <left>
-                  <Button mnemonicParsing="false" text="Hem" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets left="20.0" />
-                     </BorderPane.margin>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../icon32/white/home3.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-               </left>
-               <center>
-                  <ImageView fitHeight="45.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@../../iMatLogo.png" />
-                     </image>
-                     <BorderPane.margin>
-                        <Insets bottom="20.0" top="20.0" />
-                     </BorderPane.margin>
-                     <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" color="#00000070" />
-                     </effect>
-                  </ImageView>
-               </center>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <right>
-                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#buttonClicked" text="Min profil" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets right="20.0" />
-                     </BorderPane.margin>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../icon32/white/user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-               </right>
-            </BorderPane>
-         </top>
-         <center>
-            <BorderPane BorderPane.alignment="CENTER">
-               <center>
-                  <StackPane fx:id="stackPane" prefHeight="150.0" BorderPane.alignment="CENTER" />
-               </center>
-               <top>
-                  <BorderPane BorderPane.alignment="CENTER">
-                     <left>
-                        <ToolBar minHeight="55.0" prefHeight="55.0" BorderPane.alignment="CENTER">
-                          <items>
-                            <Button mnemonicParsing="false" text="Varma drycker" />
-                              <Button mnemonicParsing="false" text="Te" />
-                          </items>
-                        </ToolBar>
-                     </left>
-                     <center>
-                        <ToolBar maxHeight="55.0" minHeight="55.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
-                           <items>
-                              <ChoiceBox prefWidth="150.0" />
-                              <ChoiceBox prefWidth="150.0" />
-                           </items>
-                        </ToolBar>
-                     </center>
+                        </Button>
+                     </right>
                   </BorderPane>
                </top>
+               <center>
+                  <Accordion fx:id="categoryAccordation" styleClass="redAccordion" stylesheets="@application.css" BorderPane.alignment="CENTER">
+                    <panes>
+                      <TitledPane animated="false" stylesheets="@application.css" text="untitled 1">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="untitled 2">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" disable="true">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </center>
             </BorderPane>
+         </content>
+      </ScrollPane>
+   </left>
+   <right>
+      <BorderPane fx:id="borderPane" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" stylesheets="@application.css">
+         <top>
+            <Label alignment="CENTER" contentDisplay="RIGHT" styleClass="grayGradient" text="Kundvagn" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon32/cart.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Label>
+         </top>
+         <bottom>
+            <BorderPane BorderPane.alignment="CENTER">
+               <bottom>
+                  <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#goToCheckOut" prefHeight="39.0" prefWidth="295.0" text="Gå till kassan" BorderPane.alignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon32/white/circle-right.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Button>
+               </bottom>
+               <center>
+                  <Label alignment="CENTER" styleClass="grayGradient" text="35040 kr" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
+         </bottom>
+         <center>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+              <content>
+                  <Accordion fx:id="shoppingCart" layoutX="8.0" layoutY="69.0" styleClass="redAccordion" stylesheets="@application.css" />
+              </content>
+            </ScrollPane>
          </center>
       </BorderPane>
-   </children>
+   </right>
+   <top>
+      <BorderPane styleClass="topBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
+         <left>
+            <Button mnemonicParsing="false" text="Hem" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" />
+               </BorderPane.margin>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon32/white/home3.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </left>
+         <center>
+            <ImageView fitHeight="45.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../iMatLogo.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </BorderPane.margin>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" color="#00000070" />
+               </effect>
+            </ImageView>
+         </center>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <right>
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#buttonClicked" text="Min profil" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="20.0" />
+               </BorderPane.margin>
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icon32/white/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </right>
+      </BorderPane>
+   </top>
+   <center>
+      <BorderPane BorderPane.alignment="CENTER">
+         <center>
+            <StackPane fx:id="stackPane" BorderPane.alignment="CENTER" />
+         </center>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <left>
+                  <ToolBar minHeight="55.0" prefHeight="55.0" BorderPane.alignment="CENTER">
+                    <items>
+                      <Button mnemonicParsing="false" text="Varma drycker" />
+                        <Button mnemonicParsing="false" text="Te" />
+                    </items>
+                  </ToolBar>
+               </left>
+               <center>
+                  <ToolBar maxHeight="55.0" minHeight="55.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
+                     <items>
+                        <ChoiceBox prefWidth="150.0" />
+                        <ChoiceBox prefWidth="150.0" />
+                     </items>
+                  </ToolBar>
+               </center>
+            </BorderPane>
+         </top>
+      </BorderPane>
+   </center>
 </fx:root>

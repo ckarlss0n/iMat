@@ -156,7 +156,7 @@
             <Insets />
          </BorderPane.margin>
          <right>
-            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#buttonClicked" text="Min profil" BorderPane.alignment="CENTER">
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#goToMyProfile" text="Min profil" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets right="20.0" />
                </BorderPane.margin>

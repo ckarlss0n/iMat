@@ -60,6 +60,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		
 		theUser.setUserName("Emil");
 		theUser.setPassword("123");
+		OnlinePanel onp = new OnlinePanel();
+		stackPane.getChildren().add(onp);
 		
 		for (ProductCategory c : ProductCategory.values()){
 			String name = getCategoryName(c);
@@ -109,66 +111,12 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 	
 	
 	int i = 0;
-	public void buttonClicked(ActionEvent evt){
+	public void goToMyProfile(ActionEvent evt){
 		
-		System.out.println(productList.size());
-		List<Product> categoryList = new ArrayList<Product>();
-		
-		
-		for (int i = 0; i<productList.size(); i ++){
-			if(productList.get(i).getCategory() == ProductCategory.MEAT){
-				categoryList.add(productList.get(i));
-			}
-		}
-		System.out.println(categoryList.size());
-		
-		if(i == 0){
-			List_Nx1_view l = new List_Nx1_view(this, categoryList);
+		stackPane.getChildren().clear();
+		ProfilePanel pp = new ProfilePanel();
+		stackPane.getChildren().add(pp);
 			
-			ProfilePanel pp = new ProfilePanel();
-			stackPane.getChildren().clear();
-			stackPane.getChildren().addAll(l);
-			i++;
-		/*}else if(i == 1){
-			
-			RegisterPanel rp = new RegisterPanel();
-			
-			stackPane.getChildren().clear();
-			LoginPanel lp = new LoginPanel();
-			stackPane.getChildren().add(rp);
-		*/
-			
-		}else{
-			
-			stackPane.getChildren().clear();
-			
-			ShoppingCartBig scb = new ShoppingCartBig();
-			ProcessIndicator pi = new ProcessIndicator();
-			
-			
-			
-			borderPane.getChildren().clear();
-			borderPane.setCenter(pi);
-			
-			/*
-			OfflinePanel op = new OfflinePanel();
-			OnlinePanel onp = new OnlinePanel();
-			
-			onp.setWidth(5 * 190);
-			for(int i = 0; i < 5; i++){
-				SmallProductPanel smpp = new SmallProductPanel();
-				
-				Product p = productList.get(i);
-				File fimg = new File(dataHandler.getImageIcon(p).getDescription());
-				smpp.setProductImage(new Image(fimg.toURI().toString()));
-				smpp.setProductName(p.getName());
-				
-				onp.add(smpp, i);
-			}*/
-			stackPane.getChildren().addAll(scb);
-		}
-		
-		System.out.println("Click");
 	}
 	@FXML
 	private Accordion shoppingCart;

@@ -65,9 +65,9 @@
                   </BorderPane>
                </bottom>
                <center>
-                  <Accordion minHeight="441.0" BorderPane.alignment="CENTER">
+                  <Accordion fx:id="ac" minHeight="441.0" BorderPane.alignment="CENTER">
                     <panes>
-                      <TitledPane animated="false" text="Mina uppgifter">
+                      <TitledPane fx:id="tp" animated="false" text="Mina uppgifter">
                            <content>
                               <GridPane>
                                 <columnConstraints>

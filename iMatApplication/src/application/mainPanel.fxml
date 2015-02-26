@@ -17,7 +17,7 @@
 
 <fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="300.0" minWidth="200.0" styleClass="leftBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" styleClass="leftBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0">
                <top>
@@ -71,7 +71,7 @@
       </ScrollPane>
    </left>
    <right>
-      <BorderPane fx:id="borderPane" maxWidth="300.0" minWidth="200.0" stylesheets="@application.css">
+      <BorderPane fx:id="borderPane" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" stylesheets="@application.css">
          <top>
             <Label alignment="CENTER" contentDisplay="RIGHT" styleClass="grayGradient" text="Kundvagn" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <graphic>

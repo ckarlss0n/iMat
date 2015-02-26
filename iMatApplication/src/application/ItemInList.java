@@ -46,7 +46,7 @@ public class ItemInList extends BorderPane {
         
         changeListner = new PropertyChangeSupport(this); 
         
-        //mainPanel = m;
+        mainPanel = m;
         theProduct = p;
         
         File image = new File(IMatDataHandler.getInstance().getImageIcon(theProduct).getDescription());
@@ -75,12 +75,10 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void addToCart(ActionEvent evt){
-		mainPanel.changeShoppingCart(theProduct);
-		this.changeListner.firePropertyChange("Nytt", null, null);
+		this.changeListner.firePropertyChange("Nytt", null, theProduct);
 		IMatDataHandler.getInstance().addProduct(theProduct);
 		IMatDataHandler.getInstance().getShoppingCart().addProduct(theProduct, 1);
 		
-		System.out.println(IMatDataHandler.getInstance().getShoppingCart().getTotal());
 	}
 	
 }

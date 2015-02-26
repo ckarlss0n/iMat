@@ -33,6 +33,7 @@ public class List_Nx1_view extends ScrollPane{
 	        for(int i = 0; i < theProductList.size(); i++){
 	        	
 	        	Product p = theProductList.get(i);
+	        	System.out.println(theProductList.get(i).toString());
 	        	ItemInList itp = new ItemInList(p, mainPanel);
 	        	add(itp, i);
 	        }

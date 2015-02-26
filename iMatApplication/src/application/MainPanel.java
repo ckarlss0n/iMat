@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.User;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -84,6 +85,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 				categoryList.add(productList.get(i));
 			}
 		}
+		System.out.println(categoryList.size());
 		
 		if(i == 0){
 			List_Nx1_view l = new List_Nx1_view(this, categoryList);
@@ -180,6 +182,22 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		
+		List<ShoppingItem> list = IMatDataHandler.getInstance().getShoppingCart().getItems();
+		
+		Boolean trueFal = true;
+ 		
+		for(ShoppingItem i : list){
+			if(((Product)evt.getNewValue()).getProductId() == i.getProduct().getProductId()){
+				trueFal = false;
+			}
+		}
+ 		
+ 		if(trueFal){
+ 			changeShoppingCart((Product)evt.getNewValue());
+ 		}
+		
+		
 		System.out.println("Hej");
 		
 	}

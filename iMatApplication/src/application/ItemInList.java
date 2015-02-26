@@ -1,5 +1,6 @@
 package application;
 
+import java.beans.PropertyChangeEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -28,6 +29,8 @@ public class ItemInList extends BorderPane {
 	@FXML
 	private Product theProduct;
 	
+	private PropertyChangeEvent changeListner;
+	
 	private MainPanel mainPanel;
 	public ItemInList(Product p, MainPanel m){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listProductPanel.fxml"));
@@ -40,7 +43,9 @@ public class ItemInList extends BorderPane {
             throw new RuntimeException(exception);
         }  
         
-        mainPanel = m;
+        //changeListner = 
+        
+        //mainPanel = m;
         theProduct = p;
         
         File image = new File(IMatDataHandler.getInstance().getImageIcon(theProduct).getDescription());
@@ -70,6 +75,10 @@ public class ItemInList extends BorderPane {
 	
 	public void addToCart(ActionEvent evt){
 		mainPanel.changeShoppingCart(theProduct);
+		IMatDataHandler.getInstance().addProduct(theProduct);
+		IMatDataHandler.getInstance().getShoppingCart().addProduct(theProduct, 1);
+		
+		System.out.println(IMatDataHandler.getInstance().getShoppingCart().getTotal());
 	}
 	
 }

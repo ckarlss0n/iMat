@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root prefHeight="700.0" prefWidth="1250.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -91,7 +91,7 @@
                <bottom>
                   <BorderPane BorderPane.alignment="CENTER">
                      <bottom>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="39.0" prefWidth="295.0" text="Gå till kassan" BorderPane.alignment="CENTER">
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#goToCheckOut" prefHeight="39.0" prefWidth="295.0" text="Gå till kassan" BorderPane.alignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

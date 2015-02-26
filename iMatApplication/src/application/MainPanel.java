@@ -62,6 +62,10 @@ public class MainPanel extends AnchorPane{
 			categoryAccordation.getPanes().add(t);
 		}
 		
+		//BufferPanel bf = new BufferPanel();
+		
+		//stackPane.getChildren().add(bf);
+		
 		
 	}
 	
@@ -164,7 +168,19 @@ public class MainPanel extends AnchorPane{
 		}
 		return c.toString();
 	}
-
+	
+	
+	public void goToCheckOut(){
+		ShoppingCartBig scb = new ShoppingCartBig();
+		stackPane.getChildren().clear();
+		stackPane.getChildren().add(scb);
+		ProcessIndicator pi = new ProcessIndicator();
+		
+		
+		
+		borderPane.getChildren().clear();
+		borderPane.setCenter(pi);
+	}
 	
 	
 }

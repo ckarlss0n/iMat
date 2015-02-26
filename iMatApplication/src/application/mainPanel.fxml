@@ -172,14 +172,7 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <StackPane fx:id="stackPane" prefHeight="150.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <ProgressIndicator>
-                           <padding>
-                              <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
-                           </padding>
-                        </ProgressIndicator>
-                     </children></StackPane>
+                  <StackPane fx:id="stackPane" prefHeight="150.0" BorderPane.alignment="CENTER" />
                </center>
                <top>
                   <BorderPane BorderPane.alignment="CENTER">

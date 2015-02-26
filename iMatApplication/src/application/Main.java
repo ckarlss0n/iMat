@@ -28,18 +28,18 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			
 			scene.widthProperty().addListener(new ChangeListener<Number>() {
-			    @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
-			        mp.setPrefWidth(newSceneWidth.doubleValue());
+			    @Override public void changed(ObservableValue<? extends Number> observableValue, 
+			    		Number oldSceneWidth, Number newSceneWidth) {
+			       
+			    	mp.setPrefWidth(newSceneWidth.doubleValue());
 			    }
 			});
 			scene.heightProperty().addListener(new ChangeListener<Number>() {
-			    @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneHeight, Number newSceneHeight) {
+			    @Override public void changed(ObservableValue<? extends Number> observableValue,
+			    		Number oldSceneHeight, Number newSceneHeight) {
 			    	mp.setPrefHeight(newSceneHeight.doubleValue());
 			    }
 			});
-			IMatDataHandler imdh = IMatDataHandler.getInstance();
-			
-			List<Product> list = imdh.getProducts();
 			
 			
 			primaryStage.setScene(scene);

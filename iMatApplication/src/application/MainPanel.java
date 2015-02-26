@@ -63,11 +63,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 			categoryAccordation.getPanes().add(t);
 		}
 		
-		//BufferPanel bf = new BufferPanel();
-		
-		//stackPane.getChildren().add(bf);
-		
-		
 	}
 	
 	@FXML

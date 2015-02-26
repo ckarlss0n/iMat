@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefWidth="1000.0" type="ScrollPane" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" type="ScrollPane" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <GridPane fx:id="gridPane" gridLinesVisible="true" vgap="10.0">
         <columnConstraints>

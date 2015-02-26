@@ -54,7 +54,7 @@ public class ItemInList extends BorderPane {
         setProductName(theProduct.getName());
         
         productImage.setImage(new Image(image.toURI().toString()));
-        lblPrice.setText(String.valueOf(theProduct.getPrice()) + " kr");
+        lblPrice.setText(String.valueOf(theProduct.getPrice()) + "0 kr");
         
         
         this.changeListner.addPropertyChangeListener(m);
@@ -71,7 +71,7 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void setPrice(double price){
-		lblPrice.setText(String.valueOf(price) + " kr");
+		lblPrice.setText(String.valueOf(price) + "0 kr");
 	}
 	
 	public void addToCart(ActionEvent evt){

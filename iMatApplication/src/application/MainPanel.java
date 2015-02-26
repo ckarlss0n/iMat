@@ -16,12 +16,15 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.User;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -33,6 +36,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 	
 	private List<Product> productList;
 	private IMatDataHandler dataHandler;
+	
 	
 	@FXML 
 	private Accordion categoryAccordation;
@@ -58,10 +62,35 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		theUser.setPassword("123");
 		
 		for (ProductCategory c : ProductCategory.values()){
-			String name = getCategoryName(c); 
-			System.out.println(ProductCategory.valueOf(c.toString()));
-			TitledPane t = new TitledPane(name, new AnchorPane());
-			categoryAccordation.getPanes().add(t);
+			String name = getCategoryName(c);
+			
+			//System.out.println(ProductCategory.valueOf(c.toString()));
+			//TitledPane t = new TitledPane(name, new AnchorPane());
+			
+			
+			EventHandler<MouseEvent> mousehandler = new EventHandler<MouseEvent>() {
+			    @Override
+			    public void handle(MouseEvent mouseEvent) {
+			    	
+			    	fillProductView(((CategoryTitledPane)mouseEvent.getSource()).getProducts());
+			    	
+			        System.out.println("hi");
+			    }
+			};
+			
+			List<Product> theCategoryList = new ArrayList<Product>();
+			for(Product p: productList){
+	    		
+				if(p.getCategory() == c){
+	    			theCategoryList.add(p);
+	    		}
+			}
+			CategoryTitledPane ctp = new CategoryTitledPane(name, theCategoryList);
+			
+			
+			ctp.setOnMouseClicked(mousehandler);
+			categoryAccordation.getPanes().add(ctp);
+			
 		}
 		
 	}
@@ -72,6 +101,12 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 	@FXML 
 	private BorderPane borderPane;
 	
+	public void fillProductView(List<Product> productList){
+		stackPane.getChildren().clear();
+		List_Nx1_view l = new List_Nx1_view(this, productList);
+		stackPane.getChildren().add(l);
+	}
+	
 	
 	int i = 0;
 	public void buttonClicked(ActionEvent evt){
@@ -81,7 +116,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		
 		
 		for (int i = 0; i<productList.size(); i ++){
-			if(productList.get(i).getCategory() == ProductCategory.BERRY){
+			if(productList.get(i).getCategory() == ProductCategory.MEAT){
 				categoryList.add(productList.get(i));
 			}
 		}

@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root id="loginPanel" fx:id="loginPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="290.0" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button fx:id="btnLogIn" layoutX="143.0" layoutY="168.0" mnemonicParsing="false" onAction="#logIn" prefHeight="25.0" prefWidth="75.0" text="Logga in" />
-      <TextField fx:id="txtfUsername" layoutX="71.0" layoutY="53.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="71.0" layoutY="30.0" text="E-postadress:" />
-      <Label layoutX="71.0" layoutY="87.0" text="Lösenord:" />
-      <CheckBox fx:id="rememberMe" layoutX="71.0" layoutY="142.0" mnemonicParsing="false" text="Kom ihåg mig" />
-      <PasswordField fx:id="txtfPassword" layoutX="71.0" layoutY="110.0" prefHeight="26.0" prefWidth="149.0" />
-   </children>
-</fx:root>
+
+<BorderPane prefHeight="222.0" prefWidth="458.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
+         <children>
+            <TextField promptText="E-post">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField promptText="Lösenord">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </PasswordField>
+            <BorderPane>
+               <right>
+                  <Button mnemonicParsing="false" text="Logga in" BorderPane.alignment="CENTER" />
+               </right>
+               <left>
+                  <CheckBox mnemonicParsing="false" text="Kom ihåg mig" BorderPane.alignment="CENTER" />
+               </left>
+            </BorderPane>
+         </children>
+      </VBox>
+   </center>
+   <padding>
+      <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+   </padding>
+   <top>
+      <Label text="Logga in" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="15.0" />
+         </BorderPane.margin>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>

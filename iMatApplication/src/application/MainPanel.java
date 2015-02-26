@@ -4,12 +4,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ProductCategory;
 import se.chalmers.ait.dat215.project.User;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -31,6 +33,9 @@ public class MainPanel extends AnchorPane{
 	private List<Product> productList;
 	private IMatDataHandler dataHandler;
 	
+	@FXML 
+	private Accordion categoryAccordation;
+	
 	public MainPanel(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -49,7 +54,15 @@ public class MainPanel extends AnchorPane{
 		
 		theUser.setUserName("Emil");
 		theUser.setPassword("123");
-    	
+		
+		for (ProductCategory c : ProductCategory.values()){
+			String name = getCategoryName(c); 
+			System.out.println(ProductCategory.valueOf(c.toString()));
+			TitledPane t = new TitledPane(name, new AnchorPane());
+			categoryAccordation.getPanes().add(t);
+		}
+		
+		
 	}
 	
 	@FXML
@@ -63,10 +76,20 @@ public class MainPanel extends AnchorPane{
 	public void buttonClicked(ActionEvent evt){
 		
 		System.out.println(productList.size());
+		List<Product> categoryList = new ArrayList<Product>();
+		
+		
+		for (int i = 0; i<productList.size(); i ++){
+			if(productList.get(i).getCategory() == ProductCategory.BERRY){
+				categoryList.add(productList.get(i));
+			}
+		}
+		
 		if(i == 0){
-			List_Nx1_view l = new List_Nx1_view(this);
+			List_Nx1_view l = new List_Nx1_view(this, categoryList);
 			
 			ProfilePanel pp = new ProfilePanel();
+			stackPane.getChildren().clear();
 			stackPane.getChildren().addAll(l);
 			i++;
 		/*}else if(i == 1){
@@ -124,6 +147,22 @@ public class MainPanel extends AnchorPane{
 	    
 		
 		shoppingCart.getPanes().add(sci);
+	}
+	
+	public String getCategoryName(ProductCategory c){
+		switch(c.toString()){
+		case "BERRY":
+			return "Bär";
+		case "BREAD":
+			return "Bröd";
+		case "POD":
+			return "Baljväxter";
+		case "CITRUS_FRUIT":
+			return "Citrus frukter";
+		case "HOT_DRINKS":
+			return "Varma drycker";
+		}
+		return c.toString();
 	}
 
 	

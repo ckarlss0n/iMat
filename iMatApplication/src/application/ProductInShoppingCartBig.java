@@ -10,9 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-public class ProductInShoppingCartBig extends BorderPane {
+public class ProductInShoppingCartBig extends AnchorPane {
 	
 	private Product theProduct;
 	
@@ -34,6 +35,7 @@ public class ProductInShoppingCartBig extends BorderPane {
         
         productImage.setImage(new Image(image.toURI().toString()));
         lblPrice.setText(String.valueOf(theProduct.getPrice()) + "0 kr");
+        
         
 	}
 	

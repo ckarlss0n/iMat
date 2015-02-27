@@ -182,7 +182,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		
 		int k = 0;
 		for(ShoppingItem i: dataHandler.getShoppingCart().getItems()){
-			//Lägg till varorna i kassan
+			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig(i.getProduct());
+			scb.add(piscb, k);
+			k++;
 		}
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(scb);

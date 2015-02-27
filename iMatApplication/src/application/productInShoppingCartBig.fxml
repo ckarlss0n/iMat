@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<fx:root type="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
       <BorderPane layoutX="10.0" layoutY="10.0">
          <center>
@@ -92,4 +92,4 @@
          </right>
       </BorderPane>
    </children>
-</AnchorPane>
+</fx:root>

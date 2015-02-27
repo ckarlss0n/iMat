@@ -42,7 +42,7 @@
          <bottom>
             <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" text="Logga in">
+                  <Button fx:id="btnLoginCart" mnemonicParsing="false" onAction="#loginCartModal" text="Logga in">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

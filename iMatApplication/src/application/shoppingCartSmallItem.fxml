@@ -7,38 +7,17 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<<<<<<< HEAD
-<fx:root maxWidth="350.0" styleClass="grayGradient" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-=======
-
-<BorderPane maxHeight="36.0" maxWidth="350.0" minHeight="36.0" prefHeight="36.0" styleClass="grayGradient" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
->>>>>>> origin/master
+<fx:root maxHeight="36.0" maxWidth="350.0" minHeight="36.0" prefHeight="36.0" styleClass="grayGradient" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
          <children>
-            <Label maxWidth="170.0" text="Spaghetti and stuff">
+            <Label fx:id="lblName" maxWidth="170.0" text="Spaghetti and stuff">
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
                <font>
                   <Font size="16.0" />
                </font>
-            </Label>
-            <Label text="2kg">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label text="35kr">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <HBox.margin>
-                  <Insets right="10.0" />
-               </HBox.margin>
             </Label>
          </children>
       </HBox>
@@ -46,7 +25,23 @@
    <right>
       <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
          <children>
-            <Button maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+            <Label fx:id="lblAmount" text="2kg">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblPrice" text="35kr">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="btnDecrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -60,7 +55,7 @@
             </Button>
             <Button maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
                <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnIncrease" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icon16/white/plus.png" />
                      </image>
@@ -72,7 +67,7 @@
             </Button>
             <Button maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
                <graphic>
-                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="btnDelete" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icon16/white/bin.png" />
                      </image>

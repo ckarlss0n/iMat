@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
@@ -70,14 +71,13 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void setPrice(double price){
+		
+		
 		lblPrice.setText(String.valueOf(price) + "0 kr");
 	}
 	
 	public void addToCart(ActionEvent evt){
 		this.changeListner.firePropertyChange("Nytt", null, theProduct); 
-		IMatDataHandler.getInstance().addProduct(theProduct);
-		IMatDataHandler.getInstance().getShoppingCart().addProduct(theProduct, 1);
-		
 	}
 	
 }

@@ -55,6 +55,7 @@ public class ShoppingCartBig extends BorderPane {
       
   }
 	
+	
 	public void add(Node node, int row){
 		gridPane.add(node, 0, row);
 	}

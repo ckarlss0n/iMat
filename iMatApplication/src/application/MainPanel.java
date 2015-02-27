@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.User;
 import javafx.beans.InvalidationListener;
@@ -21,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
@@ -106,32 +108,40 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 	private BorderPane borderPane;
 	
 	public void fillProductView(List<Product> productList){
-		stackPane.getChildren().clear();
 		List_Nx1_view l = new List_Nx1_view(this, productList);
-		stackPane.getChildren().add(l);
+		changeScreen(l);
 	}
 	
 	
 	int i = 0;
 	public void goToMyProfile(ActionEvent evt){
 		
-		stackPane.getChildren().clear();
+		
 		ProfilePanel pp = new ProfilePanel();
-		stackPane.getChildren().add(pp);
+		changeScreen(pp);
 			
 	}
-	@FXML
-	private Accordion shoppingCart;
+	
 	int s = 0;
-	public void changeShoppingCart(Product p){
+	public void addToShoppingCart(Product p){
+			
+			dataHandler.getShoppingCart().addProduct(p, 1);
+			ShoppingCartItem sci = new ShoppingCartItem(p);
+			
+			gridPane.setPrefHeight((s+1)*36);
+			gridPane.add(sci, 0, s);
 		
-		ShoppingCartItem sci = new ShoppingCartItem();
-		gridPane.setPrefHeight((s+1)*36);
-		gridPane.add(sci, 0, s);
-		
-		s++; 
-		//shoppingCart.getPanes().add(sci);
+			s++;
+			System.out.println("new");
 	}
+	
+	public void changeShoppingCart(Product p, int index, double amount){
+		ShoppingCartItem sci = (ShoppingCartItem)gridPane.getChildren().get(index);
+		
+		sci.setAmount(amount);
+		System.out.println("Change");
+	}
+	
 	
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
@@ -181,56 +191,82 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		return c.toString();	
 	}
 	
+	public void fillShoppingCart(ShoppingCartBig scb){
+		
+		int k = 0;
+		for(ShoppingItem i: dataHandler.getShoppingCart().getItems()){
+			Product p = i.getProduct();
+			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig(p);
+			scb.add(piscb, k);
+			k++;
+		}
+		
+	}
 	
 	public void goToCheckOut(ActionEvent evt){
 		ShoppingCartBig scb = new ShoppingCartBig();
 		
-		int k = 0;
-		for(ShoppingItem i: dataHandler.getShoppingCart().getItems()){
-			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig(i.getProduct());
-			scb.add(piscb, k);
-			k++;
-		}
-		stackPane.getChildren().clear();
-		stackPane.getChildren().add(scb);
+		fillShoppingCart(scb);
+
 		ProcessIndicator pi = new ProcessIndicator();
 		
-		
+		changeScreen(scb);
 		
 		borderPane.getChildren().clear();
 		borderPane.setCenter(pi);
 	}
 	
+	
 	public void goToHome(ActionEvent evt){
-		stackPane.getChildren().clear();
+		borderPane.getChildren().clear();
+		borderPane.setCenter(gridPane);
 		OnlinePanel onp = new OnlinePanel();
-		stackPane.getChildren().add(onp);
+		changeScreen(onp);
 		
 	}
+	
+	public void changeScreen(Node node){
+		stackPane.getChildren().clear();
+		stackPane.getChildren().add(node);
+	}
 
+	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 
 		
 		List<ShoppingItem> list = IMatDataHandler.getInstance().getShoppingCart().getItems();
+		Product product = (Product)evt.getNewValue();
 		
-		Boolean trueFal = true;
- 		
+		Boolean truFal = true;
+ 		int calc = 0;
+ 		int index = 0;
 		for(ShoppingItem i : list){
-			if(((Product)evt.getNewValue()).getProductId() == i.getProduct().getProductId()){
-				trueFal = false;
+			
+			if(product.getProductId() == i.getProduct().getProductId()){
+				truFal = false;
+				index = calc;
 			}
+			calc++;	
 		}
- 		
- 		if(trueFal){
- 			changeShoppingCart((Product)evt.getNewValue());
- 		}
 		
+		System.out.println(IMatDataHandler.getInstance().getShoppingCart().getItems().size());
 		
-		System.out.println("Hej");
+		if(truFal){
+			addToShoppingCart((Product)evt.getNewValue());
+			
+		} else{
+			
+			double oldAmount =  list.get(index).getAmount();
+			dataHandler.getShoppingCart().removeItem(index);
+			dataHandler.getShoppingCart().addProduct(((Product)evt.getNewValue()), oldAmount+1);
+			
+			int max = dataHandler.getShoppingCart().getItems().size();
+			double newAmount =  dataHandler.getShoppingCart().getItems().get(max-1).getAmount();
+			changeShoppingCart(product, index, newAmount);
+			
+		}
 
-		
 	}
-	
 	
 }

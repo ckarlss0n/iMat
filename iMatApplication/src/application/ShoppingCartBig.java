@@ -40,18 +40,13 @@ public class ShoppingCartBig extends BorderPane {
 	}
 	
 	public void modalDialog(){
-		/*
-		stackPane.getChildren().clear();
-		ProfilePanel pp = new ProfilePanel();
-		stackPane.getChildren().add(pp);
-		*/
-		LoginPanel lp = new LoginPanel();
+		
 		Stage loginDialog = new Stage();
         loginDialog.initModality(Modality.WINDOW_MODAL);
-        Scene loginScene = new Scene(VBoxBuilder        		
-        		.create()
-                .children()//login panel here
+        Scene loginScene = new Scene(VBoxBuilder.create()
+                .children()
                 .alignment(Pos.CENTER)	
+                .padding(new Insets(10))
                 .build());
 
         loginDialog.setTitle("Logga in");

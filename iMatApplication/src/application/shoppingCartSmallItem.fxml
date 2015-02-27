@@ -7,7 +7,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+<<<<<<< HEAD
 <fx:root maxWidth="350.0" styleClass="grayGradient" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+=======
+
+<BorderPane maxHeight="36.0" maxWidth="350.0" minHeight="36.0" prefHeight="36.0" styleClass="grayGradient" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> origin/master
    <left>
       <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
          <children>

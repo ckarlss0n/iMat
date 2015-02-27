@@ -96,6 +96,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		}
 		
 	}
+	@FXML
+	private GridPane gridPane;
 	
 	@FXML
 	private StackPane stackPane;
@@ -120,12 +122,15 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 	}
 	@FXML
 	private Accordion shoppingCart;
-	
+	int s = 0;
 	public void changeShoppingCart(Product p){
 		
 		ShoppingCartItem sci = new ShoppingCartItem();
-		sci.setTitle(p.getName(), p.getPrice());
-		shoppingCart.getPanes().add(sci);
+		gridPane.setPrefHeight((s+1)*36);
+		gridPane.add(sci, 0, s);
+		
+		s++; 
+		//shoppingCart.getPanes().add(sci);
 	}
 	
 	public String getCategoryName(ProductCategory c){

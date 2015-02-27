@@ -10,7 +10,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="561.0" prefViewportWidth="935.0">
          <content>
-            <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+            <GridPane fx:id="gridPane" gridLinesVisible="true" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>

@@ -151,8 +151,13 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 	}
 	
 	
-	public void goToCheckOut(){
+	public void goToCheckOut(ActionEvent evt){
 		ShoppingCartBig scb = new ShoppingCartBig();
+		
+		int k = 0;
+		for(ShoppingItem i: dataHandler.getShoppingCart().getItems()){
+			//Lägg till varorna i kassan
+		}
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(scb);
 		ProcessIndicator pi = new ProcessIndicator();
@@ -161,6 +166,13 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		
 		borderPane.getChildren().clear();
 		borderPane.setCenter(pi);
+	}
+	
+	public void goToHome(ActionEvent evt){
+		stackPane.getChildren().clear();
+		OnlinePanel onp = new OnlinePanel();
+		stackPane.getChildren().add(onp);
+		
 	}
 
 	@Override

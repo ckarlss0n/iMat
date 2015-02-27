@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<fx:root type="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0">
+         <center>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="lblProductName" text="Maträttens namn här">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_LEFT" text="Maträtens beskrivning" wrapText="true">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <BorderPane.margin>
+                  <Insets right="20.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <left>
+            <ImageView fx:id="productImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../../questionmark.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets right="20.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </left>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <right>
+            <BorderPane BorderPane.alignment="CENTER">
+               <bottom>
+                  <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
+                     <children>
+                        <Button fx:id="btnRemove" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon16/bin.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnDecrease" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" text="-" />
+                        <TextField prefHeight="39.0" prefWidth="45.0" />
+                        <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addToCart" prefHeight="39.0" prefWidth="39.0" text="+" />
+                     </children>
+                  </HBox>
+               </bottom>
+               <center>
+                  <Label fx:id="lblPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="489 kr " textAlignment="RIGHT" BorderPane.alignment="CENTER_RIGHT">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon32/heart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </Label>
+               </center>
+            </BorderPane>
+         </right>
+      </BorderPane>
+   </children>
+</fx:root>

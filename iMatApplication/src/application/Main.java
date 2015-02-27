@@ -7,6 +7,8 @@ import se.chalmers.ait.dat215.project.Product;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -27,6 +29,8 @@ public class Main extends Application {
 			root.getChildren().addAll(mp);
 			Scene scene = new Scene(root);
 			
+			
+			
 			scene.widthProperty().addListener(new ChangeListener<Number>() {
 			    @Override public void changed(ObservableValue<? extends Number> observableValue, 
 			    		Number oldSceneWidth, Number newSceneWidth) {
@@ -34,6 +38,7 @@ public class Main extends Application {
 			    	mp.setPrefWidth(newSceneWidth.doubleValue());
 			    }
 			});
+			
 			scene.heightProperty().addListener(new ChangeListener<Number>() {
 			    @Override public void changed(ObservableValue<? extends Number> observableValue,
 			    		Number oldSceneHeight, Number newSceneHeight) {
@@ -42,8 +47,18 @@ public class Main extends Application {
 			});
 			
 			
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			Stage stage = new Stage();
+			
+			Screen screen = Screen.getPrimary();
+			Rectangle2D bounds = screen.getVisualBounds();
+
+			stage.setX(bounds.getMinX());
+			stage.setY(bounds.getMinY());
+			stage.setWidth(bounds.getWidth());
+			stage.setHeight(bounds.getHeight());
+			
+			stage.setScene(scene);
+			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

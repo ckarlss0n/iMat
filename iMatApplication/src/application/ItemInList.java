@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -33,6 +34,7 @@ public class ItemInList extends BorderPane {
 	private PropertyChangeSupport changeListner;
 	
 	private MainPanel mainPanel;
+	
 	public ItemInList(Product p, MainPanel m){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listProductPanel.fxml"));
         fxmlLoader.setRoot(this);
@@ -56,11 +58,9 @@ public class ItemInList extends BorderPane {
         productImage.setImage(new Image(image.toURI().toString()));
         lblPrice.setText(String.valueOf(theProduct.getPrice()) + "0 kr");
         
-        
         this.changeListner.addPropertyChangeListener(m);
+
 	}
-	
-	
 	
 	public void setProductImage(Image img){
 		productImage.setImage(img);
@@ -75,7 +75,7 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void addToCart(ActionEvent evt){
-		this.changeListner.firePropertyChange("Nytt", null, theProduct);
+		this.changeListner.firePropertyChange("Nytt", null, theProduct); 
 		IMatDataHandler.getInstance().addProduct(theProduct);
 		IMatDataHandler.getInstance().getShoppingCart().addProduct(theProduct, 1);
 		

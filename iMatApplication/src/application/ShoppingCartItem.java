@@ -25,4 +25,5 @@ public class ShoppingCartItem extends TitledPane{
 		String sPrice = String.valueOf(price);
 		this.setText(name+ " " + sPrice + " kr"  );
 	}
+
 }

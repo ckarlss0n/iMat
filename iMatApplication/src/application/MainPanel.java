@@ -120,17 +120,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 	}
 	@FXML
 	private Accordion shoppingCart;
-
+	
 	public void changeShoppingCart(Product p){
-		System.out.println("Emil");
 		
 		ShoppingCartItem sci = new ShoppingCartItem();
 		sci.setTitle(p.getName(), p.getPrice());
-		
-		System.out.println(shoppingCart.toString());
-
-	    
-		
 		shoppingCart.getPanes().add(sci);
 	}
 	
@@ -146,8 +140,40 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 			return "Citrus frukter";
 		case "HOT_DRINKS":
 			return "Varma drycker";
+		case "COLD_DRINKS":
+			return "Kalla drycker";
+		case "EXOTIC_FRUIT":
+			return "Exotiska frukter";
+		case "FISH":
+			return "Fisk";
+		case "VEGETABLE_FRUIT":
+			return "Grönsaksfrukt";
+		case "CABBAGE":
+			return "Kål";
+		case "MEAT":
+			return "Kött";
+		case "DAIRIES":
+			return "Mejeri";
+		case "MELONS":
+			return "Melon";
+		case "FLOUR_SUGAR_SALT":
+			return "Mjöl socker salt";
+		case "NUTS_AND_SEEDS":
+			return "Nötter och frön";
+		case "PASTA":
+			return "Pasta";
+		case "POTATO_RICE":
+			return "Potatis ris";
+		case "ROOT_VEGETABLE":
+			return "Rotfrukt";
+		case "FRUIT":
+			return "Frukt";
+		case "SWEET":
+			return "Godis";
+		case "HERB":
+			return "Örter";
 		}
-		return c.toString();
+		return c.toString();	
 	}
 	
 	
@@ -177,6 +203,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+
 		
 		List<ShoppingItem> list = IMatDataHandler.getInstance().getShoppingCart().getItems();
 		
@@ -194,6 +221,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		
 		
 		System.out.println("Hej");
+
 		
 	}
 	

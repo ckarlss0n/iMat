@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root id="Welcome Screen" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="750.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="Welcome Screen" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="750.0" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
-         <top>
-            <AnchorPane prefHeight="128.0" prefWidth="750.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label layoutX="150.0" layoutY="50.0" text="Välkommen till iMat!">
-                     <font>
-                        <Font name="MavenProLight300-Regular" size="48.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </top>
+      <BorderPane minHeight="653.0" prefHeight="200.0" prefWidth="200.0">
          <center>
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -32,17 +22,6 @@
               </rowConstraints>
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <top>
-                        <Pane prefHeight="25.0" prefWidth="864.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label layoutX="279.0" layoutY="-2.0" text="Dina erbjudanden!">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </top>
                      <center>
                         <ScrollPane hbarPolicy="ALWAYS" prefWidth="1300.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                            <content>
@@ -60,19 +39,18 @@
                            </content>
                         </ScrollPane>
                      </center>
+                     <top>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="9000.0" styleClass="grayGradient" text="Dina erbjudanden" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                     </top>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                     <top>
-                        <Pane prefHeight="25.0" prefWidth="864.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label layoutX="308.0" layoutY="1.0" text="Lorem ipsum">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
-                     </top>
                      <center>
                         <ScrollPane hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                            <content>
@@ -89,6 +67,16 @@
                               </GridPane>
                            </content></ScrollPane>
                      </center>
+                     <top>
+                        <Label alignment="CENTER" prefWidth="9000.0" styleClass="grayGradient" text="Tidigare köp" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                     </top>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <center>
@@ -108,20 +96,36 @@
                            </content></ScrollPane>
                      </center>
                      <top>
-                        <Pane prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label layoutX="320.0" layoutY="3.0" text="Lorem ipsum">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </Pane>
+                        <Label alignment="CENTER" prefWidth="9000.0" styleClass="grayGradient" text="Favoriter" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding>
+                        </Label>
                      </top>
                   </BorderPane>
                </children>
             </GridPane>
          </center>
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <center>
+                  <Label text="Välkommen till iMat, John!" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </Label>
+               </center>
+            </BorderPane>
+         </top>
       </BorderPane>
    </content>
 </fx:root>

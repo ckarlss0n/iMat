@@ -41,7 +41,7 @@
                   <Insets right="10.0" />
                </HBox.margin>
             </Label>
-            <Button fx:id="btnDecrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+            <Button fx:id="btnDecrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" onAction="#decreaseAmount" prefHeight="26.0" prefWidth="26.0">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,9 +53,9 @@
                   <Insets right="1.0" />
                </HBox.margin>
             </Button>
-            <Button maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+            <Button fx:id="btnIncrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" onAction="#increaseAmount" prefHeight="26.0" prefWidth="26.0">
                <graphic>
-                  <ImageView fx:id="btnIncrease" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icon16/white/plus.png" />
                      </image>
@@ -65,7 +65,7 @@
                   <Insets right="1.0" />
                </HBox.margin>
             </Button>
-            <Button maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0">
+            <Button fx:id="btnRemove" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="26.0" prefWidth="26.0">
                <graphic>
                   <ImageView fx:id="btnDelete" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>

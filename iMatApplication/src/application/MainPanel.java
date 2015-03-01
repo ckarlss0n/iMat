@@ -32,119 +32,108 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+public class MainPanel extends BorderPane implements PropertyChangeListener {
 
-
-public class MainPanel extends BorderPane implements PropertyChangeListener{
-	
 	private List<Product> productList;
 	private IMatDataHandler dataHandler;
-	
-	
-	@FXML 
-	private Accordion categoryAccordation;
-	
-	public MainPanel(){
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
-	    fxmlLoader.setRoot(this);
-    	fxmlLoader.setController(this);
 
-    	try {
-    		fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-    	
-    	
+	@FXML
+	private Accordion categoryAccordation;
+
+	public MainPanel() {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
+				"mainPanel.fxml"));
+		fxmlLoader.setRoot(this);
+		fxmlLoader.setController(this);
+
+		try {
+			fxmlLoader.load();
+		} catch (IOException exception) {
+			throw new RuntimeException(exception);
+		}
+
 		dataHandler = IMatDataHandler.getInstance();
 		productList = dataHandler.getProducts();
-		
+
 		User theUser = dataHandler.getUser();
-		
+
 		theUser.setUserName("Emil");
 		theUser.setPassword("123");
 		OnlinePanel onp = new OnlinePanel();
 		stackPane.getChildren().add(onp);
-		
-		for (ProductCategory c : ProductCategory.values()){
+
+		for (ProductCategory c : ProductCategory.values()) {
 			String name = getCategoryName(c);
-			
-			//System.out.println(ProductCategory.valueOf(c.toString()));
-			//TitledPane t = new TitledPane(name, new AnchorPane());
-			
-			
+
+			// System.out.println(ProductCategory.valueOf(c.toString()));
+			// TitledPane t = new TitledPane(name, new AnchorPane());
+
 			EventHandler<MouseEvent> mousehandler = new EventHandler<MouseEvent>() {
-			    @Override
-			    public void handle(MouseEvent mouseEvent) {
-			    	
-			    	fillProductView(((CategoryTitledPane)mouseEvent.getSource()).getProducts());
-			    	
-			        System.out.println("hi");
-			    }
+				@Override
+				public void handle(MouseEvent mouseEvent) {
+
+					fillProductView(((CategoryTitledPane) mouseEvent
+							.getSource()).getProducts());
+
+					System.out.println("hi");
+				}
 			};
-			
+
 			List<Product> theCategoryList = new ArrayList<Product>();
-			for(Product p: productList){
-	    		
-				if(p.getCategory() == c){
-	    			theCategoryList.add(p);
-	    		}
+			for (Product p : productList) {
+
+				if (p.getCategory() == c) {
+					theCategoryList.add(p);
+				}
 			}
-			CategoryTitledPane ctp = new CategoryTitledPane(name, theCategoryList);
-			
-			
+			CategoryTitledPane ctp = new CategoryTitledPane(name,
+					theCategoryList);
+
 			ctp.setOnMouseClicked(mousehandler);
 			categoryAccordation.getPanes().add(ctp);
-			
+
 		}
-		
+
 	}
+
 	@FXML
 	private GridPane gridPane;
-	
+
 	@FXML
 	private StackPane stackPane;
-	
-	@FXML 
+
+	@FXML
 	private BorderPane borderPane;
-	
-	public void fillProductView(List<Product> productList){
+
+	public void fillProductView(List<Product> productList) {
 		List_Nx1_view l = new List_Nx1_view(this, productList);
 		changeScreen(l);
 	}
-	
-	
+
 	int i = 0;
-	public void goToMyProfile(ActionEvent evt){
-		
-		
+
+	public void goToMyProfile(ActionEvent evt) {
+
 		ProfilePanel pp = new ProfilePanel();
 		changeScreen(pp);
-			
+
 	}
-	
+
 	int s = 0;
-	public void addToShoppingCart(Product p){
-			
-			dataHandler.getShoppingCart().addProduct(p, 1);
-			ShoppingCartItem sci = new ShoppingCartItem(p);
-			
-			gridPane.setPrefHeight((s+1)*36);
-			gridPane.add(sci, 0, s);
-		
-			s++;
-			System.out.println("new");
+
+	public void addToShoppingCart(Product p) {
+
+		dataHandler.getShoppingCart().addProduct(p, 1);
+		ShoppingCartItem sci = new ShoppingCartItem(p);
+
+		gridPane.setPrefHeight((s + 1) * 36);
+		gridPane.add(sci, 0, s);
+
+		s++;
 	}
-	
-	public void changeShoppingCart(Product p, int index, double amount){
-		ShoppingCartItem sci = (ShoppingCartItem)gridPane.getChildren().get(index);
-		
-		sci.setAmount(amount);
-		System.out.println("Change");
-	}
-	
-	
-	public String getCategoryName(ProductCategory c){
-		switch(c.toString()){
+
+	public String getCategoryName(ProductCategory c) {
+		switch (c.toString()) {
 		case "BERRY":
 			return "Bär";
 		case "BREAD":
@@ -188,85 +177,73 @@ public class MainPanel extends BorderPane implements PropertyChangeListener{
 		case "HERB":
 			return "Örter";
 		}
-		return c.toString();	
+		return c.toString();
 	}
-	
-	public void fillShoppingCart(ShoppingCartBig scb){
-		
+
+	public void fillShoppingCart(ShoppingCartBig scb) {
+
 		int k = 0;
-		for(ShoppingItem i: dataHandler.getShoppingCart().getItems()){
+		for (ShoppingItem i : dataHandler.getShoppingCart().getItems()) {
 			Product p = i.getProduct();
 			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig(p);
 			scb.add(piscb, k);
 			k++;
 		}
-		
+
 	}
-	
-	public void goToCheckOut(ActionEvent evt){
+
+	public void goToCheckOut(ActionEvent evt) {
 		ShoppingCartBig scb = new ShoppingCartBig();
-		
+
 		fillShoppingCart(scb);
 
 		ProcessIndicator pi = new ProcessIndicator();
-		
+
 		changeScreen(scb);
-		
+
 		borderPane.getChildren().clear();
 		borderPane.setCenter(pi);
 	}
-	
-	
-	public void goToHome(ActionEvent evt){
+
+	public void goToHome(ActionEvent evt) {
 		borderPane.getChildren().clear();
 		borderPane.setCenter(gridPane);
 		OnlinePanel onp = new OnlinePanel();
 		changeScreen(onp);
-		
+
 	}
-	
-	public void changeScreen(Node node){
+
+	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
 	}
 
-	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance()
+				.getShoppingCart().getItems();
+		Product product = (Product) evt.getNewValue();
 
-		
-		List<ShoppingItem> list = IMatDataHandler.getInstance().getShoppingCart().getItems();
-		Product product = (Product)evt.getNewValue();
-		
-		Boolean truFal = true;
- 		int calc = 0;
- 		int index = 0;
-		for(ShoppingItem i : list){
-			
-			if(product.getProductId() == i.getProduct().getProductId()){
-				truFal = false;
-				index = calc;
+		boolean productAlreadyInCart = false;
+		int iteration = 0;
+		int index = 0;
+		for (ShoppingItem cartItem : shoppingCartItems) {
+
+			if (product.getProductId() == cartItem.getProduct().getProductId()) {
+				productAlreadyInCart = true;
+				index = iteration;
 			}
-			calc++;	
+			iteration++;
 		}
-		
-		System.out.println(IMatDataHandler.getInstance().getShoppingCart().getItems().size());
-		
-		if(truFal){
-			addToShoppingCart((Product)evt.getNewValue());
-			
-		} else{
-			
-			double oldAmount =  list.get(index).getAmount();
-			dataHandler.getShoppingCart().removeItem(index);
-			dataHandler.getShoppingCart().addProduct(((Product)evt.getNewValue()), oldAmount+1);
-			
-			int max = dataHandler.getShoppingCart().getItems().size();
-			double newAmount =  dataHandler.getShoppingCart().getItems().get(max-1).getAmount();
-			changeShoppingCart(product, index, newAmount);
-			
+
+		if (!productAlreadyInCart) {
+			addToShoppingCart((Product) evt.getNewValue());
+		} else {
+			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) gridPane
+					.getChildren().get(index);
+			shoppingCartItem.increaseAmount();
 		}
 
 	}
-	
+
 }

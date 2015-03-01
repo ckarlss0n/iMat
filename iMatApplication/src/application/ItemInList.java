@@ -71,8 +71,6 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void setPrice(double price){
-		
-		
 		lblPrice.setText(String.valueOf(price) + "0 kr");
 	}
 	

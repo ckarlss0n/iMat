@@ -142,11 +142,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	public String getCategoryName(ProductCategory c) {
 		switch (c.toString()) {
 		case "BERRY":
-			return "BÃ¤r";
+			return "Bär";
 		case "BREAD":
-			return "BrÃ¶d";
+			return "Bröd";
 		case "POD":
-			return "BaljvÃ¤xter";
+			return "Baljväxter";
 		case "CITRUS_FRUIT":
 			return "Citrus frukter";
 		case "HOT_DRINKS":
@@ -158,19 +158,19 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "GrÃ¶nsaksfrukt";
+			return "Grönsaksfrukt";
 		case "CABBAGE":
-			return "KÃ¥l";
+			return "Kål";
 		case "MEAT":
-			return "KÃ¶tt";
+			return "Kött";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "MjÃ¶l socker salt";
+			return "Mjöl, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "NÃ¶tter och frÃ¶n";
+			return "Nötter och frön";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -182,19 +182,16 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Ã–rter";
+			return "Ärter";
 		}
 		return c.toString();
 	}
 
 	public void fillShoppingCart(ShoppingCartBig scb) {
-
-		int k = 0;
-		for (ShoppingItem i : dataHandler.getShoppingCart().getItems()) {
-			Product p = i.getProduct();
-			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig(p);
+	
+		for(int k = 0; k<gridPane.getChildren().size(); k++){
+			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig((ShoppingCartItem)gridPane.getChildren().get(k));
 			scb.add(piscb, k);
-			k++;
 		}
 
 	}

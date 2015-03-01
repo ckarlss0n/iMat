@@ -169,7 +169,7 @@
                               </Accordion>
                            </center>
                            <bottom>
-                              <Button fx:id="saveChangesBtn" mnemonicParsing="false" text="Spara ändringar" BorderPane.alignment="CENTER">
+                              <Button fx:id="saveChangesBtn" mnemonicParsing="false" onAction="#saveProfile" text="Spara ändringar" BorderPane.alignment="CENTER">
                                  <BorderPane.margin>
                                     <Insets bottom="10.0" top="10.0" />
                                  </BorderPane.margin>

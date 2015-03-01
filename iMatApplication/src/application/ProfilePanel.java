@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import sun.awt.im.InputMethodAdapter;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Accordion;
@@ -86,6 +87,10 @@ public class ProfilePanel extends ScrollPane{
     	passwordField.setText(IMatDataHandler.getInstance().getUser().getPassword());
     	
     	progressIndicator.setProgress(0.1);
+	}
+	
+	public void saveProfile(ActionEvent evt){
+		System.out.println("Save profile information.");
 	}
 	
 }

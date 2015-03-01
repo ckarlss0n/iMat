@@ -65,16 +65,19 @@ public class ShoppingCartItem extends BorderPane {
 	}
 
 	public void setPrice(double price) {
-
 		lblPrice.setText(String.valueOf(twoDec.format(price) + " kr"));
 	}
 
-	public Product getProduct(Product p) {
+	public Product getProduct() {
 		return theProduct;
 	}
 
 	public int getAmount() {
 		return (int) amount;
+	}
+	
+	public double getPrice(){
+		return price;
 	}
 
 	public int getPanelId() {
@@ -110,8 +113,9 @@ public class ShoppingCartItem extends BorderPane {
 			System.out.println("Remove the schoppingCartItem");
 		} else {
 			this.amount = amount;
+			this.price = theProduct.getPrice() * amount;
 			lblAmount.setText(String.valueOf(noDec.format(amount)) + " st");
-			setPrice(this.theProduct.getPrice() * amount);
+			setPrice(price);
 		}
 	}
 

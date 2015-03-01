@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="330.0" minWidth="230.0" prefHeight="453.0" prefWidth="230.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="360.0" minWidth="230.0" prefHeight="9000.0" prefWidth="230.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -67,12 +68,29 @@
                </font>
             </Label>
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
       </GridPane>
    </center>
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
    <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" />
+      <Insets bottom="10.0" />
    </padding>
+   <top>
+      <Label alignment="CENTER" contentDisplay="RIGHT" prefWidth="9000.0" styleClass="grayGradient" text="Förlopp" BorderPane.alignment="CENTER">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icon32/cart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <padding>
+            <Insets bottom="11.0" top="11.0" />
+         </padding>
+      </Label>
+   </top>
 </fx:root>

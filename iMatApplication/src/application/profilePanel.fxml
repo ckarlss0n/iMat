@@ -14,7 +14,7 @@
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <center>
-                  <Label text="Min profil" textFill="#404040" BorderPane.alignment="CENTER">
+                  <Label fx:id="myProfileLabel" text="Min profil" textFill="#404040" BorderPane.alignment="CENTER">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
@@ -28,21 +28,27 @@
             </BorderPane>
          </top>
          <center>
-            <TabPane>
+            <TabPane fx:id="profileTabPane">
                <tabs>
-                  <Tab closable="false" text="Uppgifter">
+                  <Tab fx:id="infoTab" closable="false" text="Uppgifter">
                      <content>
                         <BorderPane BorderPane.alignment="CENTER">
                            <center>
-                              <Accordion fx:id="ac" BorderPane.alignment="CENTER">
+                              <Accordion fx:id="infoAccordion" BorderPane.alignment="CENTER">
                                 <panes>
-                                  <TitledPane fx:id="tp" animated="false" text="Mina uppgifter">
+                                  <TitledPane fx:id="infoPane" animated="false" text="Mina uppgifter">
                                        <content>
                                           <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="342.0" prefViewportWidth="862.0">
                                              <content>
                                                 <BorderPane minHeight="397.0">
-                                                   <center>
-                                                      <GridPane alignment="CENTER_LEFT" maxWidth="500.0" BorderPane.alignment="CENTER_LEFT">
+                                                   <right>
+                                                      <BorderPane BorderPane.alignment="CENTER" />
+                                                   </right>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+                                                   </padding>
+                                                   <left>
+                                                      <GridPane alignment="CENTER_LEFT" maxWidth="500.0" minWidth="400.0" BorderPane.alignment="CENTER">
                                                         <columnConstraints>
                                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                                         </columnConstraints>
@@ -59,50 +65,43 @@
                                                             <Insets right="50.0" />
                                                          </BorderPane.margin>
                                                          <children>
-                                                            <TextField promptText="Förnamn" />
-                                                            <TextField promptText="Efternamn" GridPane.rowIndex="1" />
-                                                            <TextField promptText="E-post" GridPane.rowIndex="2" />
-                                                            <TextField promptText="Adress" GridPane.rowIndex="3" />
+                                                            <TextField fx:id="firstNameField" promptText="Förnamn" />
+                                                            <TextField fx:id="lastNameField" promptText="Efternamn" GridPane.rowIndex="1" />
+                                                            <TextField fx:id="emailField" promptText="E-post" GridPane.rowIndex="2" />
+                                                            <TextField fx:id="addressField" promptText="Adress" GridPane.rowIndex="3" />
                                                             <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                                                                <left>
-                                                                  <TextField prefHeight="39.0" prefWidth="131.0" promptText="Postkod" BorderPane.alignment="CENTER">
+                                                                  <TextField fx:id="postalCodeField" prefHeight="39.0" prefWidth="131.0" promptText="Postkod" BorderPane.alignment="CENTER">
                                                                      <BorderPane.margin>
                                                                         <Insets right="10.0" />
                                                                      </BorderPane.margin>
                                                                   </TextField>
                                                                </left>
                                                                <center>
-                                                                  <TextField promptText="Ort" BorderPane.alignment="CENTER" />
+                                                                  <TextField fx:id="cityField" promptText="Ort" BorderPane.alignment="CENTER" />
                                                                </center>
                                                             </BorderPane>
-                                                            <PasswordField promptText="Lösenord" GridPane.rowIndex="6" />
-                                                            <TextField promptText="Telefon" GridPane.rowIndex="5" />
+                                                            <PasswordField fx:id="passwordField" promptText="Lösenord" GridPane.rowIndex="6" />
+                                                            <TextField fx:id="phoneField" promptText="Telefon" GridPane.rowIndex="5" />
                                                          </children>
                                                       </GridPane>
+                                                   </left>
+                                                   <center>
+                                                      <Label alignment="CENTER" contentDisplay="BOTTOM" text="Bonusnivå: 1" BorderPane.alignment="CENTER">
+                                                         <graphic>
+                                                            <ProgressIndicator fx:id="progressIndicator" prefHeight="200.0" prefWidth="200.0" progress="0.16" />
+                                                         </graphic>
+                                                         <font>
+                                                            <Font size="24.0" />
+                                                         </font>
+                                                      </Label>
                                                    </center>
-                                                   <right>
-                                                      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                                         <center>
-                                                            <Label alignment="CENTER" contentDisplay="BOTTOM" text="Bonusnivå: 1" BorderPane.alignment="CENTER">
-                                                               <graphic>
-                                                                  <ProgressIndicator prefHeight="200.0" prefWidth="200.0" progress="0.16" />
-                                                               </graphic>
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </center>
-                                                      </BorderPane>
-                                                   </right>
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
-                                                   </padding>
                                                 </BorderPane>
                                              </content>
                                           </ScrollPane>
                                        </content>
                                   </TitledPane>
-                                  <TitledPane animated="false" expanded="false" text="Allergier">
+                                  <TitledPane fx:id="allergyPane" animated="false" expanded="false" text="Allergier">
                                        <content>
                                           <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="342.0" prefViewportWidth="862.0">
                                              <content>
@@ -170,7 +169,7 @@
                               </Accordion>
                            </center>
                            <bottom>
-                              <Button mnemonicParsing="false" text="Spara ändringar" BorderPane.alignment="CENTER">
+                              <Button fx:id="saveChangesBtn" mnemonicParsing="false" text="Spara ändringar" BorderPane.alignment="CENTER">
                                  <BorderPane.margin>
                                     <Insets bottom="10.0" top="10.0" />
                                  </BorderPane.margin>
@@ -179,11 +178,11 @@
                         </BorderPane>
                      </content>
                   </Tab>
-                  <Tab closable="false" text="Historik">
+                  <Tab fx:id="historyTab" closable="false" text="Historik">
                      <content>
                         <BorderPane>
                            <center>
-                              <Accordion BorderPane.alignment="CENTER">
+                              <Accordion fx:id="historyAccordion" BorderPane.alignment="CENTER">
                                 <panes>
                                   <TitledPane animated="false" text="2015-02-27 (248 kr)">
                                     <content>

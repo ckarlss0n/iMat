@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
@@ -59,6 +60,16 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 
 		theUser.setUserName("Emil");
 		theUser.setPassword("123");
+		
+		Customer theCustomer = dataHandler.getCustomer();
+		theCustomer.setFirstName("John");
+		theCustomer.setLastName("Doe");
+		theCustomer.setEmail("john.doe@example.com");
+		theCustomer.setAddress("Ringvägen 239");
+		theCustomer.setPostCode("41280");
+		theCustomer.setPostAddress("Göteborg");
+		theCustomer.setPhoneNumber("0705326742");
+
 		OnlinePanel onp = new OnlinePanel();
 		stackPane.getChildren().add(onp);
 
@@ -113,16 +124,12 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	int i = 0;
 
 	public void goToMyProfile(ActionEvent evt) {
-
 		ProfilePanel pp = new ProfilePanel();
 		changeScreen(pp);
-
 	}
-
+	
 	int s = 0;
-
 	public void addToShoppingCart(Product p) {
-
 		dataHandler.getShoppingCart().addProduct(p, 1);
 		ShoppingCartItem sci = new ShoppingCartItem(p);
 

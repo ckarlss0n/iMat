@@ -67,9 +67,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		theCustomer.setFirstName("John");
 		theCustomer.setLastName("Doe");
 		theCustomer.setEmail("john.doe@example.com");
-		theCustomer.setAddress("Ringv�gen 239");
+		theCustomer.setAddress("Ringvägen 239");
 		theCustomer.setPostCode("41280");
-		theCustomer.setPostAddress("G�teborg");
+		theCustomer.setPostAddress("Göteborg");
 		theCustomer.setPhoneNumber("0705326742");
 
 		stackPane.getChildren().add(onlinePanel);
@@ -135,11 +135,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
-			return "B�r";
+			return "Bär";
 		case "BREAD":
-			return "Br�d";
+			return "Bröd";
 		case "POD":
-			return "Baljv�xter";
+			return "Baljväxter";
 		case "CITRUS_FRUIT":
 			return "Citrus frukter";
 		case "HOT_DRINKS":
@@ -151,19 +151,19 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Gr�nsaksfrukt";
+			return "Grönsaksfrukt";
 		case "CABBAGE":
-			return "K�l";
+			return "Kål";
 		case "MEAT":
-			return "K�tt";
+			return "Kött";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "Mj�l, socker, salt";
+			return "Mjöl, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "N�tter och fr�n";
+			return "Nötter och frön";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -175,7 +175,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "�rter";
+			return "Örter";
 		}
 		return c.toString();
 	}

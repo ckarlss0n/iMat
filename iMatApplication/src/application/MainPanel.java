@@ -223,8 +223,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance()
-				.getShoppingCart().getItems();
+		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance().getShoppingCart().getItems();
 		Product product = (Product) evt.getNewValue();
 		System.out.println(IMatDataHandler.getInstance().getShoppingCart().getTotal());
 		shoppingCartRight.setShoppingCartSum(shoppingCartRight.getShoppingCartSum()+product.getPrice());
@@ -244,8 +243,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 			addToShoppingCart((Product) evt.getNewValue());
 			
 		} else {
-			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight
-					.getGridPane().getChildren().get(index);
+			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight.getGridPane().getChildren().get(index);
 			shoppingCartItem.increaseAmount();
 		}
 	}

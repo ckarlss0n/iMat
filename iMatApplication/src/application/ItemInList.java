@@ -84,7 +84,6 @@ public class ItemInList extends BorderPane {
 
 		this.changeListner.firePropertyChange("nytt", null, theProduct);
 		IMatDataHandler.getInstance().addProduct(theProduct);
-		this.changeListner.firePropertyChange("Nytt", null, theProduct); //On�digt?
 	}
 	
 }

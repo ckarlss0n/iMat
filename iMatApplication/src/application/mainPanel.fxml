@@ -128,7 +128,7 @@
                <left>
                   <ToolBar minHeight="55.0" prefHeight="55.0" BorderPane.alignment="CENTER">
                     <items>
-                      <Button mnemonicParsing="false" text="Varma drycker" />
+                      <Button fx:id="categoryBtn" mnemonicParsing="false" text="Kategori ej vald" />
                         <Button mnemonicParsing="false" text="Te" />
                     </items>
                   </ToolBar>

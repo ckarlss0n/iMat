@@ -18,23 +18,33 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ShoppingCartBig extends BorderPane {
-	private MainPanel mp;
-	public ShoppingCartBig(MainPanel mp){
+	
+	PersonalInformationPanel pInf;
+	MainPanel main;
+	
+	public ShoppingCartBig(MainPanel main, PersonalInformationPanel pInf){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("shoppingCartBig.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+        this.main = main;
+        this.pInf = pInf;
 
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
-        }  
-        this.mp = mp;
+        } 
 	}
 	@FXML
 	private GridPane gridPane;
 	@FXML
 	private Button btnLoginCart;
+	@FXML
+	private Button shopWithoutBtn;
+	
+	public void shopWithout(ActionEvent evt){
+		main.changeScreen(pInf);
+	}
 	
 	public void loginCartModal(ActionEvent evt){
 		System.out.println("Open login");
@@ -42,10 +52,6 @@ public class ShoppingCartBig extends BorderPane {
 
 	public void goToRegisterCart(ActionEvent evt){
 		System.out.println("Go to register cart");
-	}
-	
-	public void shopWithout(ActionEvent evt){
-		System.out.println("Shop anyways.");
 	}
 	
 	public void add(Node node, int row){

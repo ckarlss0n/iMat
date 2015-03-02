@@ -125,7 +125,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	public void goToMyProfile(ActionEvent evt) {
 		changeScreen(profilePanel);
 	}
-	
+
 	int s = 0;
 
 	public void addToShoppingCart(Product p) {
@@ -137,7 +137,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 
 		s++;
 	}
-	
+
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
@@ -215,7 +215,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 			bigBorder.setRight(shoppingCartRight);
 		}
 	}
-	
+
 	//Bug if found product already in shoppingcart. Shows duplicates in list.
 	public void searchForProducts(ActionEvent evt){
 		if(!searchField.getText().isEmpty()){
@@ -228,10 +228,13 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance().getShoppingCart().getItems();
+		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance()
+				.getShoppingCart().getItems();
 		Product product = (Product) evt.getNewValue();
-		System.out.println(IMatDataHandler.getInstance().getShoppingCart().getTotal());
-		shoppingCartRight.setShoppingCartSum(shoppingCartRight.getShoppingCartSum()+product.getPrice());
+		System.out.println(IMatDataHandler.getInstance().getShoppingCart()
+				.getTotal());
+		shoppingCartRight.setShoppingCartSum(shoppingCartRight
+				.getShoppingCartSum() + product.getPrice());
 		boolean productAlreadyInCart = false;
 		int iteration = 0;
 		int index = 0;
@@ -246,9 +249,10 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 
 		if (!productAlreadyInCart) {
 			addToShoppingCart((Product) evt.getNewValue());
-			
+
 		} else {
-			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight.getGridPane().getChildren().get(index);
+			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight
+					.getGridPane().getChildren().get(index);
 			shoppingCartItem.increaseAmount();
 		}
 	}

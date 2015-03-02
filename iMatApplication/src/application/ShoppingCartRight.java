@@ -3,6 +3,7 @@ package application;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.fxml.FXML;
@@ -60,9 +61,10 @@ public class ShoppingCartRight extends BorderPane{
 		
 		return null;
 	}
+	DecimalFormat twoDec = new DecimalFormat("#.00");
 
 	public void setShoppingCartSum(double amount){
-		shoppingCartSum.setText(Double.toString(amount));
+		shoppingCartSum.setText(String.valueOf((twoDec.format(amount))));
 	}
 	
 	public double getShoppingCartSum(){

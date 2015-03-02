@@ -309,6 +309,13 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		
 		shoppingCartRight.getShoppingCartItem(theItem).update(theItem);
 		
+		double sum = 0;
+		
+		for(Node sci: shoppingCartRight.getGridPane().getChildren()){
+			sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
+		}
+		
+		shoppingCartRight.setShoppingCartSum(sum);
 	
 	}
 }

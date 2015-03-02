@@ -67,9 +67,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		theCustomer.setFirstName("John");
 		theCustomer.setLastName("Doe");
 		theCustomer.setEmail("john.doe@example.com");
-		theCustomer.setAddress("Ringvägen 239");
+		theCustomer.setAddress("Ringvï¿½gen 239");
 		theCustomer.setPostCode("41280");
-		theCustomer.setPostAddress("Göteborg");
+		theCustomer.setPostAddress("Gï¿½teborg");
 		theCustomer.setPhoneNumber("0705326742");
 
 		stackPane.getChildren().add(onlinePanel);
@@ -131,15 +131,15 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 
 		s++;
 	}
-
-	public String getCategoryName(ProductCategory c) {
-		switch (c.toString()) {
+	
+	public String getCategoryName(ProductCategory c){
+		switch(c.toString()){
 		case "BERRY":
-			return "Bär";
+			return "Bï¿½r";
 		case "BREAD":
-			return "Bröd";
+			return "Brï¿½d";
 		case "POD":
-			return "Baljväxter";
+			return "Baljvï¿½xter";
 		case "CITRUS_FRUIT":
 			return "Citrus frukter";
 		case "HOT_DRINKS":
@@ -151,19 +151,19 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Grönsaksfrukt";
+			return "Grï¿½nsaksfrukt";
 		case "CABBAGE":
-			return "Kål";
+			return "Kï¿½l";
 		case "MEAT":
-			return "Kött";
+			return "Kï¿½tt";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "Mjöl, socker, salt";
+			return "Mjï¿½l, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "Nötter och frön";
+			return "Nï¿½tter och frï¿½n";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -175,7 +175,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Ärter";
+			return "ï¿½rter";
 		}
 		return c.toString();
 	}
@@ -218,6 +218,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 			changeScreen(productView);
 		}
 	}
+
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
@@ -247,5 +248,4 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 			shoppingCartItem.increaseAmount();
 		}
 	}
-
 }

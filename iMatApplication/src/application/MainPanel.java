@@ -192,7 +192,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	}
 
 	public void goToCheckout() {
-		shoppingCartBig = new ShoppingCartBig();
+		shoppingCartBig = new ShoppingCartBig(this);
 		fillShoppingCart(shoppingCartBig);
 		changeScreen(shoppingCartBig);
 	}

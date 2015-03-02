@@ -18,8 +18,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ShoppingCartBig extends BorderPane {
-	
-	public ShoppingCartBig(){
+	private MainPanel mp;
+	public ShoppingCartBig(MainPanel mp){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("shoppingCartBig.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -29,6 +29,7 @@ public class ShoppingCartBig extends BorderPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }  
+        this.mp = mp;
 	}
 	@FXML
 	private GridPane gridPane;

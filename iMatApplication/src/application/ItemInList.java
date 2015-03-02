@@ -75,7 +75,8 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void addToCart(ActionEvent evt){
-		this.changeListner.firePropertyChange("Nytt", null, theProduct); 
+		IMatDataHandler.getInstance().addProduct(theProduct);
+		this.changeListner.firePropertyChange("Nytt", null, theProduct); //Onödigt?
 	}
 	
 }

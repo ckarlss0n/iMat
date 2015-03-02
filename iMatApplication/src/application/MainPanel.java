@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -33,6 +34,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	private OnlinePanel onlinePanel = new OnlinePanel();
 	private ProfilePanel profilePanel = new ProfilePanel();
 	private ShoppingCartRight shoppingCartRight;
+	private PersonalInformationPanel pInf = new PersonalInformationPanel();
 
 	@FXML
 	private Accordion categoryAccordation;
@@ -42,6 +44,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	private BorderPane bigBorder;
 	@FXML
 	private TextField searchField;
+	@FXML
+	private Button categoryBtn;
 
 	public MainPanel() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
@@ -86,7 +90,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 
 					fillProductView(((CategoryTitledPane) mouseEvent
 							.getSource()).getProducts());
-
+					categoryBtn.setText(((CategoryTitledPane) mouseEvent
+							.getSource()).getText());
 					System.out.println("hi");
 				}
 			};
@@ -119,7 +124,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	public void goToMyProfile(ActionEvent evt) {
 		changeScreen(profilePanel);
 	}
-
+	
 	int s = 0;
 
 	public void addToShoppingCart(Product p) {
@@ -131,6 +136,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 
 		s++;
 	}
+	
 
 	public String getCategoryName(ProductCategory c) {
 		switch (c.toString()) {
@@ -191,7 +197,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	}
 
 	public void goToCheckout() {
-		shoppingCartBig = new ShoppingCartBig();
+		shoppingCartBig = new ShoppingCartBig(this, pInf);
 		fillShoppingCart(shoppingCartBig);
 		changeScreen(shoppingCartBig);
 	}
@@ -203,7 +209,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
-		if (node.equals(shoppingCartBig)) {
+		if (node.equals(shoppingCartBig) || node.equals(pInf)) {
 			bigBorder.setRight(progressIndicator);
 		} else {
 			bigBorder.setRight(shoppingCartRight);

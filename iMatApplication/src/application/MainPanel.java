@@ -31,7 +31,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	private ShoppingCartBig shoppingCartBig;
 	private ProcessIndicator progressIndicator = new ProcessIndicator();
 	private OnlinePanel onlinePanel = new OnlinePanel();
-	private ProfilePanel profilePanel = new ProfilePanel();
+	private ProfilePanel profilePanel;
 	private ShoppingCartRight shoppingCartRight;
 
 	@FXML
@@ -105,6 +105,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 			categoryAccordation.getPanes().add(ctp);
 
 		}
+		profilePanel = new ProfilePanel();
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
 	}

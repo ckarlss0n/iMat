@@ -49,7 +49,7 @@
          <bottom>
             <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <children>
-                  <ComboBox prefHeight="39.0" prefWidth="66.0" />
+                  <ComboBox fx:id="productAmount" minWidth="83.0" promptText="1" />
                   <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addToCart" prefHeight="39.0" prefWidth="92.0" text="Lägg till" />
                </children>
             </HBox>

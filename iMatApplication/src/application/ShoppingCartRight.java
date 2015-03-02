@@ -1,10 +1,13 @@
 package application;
 
 import javafx.event.ActionEvent;
+
 import java.io.IOException;
 
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
@@ -40,6 +43,18 @@ public class ShoppingCartRight extends BorderPane{
 	
 	public BorderPane getBorderPane(){
 		return borderPane;
+	}
+	
+	public ShoppingCartItem getShoppingCartItem(ShoppingItem i){
+		
+		for(Node n : this.getGridPane().getChildren()){
+			if(((ShoppingCartItem)n).getItem().equals(i)){
+				System.out.println("Equals");
+				return (ShoppingCartItem)n;
+			}
+		}
+		
+		return null;
 	}
 
 }

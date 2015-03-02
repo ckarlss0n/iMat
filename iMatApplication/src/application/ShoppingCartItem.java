@@ -20,8 +20,9 @@ public class ShoppingCartItem extends BorderPane {
 	private int panelId;
 	private double amount;
 	private double price;
+	private ShoppingItem theItem;
 
-	public ShoppingCartItem(Product p) {
+	public ShoppingCartItem(ShoppingItem i) {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
 				"shoppingCartSmallItem.fxml"));
 		fxmlLoader.setRoot(this);
@@ -32,11 +33,17 @@ public class ShoppingCartItem extends BorderPane {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+		
+		theItem = i;
 
-		theProduct = p;
-		panelId = p.getProductId();
-
-		setNameAmountNPrice(p.getName(), 1.0, p.getPrice());
+		theProduct = i.getProduct();
+		panelId = i.getProduct().getProductId();
+		
+		setName(i.getProduct().getName());
+		setAmount(i.getAmount());
+		setPrice(i.getAmount() * i.getProduct().getPrice());
+		
+		//setNameAmountNPrice(i.getProduct().getName(), i.getAmount(), p.getPrice());
 
 	}
 
@@ -63,9 +70,17 @@ public class ShoppingCartItem extends BorderPane {
 
 		lblPrice.setText(String.valueOf(twoDec.format(price)) + " kr");
 	}
+	
+	public void setName(String name){
+		lblName.setText(name);
+	}
 
 	public void setPrice(double price) {
 		lblPrice.setText(String.valueOf(twoDec.format(price) + " kr"));
+	}
+	
+	public void setAmount(double amount){
+		lblAmount.setText(String.valueOf(noDec.format(amount)) + " st");
 	}
 
 	public Product getProduct() {
@@ -107,7 +122,17 @@ public class ShoppingCartItem extends BorderPane {
 	public void removeFromCart(ActionEvent evt) {
 		setAmount(0);
 	}
-
+	
+	public ShoppingItem getItem(){
+		return this.theItem;
+	}
+	
+	public void update(ShoppingItem i){
+		theItem = i;
+		setAmount(theItem.getAmount());
+		setPrice(theItem.getAmount() * theItem.getProduct().getPrice());
+	}
+	/*
 	public void setAmount(double amount) {
 		if(amount == 0){
 			System.out.println("Remove the schoppingCartItem");
@@ -117,6 +142,6 @@ public class ShoppingCartItem extends BorderPane {
 			lblAmount.setText(String.valueOf(noDec.format(amount)) + " st");
 			setPrice(price);
 		}
-	}
+	}*/
 
 }

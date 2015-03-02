@@ -5,10 +5,13 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
+import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.User;
 import javafx.event.ActionEvent;
@@ -22,7 +25,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
-public class MainPanel extends BorderPane implements PropertyChangeListener {
+public class MainPanel extends BorderPane implements PropertyChangeListener, ShoppingCartListener {
 
 	private List<Product> productList;
 	private IMatDataHandler dataHandler;
@@ -50,6 +53,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+		
+		//dataHandler.getShoppingCart().
 
 		dataHandler = IMatDataHandler.getInstance();
 		productList = dataHandler.getProducts();
@@ -63,9 +68,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		theCustomer.setFirstName("John");
 		theCustomer.setLastName("Doe");
 		theCustomer.setEmail("john.doe@example.com");
-		theCustomer.setAddress("Ringvägen 239");
+		theCustomer.setAddress("Ringvï¿½gen 239");
 		theCustomer.setPostCode("41280");
-		theCustomer.setPostAddress("Göteborg");
+		theCustomer.setPostAddress("Gï¿½teborg");
 		theCustomer.setPhoneNumber("0705326742");
 
 		stackPane.getChildren().add(onlinePanel);
@@ -88,6 +93,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 			};
 
 			List<Product> theCategoryList = new ArrayList<Product>();
+			
 			for (Product p : productList) {
 
 				if (p.getCategory() == c) {
@@ -103,6 +109,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		}
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
+		dataHandler.getShoppingCart().addShoppingCartListener(this);
 	}
 
 	public void fillProductView(List<Product> productList) {
@@ -118,9 +125,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 
 	int s = 0;
 
-	public void addToShoppingCart(Product p) {
-		dataHandler.getShoppingCart().addProduct(p, 1);
-		ShoppingCartItem sci = new ShoppingCartItem(p);
+	public void addToShoppingCart(ShoppingItem i) {
+		//dataHandler.getShoppingCart().addProduct(p, 1);
+		ShoppingCartItem sci = new ShoppingCartItem(i);
 
 		shoppingCartRight.getGridPane().setPrefHeight((s + 1) * 36);
 		shoppingCartRight.getGridPane().add(sci, 0, s);
@@ -131,11 +138,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 	public String getCategoryName(ProductCategory c) {
 		switch (c.toString()) {
 		case "BERRY":
-			return "Bär";
+			return "Bï¿½r";
 		case "BREAD":
-			return "Bröd";
+			return "Brï¿½d";
 		case "POD":
-			return "Baljväxter";
+			return "Baljvï¿½xter";
 		case "CITRUS_FRUIT":
 			return "Citrus frukter";
 		case "HOT_DRINKS":
@@ -147,19 +154,19 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Grönsaksfrukt";
+			return "Grï¿½nsaksfrukt";
 		case "CABBAGE":
-			return "Kål";
+			return "Kï¿½l";
 		case "MEAT":
-			return "Kött";
+			return "Kï¿½tt";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "Mjöl, socker, salt";
+			return "Mjï¿½l, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "Nötter och frön";
+			return "Nï¿½tter och frï¿½n";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -171,7 +178,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Ärter";
+			return "ï¿½rter";
 		}
 		return c.toString();
 	}
@@ -208,6 +215,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		/*
 		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance()
 				.getShoppingCart().getItems();
 		Product product = (Product) evt.getNewValue();
@@ -230,8 +238,54 @@ public class MainPanel extends BorderPane implements PropertyChangeListener {
 			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight
 					.getGridPane().getChildren().get(index);
 			shoppingCartItem.increaseAmount();
-		}
+		}*/
 
+	}
+	
+	int k = 0;
+	public void updateShoppingCart(ShoppingItem i){
+		boolean alreadyInCart = false;
+		
+		if(shoppingCartRight.getGridPane().getChildren().size() < 1){
+			ShoppingCartItem sci = new ShoppingCartItem(i);
+			
+			shoppingCartRight.getGridPane().setPrefHeight((k + 1) * 36);
+			shoppingCartRight.getGridPane().add(sci, 0, k);
+			k++;
+		} else{
+			for(Node sci: shoppingCartRight.getGridPane().getChildren()){
+				//((ShoppingCartItem)sci);
+				System.out.println("loop");
+				
+				if(((ShoppingCartItem)sci).getItem().getProduct().getProductId() == i.getProduct().getProductId()){
+					((ShoppingCartItem)sci).setAmount(i.getAmount());
+					System.out.println(i.getAmount());
+					System.out.println(dataHandler.getShoppingCart().getItems().size());
+					System.out.println("Update");
+				}
+			}
+			
+			
+		}
+		
+	}
+	
+
+	@Override
+	public void shoppingCartChanged(CartEvent evt) {
+		System.out.println("ShoppingCartListner");
+		
+		ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
+		//System.out.println(shoppingCartItems.size());
+		if(evt.isAddEvent()){
+			addToShoppingCart(theItem);
+			System.out.println(theItem.getAmount());
+		}
+		
+		
+		shoppingCartRight.getShoppingCartItem(theItem).update(theItem);
+		
+		
 	}
 
 }

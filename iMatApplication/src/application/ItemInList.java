@@ -8,6 +8,7 @@ import java.text.DecimalFormat;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
+import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -15,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -34,6 +36,8 @@ public class ItemInList extends BorderPane {
 	private PropertyChangeSupport changeListner;
 	
 	private MainPanel mainPanel;
+	private ShoppingItem sci;
+	
 	
 	public ItemInList(Product p, MainPanel m){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listProductPanel.fxml"));
@@ -46,6 +50,9 @@ public class ItemInList extends BorderPane {
             throw new RuntimeException(exception);
         }  
         
+        
+       
+        sci = new ShoppingItem(p);
         changeListner = new PropertyChangeSupport(this); 
         
         mainPanel = m;
@@ -74,8 +81,25 @@ public class ItemInList extends BorderPane {
 		lblPrice.setText(String.valueOf(price) + "0 kr");
 	}
 	
+	public TextField txtAmount;
+	
 	public void addToCart(ActionEvent evt){
-		this.changeListner.firePropertyChange("Nytt", null, theProduct); 
+		try{
+			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){
+				
+				sci.setAmount(sci.getAmount() + Integer.parseInt(txtAmount.getText()));
+				System.out.println(sci.getAmount());
+				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
+			}else {
+				IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
+			}
+		
+		} catch(IllegalArgumentException r){
+			System.out.println("Error");
+		}
+		
+		//this.changeListner.firePropertyChange("Nytt", null, theProduct); 
+		
 	}
 	
 }

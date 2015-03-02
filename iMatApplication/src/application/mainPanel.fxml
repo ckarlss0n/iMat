@@ -23,14 +23,14 @@
                <top>
                   <BorderPane minHeight="54.0" prefHeight="54.0" styleClass="grayGradient" BorderPane.alignment="CENTER">
                      <center>
-                        <TextField promptText="Sök..." BorderPane.alignment="CENTER">
+                        <TextField fx:id="searchField" onAction="#searchForProducts" promptText="Sök..." BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="8.0" left="10.0" top="8.0" />
                            </BorderPane.margin>
                         </TextField>
                      </center>
                      <right>
-                        <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Sök" BorderPane.alignment="CENTER">
+                        <Button fx:id="searchBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#searchForProducts" text="Sök" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="8.0" right="10.0" top="8.0" />
                            </BorderPane.margin>
@@ -128,7 +128,7 @@
                <left>
                   <ToolBar minHeight="55.0" prefHeight="55.0" BorderPane.alignment="CENTER">
                     <items>
-                      <Button mnemonicParsing="false" text="Varma drycker" />
+                      <Button fx:id="categoryBtn" mnemonicParsing="false" text="Kategori ej vald" />
                         <Button mnemonicParsing="false" text="Te" />
                     </items>
                   </ToolBar>

@@ -8,6 +8,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
@@ -16,6 +17,8 @@ public class ShoppingCartRight extends BorderPane{
 	private GridPane gridPane;
 	@FXML
 	private BorderPane borderPane;
+	@FXML
+	private Label shoppingCartSum;
 	
 	private MainPanel mp;
 	
@@ -45,6 +48,7 @@ public class ShoppingCartRight extends BorderPane{
 		return borderPane;
 	}
 	
+
 	public ShoppingCartItem getShoppingCartItem(ShoppingItem i){
 		
 		for(Node n : this.getGridPane().getChildren()){
@@ -55,6 +59,14 @@ public class ShoppingCartRight extends BorderPane{
 		}
 		
 		return null;
+	}
+
+	public void setShoppingCartSum(double amount){
+		shoppingCartSum.setText(Double.toString(amount));
+	}
+	
+	public double getShoppingCartSum(){
+		return Double.valueOf(shoppingCartSum.getText());
 	}
 
 }

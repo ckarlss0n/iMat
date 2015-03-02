@@ -28,11 +28,20 @@
             </Button>
          </bottom>
          <center>
-            <Label alignment="CENTER" prefWidth="9000.0" styleClass="grayGradient" text="35040 kr" textAlignment="CENTER" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" styleClass="grayGradient" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="shoppingCartSum" text="3100">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="kr">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
          </center>
       </BorderPane>
    </bottom>

@@ -38,4 +38,8 @@
 
 }
 
+.grayBackground{
+	-fx-background-color: -gray;
+}
+
 .text-input, .text-input:focused { -fx-prompt-text-fill:darkgray; }

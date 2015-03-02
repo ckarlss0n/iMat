@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -20,6 +21,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -32,8 +35,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	private ShoppingCartBig shoppingCartBig;
 	private ProcessIndicator progressIndicator = new ProcessIndicator();
 	private OnlinePanel onlinePanel = new OnlinePanel();
-	private ProfilePanel profilePanel = new ProfilePanel();
+	private ProfilePanel profilePanel;
 	private ShoppingCartRight shoppingCartRight;
+	private PersonalInformationPanel pInf = new PersonalInformationPanel();
 
 	@FXML
 	private Accordion categoryAccordation;
@@ -41,6 +45,10 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	private StackPane stackPane;
 	@FXML
 	private BorderPane bigBorder;
+	@FXML
+	private TextField searchField;
+	@FXML
+	private Button categoryBtn;
 
 	public MainPanel() {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
@@ -87,7 +95,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 					fillProductView(((CategoryTitledPane) mouseEvent
 							.getSource()).getProducts());
-
+					categoryBtn.setText(((CategoryTitledPane) mouseEvent
+							.getSource()).getText());
 					System.out.println("hi");
 				}
 			};
@@ -107,6 +116,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			categoryAccordation.getPanes().add(ctp);
 
 		}
+		profilePanel = new ProfilePanel();
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
 		dataHandler.getShoppingCart().addShoppingCartListener(this);
@@ -135,8 +145,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		s++;
 	}
 
-	public String getCategoryName(ProductCategory c) {
-		switch (c.toString()) {
+	public String getCategoryName(ProductCategory c){
+		switch(c.toString()){
 		case "BERRY":
 			return "B�r";
 		case "BREAD":
@@ -194,7 +204,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	}
 
 	public void goToCheckout() {
-		shoppingCartBig = new ShoppingCartBig();
+		shoppingCartBig = new ShoppingCartBig(this, pInf);
 		fillShoppingCart(shoppingCartBig);
 		changeScreen(shoppingCartBig);
 	}
@@ -206,20 +216,33 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
-		if (node.equals(shoppingCartBig)) {
+		if (node.equals(shoppingCartBig) || node.equals(pInf)) {
 			bigBorder.setRight(progressIndicator);
 		} else {
 			bigBorder.setRight(shoppingCartRight);
 		}
 	}
 
+	//Bug if found product already in shoppingcart. Shows duplicates in list.
+	public void searchForProducts(ActionEvent evt){
+		if(!searchField.getText().isEmpty()){
+			List<Product> foundProducts = dataHandler.findProducts(searchField.getText());
+			List_Nx1_view productView = new List_Nx1_view(this, foundProducts);
+			changeScreen(productView);
+		}
+	}
+
+	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		/*
 		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance()
 				.getShoppingCart().getItems();
 		Product product = (Product) evt.getNewValue();
-
+		System.out.println(IMatDataHandler.getInstance().getShoppingCart()
+				.getTotal());
+		shoppingCartRight.setShoppingCartSum(shoppingCartRight
+				.getShoppingCartSum() + product.getPrice());
 		boolean productAlreadyInCart = false;
 		int iteration = 0;
 		int index = 0;
@@ -234,6 +257,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 		if (!productAlreadyInCart) {
 			addToShoppingCart((Product) evt.getNewValue());
+
 		} else {
 			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight
 					.getGridPane().getChildren().get(index);
@@ -285,7 +309,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		
 		shoppingCartRight.getShoppingCartItem(theItem).update(theItem);
 		
-		
+	
 	}
-
 }

@@ -19,42 +19,40 @@ import javafx.stage.Stage;
 
 public class ShoppingCartBig extends BorderPane {
 	
-	public ShoppingCartBig(){
+	PersonalInformationPanel pInf;
+	MainPanel main;
+	
+	public ShoppingCartBig(MainPanel main, PersonalInformationPanel pInf){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("shoppingCartBig.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+        this.main = main;
+        this.pInf = pInf;
 
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
-        }  
+        } 
 	}
 	@FXML
 	private GridPane gridPane;
 	@FXML
 	private Button btnLoginCart;
+	@FXML
+	private Button shopWithoutBtn;
 	
-	public void loginCartModal(ActionEvent evt){
-		modalDialog();
+	public void shopWithout(ActionEvent evt){
+		main.changeScreen(pInf);
 	}
 	
-	public void modalDialog(){
-		
-		Stage loginDialog = new Stage();
-        loginDialog.initModality(Modality.WINDOW_MODAL);
-        Scene loginScene = new Scene(VBoxBuilder.create()
-                .children()
-                .alignment(Pos.CENTER)	
-                .padding(new Insets(10))
-                .build());
+	public void loginCartModal(ActionEvent evt){
+		System.out.println("Open login");
+	}
 
-        loginDialog.setTitle("Logga in");
-        loginDialog.setScene(loginScene);
-        loginDialog.show();
-      
-  }
-	
+	public void goToRegisterCart(ActionEvent evt){
+		System.out.println("Go to register cart");
+	}
 	
 	public void add(Node node, int row){
 		gridPane.add(node, 0, row);

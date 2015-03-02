@@ -15,6 +15,7 @@ import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -30,6 +31,9 @@ public class ItemInList extends BorderPane {
 	
 	@FXML
 	private Label lblPrice;
+	
+	@FXML
+	private ComboBox<Integer> productAmount;
 	
 	private Product theProduct;
 	
@@ -64,6 +68,8 @@ public class ItemInList extends BorderPane {
         
         productImage.setImage(new Image(image.toURI().toString()));
         lblPrice.setText(String.valueOf(theProduct.getPrice()) + "0 kr");
+        productAmount.getItems().addAll(1, 2, 3, 4 ,5 ,6 ,7 ,8 ,9 ,10);
+        productAmount.setValue(1);
         
         this.changeListner.addPropertyChangeListener(m);
 
@@ -97,8 +103,6 @@ public class ItemInList extends BorderPane {
 		} catch(IllegalArgumentException r){
 			System.out.println("Error");
 		}
-		
-		//this.changeListner.firePropertyChange("Nytt", null, theProduct); 
 		
 	}
 	

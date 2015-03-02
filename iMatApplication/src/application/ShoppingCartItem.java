@@ -18,8 +18,6 @@ public class ShoppingCartItem extends BorderPane {
 
 	private Product theProduct;
 	private int panelId;
-	private double amount;
-	private double price;
 	private ShoppingItem theItem;
 
 	public ShoppingCartItem(ShoppingItem i) {
@@ -35,16 +33,12 @@ public class ShoppingCartItem extends BorderPane {
 		}
 		
 		theItem = i;
-
 		theProduct = i.getProduct();
 		panelId = i.getProduct().getProductId();
 		
 		setName(i.getProduct().getName());
 		setAmount(i.getAmount());
 		setPrice(i.getAmount() * i.getProduct().getPrice());
-		
-		//setNameAmountNPrice(i.getProduct().getName(), i.getAmount(), p.getPrice());
-
 	}
 
 	@FXML
@@ -59,17 +53,6 @@ public class ShoppingCartItem extends BorderPane {
 	DecimalFormat twoDec = new DecimalFormat("#.00");
 
 	DecimalFormat noDec = new DecimalFormat("#");
-
-	public void setNameAmountNPrice(String name, double amount, double price) {
-		this.price = price;
-		this.amount = amount;
-
-		lblName.setText(name);
-
-		lblAmount.setText(String.valueOf(noDec.format(amount)) + " st");
-
-		lblPrice.setText(String.valueOf(twoDec.format(price)) + " kr");
-	}
 	
 	public void setName(String name){
 		lblName.setText(name);
@@ -80,19 +63,11 @@ public class ShoppingCartItem extends BorderPane {
 	}
 	
 	public void setAmount(double amount){
-		lblAmount.setText(String.valueOf(noDec.format(amount)) + " st");
+		lblAmount.setText(String.valueOf(noDec.format(amount)) + " " + theProduct.getUnitSuffix());
 	}
 
 	public Product getProduct() {
 		return theProduct;
-	}
-
-	public int getAmount() {
-		return (int) amount;
-	}
-	
-	public double getPrice(){
-		return price;
 	}
 
 	public int getPanelId() {
@@ -104,23 +79,29 @@ public class ShoppingCartItem extends BorderPane {
 	}
 
 	public void decreaseAmount(){
-		if (amount - 1 > 0) {
-			setAmount(amount - 1);
-		} else {
-			setAmount(0);
+		if(theItem.getAmount()-1>0){
+			theItem.setAmount(theItem.getAmount()-1);
+			lblAmount.setText(String.valueOf(noDec.format(theItem.getAmount())) + " " + theItem.getProduct().getUnitSuffix());
+			IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(theItem, false);
+		} else { //Remove the product from the shopping cart if amount is zero
+			removeFromCart();
 		}
 	}
 	
 	public void increaseAmount(ActionEvent evt) {
-		increaseAmount();
+		theItem.setAmount(theItem.getAmount()+1);
+		lblAmount.setText(String.valueOf(noDec.format(theItem.getAmount())) + " " + theItem.getProduct().getUnitSuffix());
+		IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(theItem, false);
 	}
 
-	public void increaseAmount(){
-		setAmount(amount + 1);
+	public void removeFromCart(ActionEvent evt) {
+		removeFromCart();
 	}
 	
-	public void removeFromCart(ActionEvent evt) {
-		setAmount(0);
+	public void removeFromCart(){
+		System.out.println("Remove from cart!");
+		IMatDataHandler.getInstance().getShoppingCart().removeItem(theItem);
+		IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(theItem, false);
 	}
 	
 	public ShoppingItem getItem(){
@@ -132,16 +113,5 @@ public class ShoppingCartItem extends BorderPane {
 		setAmount(theItem.getAmount());
 		setPrice(theItem.getAmount() * theItem.getProduct().getPrice());
 	}
-	/*
-	public void setAmount(double amount) {
-		if(amount == 0){
-			System.out.println("Remove the schoppingCartItem");
-		} else {
-			this.amount = amount;
-			this.price = theProduct.getPrice() * amount;
-			lblAmount.setText(String.valueOf(noDec.format(amount)) + " st");
-			setPrice(price);
-		}
-	}*/
 
 }

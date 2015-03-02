@@ -306,7 +306,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			System.out.println(theItem.getAmount());
 		}
 		
-		
 		shoppingCartRight.getShoppingCartItem(theItem).update(theItem);
 		
 		double sum = 0;

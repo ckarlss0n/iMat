@@ -68,8 +68,6 @@ public class ItemInList extends BorderPane {
         
         productImage.setImage(new Image(image.toURI().toString()));
         lblPrice.setText(String.valueOf(theProduct.getPrice()) + "0 kr");
-        //productAmount.getItems().addAll(1, 2, 3, 4 ,5 ,6 ,7 ,8 ,9 ,10);
-        //productAmount.setValue(1);
         
         this.changeListner.addPropertyChangeListener(m);
 
@@ -97,6 +95,7 @@ public class ItemInList extends BorderPane {
 				System.out.println(sci.getAmount());
 				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
 			}else {
+				sci.setAmount(Integer.parseInt(txtAmount.getText()));
 				IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
 			}
 		

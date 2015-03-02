@@ -35,8 +35,8 @@ public class ProductInShoppingCartBig extends BorderPane {
         setProductName(theProduct.getName());
         
         productImage.setImage(new Image(image.toURI().toString()));
-        lblPrice.setText(item.getPrice() + "0 kr");
-        itemDesc.setText("Amount: " + item.getAmount());
+        lblPrice.setText(theProduct.getPrice() + "0 kr");
+        itemDesc.setText("Amount: " + item.getItem().getAmount() + " " + item.getItem().getProduct().getUnitSuffix());
         
         
 	}

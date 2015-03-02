@@ -82,7 +82,6 @@ public class ItemInList extends BorderPane {
 	
 	public void addToCart(ActionEvent evt){
 		IMatDataHandler.getInstance().addProduct(theProduct);
-		this.changeListner.firePropertyChange("Nytt", null, theProduct); //On�digt?
 	}
 	
 }

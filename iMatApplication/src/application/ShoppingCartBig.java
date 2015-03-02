@@ -47,25 +47,12 @@ public class ShoppingCartBig extends BorderPane {
 	}
 	
 	public void loginCartModal(ActionEvent evt){
-		modalDialog();
+		System.out.println("Open login");
 	}
-	
-	public void modalDialog(){
-		
-		Stage loginDialog = new Stage();
-        loginDialog.initModality(Modality.WINDOW_MODAL);
-        Scene loginScene = new Scene(VBoxBuilder.create()
-                .children()
-                .alignment(Pos.CENTER)	
-                .padding(new Insets(10))
-                .build());
 
-        loginDialog.setTitle("Logga in");
-        loginDialog.setScene(loginScene);
-        loginDialog.show();
-      
-  }
-	
+	public void goToRegisterCart(ActionEvent evt){
+		System.out.println("Go to register cart");
+	}
 	
 	public void add(Node node, int row){
 		gridPane.add(node, 0, row);

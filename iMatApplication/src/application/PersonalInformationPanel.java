@@ -43,8 +43,10 @@ public class PersonalInformationPanel extends ScrollPane {
 		fxmlLoader.setController(this);
 		this.mainPanel = mainPanel;
 		this.choosePayment = choosePayment;
-		System.out.println(customer.getFirstName());
+		
+		System.out.println(customer.getFirstName()); //finns inte... customer måste skickas med i konstrucktorn tror jag... -ish
 		System.out.println("asd");
+		
 		//txtfSurname.setText(customer.getFirstName());
 		/*customer.getLastName();
 		customer.getEmail();

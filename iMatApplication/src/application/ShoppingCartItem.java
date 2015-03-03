@@ -83,9 +83,7 @@ public class ShoppingCartItem extends BorderPane {
 			theItem.setAmount(theItem.getAmount()-1);
 			lblAmount.setText(String.valueOf(noDec.format(theItem.getAmount())) + theItem.getProduct().getUnitSuffix());
 			IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(theItem, false);
-		} else { //Remove the product from the shopping cart if amount is zero
-			removeFromCart();
-		}
+		} 
 	}
 	
 	public void increaseAmount(ActionEvent evt) {

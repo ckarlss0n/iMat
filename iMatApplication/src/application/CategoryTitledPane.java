@@ -15,7 +15,7 @@ public class CategoryTitledPane extends TitledPane {
 		
 		this.setText(name);
 		this.productList = productList;
-		lnxav = new List_Nx1_view(productList);
+		//lnxav = new List_Nx1_view(productList);
 	}
 	
 	public List_Nx1_view getListView(){

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.List;
 
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.fxml.FXML;
@@ -49,6 +50,13 @@ public class ShoppingCartRight extends BorderPane{
 		return borderPane;
 	}
 	
+	public void clearShoppingCart(){
+		
+		gridPane.getChildren().clear();
+		shoppingCartSum.setText("0.00");
+		s = 0;
+	}
+	
 
 	public ShoppingCartItem getShoppingCartItem(ShoppingItem i){
 		
@@ -62,13 +70,36 @@ public class ShoppingCartRight extends BorderPane{
 		return null;
 	}
 	DecimalFormat twoDec = new DecimalFormat("#.00");
-
+	
+	public void refreshCart(List<ShoppingItem> list){
+		clear();
+		for(ShoppingItem si: list){
+			addToShoppingCart(si);
+		}
+	}
+	
+	public void clear(){
+		gridPane.getChildren().clear();
+		s = 0;
+	}
 	public void setShoppingCartSum(double amount){
 		shoppingCartSum.setText(String.valueOf((twoDec.format(amount))));
 	}
 	
 	public double getShoppingCartSum(){
 		return Double.valueOf(shoppingCartSum.getText());
+	}
+
+	int s = 0;
+	public void addToShoppingCart(ShoppingItem i) {
+		//dataHandler.getShoppingCart().addProduct(p, 1);
+		ShoppingCartItem sci = new ShoppingCartItem(i);
+		
+		gridPane.setPrefHeight((s + 1) * 36);
+		gridPane.add(sci, 0, s);
+
+		s++;
+		
 	}
 
 }

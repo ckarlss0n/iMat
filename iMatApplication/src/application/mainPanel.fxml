@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="bigBorder" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="bigBorder" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" styleClass="leftBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <content>
@@ -129,7 +129,6 @@
                   <ToolBar minHeight="55.0" prefHeight="55.0" BorderPane.alignment="CENTER">
                     <items>
                       <Button fx:id="categoryBtn" mnemonicParsing="false" text="Kategori ej vald" />
-                        <Button mnemonicParsing="false" text="Te" />
                     </items>
                   </ToolBar>
                </left>

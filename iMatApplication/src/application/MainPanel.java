@@ -106,7 +106,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 							.getSource()).getItemsInCategory());
 					categoryBtn.setText(((CategoryTitledPane) mouseEvent
 							.getSource()).getText());
-					System.out.println("hi");
+					
 				}
 			};
 
@@ -125,6 +125,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			categoryAccordation.getPanes().add(ctp);
 
 		}
+		
 		
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
@@ -236,11 +237,14 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			progressIndicator.progressFinished.setProgress(0);
 		} else if(node.equals(pInf)){
 			
-			pInf.pInfSetText();
+			pInf.pInfSetText(); 
 			
 			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(-1);
 		} else if(node.equals(choosePayment)){
+			
+			choosePayment.setFinalizeText(dataHandler.getShoppingCart().getTotal());
+			
 			progressIndicator.progressPersInfo.setProgress(1);
 			progressIndicator.progressChoosePayment.setProgress(-1);
 		} else if(node.equals(checkoutPanel)){
@@ -253,7 +257,10 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	public void searchForProducts(ActionEvent evt){
 		if(!searchField.getText().isEmpty()){
 			List<Product> foundProducts = dataHandler.findProducts(searchField.getText());
+			
 			List<ShoppingItem> foundItems = new ArrayList<ShoppingItem>();
+			
+			// To avoid to create a new ShoppingItem, makes it easier in shoppingCart
 			for(Product p: foundProducts){
 				for(ShoppingItem i: productList){
 					if(p.getProductId() == i.getProduct().getProductId()){
@@ -271,31 +278,56 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		
-	}
 
+		if(evt.getPropertyName().equals("addToFavorite")){
+			System.out.println("lägger till!");
+		}
+		System.out.println("fire");
+
+	}
+	
+	
 	
 
 	@Override
 	public void shoppingCartChanged(CartEvent evt) {
+
+		if(dataHandler.getShoppingCart().getItems().size() > 0){
+			ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
+			shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
+			//shoppingCartBig.fillShoppingCart();
+			
+			double sum = 0;
+			for(Node sci: shoppingCartRight.getGridPane().getChildren()){
+				sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
+			}
+			shoppingCartRight.setShoppingCartSum(sum);
+			
+			/*
+			if(evt.isAddEvent()){
+				shoppingCartRight.addToShoppingCart(theItem);
+				//addToShoppingCart(theItem);
+				System.out.println(theItem.getAmount());
+			}*/
+			
+			
+			/*
+			shoppingCartRight.getShoppingCartItem(theItem).update(theItem);
+			
+			double sum = 0;
+			
+			for(Node sci: shoppingCartRight.getGridPane().getChildren()){
+				sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
+			}
+			
+			shoppingCartRight.setShoppingCartSum(sum);*/
+		} else{
+			shoppingCartRight.clearShoppingCart();
+		}
+		
 		System.out.println("ShoppingCartListner");
 		
-		ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
-		//System.out.println(shoppingCartItems.size());
-		if(evt.isAddEvent()){
-			addToShoppingCart(theItem);
-			System.out.println(theItem.getAmount());
-		}
 		
-		shoppingCartRight.getShoppingCartItem(theItem).update(theItem);
-		
-		double sum = 0;
-		
-		for(Node sci: shoppingCartRight.getGridPane().getChildren()){
-			sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
-		}
-		
-		shoppingCartRight.setShoppingCartSum(sum);
 	
 	}
 

@@ -78,11 +78,14 @@ public class ProductInShoppingCartBig extends BorderPane {
 	}
 	
 	public void increaseAmount(ActionEvent evt){
-		
+		theItem.setAmount(theItem.getAmount()+1);
+		update();
+		IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(theItem, false);
 	}
 	
 	public void removeProduct(ActionEvent evt){
-		
+		IMatDataHandler.getInstance().getShoppingCart().removeItem(theItem);
+		IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(theItem, false);
 	}
 	
 	

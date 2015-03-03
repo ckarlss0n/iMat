@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="140.0" maxWidth="250.0" minHeight="140.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="140.0" prefWidth="250.0" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT" type="TitledPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER_RIGHT" animated="false" contentDisplay="RIGHT" maxHeight="140.0" maxWidth="250.0" minHeight="140.0" minWidth="250.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="140.0" prefWidth="250.0" stylesheets="@application.css" text="Spaghetti, 2kg : 35 kr" textAlignment="RIGHT" type="TitledPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <BorderPane nodeOrientation="LEFT_TO_RIGHT">
+      <BorderPane nodeOrientation="LEFT_TO_RIGHT" stylesheets="@application.css">
          <top>
             <HBox fillHeight="false" BorderPane.alignment="CENTER">
                <children>
@@ -61,7 +61,7 @@
       <Font size="14.0" />
    </font>
    <graphic>
-      <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0">
+      <Button maxHeight="32.0" maxWidth="32.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" stylesheets="@application.css">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                <image>

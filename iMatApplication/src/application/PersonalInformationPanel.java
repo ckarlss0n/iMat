@@ -47,14 +47,18 @@ public class PersonalInformationPanel extends ScrollPane {
 		System.out.println(customer.getFirstName()); //finns inte... customer måste skickas med i konstrucktorn tror jag... -ish
 		System.out.println("asd");
 		
-		//txtfSurname.setText(customer.getFirstName());
-		/*customer.getLastName();
-		customer.getEmail();
-		customer.getAddress();
-		customer.getPostCode();
-		this.city = IMatDataHandler.getInstance().getCustomer().getPostAddress();
-		customer.getPhoneNumber();
-		mainPanel.changeScreen(choosePayment);	*/
+		/*
+		txtfSurname.setText(customer.getFirstName());
+		txtfLastname.setText(customer.getLastName());
+		txtfEmail.setText(customer.getEmail());
+		txtfAdress.setText(customer.getAddress());
+		txtfPostcode.setText(customer.getPostCode());
+		this.city = IMatDataHandler.getInstance().getCustomer().getPostAddress(); //hur ska denna skrivas
+		txtfPhone.setText(customer.getPhoneNumber());
+		
+		//mainPanel.changeScreen(choosePayment);	ska denna vara med
+		
+		*/
 		
 		try {
     		fxmlLoader.load();

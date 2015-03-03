@@ -11,7 +11,7 @@
 
 <fx:root maxHeight="140.0" minHeight="140.0" prefHeight="140.0" styleClass="grayBackground" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="lblProductName" text="Maträttens namn här">
                <font>
@@ -46,7 +46,7 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <right>
-      <BorderPane BorderPane.alignment="CENTER_RIGHT">
+      <BorderPane stylesheets="@application.css" BorderPane.alignment="CENTER_RIGHT">
          <bottom>
             <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <children>

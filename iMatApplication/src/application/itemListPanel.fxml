@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fitToWidth="true" hbarPolicy="NEVER" type="ScrollPane" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fitToWidth="true" hbarPolicy="NEVER" stylesheets="@application.css" type="ScrollPane" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <GridPane fx:id="gridPane" vgap="10.0">
+      <GridPane fx:id="gridPane" stylesheets="@application.css" vgap="10.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" />
         </columnConstraints>

@@ -236,7 +236,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			progressIndicator.progressFinished.setProgress(0);
 		} else if(node.equals(pInf)){
 			
-			pInf.pInfSetText();
+			pInf.pInfSetText(); 
 			
 			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(-1);

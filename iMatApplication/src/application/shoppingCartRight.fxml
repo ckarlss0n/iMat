@@ -9,7 +9,7 @@
 
 <fx:root fx:id="borderPane" maxWidth="350.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
-      <BorderPane BorderPane.alignment="CENTER">
+      <BorderPane stylesheets="@application.css" BorderPane.alignment="CENTER">
          <bottom>
             <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#goToCheckOutv" prefHeight="39.0" prefWidth="9000.0" text="Gå till kassan" BorderPane.alignment="CENTER">
                <font>
@@ -46,7 +46,7 @@
       </BorderPane>
    </bottom>
    <center>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" stylesheets="@application.css" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
             <GridPane fx:id="gridPane">
                <columnConstraints>
@@ -60,7 +60,7 @@
       </ScrollPane>
    </center>
    <top>
-      <Label alignment="CENTER" contentDisplay="RIGHT" prefWidth="9000.0" styleClass="grayGradient" text="Kundvagn" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="RIGHT" prefWidth="9000.0" styleClass="grayGradient" stylesheets="@application.css" text="Kundvagn" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>

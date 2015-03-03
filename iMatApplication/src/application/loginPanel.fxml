@@ -7,10 +7,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane prefHeight="222.0" prefWidth="458.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_RIGHT" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <children>
             <TextField promptText="E-post">
                <VBox.margin>

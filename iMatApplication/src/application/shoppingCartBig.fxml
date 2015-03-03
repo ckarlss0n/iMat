@@ -8,7 +8,7 @@
 
 <fx:root stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <ScrollPane fitToWidth="true" prefViewportHeight="561.0" prefViewportWidth="935.0">
+      <ScrollPane fitToWidth="true" prefViewportHeight="561.0" prefViewportWidth="935.0" stylesheets="@application.css">
          <content>
             <GridPane fx:id="gridPane" vgap="10.0" BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -22,7 +22,7 @@
       </ScrollPane>
    </center>
    <bottom>
-      <BorderPane BorderPane.alignment="CENTER">
+      <BorderPane stylesheets="@application.css" BorderPane.alignment="CENTER">
          <center>
             <Label text="Välj sätt att gå vidare på:" BorderPane.alignment="CENTER" />
          </center>

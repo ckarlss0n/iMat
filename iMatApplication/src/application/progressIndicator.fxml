@@ -9,7 +9,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="360.0" minWidth="230.0" prefHeight="9000.0" prefWidth="230.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane stylesheets="@application.css" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
         </columnConstraints>
@@ -80,7 +80,7 @@
       <Insets bottom="10.0" />
    </padding>
    <top>
-      <Label alignment="CENTER" contentDisplay="RIGHT" prefWidth="9000.0" styleClass="grayGradient" text="Förlopp" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="RIGHT" prefWidth="9000.0" styleClass="grayGradient" stylesheets="@application.css" text="Förlopp" BorderPane.alignment="CENTER">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                <image>

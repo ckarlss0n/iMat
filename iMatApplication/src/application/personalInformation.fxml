@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
          <bottom>
             <Button fx:id="goToPaymentBtn" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#register" text="Gå vidare" BorderPane.alignment="CENTER">
                <padding>

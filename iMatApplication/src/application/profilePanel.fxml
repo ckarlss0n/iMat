@@ -10,7 +10,7 @@
 
 <fx:root fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <BorderPane>
+      <BorderPane stylesheets="@application.css">
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <center>

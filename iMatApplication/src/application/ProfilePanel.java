@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
@@ -72,6 +73,9 @@ public class ProfilePanel extends ScrollPane{
 	@FXML
 	private Accordion historyAccordion;
 	
+	@FXML
+	private Label bonusLevelLabel;
+	
 	public ProfilePanel(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profilePanel.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -93,9 +97,12 @@ public class ProfilePanel extends ScrollPane{
     	phoneField.setText(IMatDataHandler.getInstance().getCustomer().getPhoneNumber());
     	passwordField.setText(IMatDataHandler.getInstance().getUser().getPassword());
     	
-    	progressIndicator.setProgress(0.1);
     	fillHistory();
-    	System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
+    	
+    	double userLevel = (IMatDataHandler.getInstance().getOrders().size()/100.0)%1;
+    	bonusLevelLabel.setText("Bonusnivå: " + IMatDataHandler.getInstance().getOrders().size()/100);
+    	progressIndicator.setProgress(userLevel);
+    	
 	}
 	
 	public void fillHistory(){

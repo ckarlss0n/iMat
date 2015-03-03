@@ -114,11 +114,10 @@ public class ItemInList extends BorderPane {
 			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){
 				
 				sci.setAmount(sci.getAmount() + Integer.parseInt(txtAmount.getText()));
-				System.out.println(sci.getAmount());
+				
 				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
 			}else {
 				sci.setAmount(Integer.parseInt(txtAmount.getText()));
-				System.out.println(sci.toString());
 				IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
 			}
 		

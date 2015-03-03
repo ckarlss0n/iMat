@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
@@ -11,7 +12,7 @@
    <left>
       <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblName" text="Spaghetti and stuff" textOverrun="CENTER_ELLIPSIS">
+            <Label fx:id="lblName" stylesheets="@application.css" text="Spaghetti and stuff" textOverrun="CENTER_ELLIPSIS">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

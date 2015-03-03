@@ -87,7 +87,7 @@
                                                       </GridPane>
                                                    </left>
                                                    <center>
-                                                      <Label alignment="CENTER" contentDisplay="BOTTOM" text="Bonusnivå: 1" BorderPane.alignment="CENTER">
+                                                      <Label fx:id="bonusLevelLabel" alignment="CENTER" contentDisplay="BOTTOM" text="Bonusnivå: 1" BorderPane.alignment="CENTER">
                                                          <graphic>
                                                             <ProgressIndicator fx:id="progressIndicator" prefHeight="200.0" prefWidth="200.0" progress="0.16" />
                                                          </graphic>

@@ -58,11 +58,9 @@ public class HistoryTitledPanel extends TitledPane{
 			try{
 				if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(shoppingIem)){
 					shoppingIem.setAmount(shoppingIem.getAmount()+1);
-					System.out.println(shoppingIem.getAmount());
 					IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(shoppingIem, false);
 				}else {
 					shoppingIem.setAmount(1);
-					System.out.println(shoppingIem.toString());
 					IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingIem);
 				}
 			

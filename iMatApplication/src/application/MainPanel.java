@@ -76,17 +76,17 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 		User theUser = dataHandler.getUser();
 
-		theUser.setUserName("Emil");
-		theUser.setPassword("123");
+//		theUser.setUserName("Emil");
+//		theUser.setPassword("123");
 
 		Customer theCustomer = dataHandler.getCustomer();
-		theCustomer.setFirstName("John");
-		theCustomer.setLastName("Doe");
-		theCustomer.setEmail("john.doe@example.com");
-		theCustomer.setAddress("Ringv�gen 239");
-		theCustomer.setPostCode("41280");
-		theCustomer.setPostAddress("G�teborg");
-		theCustomer.setPhoneNumber("0705326742");
+//		theCustomer.setFirstName("John");
+//		theCustomer.setLastName("Doe");
+//		theCustomer.setEmail("john.doe@example.com");
+//		theCustomer.setAddress("Ringv�gen 239");
+//		theCustomer.setPostCode("41280");
+//		theCustomer.setPostAddress("G�teborg");
+//		theCustomer.setPhoneNumber("0705326742");
 
 		pInf = new PersonalInformationPanel(this, choosePayment, theCustomer);
 		stackPane.getChildren().add(onlinePanel);
@@ -328,8 +328,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		} else{
 			shoppingCartRight.clearShoppingCart();
 		}
-		
-		System.out.println("ShoppingCartListner");
 		
 		
 	

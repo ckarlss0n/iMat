@@ -88,7 +88,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		theCustomer.setPostAddress("G�teborg");
 		theCustomer.setPhoneNumber("0705326742");
 
-		pInf = new PersonalInformationPanel(this, choosePayment, theCustomer);
+		pInf = new PersonalInformationPanel(this, choosePayment);
 		
 		stackPane.getChildren().add(onlinePanel);
 
@@ -237,13 +237,13 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			progressIndicator.progressFinished.setProgress(0);
 		} else if(node.equals(pInf)){
 			
-			pInf.pInfSetText(); 
+			//pInf.pInfSetText(); 
 			
 			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(-1);
 		} else if(node.equals(choosePayment)){
 			
-			choosePayment.setFinalizeText(dataHandler.getShoppingCart().getTotal());
+			//choosePayment.setFinalizeText(dataHandler.getShoppingCart().getTotal());
 			
 			progressIndicator.progressPersInfo.setProgress(1);
 			progressIndicator.progressChoosePayment.setProgress(-1);
@@ -278,11 +278,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-<<<<<<< Updated upstream
-		
-	}
 
-=======
 		if(evt.getPropertyName().equals("addToFavorite")){
 			System.out.println("lägger till!");
 		}
@@ -291,13 +287,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	}
 	
 	
->>>>>>> Stashed changes
-	
 
 	@Override
 	public void shoppingCartChanged(CartEvent evt) {
-<<<<<<< Updated upstream
-=======
 		
 		if(dataHandler.getShoppingCart().getItems().size() > 0){
 			ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
@@ -332,7 +324,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			shoppingCartRight.clearShoppingCart();
 		}
 		
->>>>>>> Stashed changes
 		System.out.println("ShoppingCartListner");
 		
 		

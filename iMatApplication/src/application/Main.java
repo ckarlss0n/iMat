@@ -54,8 +54,8 @@ public class Main extends Application {
 
 			stage.setX(bounds.getMinX());
 			stage.setY(bounds.getMinY());
-			stage.setWidth(bounds.getWidth()*0.75);
-			stage.setHeight(bounds.getHeight()*0.8);
+			stage.setWidth(bounds.getWidth());
+			stage.setHeight(bounds.getHeight());
 			stage.centerOnScreen();
 			
 			stage.setScene(scene);

@@ -30,7 +30,7 @@
          <center>
             <HBox alignment="CENTER" styleClass="grayGradient" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="shoppingCartSum" text="3100">
+                  <Label fx:id="shoppingCartSum" text="0.00">
                      <font>
                         <Font size="24.0" />
                      </font>

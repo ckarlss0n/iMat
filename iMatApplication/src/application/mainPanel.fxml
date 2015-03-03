@@ -48,12 +48,12 @@
                <center>
                   <Accordion fx:id="categoryAccordation" styleClass="redAccordion" stylesheets="@application.css" BorderPane.alignment="CENTER">
                     <panes>
-                      <TitledPane animated="false" stylesheets="@application.css" text="untitled 1">
+                      <TitledPane animated="false" stylesheets="@application.css" text="Favoriter">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>
                       </TitledPane>
-                      <TitledPane animated="false" text="untitled 2">
+                      <TitledPane animated="false" text="Sparade listor">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>

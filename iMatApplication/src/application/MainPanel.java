@@ -89,7 +89,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		theCustomer.setPhoneNumber("0705326742");
 
 		pInf = new PersonalInformationPanel(this, choosePayment, theCustomer);
-		
 		stackPane.getChildren().add(onlinePanel);
 
 		for (ProductCategory c : ProductCategory.values()) {
@@ -130,6 +129,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
 		dataHandler.getShoppingCart().addShoppingCartListener(this);
+		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
 	}
 
 	public void fillProductView(List<ShoppingItem> productList) {

@@ -27,6 +27,8 @@ public class HistoryTitledPanel extends TitledPane{
 	@FXML
 	private ScrollPane scrollPane;
 	
+	private Order order;
+	
 	public HistoryTitledPanel(Order order) {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("historyTitledPanel.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -37,7 +39,7 @@ public class HistoryTitledPanel extends TitledPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-    	
+    	this.order = order;
     	dateLabel.setText(order.getDate().toString());
     	List<ShoppingItem> shoppingItems = order.getItems();
     	int i = 0;
@@ -52,7 +54,22 @@ public class HistoryTitledPanel extends TitledPane{
 	}
 	
 	public void addAllProducts(ActionEvent evt){
-		System.out.println("Add all products.");
+		for(ShoppingItem shoppingIem : order.getItems()){
+			try{
+				if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(shoppingIem)){
+					shoppingIem.setAmount(shoppingIem.getAmount()+1);
+					System.out.println(shoppingIem.getAmount());
+					IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(shoppingIem, false);
+				}else {
+					shoppingIem.setAmount(1);
+					System.out.println(shoppingIem.toString());
+					IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingIem);
+				}
+			
+			} catch(IllegalArgumentException r){
+				System.out.println("Error");
+			}
+		}
 	}
 	
 	public void showDetails(ActionEvent evt){

@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,6 +24,8 @@ public class HistoryCartItem extends BorderPane{
 	 
 	 @FXML
 	 private Label lblAmount;
+	 
+	 private ShoppingItem sci;
 	
 	public HistoryCartItem(ShoppingItem shoppingItem) {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("historyCartItem.fxml"));
@@ -38,9 +41,24 @@ public class HistoryCartItem extends BorderPane{
     	lblName.setText(shoppingItem.getProduct().getName());
     	lblAmount.setText(String.valueOf(shoppingItem.getAmount()) + shoppingItem.getProduct().getUnitSuffix());
     	lblPrice.setText(String.valueOf(shoppingItem.getTotal()) + "kr");
+    	sci = shoppingItem;
 	}
 	
 	public void addToCart(ActionEvent evt){
-		System.out.println("Add to cart.");
+		try{
+			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){
+				
+				sci.setAmount(sci.getAmount()+1);
+				System.out.println(sci.getAmount());
+				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
+			}else {
+				sci.setAmount(1);
+				System.out.println(sci.toString());
+				IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
+			}
+		
+		} catch(IllegalArgumentException r){
+			System.out.println("Error");
+		}
 	}
 }

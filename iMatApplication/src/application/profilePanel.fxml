@@ -182,7 +182,11 @@
                      <content>
                         <BorderPane>
                            <center>
-                              <Accordion fx:id="historyAccordion" BorderPane.alignment="CENTER" />
+                              <ScrollPane fitToWidth="true" prefViewportHeight="535.0" prefViewportWidth="864.0">
+                                 <content>
+                                    <Accordion fx:id="historyAccordion" BorderPane.alignment="CENTER" />
+                                 </content>
+                              </ScrollPane>
                            </center>
                         </BorderPane>
                      </content>

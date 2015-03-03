@@ -143,6 +143,10 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		profilePanel = new ProfilePanel();
 		changeScreen(profilePanel);
 	}
+	
+	public ProfilePanel getProfilePanel(){
+		return profilePanel;
+	}
 
 	int s = 0;
 

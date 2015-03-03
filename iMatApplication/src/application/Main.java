@@ -3,18 +3,22 @@ package application;
 import java.util.List;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 
 
 public class Main extends Application {
@@ -28,8 +32,6 @@ public class Main extends Application {
 			
 			root.getChildren().addAll(mp);
 			Scene scene = new Scene(root);
-			
-			
 			
 			scene.widthProperty().addListener(new ChangeListener<Number>() {
 			    @Override public void changed(ObservableValue<? extends Number> observableValue, 
@@ -57,9 +59,16 @@ public class Main extends Application {
 			stage.setWidth(bounds.getWidth()*0.8);
 			stage.setHeight(bounds.getHeight()*0.8);
 			stage.centerOnScreen();
-			
+			stage.setTitle("iMat");
 			stage.setScene(scene);
 			stage.show();
+			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	            @Override
+	            public void handle(WindowEvent t) {
+	            	IMatDataHandler.getInstance().shutDown();
+	                System.exit(0);
+	            }
+	        });
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

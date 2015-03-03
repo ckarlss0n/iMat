@@ -31,7 +31,8 @@ public class ChoosePayment extends ScrollPane {
 	}
 	
 	public void finalizeBuy(ActionEvent evt){
-		IMatDataHandler.getInstance().getShoppingCart().clear();
+		IMatDataHandler.getInstance().placeOrder(true);
+		System.out.println("Placing order");
 		mainPanel.changeScreen(checkoutPanel);	
 	}
 	

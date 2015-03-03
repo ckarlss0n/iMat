@@ -8,7 +8,7 @@
 
 <fx:root animated="false" stylesheets="@application.css" type="TitledPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <BorderPane>
          <bottom>
             <BorderPane BorderPane.alignment="CENTER">
                <center>
@@ -45,14 +45,14 @@
             </BorderPane>
          </bottom>
          <center>
-            <ScrollPane fitToWidth="true" prefViewportHeight="305.0" prefViewportWidth="834.0">
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" maxHeight="490.0">
                <content>
-                  <GridPane BorderPane.alignment="CENTER">
+                  <GridPane fx:id="gridPane" maxHeight="490.0" BorderPane.alignment="CENTER">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="49.0" minHeight="49.0" prefHeight="49.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
                </content>

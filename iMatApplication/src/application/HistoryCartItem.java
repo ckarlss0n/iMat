@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ public class HistoryCartItem extends BorderPane{
 	 @FXML
 	 private Label lblAmount;
 	
-	public HistoryCartItem() {
+	public HistoryCartItem(ShoppingItem shoppingItem) {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("historyCartItem.fxml"));
 	    fxmlLoader.setRoot(this);
     	fxmlLoader.setController(this);
@@ -33,6 +34,10 @@ public class HistoryCartItem extends BorderPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }	
+    	
+    	lblName.setText(shoppingItem.getProduct().getName());
+    	lblAmount.setText(String.valueOf(shoppingItem.getAmount()) + shoppingItem.getProduct().getUnitSuffix());
+    	lblPrice.setText(String.valueOf(shoppingItem.getTotal()) + "kr");
 	}
 	
 	public void addToCart(ActionEvent evt){

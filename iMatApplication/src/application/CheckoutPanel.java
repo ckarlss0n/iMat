@@ -1,6 +1,7 @@
 package application;
 import java.io.IOException;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ public class CheckoutPanel extends ScrollPane {
 		fxmlLoader.setController(this);
 		this.mainPanel = main;
 		this.onlinePanel = onlinePanel;
+		
 		try {
     		fxmlLoader.load();
         } catch (IOException exception) {

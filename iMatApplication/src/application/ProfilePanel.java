@@ -1,8 +1,12 @@
 package application;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import sun.awt.im.InputMethodAdapter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -90,10 +94,24 @@ public class ProfilePanel extends ScrollPane{
     	passwordField.setText(IMatDataHandler.getInstance().getUser().getPassword());
     	
     	progressIndicator.setProgress(0.1);
-    	
-    	historyAccordion.getPanes().add(new HistoryTitledPanel(new HistoryCartItem()));
-    	
+    	fillHistory();
     	System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
+	}
+	
+	public void fillHistory(){
+		List<Order> orders = IMatDataHandler.getInstance().getOrders();
+		
+		Collections.sort(orders, new Comparator<Order>() {
+		    public int compare(Order o1, Order o2) {
+		        return -1*(o1.getDate().compareTo(o2.getDate())); //-1 for reverse order
+		    }
+		});
+		
+    	for(Order order : orders){
+    		if(order.getItems().size()!=0){ //Only show valid orders
+    			historyAccordion.getPanes().add(new HistoryTitledPanel(order));
+    		}
+    	}
 	}
 	
 	public void saveProfile(ActionEvent evt){ 

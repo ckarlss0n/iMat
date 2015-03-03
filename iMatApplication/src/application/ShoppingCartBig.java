@@ -46,15 +46,19 @@ public class ShoppingCartBig extends BorderPane {
 	private Button shopWithoutBtn;
 	
 	public void shopWithout(ActionEvent evt){
+		
 		mainPanel.changeScreen(pInf);
+		
 	}
 	
 	public void loginCartModal(ActionEvent evt){
 		System.out.println("Open login");
+		shopWithout(evt); // ÄNDRA EFTER ONSDAG!!
 	}
 
 	public void goToRegisterCart(ActionEvent evt){
 		System.out.println("Go to register cart");
+		shopWithout(evt); // ÄNDRA EFTER ONSDAG!!
 	}
 	
 	public void fillShoppingCart(){

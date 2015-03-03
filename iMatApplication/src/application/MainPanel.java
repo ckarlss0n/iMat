@@ -38,7 +38,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	private ShoppingCartRight shoppingCartRight;
 	private CheckoutPanel checkoutPanel = new CheckoutPanel(this, onlinePanel);
 	private ChoosePayment choosePayment = new ChoosePayment(this, checkoutPanel);
-	private PersonalInformationPanel pInf = new PersonalInformationPanel(this, choosePayment);
+	private PersonalInformationPanel pInf;
 	
 	@FXML
 	private Accordion categoryAccordation;
@@ -88,6 +88,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		theCustomer.setPostAddress("G�teborg");
 		theCustomer.setPhoneNumber("0705326742");
 
+		pInf = new PersonalInformationPanel(this, choosePayment, theCustomer);
+		
 		stackPane.getChildren().add(onlinePanel);
 
 		for (ProductCategory c : ProductCategory.values()) {
@@ -221,7 +223,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 				node.equals(choosePayment) || node.equals(checkoutPanel)) {
 			bigBorder.setRight(progressIndicator);
 			setIndicator(node);
-		} else {
+		}else {
 			bigBorder.setRight(shoppingCartRight);
 		}
 	}
@@ -233,6 +235,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			progressIndicator.progressChoosePayment.setProgress(0);
 			progressIndicator.progressFinished.setProgress(0);
 		} else if(node.equals(pInf)){
+			
+			pInf.pInfSetText();
+			
 			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(-1);
 		} else if(node.equals(choosePayment)){

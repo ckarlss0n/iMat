@@ -43,7 +43,7 @@ public class ItemInList extends BorderPane {
 	private ShoppingItem sci;
 	
 	
-	public ItemInList(Product p, MainPanel m){
+	public ItemInList(Product p){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listProductPanel.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -59,7 +59,7 @@ public class ItemInList extends BorderPane {
         sci = new ShoppingItem(p);
         changeListner = new PropertyChangeSupport(this); 
         
-        mainPanel = m;
+        //mainPanel = m;
         theProduct = p;
         
         File image = new File(IMatDataHandler.getInstance().getImageIcon(theProduct).getDescription());
@@ -67,11 +67,13 @@ public class ItemInList extends BorderPane {
         setProductName(theProduct.getName());
         
         productImage.setImage(new Image(image.toURI().toString()));
-        lblPrice.setText(String.valueOf(theProduct.getPrice()) + "0 kr");
+        lblPrice.setText(String.valueOf(twoDec.format(theProduct.getPrice()) + " kr"));
         
-        this.changeListner.addPropertyChangeListener(m);
+        //this.changeListner.addPropertyChangeListener(m);
 
 	}
+	DecimalFormat noDec = new DecimalFormat("#");
+	DecimalFormat twoDec = new DecimalFormat("#.00");
 	
 	public void setProductImage(Image img){
 		productImage.setImage(img);
@@ -82,7 +84,7 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void setPrice(double price){
-		lblPrice.setText(String.valueOf(price) + "0 kr");
+		lblPrice.setText(twoDec.format(price) + " kr");
 	}
 	
 	public TextField txtAmount;

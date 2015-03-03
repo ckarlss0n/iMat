@@ -1,7 +1,10 @@
 package application;
 
 import java.io.IOException;
+import java.util.List;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +55,16 @@ public class ShoppingCartBig extends BorderPane {
 
 	public void goToRegisterCart(ActionEvent evt){
 		System.out.println("Go to register cart");
+	}
+	
+	public void fillShoppingCart(){
+		List<ShoppingItem> shoppingCart = IMatDataHandler.getInstance().getShoppingCart().getItems();
+		int index = 0;
+		for(ShoppingItem i: shoppingCart){
+			ProductInShoppingCartBig pisc = new ProductInShoppingCartBig(i);
+			gridPane.add(pisc, 0, index);
+			index++;
+		}
 	}
 	
 	public void add(Node node, int row){

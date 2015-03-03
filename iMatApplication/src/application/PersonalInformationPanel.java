@@ -31,13 +31,14 @@ public class PersonalInformationPanel extends ScrollPane {
 	@FXML
 	private Button goToPaymentBtn;
 	String city;
-	MainPanel main;
+	MainPanel mainPanel;
 	ChoosePayment choosePayment;
-	public PersonalInformationPanel(MainPanel main, ChoosePayment choosePayment){
+	
+	public PersonalInformationPanel(MainPanel mainPanel, ChoosePayment choosePayment){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("personalInformation.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
-		this.main = main;
+		this.mainPanel = mainPanel;
 		this.choosePayment = choosePayment;
 		try {
     		fxmlLoader.load();
@@ -73,6 +74,6 @@ public class PersonalInformationPanel extends ScrollPane {
 		customer.setPostCode(txtfPostcode.getText());
 		this.city = txtfCity.getText();
 		customer.setPhoneNumber(txtfPhone.getText());
-		main.changeScreen(choosePayment);		
+		mainPanel.changeScreen(choosePayment);		
 	}
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="866.0" type="ScrollPane" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label layoutX="285.0" layoutY="21.0" text="Tack för ditt köp!">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="toStartBtn" layoutX="382.0" layoutY="187.0" mnemonicParsing="false" onAction="#backToStart" text="Tillbaka till start" />
+         </children></AnchorPane>
+  </content>
+</fx:root>

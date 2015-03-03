@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="912.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="866.0" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <top>
@@ -87,7 +87,7 @@
             </Accordion>
          </center>
          <bottom>
-            <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="9000.0" text=" Slutför köp (22 kr)" BorderPane.alignment="CENTER">
+            <Button fx:id="finalizeBtn" mnemonicParsing="false" onAction="#finalizeBuy" prefHeight="74.0" prefWidth="866.0" text=" Slutför köp (22 kr)" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="10.0" />
                </BorderPane.margin>

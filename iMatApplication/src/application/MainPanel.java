@@ -36,9 +36,10 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	private OnlinePanel onlinePanel = new OnlinePanel();
 	private ProfilePanel profilePanel;
 	private ShoppingCartRight shoppingCartRight;
-	private ChoosePayment choosePayment = new ChoosePayment();
+	private CheckoutPanel checkoutPanel = new CheckoutPanel(this, onlinePanel);
+	private ChoosePayment choosePayment = new ChoosePayment(this, checkoutPanel);
 	private PersonalInformationPanel pInf = new PersonalInformationPanel(this, choosePayment);
-
+	
 	@FXML
 	private Accordion categoryAccordation;
 	@FXML
@@ -217,7 +218,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
-		if (node.equals(shoppingCartBig) || node.equals(pInf) || node.equals(choosePayment)) {
+		if (node.equals(shoppingCartBig) || node.equals(pInf) || 
+				node.equals(choosePayment) || node.equals(checkoutPanel)) {
 			bigBorder.setRight(progressIndicator);
 		} else {
 			bigBorder.setRight(shoppingCartRight);

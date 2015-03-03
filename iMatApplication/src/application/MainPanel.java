@@ -244,10 +244,40 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		}
 	}
 
-	
+	/*
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		
+<<<<<<< Updated upstream
+=======
+		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance()
+				.getShoppingCart().getItems();
+		Product product = (Product) evt.getNewValue();
+		System.out.println(IMatDataHandler.getInstance().getShoppingCart()
+				.getTotal());
+		shoppingCartRight.setShoppingCartSum(shoppingCartRight
+				.getShoppingCartSum() + product.getPrice());
+		boolean productAlreadyInCart = false;
+		int iteration = 0;
+		int index = 0;
+		for (ShoppingItem cartItem : shoppingCartItems) {
+
+			if (product.getProductId() == cartItem.getProduct().getProductId()) {
+				productAlreadyInCart = true;
+				index = iteration;
+			}
+			iteration++;
+		}
+
+		if (!productAlreadyInCart) {
+			addToShoppingCart((Product) evt.getNewValue());
+
+		} else {
+			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight
+					.getGridPane().getChildren().get(index);
+			shoppingCartItem.increaseAmount();
+		}
+>>>>>>> Stashed changes
 
 	}
 	
@@ -278,6 +308,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		}
 		
 	}
+	*/
 	
 
 	@Override

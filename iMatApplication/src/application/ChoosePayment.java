@@ -32,4 +32,8 @@ public class ChoosePayment extends ScrollPane {
 	public void finalizeBuy(ActionEvent evt){
 		mainPanel.changeScreen(checkoutPanel);	
 	}
+	
+	public void setFinalizeText(Double sum){
+		finalizeBtn.setText("Slutför köp (" + sum + ")");
+	}
 }

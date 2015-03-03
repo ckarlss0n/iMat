@@ -87,10 +87,23 @@ public class ProfilePanel extends ScrollPane{
     	passwordField.setText(IMatDataHandler.getInstance().getUser().getPassword());
     	
     	progressIndicator.setProgress(0.1);
+    	
+    	System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
 	}
 	
-	public void saveProfile(ActionEvent evt){
+	public void saveProfile(ActionEvent evt){ //de sparas ändå.... hmmm.... Rätt säker på att denna koden är rätt, fast kan iten kolla eftersom den ej utnytjas
+    	
+    	IMatDataHandler.getInstance().getCustomer().setFirstName(firstNameField.getText());
+    	IMatDataHandler.getInstance().getCustomer().setLastName(lastNameField.getText());
+    	IMatDataHandler.getInstance().getCustomer().setEmail(emailField.getText());
+    	IMatDataHandler.getInstance().getCustomer().setAddress(addressField.getText());
+    	IMatDataHandler.getInstance().getCustomer().setPostCode(postalCodeField.getText());
+    	IMatDataHandler.getInstance().getCustomer().setPostAddress(cityField.getText());
+    	IMatDataHandler.getInstance().getCustomer().setPhoneNumber(phoneField.getText());
+    	IMatDataHandler.getInstance().getUser().setPassword(passwordField.getText());
+    	
 		System.out.println("Save profile information.");
+		System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
 	}
 	
 }

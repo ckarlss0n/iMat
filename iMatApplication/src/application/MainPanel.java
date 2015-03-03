@@ -52,8 +52,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	private Button categoryBtn;
 
 	public MainPanel() {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-				"mainPanel.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 

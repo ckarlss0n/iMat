@@ -22,7 +22,7 @@
          <children>
             <Label nodeOrientation="LEFT_TO_RIGHT" prefHeight="216.0" prefWidth="368.0" text="Överblick">
                <graphic>
-                  <ProgressIndicator minHeight="100.0" minWidth="60.0" progress="0.0" style="-fx-fill: null;">
+                  <ProgressIndicator fx:id="progressOverview" minHeight="100.0" minWidth="60.0" progress="0.0" style="-fx-fill: null;">
                      <padding>
                         <Insets right="10.0" top="20.0" />
                      </padding></ProgressIndicator>
@@ -36,7 +36,7 @@
             </Label>
             <Label prefHeight="334.0" prefWidth="574.0" text="Personuppgifter" GridPane.rowIndex="1">
                <graphic>
-                  <ProgressIndicator minHeight="100.0" minWidth="60.0" progress="0.0">
+                  <ProgressIndicator fx:id="progressPersInfo" minHeight="100.0" minWidth="60.0" progress="0.0">
                      <padding>
                         <Insets right="10.0" top="20.0" />
                      </padding></ProgressIndicator>
@@ -47,7 +47,7 @@
             </Label>
             <Label prefHeight="379.0" prefWidth="728.0" stylesheets="@application.css" text="Välj betalsätt" GridPane.rowIndex="2">
                <graphic>
-                  <ProgressIndicator minHeight="100.0" minWidth="60.0" progress="0.0">
+                  <ProgressIndicator fx:id="progressChoosePayment" minHeight="100.0" minWidth="60.0" progress="0.0">
                      <padding>
                         <Insets right="10.0" top="20.0" />
                      </padding></ProgressIndicator>
@@ -58,7 +58,7 @@
             </Label>
             <Label prefHeight="374.0" prefWidth="758.0" text="Klart!" GridPane.rowIndex="3">
                <graphic>
-                  <ProgressIndicator minHeight="100.0" minWidth="60.0" progress="0.0">
+                  <ProgressIndicator fx:id="progressFinished" minHeight="100.0" minWidth="60.0" progress="0.0">
                      <padding>
                         <Insets right="10.0" top="20.0" />
                      </padding></ProgressIndicator>

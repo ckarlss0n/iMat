@@ -34,12 +34,28 @@ public class PersonalInformationPanel extends ScrollPane {
 	MainPanel mainPanel;
 	ChoosePayment choosePayment;
 	
+	IMatDataHandler imat = IMatDataHandler.getInstance();
+	Customer customer = imat.getCustomer();
+	
 	public PersonalInformationPanel(MainPanel mainPanel, ChoosePayment choosePayment){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("personalInformation.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 		this.mainPanel = mainPanel;
 		this.choosePayment = choosePayment;
+		
+		System.out.println(customer.getFirstName()); //finns inte... customer måste skickas med i konstrucktorn tror jag... -ish
+		System.out.println("asd");
+		
+		//txtfSurname.setText(customer.getFirstName());
+		/*customer.getLastName();
+		customer.getEmail();
+		customer.getAddress();
+		customer.getPostCode();
+		this.city = IMatDataHandler.getInstance().getCustomer().getPostAddress();
+		customer.getPhoneNumber();
+		mainPanel.changeScreen(choosePayment);	*/
+		
 		try {
     		fxmlLoader.load();
     		BooleanBinding bb = new BooleanBinding() {
@@ -63,10 +79,15 @@ public class PersonalInformationPanel extends ScrollPane {
             throw new RuntimeException(exception);
         }
 	}
-	IMatDataHandler imat = IMatDataHandler.getInstance();
-	Customer customer = imat.getCustomer();
+
 	
 	public void register(ActionEvent evt){
+		
+			
+		
+		
+		//              denna kod ska användas då man itne är inloggad 
+		 
 		customer.setFirstName(txtfSurname.getText());
 		customer.setLastName(txtfLastname.getText());
 		customer.setEmail(txtfEmail.getText());
@@ -75,5 +96,6 @@ public class PersonalInformationPanel extends ScrollPane {
 		this.city = txtfCity.getText();
 		customer.setPhoneNumber(txtfPhone.getText());
 		mainPanel.changeScreen(choosePayment);		
+	
 	}
 }

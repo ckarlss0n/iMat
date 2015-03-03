@@ -51,7 +51,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	@FXML
 	private Button categoryBtn;
 
-	public MainPanel() {
+	public MainPanel() { // h�r kommer det beh�vas en if sats som kollar fiall man �r inloggad och g�r checkout, profil och andra panels baserat p� den if satsen! ifall man �ven �r i inte inloggad delen ska man kunna ta sig till inloggad delen.
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -100,11 +100,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 				@Override
 				public void handle(MouseEvent mouseEvent) {
 
-					fillProductView(((CategoryTitledPane) mouseEvent.getSource()));
+					fillProductView(((CategoryTitledPane) mouseEvent
+							.getSource()).getItemsInCategory());
 					categoryBtn.setText(((CategoryTitledPane) mouseEvent
 							.getSource()).getText());
 					System.out.println("hi");
-					
 				}
 			};
 
@@ -129,8 +129,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		dataHandler.getShoppingCart().addShoppingCartListener(this);
 	}
 
-	public void fillProductView(CategoryTitledPane ctp) {
-		List_Nx1_view l = ctp.getListView();
+	public void fillProductView(List<ShoppingItem> productList) {
+		List_Nx1_view l = new List_Nx1_view(productList);
 		changeScreen(l);
 	}
 
@@ -157,11 +157,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
-			return "Bär";
+			return "B�r";
 		case "BREAD":
-			return "Bröd";
+			return "Br�d";
 		case "POD":
-			return "Baljväxter";
+			return "Baljv�xter";
 		case "CITRUS_FRUIT":
 			return "Citrus frukter";
 		case "HOT_DRINKS":
@@ -175,17 +175,17 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "VEGETABLE_FRUIT":
 			return "Grönsaksfrukt";
 		case "CABBAGE":
-			return "Kål";
+			return "K�l";
 		case "MEAT":
-			return "Kött";
+			return "K�tt";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "Mjöl, socker, salt";
+			return "Mj�l, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "Nötter och frön";
+			return "N�tter och fr�n";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -197,7 +197,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Örter";
+			return "�rter";
 		}
 		return c.toString();
 	}
@@ -208,6 +208,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		shoppingCartBig.fillShoppingCart();
 		changeScreen(shoppingCartBig);
 	}
+
 
 	public void goToHome(ActionEvent evt) {
 		changeScreen(onlinePanel);
@@ -227,7 +228,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	//Bug if found product already in shoppingcart. Shows duplicates in list.
 	public void searchForProducts(ActionEvent evt){
 		if(!searchField.getText().isEmpty()){
-			
 			List<Product> foundProducts = dataHandler.findProducts(searchField.getText());
 			List<ShoppingItem> foundItems = new ArrayList<ShoppingItem>();
 			for(Product p: foundProducts){
@@ -239,6 +239,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 				}
 			}
 			List_Nx1_view productView = new List_Nx1_view(foundItems);
+
 			changeScreen(productView);
 		}
 	}

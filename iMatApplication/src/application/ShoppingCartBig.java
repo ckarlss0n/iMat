@@ -23,13 +23,13 @@ import javafx.stage.Stage;
 public class ShoppingCartBig extends BorderPane {
 	
 	PersonalInformationPanel pInf;
-	MainPanel main;
+	MainPanel mainPanel;
 	
-	public ShoppingCartBig(MainPanel main, PersonalInformationPanel pInf){
+	public ShoppingCartBig(MainPanel mainPanel, PersonalInformationPanel pInf){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("shoppingCartBig.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-        this.main = main;
+        this.mainPanel = mainPanel;
         this.pInf = pInf;
 
         try {
@@ -46,7 +46,7 @@ public class ShoppingCartBig extends BorderPane {
 	private Button shopWithoutBtn;
 	
 	public void shopWithout(ActionEvent evt){
-		main.changeScreen(pInf);
+		mainPanel.changeScreen(pInf);
 	}
 	
 	public void loginCartModal(ActionEvent evt){

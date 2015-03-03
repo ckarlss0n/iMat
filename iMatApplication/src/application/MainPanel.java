@@ -220,9 +220,28 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		if (node.equals(shoppingCartBig) || node.equals(pInf) || 
 				node.equals(choosePayment) || node.equals(checkoutPanel)) {
 			bigBorder.setRight(progressIndicator);
+			setIndicator(node);
 		} else {
 			bigBorder.setRight(shoppingCartRight);
 		}
+	}
+	
+	public void setIndicator(Node node){
+		if(node.equals(shoppingCartBig)){
+			progressIndicator.progressOverview.setProgress(-1);
+			progressIndicator.progressPersInfo.setProgress(0);
+			progressIndicator.progressChoosePayment.setProgress(0);
+			progressIndicator.progressFinished.setProgress(0);
+		} else if(node.equals(pInf)){
+			progressIndicator.progressOverview.setProgress(1);
+			progressIndicator.progressPersInfo.setProgress(-1);
+		} else if(node.equals(choosePayment)){
+			progressIndicator.progressPersInfo.setProgress(1);
+			progressIndicator.progressChoosePayment.setProgress(-1);
+		} else if(node.equals(checkoutPanel)){
+			progressIndicator.progressChoosePayment.setProgress(1);
+			progressIndicator.progressFinished.setProgress(1);
+		} 
 	}
 
 	//Bug if found product already in shoppingcart. Shows duplicates in list.

@@ -278,11 +278,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-<<<<<<< Updated upstream
-		
-	}
 
-=======
 		if(evt.getPropertyName().equals("addToFavorite")){
 			System.out.println("lägger till!");
 		}
@@ -291,14 +287,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	}
 	
 	
->>>>>>> Stashed changes
 	
 
 	@Override
 	public void shoppingCartChanged(CartEvent evt) {
-<<<<<<< Updated upstream
-=======
-		
+
 		if(dataHandler.getShoppingCart().getItems().size() > 0){
 			ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
 			shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
@@ -332,7 +325,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			shoppingCartRight.clearShoppingCart();
 		}
 		
->>>>>>> Stashed changes
 		System.out.println("ShoppingCartListner");
 		
 		

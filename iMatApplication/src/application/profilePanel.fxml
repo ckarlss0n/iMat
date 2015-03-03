@@ -182,25 +182,7 @@
                      <content>
                         <BorderPane>
                            <center>
-                              <Accordion fx:id="historyAccordion" BorderPane.alignment="CENTER">
-                                <panes>
-                                  <TitledPane animated="false" text="2015-02-27 (248 kr)">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                    </content>
-                                  </TitledPane>
-                                  <TitledPane animated="false" text="2015-01-13 (693 kr)">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                    </content>
-                                  </TitledPane>
-                                  <TitledPane animated="false" text="2014-12-22 (534 kr)">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                    </content>
-                                  </TitledPane>
-                                </panes>
-                              </Accordion>
+                              <Accordion fx:id="historyAccordion" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                      </content>

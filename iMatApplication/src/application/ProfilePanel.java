@@ -65,6 +65,9 @@ public class ProfilePanel extends ScrollPane{
 	@FXML
 	private ProgressIndicator progressIndicator;
 	
+	@FXML
+	private Accordion historyAccordion;
+	
 	public ProfilePanel(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profilePanel.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -87,6 +90,8 @@ public class ProfilePanel extends ScrollPane{
     	passwordField.setText(IMatDataHandler.getInstance().getUser().getPassword());
     	
     	progressIndicator.setProgress(0.1);
+    	
+    	historyAccordion.getPanes().add(new HistoryTitledPanel(new HistoryCartItem()));
     	
     	System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
 	}

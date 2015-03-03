@@ -29,7 +29,7 @@ import javafx.scene.layout.StackPane;
 
 public class MainPanel extends BorderPane implements PropertyChangeListener, ShoppingCartListener {
 
-	private List<Product> productList;
+	private List<ShoppingItem> productList;
 	private IMatDataHandler dataHandler;
 	private ShoppingCartBig shoppingCartBig;
 	private ProcessIndicator progressIndicator = new ProcessIndicator();
@@ -63,9 +63,16 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		}
 		
 		//dataHandler.getShoppingCart().
-
+		productList = new ArrayList<ShoppingItem>();
+		
 		dataHandler = IMatDataHandler.getInstance();
-		productList = dataHandler.getProducts();
+		System.out.println(dataHandler.getProducts().size());
+		for(Product p: dataHandler.getProducts()){
+			productList.add(new ShoppingItem(p));
+		}
+		//productList = dataHandler.getProducts();
+		
+		//gör till shoppingitems
 
 		User theUser = dataHandler.getUser();
 
@@ -103,10 +110,10 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 			List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
 			
-			for (Product p : productList) {
+			for (ShoppingItem p : productList) {
 
-				if (p.getCategory() == c) {
-					theCategoryList.add(new ShoppingItem(p));
+				if (p.getProduct().getCategory() == c) {
+					theCategoryList.add(p);
 				}
 			}
 			CategoryTitledPane ctp = new CategoryTitledPane(name,
@@ -166,7 +173,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Gr�nsaksfrukt";
+			return "Grönsaksfrukt";
 		case "CABBAGE":
 			return "Kål";
 		case "MEAT":
@@ -194,21 +201,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		}
 		return c.toString();
 	}
-	/*
-	public void fillShoppingCart(ShoppingCartBig scb) {
-		for (int k = 0; k < shoppingCartRight.getGridPane().getChildren()
-				.size(); k++) {
-			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig(
-					(ShoppingCartItem) shoppingCartRight.getGridPane()
-							.getChildren().get(k));
-			scb.add(piscb, k);
-		}
-	}*/
+	
 
 	public void goToCheckout() {
 		shoppingCartBig = new ShoppingCartBig(this, pInf);
 		shoppingCartBig.fillShoppingCart();
-		//fillShoppingCart(shoppingCartBig);
 		changeScreen(shoppingCartBig);
 	}
 
@@ -234,8 +231,12 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			List<Product> foundProducts = dataHandler.findProducts(searchField.getText());
 			List<ShoppingItem> foundItems = new ArrayList<ShoppingItem>();
 			for(Product p: foundProducts){
-				foundItems.add(new ShoppingItem(p));
-				
+				for(ShoppingItem i: productList){
+					if(p.getProductId() == i.getProduct().getProductId()){
+						System.out.println("Hej");
+						foundItems.add(i);
+					}
+				}
 			}
 			List_Nx1_view productView = new List_Nx1_view(foundItems);
 			changeScreen(productView);
@@ -245,34 +246,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		/*
-		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance()
-				.getShoppingCart().getItems();
-		Product product = (Product) evt.getNewValue();
-		System.out.println(IMatDataHandler.getInstance().getShoppingCart()
-				.getTotal());
-		shoppingCartRight.setShoppingCartSum(shoppingCartRight
-				.getShoppingCartSum() + product.getPrice());
-		boolean productAlreadyInCart = false;
-		int iteration = 0;
-		int index = 0;
-		for (ShoppingItem cartItem : shoppingCartItems) {
-
-			if (product.getProductId() == cartItem.getProduct().getProductId()) {
-				productAlreadyInCart = true;
-				index = iteration;
-			}
-			iteration++;
-		}
-
-		if (!productAlreadyInCart) {
-			addToShoppingCart((Product) evt.getNewValue());
-
-		} else {
-			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight
-					.getGridPane().getChildren().get(index);
-			shoppingCartItem.increaseAmount();
-		}*/
+		
 
 	}
 	

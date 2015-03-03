@@ -13,6 +13,7 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
@@ -20,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 public class ItemInList extends BorderPane {
@@ -35,6 +37,9 @@ public class ItemInList extends BorderPane {
 	@FXML
 	private ComboBox<Integer> productAmount;
 	
+	@FXML
+	private ImageView heartImage;
+	
 	private Product theProduct;
 	
 	private PropertyChangeSupport changeListner;
@@ -43,7 +48,7 @@ public class ItemInList extends BorderPane {
 	private ShoppingItem sci;
 	
 	
-	public ItemInList(Product p){
+	public ItemInList(ShoppingItem sci){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listProductPanel.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -56,11 +61,11 @@ public class ItemInList extends BorderPane {
         
         
        
-        sci = new ShoppingItem(p);
+        this.sci = sci;
         changeListner = new PropertyChangeSupport(this); 
         
         //mainPanel = m;
-        theProduct = p;
+        theProduct = sci.getProduct();
         
         File image = new File(IMatDataHandler.getInstance().getImageIcon(theProduct).getDescription());
  
@@ -70,8 +75,14 @@ public class ItemInList extends BorderPane {
         lblPrice.setText(String.valueOf(twoDec.format(theProduct.getPrice()) + " kr"));
         
         //this.changeListner.addPropertyChangeListener(m);
+        
+        //lblPrice.setOnMouseClicked(mousehandler);
+        
+       // heartImage.setOnMouseClicked(mousehandler);
+        
 
 	}
+	
 	DecimalFormat noDec = new DecimalFormat("#");
 	DecimalFormat twoDec = new DecimalFormat("#.00");
 	
@@ -88,6 +99,14 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public TextField txtAmount;
+	
+	public void addToFavorite(MouseEvent evt) {
+		//IMatDataHandler.getInstance().addFavorite(theProduct);
+		//System.out.println(IMatDataHandler.getInstance().favorites().size());
+		changeListner.firePropertyChange("addToFavorite", theProduct, null);
+	}
+	
+	
 	
 	public void addToCart(ActionEvent evt){
 		try{

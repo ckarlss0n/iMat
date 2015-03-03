@@ -31,11 +31,10 @@ public class List_Nx1_view extends ScrollPane{
 	       
 	        setHeight(theItemList.size() * 140);
 	        
-	        for(int i = 0; i < theItemList.size(); i++){
-	        	
+	        for(int i = 0; i < theItemList.size(); i++){ 	
 	        	Product p = theItemList.get(i).getProduct();
 	        	//System.out.println(theProductList.get(i).toString());
-	        	ItemInList itp = new ItemInList(p);
+	        	ItemInList itp = new ItemInList(theItemList.get(i));
 	        	add(itp, i);
 	        }
 	}

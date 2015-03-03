@@ -45,7 +45,7 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <right>
-      <BorderPane BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="100.0" prefWidth="194.0" BorderPane.alignment="CENTER">
          <bottom>
             <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <children>
@@ -62,22 +62,25 @@
             </HBox>
          </bottom>
          <center>
-            <Label fx:id="lblPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="489 kr " textAlignment="RIGHT" BorderPane.alignment="CENTER_RIGHT">
+            <Label fx:id="lblPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="44.0" prefWidth="135.0" text="489 kr " textAlignment="RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <font>
                   <Font size="36.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../icon32/heart.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
             </Label>
          </center>
+         <right>
+            <ImageView fx:id="heartImage" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../icon32/heart.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets left="3.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </right>
       </BorderPane>
    </right>
 </fx:root>

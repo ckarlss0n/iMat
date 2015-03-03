@@ -7,13 +7,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="36.0" maxWidth="350.0" minHeight="36.0" prefHeight="36.0" styleClass="grayGradient" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="36.0" minHeight="36.0" prefHeight="36.0" styleClass="grayGradient" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblName" maxWidth="170.0" text="Spaghetti and stuff">
+            <Label fx:id="lblName" maxWidth="140.0" text="Spaghetti and stuff" textOverrun="CENTER_ELLIPSIS">
                <HBox.margin>
-                  <Insets left="10.0" />
+                  <Insets />
                </HBox.margin>
                <font>
                   <Font size="16.0" />
@@ -30,7 +30,7 @@
                   <Font size="16.0" />
                </font>
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets left="5.0" right="5.0" />
                </HBox.margin>
             </Label>
             <Label fx:id="lblPrice" text="35kr">
@@ -38,10 +38,10 @@
                   <Font name="System Bold" size="16.0" />
                </font>
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets right="5.0" />
                </HBox.margin>
             </Label>
-            <Button fx:id="btnDecrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" onAction="#decreaseAmount" prefHeight="26.0" prefWidth="26.0">
+            <Button fx:id="btnDecrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="26.0" mnemonicParsing="false" onAction="#decreaseAmount" prefHeight="26.0" prefWidth="26.0">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,7 +53,7 @@
                   <Insets right="1.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnIncrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" onAction="#increaseAmount" prefHeight="26.0" prefWidth="26.0">
+            <Button fx:id="btnIncrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="26.0" mnemonicParsing="false" onAction="#increaseAmount" prefHeight="26.0" prefWidth="26.0">
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -65,7 +65,7 @@
                   <Insets right="1.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="btnRemove" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="0.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="26.0" prefWidth="26.0">
+            <Button fx:id="btnRemove" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="26.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="26.0" prefWidth="26.0">
                <graphic>
                   <ImageView fx:id="btnDelete" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>

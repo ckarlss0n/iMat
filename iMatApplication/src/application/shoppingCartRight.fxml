@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fx:id="borderPane" maxWidth="350.0" prefWidth="350.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="borderPane" maxWidth="350.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <BorderPane BorderPane.alignment="CENTER">
          <bottom>
@@ -46,14 +46,14 @@
       </BorderPane>
    </bottom>
    <center>
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
             <GridPane fx:id="gridPane">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints maxHeight="36.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
          </content>

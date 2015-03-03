@@ -59,11 +59,11 @@ public class ShoppingCartItem extends BorderPane {
 	}
 
 	public void setPrice(double price) {
-		lblPrice.setText(String.valueOf(twoDec.format(price) + " kr"));
+		lblPrice.setText(String.valueOf(twoDec.format(price) + "kr"));
 	}
 	
 	public void setAmount(double amount){
-		lblAmount.setText(String.valueOf(noDec.format(amount)) + " " + theProduct.getUnitSuffix());
+		lblAmount.setText(String.valueOf(noDec.format(amount)) + theProduct.getUnitSuffix());
 	}
 
 	public Product getProduct() {
@@ -81,7 +81,7 @@ public class ShoppingCartItem extends BorderPane {
 	public void decreaseAmount(){
 		if(theItem.getAmount()-1>0){
 			theItem.setAmount(theItem.getAmount()-1);
-			lblAmount.setText(String.valueOf(noDec.format(theItem.getAmount())) + " " + theItem.getProduct().getUnitSuffix());
+			lblAmount.setText(String.valueOf(noDec.format(theItem.getAmount())) + theItem.getProduct().getUnitSuffix());
 			IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(theItem, false);
 		} else { //Remove the product from the shopping cart if amount is zero
 			removeFromCart();
@@ -90,7 +90,7 @@ public class ShoppingCartItem extends BorderPane {
 	
 	public void increaseAmount(ActionEvent evt) {
 		theItem.setAmount(theItem.getAmount()+1);
-		lblAmount.setText(String.valueOf(noDec.format(theItem.getAmount())) + " " + theItem.getProduct().getUnitSuffix());
+		lblAmount.setText(String.valueOf(noDec.format(theItem.getAmount())) + theItem.getProduct().getUnitSuffix());
 		IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(theItem, false);
 	}
 

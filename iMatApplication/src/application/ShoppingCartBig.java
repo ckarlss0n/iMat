@@ -62,13 +62,18 @@ public class ShoppingCartBig extends BorderPane {
 	}
 	
 	public void fillShoppingCart(){
+		gridPane.getChildren().clear();
 		List<ShoppingItem> shoppingCart = IMatDataHandler.getInstance().getShoppingCart().getItems();
-		int index = 0;
-		for(ShoppingItem i: shoppingCart){
-			ProductInShoppingCartBig pisc = new ProductInShoppingCartBig(i);
-			gridPane.add(pisc, 0, index);
-			index++;
+		
+		if(shoppingCart.size() > 0){
+			int index = 0;
+			for(ShoppingItem i: shoppingCart){
+				ProductInShoppingCartBig pisc = new ProductInShoppingCartBig(i);
+				gridPane.add(pisc, 0, index);
+				index++;
+			}
 		}
+		
 	}
 	
 	public void add(Node node, int row){

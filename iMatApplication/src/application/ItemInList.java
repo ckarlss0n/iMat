@@ -64,6 +64,7 @@ public class ItemInList extends BorderPane {
         this.sci = sci;
         changeListner = new PropertyChangeSupport(this); 
         
+        
         //mainPanel = m;
         theProduct = sci.getProduct();
         
@@ -117,6 +118,7 @@ public class ItemInList extends BorderPane {
 				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
 			}else {
 				sci.setAmount(Integer.parseInt(txtAmount.getText()));
+				System.out.println(sci.toString());
 				IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
 			}
 		

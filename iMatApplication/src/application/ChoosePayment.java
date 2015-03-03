@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,7 @@ public class ChoosePayment extends ScrollPane {
 	}
 	
 	public void finalizeBuy(ActionEvent evt){
+		IMatDataHandler.getInstance().getShoppingCart().clear();
 		mainPanel.changeScreen(checkoutPanel);	
 	}
 	

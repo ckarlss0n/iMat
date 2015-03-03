@@ -263,71 +263,12 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		}
 	}
 
-	/*
+	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		
-<<<<<<< Updated upstream
-=======
-		List<ShoppingItem> shoppingCartItems = IMatDataHandler.getInstance()
-				.getShoppingCart().getItems();
-		Product product = (Product) evt.getNewValue();
-		System.out.println(IMatDataHandler.getInstance().getShoppingCart()
-				.getTotal());
-		shoppingCartRight.setShoppingCartSum(shoppingCartRight
-				.getShoppingCartSum() + product.getPrice());
-		boolean productAlreadyInCart = false;
-		int iteration = 0;
-		int index = 0;
-		for (ShoppingItem cartItem : shoppingCartItems) {
-
-			if (product.getProductId() == cartItem.getProduct().getProductId()) {
-				productAlreadyInCart = true;
-				index = iteration;
-			}
-			iteration++;
-		}
-
-		if (!productAlreadyInCart) {
-			addToShoppingCart((Product) evt.getNewValue());
-
-		} else {
-			ShoppingCartItem shoppingCartItem = (ShoppingCartItem) shoppingCartRight
-					.getGridPane().getChildren().get(index);
-			shoppingCartItem.increaseAmount();
-		}
->>>>>>> Stashed changes
-
 	}
-	
-	int k = 0;
-	public void updateShoppingCart(ShoppingItem i){
-		boolean alreadyInCart = false;
-		
-		if(shoppingCartRight.getGridPane().getChildren().size() < 1){
-			ShoppingCartItem sci = new ShoppingCartItem(i);
-			
-			shoppingCartRight.getGridPane().setPrefHeight((k + 1) * 36);
-			shoppingCartRight.getGridPane().add(sci, 0, k);
-			k++;
-		} else{
-			for(Node sci: shoppingCartRight.getGridPane().getChildren()){
-				//((ShoppingCartItem)sci);
-				System.out.println("loop");
-				
-				if(((ShoppingCartItem)sci).getItem().getProduct().getProductId() == i.getProduct().getProductId()){
-					((ShoppingCartItem)sci).setAmount(i.getAmount());
-					System.out.println(i.getAmount());
-					System.out.println(dataHandler.getShoppingCart().getItems().size());
-					System.out.println("Update");
-				}
-			}
-			
-			
-		}
-		
-	}
-	*/
+
 	
 
 	@Override
@@ -352,4 +293,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		shoppingCartRight.setShoppingCartSum(sum);
 	
 	}
+
 }
+

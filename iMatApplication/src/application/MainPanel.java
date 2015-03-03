@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -116,7 +115,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			categoryAccordation.getPanes().add(ctp);
 
 		}
-		profilePanel = new ProfilePanel();
+		
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
 		dataHandler.getShoppingCart().addShoppingCartListener(this);
@@ -130,6 +129,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	int i = 0;
 
 	public void goToMyProfile(ActionEvent evt) {
+		profilePanel = new ProfilePanel();
 		changeScreen(profilePanel);
 	}
 
@@ -138,11 +138,12 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	public void addToShoppingCart(ShoppingItem i) {
 		//dataHandler.getShoppingCart().addProduct(p, 1);
 		ShoppingCartItem sci = new ShoppingCartItem(i);
-
+		
 		shoppingCartRight.getGridPane().setPrefHeight((s + 1) * 36);
 		shoppingCartRight.getGridPane().add(sci, 0, s);
 
 		s++;
+		
 	}
 
 	public String getCategoryName(ProductCategory c){

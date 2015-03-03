@@ -50,10 +50,19 @@
          <bottom>
             <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <children>
-                  <Button fx:id="btnDecrease" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" text="-" />
-                  <TextField prefHeight="39.0" prefWidth="39.0" />
-                  <Button fx:id="btnAdd" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0" text="+" />
-                  <Button fx:id="btnRemove" mnemonicParsing="false" prefHeight="39.0" prefWidth="39.0">
+                  <Button fx:id="btnDecrease" mnemonicParsing="false" onAction="#decreaseAmount" prefHeight="39.0" prefWidth="39.0" text="-">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin></Button>
+                  <TextField fx:id="txtfAmount" prefHeight="39.0" prefWidth="39.0" text="0">
+                     <font>
+                        <Font size="19.0" />
+                     </font></TextField>
+                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#increaseAmount" prefHeight="39.0" prefWidth="39.0" text="+">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removeProduct" prefHeight="39.0" prefWidth="39.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -69,7 +78,7 @@
             </HBox>
          </bottom>
          <center>
-            <Label fx:id="lblPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="489 kr " textAlignment="RIGHT" BorderPane.alignment="CENTER_RIGHT">
+            <Label fx:id="lblPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="489 kr " textAlignment="RIGHT" BorderPane.alignment="CENTER">
                <font>
                   <Font size="36.0" />
                </font>
@@ -85,6 +94,13 @@
                </BorderPane.margin>
             </Label>
          </center>
+         <top>
+            <Label fx:id="labelAmountAndPrice" text="amount * price" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="60.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
       </BorderPane>
    </right>
 </fx:root>

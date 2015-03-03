@@ -51,7 +51,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	@FXML
 	private Button categoryBtn;
 
-	public MainPanel() {
+	public MainPanel() { // här kommer det behövas en if sats som kollar fiall man är inloggad och gör checkout, profil och andra panels baserat på den if satsen! ifall man även är i inte inloggad delen ska man kunna ta sig till inloggad delen.
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -196,16 +196,13 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	}
 	/*
 	public void fillShoppingCart(ShoppingCartBig scb) {
-		for (int k = 0; k < shoppingCartRight.getGridPane().getChildren()
-				.size(); k++) {
-			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig(
-					(ShoppingCartItem) shoppingCartRight.getGridPane()
-							.getChildren().get(k));
+		for (int k = 0; k < shoppingCartRight.getGridPane().getChildren().size(); k++) {
+			ProductInShoppingCartBig piscb = new ProductInShoppingCartBig((ShoppingCartItem) shoppingCartRight.getGridPane().getChildren().get(k));
 			scb.add(piscb, k);
 		}
 	}*/
 
-	public void goToCheckout() {
+	public void goToCheckout() { 
 		shoppingCartBig = new ShoppingCartBig(this, pInf);
 		shoppingCartBig.fillShoppingCart();
 		//fillShoppingCart(shoppingCartBig);
@@ -226,7 +223,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			bigBorder.setRight(shoppingCartRight);
 		}
 	}
-
+	
 	//Bug if found product already in shoppingcart. Shows duplicates in list.
 	public void searchForProducts(ActionEvent evt){
 		if(!searchField.getText().isEmpty()){
@@ -275,7 +272,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		}*/
 
 	}
-	
+	/*
 	int k = 0;
 	public void updateShoppingCart(ShoppingItem i){
 		boolean alreadyInCart = false;
@@ -300,9 +297,9 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			}
 			
 			
-		}
-		
-	}
+		} 
+	}*/
+
 	
 
 	@Override

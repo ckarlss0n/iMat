@@ -91,7 +91,7 @@ public class ProfilePanel extends ScrollPane{
     	System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
 	}
 	
-	public void saveProfile(ActionEvent evt){ //de sparas ändå.... hmmm.... Rätt säker på att denna koden är rätt, fast kan iten kolla eftersom den ej utnytjas
+	public void saveProfile(ActionEvent evt){ 
     	
     	IMatDataHandler.getInstance().getCustomer().setFirstName(firstNameField.getText());
     	IMatDataHandler.getInstance().getCustomer().setLastName(lastNameField.getText());

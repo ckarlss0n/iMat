@@ -13,7 +13,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBoxBuilder;
@@ -45,8 +44,6 @@ public class ShoppingCartBig extends BorderPane {
 	private Button btnLoginCart;
 	@FXML
 	private Button shopWithoutBtn;
-	@FXML
-	private Label bigCartSum;
 	
 	public void shopWithout(ActionEvent evt){
 		

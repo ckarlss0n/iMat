@@ -100,13 +100,14 @@ public class ProfilePanel extends ScrollPane{
     	fillHistory();
     	
     	double userLevel = (IMatDataHandler.getInstance().getOrders().size()/100.0)%1;
-    	bonusLevelLabel.setText("Bonusnivå: " + IMatDataHandler.getInstance().getOrders().size()/100);
+    	bonusLevelLabel.setText("Bonusnivï¿½: " + IMatDataHandler.getInstance().getOrders().size()/100);
     	progressIndicator.setProgress(userLevel);
     	
 	}
 	
 	public void fillHistory(){
 		List<Order> orders = IMatDataHandler.getInstance().getOrders();
+		
 		
 		Collections.sort(orders, new Comparator<Order>() {
 		    public int compare(Order o1, Order o2) {

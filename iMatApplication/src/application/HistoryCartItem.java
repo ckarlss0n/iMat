@@ -41,18 +41,27 @@ public class HistoryCartItem extends BorderPane{
     	lblName.setText(shoppingItem.getProduct().getName());
     	lblAmount.setText(String.valueOf(shoppingItem.getAmount()) + shoppingItem.getProduct().getUnitSuffix());
     	lblPrice.setText(String.valueOf(shoppingItem.getTotal()) + "kr");
-    	sci = shoppingItem;
+    	double amount = shoppingItem.getAmount();
+    	sci = new ShoppingItem(shoppingItem.getProduct());
+    	sci.setAmount(amount);
 	}
 	
 	public void addToCart(ActionEvent evt){
 		try{
+			for(ShoppingItem i: IMatDataHandler.getInstance().getShoppingCart().getItems()){
+				if(i.getProduct().getProductId() == sci.getProduct().getProductId()){
+					i.setAmount(sci.getAmount());
+					sci = i;
+				}
+			}
+			
 			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){
 				
 				sci.setAmount(sci.getAmount()+1);
 				System.out.println(sci.getAmount());
 				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
 			}else {
-				sci.setAmount(1);
+				sci.setAmount(sci.getAmount());
 				System.out.println(sci.toString());
 				IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
 			}

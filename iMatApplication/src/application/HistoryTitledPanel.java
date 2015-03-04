@@ -29,6 +29,7 @@ public class HistoryTitledPanel extends TitledPane{
 	
 	private Order order;
 	
+	private List<ShoppingItem> shoppingItems;
 	public HistoryTitledPanel(Order order) {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("historyTitledPanel.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -41,27 +42,39 @@ public class HistoryTitledPanel extends TitledPane{
         }
     	this.order = order;
     	dateLabel.setText(order.getDate().toString());
-    	List<ShoppingItem> shoppingItems = order.getItems();
+    	shoppingItems = order.getItems();
     	int i = 0;
     	int sum = 0;
     	for(ShoppingItem shoppingItem : shoppingItems){
-    		gridPane.add(new HistoryCartItem(shoppingItem), 0, i);
+    		double amount = shoppingItem.getAmount();
+    		ShoppingItem si = new ShoppingItem(shoppingItem.getProduct());
+    		si.setAmount(amount);
+    		gridPane.add(new HistoryCartItem(si), 0, i);
     		i++;
-    		sum += shoppingItem.getTotal();
+    		sum += si.getTotal();
     	}
     	sumLabel.setText(Integer.toString(sum));
     	smallSumLabel.setText(Integer.toString(sum));
 	}
 	
 	public void addAllProducts(ActionEvent evt){
-		for(ShoppingItem shoppingIem : order.getItems()){
+		for(ShoppingItem shoppingItem : shoppingItems){
+			ShoppingItem sci = new ShoppingItem(shoppingItem.getProduct());
 			try{
-				if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(shoppingIem)){
-					shoppingIem.setAmount(shoppingIem.getAmount()+1);
-					IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(shoppingIem, false);
+				
+				for(ShoppingItem i: IMatDataHandler.getInstance().getShoppingCart().getItems()){
+					if(i.getProduct().getProductId() == sci.getProduct().getProductId()){
+						i.setAmount(sci.getAmount());
+						sci = i;
+					}
+				}
+				
+				if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){
+					sci.setAmount(sci.getAmount()+1);
+					IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
 				}else {
-					shoppingIem.setAmount(1);
-					IMatDataHandler.getInstance().getShoppingCart().addItem(shoppingIem);
+					sci.setAmount(sci.getAmount());
+					IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
 				}
 			
 			} catch(IllegalArgumentException r){

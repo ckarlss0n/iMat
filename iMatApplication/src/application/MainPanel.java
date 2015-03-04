@@ -65,11 +65,12 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			throw new RuntimeException(exception);
 		}
 		
+		
 		//dataHandler.getShoppingCart().
 		productList = new ArrayList<ShoppingItem>();
 		
 		dataHandler = IMatDataHandler.getInstance();
-		System.out.println(dataHandler.getProducts().size());
+		
 		for(Product p: dataHandler.getProducts()){
 			productList.add(new ShoppingItem(p));
 		}
@@ -163,6 +164,24 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 		s++;
 		
+	}
+	
+	public void goToFavorites(MouseEvent evt){
+		
+		List<ShoppingItem> theList = new ArrayList<ShoppingItem>();
+		
+		for(Product p: dataHandler.favorites()){
+			ShoppingItem sci = new ShoppingItem(p);
+			
+			for(ShoppingItem i: productList){
+				if(i.getProduct().getProductId() == sci.getProduct().getProductId()){
+					sci = i;
+					theList.add(sci);
+				}
+			}
+		}
+		
+		fillProductView(theList);
 	}
 
 	public String getCategoryName(ProductCategory c){

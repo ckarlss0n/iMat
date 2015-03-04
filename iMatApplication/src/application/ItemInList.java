@@ -131,17 +131,23 @@ public class ItemInList extends BorderPane {
 	public TextField txtAmount;
 	
 	public void addToFavorite(MouseEvent evt) {
+<<<<<<< Updated upstream
 		//IMatDataHandler.getInstance().addFavorite(theProduct);
 		//System.out.println(IMatDataHandler.getInstance().favorites().size());
 		System.out.println("Add to favorites!");
 		changeListener.firePropertyChange("addToFavorite", theProduct, null);
+=======
+		IMatDataHandler.getInstance().addFavorite(theProduct);
+>>>>>>> Stashed changes
 	}
 	
+
 	
 	
 	public void addToCart(ActionEvent evt){
 		int selectedValue;
 		try{
+<<<<<<< Updated upstream
 			selectedValue = Integer.parseInt(productAmount.getValue());
 		} catch (NumberFormatException e){
 			selectedValue = 1;
@@ -153,6 +159,16 @@ public class ItemInList extends BorderPane {
 				} else {
 					sci.setAmount(sci.getAmount() + 1);
 				}
+=======
+			for(ShoppingItem i: IMatDataHandler.getInstance().getShoppingCart().getItems()){
+				if(i.getProduct().getProductId() == sci.getProduct().getProductId()){
+					sci = i;
+				}
+			}
+			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){
+				
+				sci.setAmount(sci.getAmount() + Integer.parseInt(txtAmount.getText()));
+>>>>>>> Stashed changes
 				
 				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
 			}else { //Not in cart

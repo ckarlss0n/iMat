@@ -4,7 +4,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Customer;
@@ -97,9 +99,10 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 		for (ProductCategory c : ProductCategory.values()) {
 			String name = getCategoryName(c);
+			
 
 			// System.out.println(ProductCategory.valueOf(c.toString()));
-			// TitledPane t = new TitledPane(name, new AnchorPane());
+			//TitledPane t = new TitledPane(name, new AnchorPane());
 
 			EventHandler<MouseEvent> mousehandler = new EventHandler<MouseEvent>() {
 				@Override
@@ -122,8 +125,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 					theCategoryList.add(p);
 				}
 			}
-			CategoryTitledPane ctp = new CategoryTitledPane(name,
-					theCategoryList);
+			CategoryTitledPane ctp = new CategoryTitledPane(name, theCategoryList, 1);
 
 			ctp.setOnMouseClicked(mousehandler);
 			categoryAccordation.getPanes().add(ctp);
@@ -134,8 +136,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
 		dataHandler.getShoppingCart().addShoppingCartListener(this);
-		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
+		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems()); 
+		//createCategoryPane();
 	}
+	
+	
 
 	public void fillProductView(List<ShoppingItem> productList) {
 		List_Nx1_view l = new List_Nx1_view(productList);
@@ -183,15 +188,255 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		
 		fillProductView(theList);
 	}
+	
+	public void fillLists(){
+		for (ProductCategory c : ProductCategory.values()) {
+
+			List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
+			
+			for (ShoppingItem p : productList) {
+				if (p.getProduct().getCategory().toString().equals(c.toString())) {
+					theCategoryList.add(p);
+				}
+			}
+			if(c == ProductCategory.BREAD){
+				System.out.println("BrödBröd!");
+			}
+			System.out.println(c.toString());
+			
+			
+			addToList(c, theCategoryList);
+		}	
+	}
+	
+	Map<String, List<List<ShoppingItem>>> category = new HashMap<String, List<List<ShoppingItem>>>();
+	
+	public void createCategoryPane(){
+		
+		fillLists();
+		
+		
+		
+		//List <ShoppingItem> items = new ArrayList<ShoppingItem>();
+		
+		for (ProductCategory c : ProductCategory.values()) {
+			
+			String mainName = getMainCategoryName(c);
+			
+			//if(category.keySet().toArray().length == 0){
+				//category.put(mainName, getListInList(c));
+			//}
+			
+			//for(String key: category.keySet()){
+			//	if(!key.equals(mainName)){
+					category.put(mainName, getListInList(c));
+			//	}
+			//}	
+		}
+		int i = 0;
+		for(String key: category.keySet()){
+			System.out.println(i);
+			CategoryTitledPane ctp = new CategoryTitledPane(key, category.get(key));
+			categoryAccordation.getPanes().add(ctp);
+		}
+		
+		
+		
+	}
+	
+	//private String [] names = {"Bröd", "Frukter och bär", "Baljväxter",  "Drycker", "Grönsaker", "Fisk", "Kött", "Mejeri", 
+	//"Mjöl, socker, salt", "Potatis, ris, pasta", "Nötter, frön", "Godis", "Örter"};
+	
+	private List<List<ShoppingItem>> bread = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> berryNfruits = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> pod = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> beverage = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> vegtables = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> fish = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> meat = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> dairies = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> flourSugarSalt = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> potatoRicePasta = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> nutsSeeds = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> sweets = new ArrayList<List<ShoppingItem>>();
+	private List<List<ShoppingItem>> herbs = new ArrayList<List<ShoppingItem>>();
+	
+	
+	public List<List<ShoppingItem>> getListInList(ProductCategory p){
+		switch(p.toString()){
+			case "BERRY":
+				return berryNfruits;
+			case "BREAD":
+				return bread;
+			case "POD":
+				return pod;
+			case "CITRUS_FRUIT":
+				return berryNfruits;
+			case "HOT_DRINKS":
+				return beverage;
+			case "COLD_DRINKS":
+				return beverage;
+			case "EXOTIC_FRUIT":
+				return berryNfruits;
+			case "FISH":
+				return fish;
+			case "VEGETABLE_FRUIT":
+				return vegtables;
+			case "CABBAGE":
+				return vegtables;
+			case "MEAT":
+				return meat;
+			case "DAIRIES":
+				return dairies;
+			case "MELONS":
+				return berryNfruits;
+			case "FLOUR_SUGAR_SALT":
+				return flourSugarSalt;
+			case "NUTS_AND_SEEDS":
+				return nutsSeeds;
+			case "PASTA":
+				return potatoRicePasta;
+			case "POTATO_RICE":
+				return potatoRicePasta;
+			case "ROOT_VEGETABLE":
+				return vegtables;
+			case "FRUIT":
+				return berryNfruits;
+			case "SWEET":
+				return sweets;
+			case "HERB":
+				return herbs;
+		}
+		return null;
+	}
+	
+	public String getMainCategoryName(ProductCategory c){
+		switch(c.toString()){
+			case "BERRY":
+				return "Frukter och bär";
+			case "BREAD":
+				return "Bröd";
+			case "POD":
+				return "Baljväxter";
+			case "CITRUS_FRUIT":
+				return "Frukter och bär";
+			case "HOT_DRINKS":
+				return "Drycker";
+			case "COLD_DRINKS":
+				return "Drycker";
+			case "EXOTIC_FRUIT":
+				return "Frukter och bär";
+			case "FISH":
+				return "Fisk";
+			case "VEGETABLE_FRUIT":
+				return "Grönsaker";
+			case "CABBAGE":
+				return "Grönsaker";
+			case "MEAT":
+				return "Kött";
+			case "DAIRIES":
+				return "Mejeri";
+			case "MELONS":
+				return "Frukter och bär";
+			case "FLOUR_SUGAR_SALT":
+				return "Mjöl, socker, salt";
+			case "NUTS_AND_SEEDS":
+				return "Nötter och frön";
+			case "PASTA":
+				return "Potatis, ris, pasta";
+			case "POTATO_RICE":
+				return "Potatis, ris, pasta";
+			case "ROOT_VEGETABLE":
+				return "Grönsaker";
+			case "FRUIT":
+				return "Frukter och bär";
+			case "SWEET":
+				return "Godis";
+			case "HERB":
+				return "Örter";
+		}
+		return c.toString();
+	}
+
+	
+	public void addToList(ProductCategory c, List<ShoppingItem> theProductList){
+			switch(c.toString()){
+				case "BERRY":
+					berryNfruits.add(theProductList);
+					break;
+				case "BREAD":
+					System.out.println("Add");
+					bread.add(theProductList);
+					break;
+				case "POD":
+					pod.add(theProductList);
+					break;
+				case "CITRUS_FRUIT":
+					berryNfruits.add(theProductList);
+					break;
+				case "HOT_DRINKS":
+					beverage.add(theProductList);
+					break;
+				case "COLD_DRINKS":
+					beverage.add(theProductList);
+					break;
+				case "EXOTIC_FRUIT":
+					berryNfruits.add(theProductList);
+					break;
+				case "FISH":
+					fish.add(theProductList);
+					break;
+				case "VEGETABLE_FRUIT":
+					vegtables.add(theProductList);
+					break;
+				case "CABBAGE":
+					vegtables.add(theProductList);
+					break;
+				case "MEAT":
+					meat.add(theProductList);
+					break;
+				case "DAIRIES":
+					dairies.add(theProductList);
+					break;
+				case "MELONS":
+					berryNfruits.add(theProductList);
+					break;
+				case "FLOUR_SUGAR_SALT":
+					flourSugarSalt.add(theProductList);
+					break;
+				case "NUTS_AND_SEEDS":
+					nutsSeeds.add(theProductList);
+					break;
+				case "PASTA":
+					potatoRicePasta.add(theProductList);
+					break;
+				case "POTATO_RICE":
+					potatoRicePasta.add(theProductList);
+					break;
+				case "ROOT_VEGETABLE":
+					vegtables.add(theProductList);
+					break;
+				case "FRUIT":
+					berryNfruits.add(theProductList);
+					break;
+				case "SWEET":
+					sweets.add(theProductList);
+					break;
+				case "HERB":
+					herbs.add(theProductList);
+					break;
+			}
+		
+	}
 
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
-			return "B�r";
+			return "B�r";
 		case "BREAD":
-			return "Br�d";
+			return "Br�d";
 		case "POD":
-			return "Baljv�xter";
+			return "Baljv�xter";
 		case "CITRUS_FRUIT":
 			return "Citrusfrukter";
 		case "HOT_DRINKS":
@@ -203,19 +448,19 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Gr�nsaksfrukt";
+			return "Gr�nsaksfrukt";
 		case "CABBAGE":
-			return "K�l";
+			return "K�l";
 		case "MEAT":
-			return "K�tt";
+			return "K�tt";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "Mj�l, socker, salt";
+			return "Mj�l, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "N�tter och fr�n";
+			return "N�tter och fr�n";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -227,7 +472,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "�rter";
+			return "�rter";
 		}
 		return c.toString();
 	}
@@ -308,7 +553,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 				}
 			}
 			List_Nx1_view productView = new List_Nx1_view(foundItems);
-			categoryBtn.setText("S�kresultat: " + searchField.getText());
+			categoryBtn.setText("S�kresultat: " + searchField.getText());
 			
 			changeScreen(productView);
 		}

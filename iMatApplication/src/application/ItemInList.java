@@ -84,15 +84,7 @@ public class ItemInList extends BorderPane {
         phrases.add("En vinnare p� middagsbordet!");
        
         Random random = new Random();
-       
-		File file;
-		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
-			file = new File("icon32/star-full.png");
-		} else {
-			file = new File("icon32/star-empty.png");
-		}
-		Image icon = new Image(file.toURI().toString());
-	    starImage.setImage(icon);
+        
         
         this.sci = sci;
         changeListener = new PropertyChangeSupport(this); 
@@ -119,12 +111,22 @@ public class ItemInList extends BorderPane {
         //lblPrice.setOnMouseClicked(mousehandler);
         
        // heartImage.setOnMouseClicked(mousehandler);
-        
-
+        setStar();
 	}
 	
 	DecimalFormat noDec = new DecimalFormat("#");
 	DecimalFormat twoDec = new DecimalFormat("#.00");
+	
+	public void setStar(){
+		File file;
+		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
+			file = new File("icon32/star-full.png");
+		} else {
+			file = new File("icon32/star-empty.png");
+		}
+		Image icon = new Image(file.toURI().toString());
+	    starImage.setImage(icon);
+	}
 	
 	public void setProductImage(Image img){
 		productImage.setImage(img);
@@ -153,8 +155,16 @@ public class ItemInList extends BorderPane {
 	    starImage.setImage(image);
 	}
 	
+	public void setToHalfStar(MouseEvent evt){
+		File file;
+		file = new File("icon32/star-half.png");
+		Image image = new Image(file.toURI().toString());
+	    starImage.setImage(image);
+	}
 
-	
+	public void setToNormal(MouseEvent evt){
+		setStar();
+	}
 	
 	public void addToCart(ActionEvent evt){
 		int selectedValue;

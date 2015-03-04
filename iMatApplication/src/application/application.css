@@ -8,7 +8,7 @@
 
    -gradDLR: #580d15;
    -gradDDR: #4b0009;
-   -gradLLR: 800d1a;
+   -gradLLR: 800.0d1a;
    -gradLDR: #74000e;
 }
 
@@ -49,4 +49,6 @@
 	-fx-background-color: -gray;
 }
 
-.text-input, .text-input:focused { -fx-prompt-text-fill:darkgray; }
+.text-input, .text-input:focused {
+	-fx-prompt-text-fill:darkgray;
+}

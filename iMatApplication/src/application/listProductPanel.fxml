@@ -52,7 +52,7 @@
          <bottom>
             <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <children>
-                  <ComboBox fx:id="productAmount" editable="true" prefHeight="39.0" prefWidth="80.0" promptText="1" />
+                  <ComboBox fx:id="productAmount" editable="true" prefHeight="39.0" prefWidth="80.0" promptText="1" stylesheets="@application.css" />
                   <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addToCart" prefHeight="39.0" prefWidth="92.0" text="Lägg till">
                      <HBox.margin>
                         <Insets left="5.0" />
@@ -76,7 +76,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="starImage" fitHeight="44.0" fitWidth="32.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="starImage" fitHeight="44.0" fitWidth="32.0" onMouseClicked="#addToFavorite" onMouseEntered="#setToHalfStar" onMouseExited="#setToNormal" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icon32/star-empty.png" />
                      </image>

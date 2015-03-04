@@ -48,6 +48,7 @@ public class HistoryCartItem extends BorderPane{
 	
 	public void addToCart(ActionEvent evt){
 		try{
+			
 			for(ShoppingItem i: IMatDataHandler.getInstance().getShoppingCart().getItems()){
 				if(i.getProduct().getProductId() == sci.getProduct().getProductId()){
 					i.setAmount(sci.getAmount());

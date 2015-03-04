@@ -41,12 +41,6 @@ public class ChoosePayment extends ScrollPane {
 	}
 	
 	public void setFinalizeText(Double sum){
-<<<<<<< Updated upstream
-		finalizeBtn.setText("Slutför köp (" + String.valueOf(twoDec.format(sum)) + " kr)");
-		
-
-=======
-		finalizeBtn.setText("Slutfï¿½r kï¿½p (" + sum + ")");
->>>>>>> Stashed changes
+		finalizeBtn.setText("Slutfï¿½r kï¿½p (" + String.valueOf(twoDec.format(sum)) + " kr)");
 	}
 }

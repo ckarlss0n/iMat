@@ -70,17 +70,17 @@ public class ItemInList extends BorderPane {
         }  
         
         List<String> adjectives = new ArrayList<String>();
-        adjectives.add("Enastående");
+        adjectives.add("Enastï¿½ende");
         adjectives.add("Kockens");
-        adjectives.add("Äkta");
+        adjectives.add("ï¿½kta");
         adjectives.add("Prima");
         
         List<String> phrases = new ArrayList<String>();
         phrases.add("Perfekt en varm sommardag!");
-        phrases.add("Ett måste till fredagsmyset!");
+        phrases.add("Ett mï¿½ste till fredagsmyset!");
         phrases.add("Barnens favorit!");
         phrases.add("Kockens special!");
-        phrases.add("En vinnare på middagsbordet!");
+        phrases.add("En vinnare pï¿½ middagsbordet!");
        
         Random random = new Random();
         
@@ -102,7 +102,7 @@ public class ItemInList extends BorderPane {
         productImage.setImage(new Image(image.toURI().toString()));
         lblPrice.setText(String.valueOf(twoDec.format(theProduct.getPrice())));
         unitSuffix.setText(theProduct.getUnit());
-        productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " för " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
+        productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " fï¿½r " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
         
         //this.changeListner.addPropertyChangeListener(m);
         
@@ -131,14 +131,7 @@ public class ItemInList extends BorderPane {
 	public TextField txtAmount;
 	
 	public void addToFavorite(MouseEvent evt) {
-<<<<<<< Updated upstream
-		//IMatDataHandler.getInstance().addFavorite(theProduct);
-		//System.out.println(IMatDataHandler.getInstance().favorites().size());
-		System.out.println("Add to favorites!");
-		changeListener.firePropertyChange("addToFavorite", theProduct, null);
-=======
 		IMatDataHandler.getInstance().addFavorite(theProduct);
->>>>>>> Stashed changes
 	}
 	
 
@@ -147,30 +140,32 @@ public class ItemInList extends BorderPane {
 	public void addToCart(ActionEvent evt){
 		int selectedValue;
 		try{
-<<<<<<< Updated upstream
 			selectedValue = Integer.parseInt(productAmount.getValue());
 		} catch (NumberFormatException e){
 			selectedValue = 1;
 		}
+		
 		try{
+			for(ShoppingItem i: IMatDataHandler.getInstance().getShoppingCart().getItems()){
+				if(i.getProduct().getProductId() == sci.getProduct().getProductId()){
+					System.out.println("same");
+					sci = i;
+				}
+			}
+			
 			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){ //Already in cart
+			
+				
+				
 				if(selectedValue>0){
 					sci.setAmount(sci.getAmount() + selectedValue+0.0);
 				} else {
 					sci.setAmount(sci.getAmount() + 1);
 				}
-=======
-			for(ShoppingItem i: IMatDataHandler.getInstance().getShoppingCart().getItems()){
-				if(i.getProduct().getProductId() == sci.getProduct().getProductId()){
-					sci = i;
-				}
-			}
-			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){
+		
 				
-				sci.setAmount(sci.getAmount() + Integer.parseInt(txtAmount.getText()));
->>>>>>> Stashed changes
+			IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
 				
-				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
 			}else { //Not in cart
 				if(selectedValue>0){
 					sci.setAmount(selectedValue+0.0);
@@ -184,6 +179,7 @@ public class ItemInList extends BorderPane {
 		} catch(IllegalArgumentException r){
 			System.out.println("Error");
 		}
+		
 		
 	}
 	

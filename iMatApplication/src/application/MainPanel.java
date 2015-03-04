@@ -308,7 +308,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 				}
 			}
 			List_Nx1_view productView = new List_Nx1_view(foundItems);
-
+			categoryBtn.setText("Sökresultat: " + searchField.getText());
+			
 			changeScreen(productView);
 		}
 	}

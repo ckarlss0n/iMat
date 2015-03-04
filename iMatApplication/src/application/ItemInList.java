@@ -5,8 +5,12 @@ import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -35,14 +39,20 @@ public class ItemInList extends BorderPane {
 	private Label lblPrice;
 	
 	@FXML
-	private ComboBox<Integer> productAmount;
+	private ComboBox<String> productAmount;
 	
 	@FXML
-	private ImageView heartImage;
+	private ImageView starImage;
+	
+	@FXML
+	private Label unitSuffix;
+	
+	@FXML
+	private Label productDescription;
 	
 	private Product theProduct;
 	
-	private PropertyChangeSupport changeListner;
+	private PropertyChangeSupport changeListener;
 	
 	private MainPanel mainPanel;
 	private ShoppingItem sci;
@@ -59,21 +69,40 @@ public class ItemInList extends BorderPane {
             throw new RuntimeException(exception);
         }  
         
+        List<String> adjectives = new ArrayList<String>();
+        adjectives.add("Enastående");
+        adjectives.add("Kockens");
+        adjectives.add("Äkta");
+        adjectives.add("Prima");
         
+        List<String> phrases = new ArrayList<String>();
+        phrases.add("Perfekt en varm sommardag!");
+        phrases.add("Ett måste till fredagsmyset!");
+        phrases.add("Barnens favorit!");
+        phrases.add("Kockens special!");
+        phrases.add("En vinnare på middagsbordet!");
        
+        Random random = new Random();
+        
         this.sci = sci;
-        changeListner = new PropertyChangeSupport(this); 
+        changeListener = new PropertyChangeSupport(this); 
+        
+        for(int i=0; i<10; i++){
+        	productAmount.getItems().add(i, i+1+"");
+        }
+        productAmount.setValue(productAmount.getItems().get(0));
         
         
         //mainPanel = m;
         theProduct = sci.getProduct();
         
         File image = new File(IMatDataHandler.getInstance().getImageIcon(theProduct).getDescription());
- 
         setProductName(theProduct.getName());
         
         productImage.setImage(new Image(image.toURI().toString()));
-        lblPrice.setText(String.valueOf(twoDec.format(theProduct.getPrice()) + " kr"));
+        lblPrice.setText(String.valueOf(twoDec.format(theProduct.getPrice())));
+        unitSuffix.setText(theProduct.getUnit());
+        productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " för " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
         
         //this.changeListner.addPropertyChangeListener(m);
         
@@ -96,7 +125,7 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void setPrice(double price){
-		lblPrice.setText(twoDec.format(price) + " kr");
+		lblPrice.setText(twoDec.format(price));
 	}
 	
 	public TextField txtAmount;
@@ -104,20 +133,35 @@ public class ItemInList extends BorderPane {
 	public void addToFavorite(MouseEvent evt) {
 		//IMatDataHandler.getInstance().addFavorite(theProduct);
 		//System.out.println(IMatDataHandler.getInstance().favorites().size());
-		changeListner.firePropertyChange("addToFavorite", theProduct, null);
+		System.out.println("Add to favorites!");
+		changeListener.firePropertyChange("addToFavorite", theProduct, null);
 	}
 	
 	
 	
 	public void addToCart(ActionEvent evt){
+		int selectedValue;
 		try{
-			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){
-				
-				sci.setAmount(sci.getAmount() + Integer.parseInt(txtAmount.getText()));
+			selectedValue = Integer.parseInt(productAmount.getValue());
+		} catch (NumberFormatException e){
+			selectedValue = 1;
+		}
+		try{
+			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){ //Already in cart
+				if(selectedValue>0){
+					sci.setAmount(sci.getAmount() + selectedValue+0.0);
+				} else {
+					sci.setAmount(sci.getAmount() + 1);
+				}
 				
 				IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
-			}else {
-				sci.setAmount(Integer.parseInt(txtAmount.getText()));
+			}else { //Not in cart
+				if(selectedValue>0){
+					sci.setAmount(selectedValue+0.0);
+				} else {
+					sci.setAmount(1);
+				}
+				
 				IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
 			}
 		

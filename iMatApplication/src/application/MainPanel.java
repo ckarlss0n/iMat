@@ -168,13 +168,13 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
-			return "BÃ¤r";
+			return "Bär";
 		case "BREAD":
-			return "BrÃ¶d";
+			return "Bröd";
 		case "POD":
-			return "BaljvÃ¤xter";
+			return "Baljväxter";
 		case "CITRUS_FRUIT":
-			return "Citrus frukter";
+			return "Citrusfrukter";
 		case "HOT_DRINKS":
 			return "Varma drycker";
 		case "COLD_DRINKS":
@@ -184,23 +184,23 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "GrÃ¶nsaksfrukt";
+			return "Grönsaksfrukt";
 		case "CABBAGE":
-			return "KÃ¥l";
+			return "Kål";
 		case "MEAT":
-			return "KÃ¶tt";
+			return "Kött";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "MjÃ¶l, socker, salt";
+			return "Mjöl, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "NÃ¶tter och frÃ¶n";
+			return "Nötter och frön";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
-			return "Potatis ris";
+			return "Potatis, ris";
 		case "ROOT_VEGETABLE":
 			return "Rotfrukt";
 		case "FRUIT":
@@ -208,7 +208,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Ã–rter";
+			return "Örter";
 		}
 		return c.toString();
 	}

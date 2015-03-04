@@ -17,7 +17,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" text="Maträtens beskrivning" wrapText="true">
+            <Label fx:id="productDescription" alignment="TOP_LEFT" text="Maträttens beskrivning" wrapText="true">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -39,45 +39,49 @@
          <BorderPane.margin>
             <Insets right="20.0" />
          </BorderPane.margin>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
       </ImageView>
    </left>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <right>
-      <BorderPane prefHeight="100.0" prefWidth="194.0" BorderPane.alignment="CENTER">
+      <BorderPane BorderPane.alignment="CENTER">
          <bottom>
             <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <children>
-                  <TextField fx:id="txtAmount" prefHeight="39.0" prefWidth="39.0" text="1">
+                  <ComboBox fx:id="productAmount" editable="true" prefHeight="39.0" prefWidth="80.0" promptText="1" />
+                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addToCart" prefHeight="39.0" prefWidth="92.0" text="Lägg till">
                      <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </TextField>
-                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addToCart" prefHeight="39.0" prefWidth="92.0" text="Lägg till" />
+                        <Insets left="5.0" />
+                     </HBox.margin></Button>
                </children>
             </HBox>
          </bottom>
          <center>
-            <HBox alignment="TOP_RIGHT" prefHeight="61.0" BorderPane.alignment="CENTER">
+            <HBox alignment="TOP_RIGHT" fillHeight="false" BorderPane.alignment="TOP_RIGHT">
                <children>
-                  <Label fx:id="lblPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="44.0" text="489 kr " textAlignment="RIGHT">
+                  <Label fx:id="lblPrice" alignment="TOP_RIGHT" contentDisplay="RIGHT" text="489" textAlignment="RIGHT">
                      <font>
                         <Font size="36.0" />
                      </font>
                      <HBox.margin>
-                        <Insets right="10.0" />
+                        <Insets right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fx:id="heartImage" fitHeight="44.0" fitWidth="32.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true">
+                  <Label fx:id="unitSuffix" prefHeight="96.0" text="kg">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="starImage" fitHeight="44.0" fitWidth="32.0" onMouseClicked="#addToFavorite" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../icon32/heart.png" />
+                        <Image url="@../../icon32/star-empty.png" />
                      </image>
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets left="10.0" />
                      </HBox.margin>
                   </ImageView>
                </children>

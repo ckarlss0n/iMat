@@ -48,11 +48,11 @@ public class ShoppingCartBig extends BorderPane {
 	private GridPane gridPane;
 	@FXML
 	private Button goToPersInfoBtn;
-	
+
 	public void goToPersInfo(ActionEvent evt){
-		pInf.pInfSetText();
+		pInf.pInfSetText();// denna metod hämtar info från profilen till betalnings-personuppgifterna 
+
 		mainPanel.changeScreen(pInf);
-		
 	}
 
 	

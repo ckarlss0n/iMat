@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,14 +34,13 @@ public class ChoosePayment extends ScrollPane {
 	}
 	
 	public void finalizeBuy(ActionEvent evt){
+		
 		IMatDataHandler.getInstance().placeOrder(true);
 		System.out.println("Placing order");
 		mainPanel.changeScreen(checkoutPanel);	
 	}
 	
 	public void setFinalizeText(Double sum){
-		finalizeBtn.setText("Slutför köp (" + String.valueOf(twoDec.format(sum)) + " kr)");
-		
-
+		finalizeBtn.setText("Slutfï¿½r kï¿½p (" + String.valueOf(twoDec.format(sum)) + " kr)");
 	}
 }

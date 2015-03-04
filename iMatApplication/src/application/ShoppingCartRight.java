@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,13 @@ public class ShoppingCartRight extends BorderPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        
+        int sum = 0;
+        for(ShoppingItem i: IMatDataHandler.getInstance().getShoppingCart().getItems()){
+        	sum += i.getProduct().getPrice() * i.getAmount();
+        }
+        
+        setShoppingCartSum(sum);
         
         this.mp = mp;
 	}
@@ -73,9 +81,14 @@ public class ShoppingCartRight extends BorderPane{
 	
 	public void refreshCart(List<ShoppingItem> list){
 		clear();
+		int sum = 0;
 		for(ShoppingItem si: list){
 			addToShoppingCart(si);
+			sum += si.getProduct().getPrice() * si.getAmount();
 		}
+		
+		setShoppingCartSum(sum);
+		
 	}
 	
 	public void clear(){

@@ -40,6 +40,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	private ChoosePayment choosePayment = new ChoosePayment(this, checkoutPanel);
 	private PersonalInformationPanel pInf;
 	
+	private List<Node> listOfNodes = new ArrayList<Node>();
+	
 	@FXML
 	private Accordion categoryAccordation;
 	@FXML
@@ -50,7 +52,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	private TextField searchField;
 	@FXML
 	private Button categoryBtn;
-
+	
+	
 	public MainPanel() { // h�r kommer det beh�vas en if sats som kollar fiall man �r inloggad och g�r checkout, profil och andra panels baserat p� den if satsen! ifall man �ven �r i inte inloggad delen ska man kunna ta sig till inloggad delen.
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
 		fxmlLoader.setRoot(this);
@@ -89,7 +92,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 //		theCustomer.setPhoneNumber("0705326742");
 
 		pInf = new PersonalInformationPanel(this, choosePayment, theCustomer);
-		stackPane.getChildren().add(onlinePanel);
+		changeScreen(onlinePanel);
 
 		for (ProductCategory c : ProductCategory.values()) {
 			String name = getCategoryName(c);
@@ -103,6 +106,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 					fillProductView(((CategoryTitledPane) mouseEvent
 							.getSource()).getItemsInCategory());
+					
 					categoryBtn.setText(((CategoryTitledPane) mouseEvent
 							.getSource()).getText());
 					
@@ -164,11 +168,11 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
-			return "B�r";
+			return "Bär";
 		case "BREAD":
-			return "Br�d";
+			return "Bröd";
 		case "POD":
-			return "Baljv�xter";
+			return "Baljväxter";
 		case "CITRUS_FRUIT":
 			return "Citrus frukter";
 		case "HOT_DRINKS":
@@ -182,17 +186,17 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "VEGETABLE_FRUIT":
 			return "Grönsaksfrukt";
 		case "CABBAGE":
-			return "K�l";
+			return "Kål";
 		case "MEAT":
-			return "K�tt";
+			return "Kött";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "Mj�l, socker, salt";
+			return "Mjöl, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "N�tter och fr�n";
+			return "Nötter och frön";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -204,7 +208,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "�rter";
+			return "Örter";
 		}
 		return c.toString();
 	}
@@ -214,6 +218,15 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		shoppingCartBig = new ShoppingCartBig(this, pInf);
 		shoppingCartBig.fillShoppingCart();
 		changeScreen(shoppingCartBig);
+		categoryBtn.setText("Tillbaka");
+		
+		categoryBtn.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override public void handle(ActionEvent e) {
+		        changeScreen(listOfNodes.get(listOfNodes.size()-2));
+		        categoryBtn.setOnAction(null);
+		        
+		    }
+		});
 	}
 
 
@@ -231,6 +244,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		}else {
 			bigBorder.setRight(shoppingCartRight);
 		}
+		
+		listOfNodes.add(node);
 	}
 	
 	public void setIndicator(Node node){
@@ -278,6 +293,10 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			changeScreen(productView);
 		}
 	}
+	
+	public Node getCurrentScreen(){
+		return stackPane.getChildren().get(0);
+	}
 
 	
 	@Override
@@ -295,37 +314,22 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 	@Override
 	public void shoppingCartChanged(CartEvent evt) {
-
+		
+		if(getCurrentScreen() instanceof ShoppingCartBig){
+			shoppingCartBig.refresh(dataHandler.getShoppingCart().getItems());
+		}
+		
 		if(dataHandler.getShoppingCart().getItems().size() > 0){
 			ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
 			shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
-			//shoppingCartBig.fillShoppingCart();
 			
-			double sum = 0;
-			for(Node sci: shoppingCartRight.getGridPane().getChildren()){
-				sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
-			}
-			shoppingCartRight.setShoppingCartSum(sum);
+			//double sum = 0;
+			//for(Node sci: shoppingCartRight.getGridPane().getChildren()){
+				//sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
+			//}
+			//shoppingCartRight.setShoppingCartSum(sum);
 			
-			/*
-			if(evt.isAddEvent()){
-				shoppingCartRight.addToShoppingCart(theItem);
-				//addToShoppingCart(theItem);
-				System.out.println(theItem.getAmount());
-			}*/
-			
-			
-			/*
-			shoppingCartRight.getShoppingCartItem(theItem).update(theItem);
-			
-			double sum = 0;
-			
-			for(Node sci: shoppingCartRight.getGridPane().getChildren()){
-				sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
-			}
-			
-			shoppingCartRight.setShoppingCartSum(sum);*/
-		} else{
+		} else{	
 			shoppingCartRight.clearShoppingCart();
 		}
 		

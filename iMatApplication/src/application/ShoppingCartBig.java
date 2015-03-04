@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -13,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBoxBuilder;
@@ -24,6 +26,11 @@ public class ShoppingCartBig extends BorderPane {
 	
 	PersonalInformationPanel pInf;
 	MainPanel mainPanel;
+	
+	@FXML
+	private Label bigCartSum;
+	
+	DecimalFormat twoDec = new DecimalFormat("#.00");
 	
 	public ShoppingCartBig(MainPanel mainPanel, PersonalInformationPanel pInf){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("shoppingCartBig.fxml"));
@@ -46,7 +53,7 @@ public class ShoppingCartBig extends BorderPane {
 	private Button shopWithoutBtn;
 	
 	public void shopWithout(ActionEvent evt){
-		
+		pInf.pInfSetText();
 		mainPanel.changeScreen(pInf);
 		
 	}
@@ -61,22 +68,63 @@ public class ShoppingCartBig extends BorderPane {
 		shopWithout(evt); // ÄNDRA EFTER ONSDAG!!
 	}
 	
-	public void fillShoppingCart(){
+	public void clear(){
 		gridPane.getChildren().clear();
-		List<ShoppingItem> shoppingCart = IMatDataHandler.getInstance().getShoppingCart().getItems();
-		
-		if(shoppingCart.size() > 0){
-			int index = 0;
-			for(ShoppingItem i: shoppingCart){
-				ProductInShoppingCartBig pisc = new ProductInShoppingCartBig(i);
-				gridPane.add(pisc, 0, index);
-				index++;
-			}
+		index = 0;
+	}
+	
+	
+	
+	public void refresh(List<ShoppingItem> list){
+		clear();
+		int i = 0;
+		double sum = 0;
+		for(ShoppingItem si: list){
+			addToShoppingCart(si);
+			System.out.println(i);
+			i++;
+			sum = si.getAmount() * si.getProduct().getPrice();
 		}
+		
+		setTotalSum(sum);
+	}
+	
+	int index = 0;
+	public void addToShoppingCart(ShoppingItem i){
+		
+		ProductInShoppingCartBig pisc = new ProductInShoppingCartBig(i);
+		gridPane.setPrefHeight(140*index);
+		gridPane.add(pisc, 0, index);
+		index++;
 		
 	}
 	
-	public void add(Node node, int row){
+	public void fillShoppingCart(){
+		
+		gridPane.getChildren().clear();
+		
+		List<ShoppingItem> shoppingCart = IMatDataHandler.getInstance().getShoppingCart().getItems();
+		
+		double sum = 0;
+		for(ShoppingItem i: shoppingCart){
+			ProductInShoppingCartBig pisc = new ProductInShoppingCartBig(i);
+			gridPane.add(pisc, 0, index);
+			index++;
+			sum = i.getAmount() * i.getProduct().getPrice();
+		}
+		
+		setTotalSum(sum);
+		
+		
+		
+	}
+	
+	
+	public void setTotalSum(double sum){
+		bigCartSum.setText(String.valueOf((twoDec.format(sum))));
+	}
+	
+	public void addToShoppingCart(Node node, int row){
 		gridPane.add(node, 0, row);
 	}
 	

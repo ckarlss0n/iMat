@@ -1,5 +1,6 @@
 package application;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 public class ShoppingCartRight extends BorderPane{
 	@FXML

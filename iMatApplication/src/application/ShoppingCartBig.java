@@ -48,15 +48,10 @@ public class ShoppingCartBig extends BorderPane {
 	private GridPane gridPane;
 	@FXML
 	private Button goToPersInfoBtn;
-	
-<<<<<<< Updated upstream
-	public void goToPersInfo(ActionEvent evt){
-		pInf.pInfSetText();
-=======
 
 	public void goToPersInfo(ActionEvent evt){
 		pInf.pInfSetText();// denna metod hämtar info från profilen till betalnings-personuppgifterna 
->>>>>>> Stashed changes
+
 		mainPanel.changeScreen(pInf);
 	}
 

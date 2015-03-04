@@ -23,23 +23,10 @@
    </center>
    <bottom>
       <BorderPane stylesheets="@application.css" BorderPane.alignment="CENTER">
-         <center>
-            <Label text="Välj sätt att gå vidare på:" BorderPane.alignment="CENTER" />
-         </center>
          <bottom>
             <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnLoginCart" mnemonicParsing="false" onAction="#loginCartModal" text="Logga in">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#goToRegisterCart" text="Registrera">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="shopWithoutBtn" mnemonicParsing="false" onAction="#shopWithout" text="Handla utan konto" />
+                  <Button fx:id="goToPersInfoBtn" mnemonicParsing="false" onAction="#goToPersInfo" prefHeight="37.0" prefWidth="150.0" text="Gå vidare" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />

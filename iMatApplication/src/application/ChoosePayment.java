@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ public class ChoosePayment extends ScrollPane {
 	
 	MainPanel mainPanel		;
 	CheckoutPanel checkoutPanel;
+	DecimalFormat twoDec = new DecimalFormat("0.00");
 	
 	public ChoosePayment(MainPanel mainPanel, CheckoutPanel checkoutPanel){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("choosePayment.fxml"));
@@ -37,6 +39,8 @@ public class ChoosePayment extends ScrollPane {
 	}
 	
 	public void setFinalizeText(Double sum){
-		finalizeBtn.setText("Slutför köp (" + sum + ")");
+		finalizeBtn.setText("Slutför köp (" + String.valueOf(twoDec.format(sum)) + " kr)");
+		
+
 	}
 }

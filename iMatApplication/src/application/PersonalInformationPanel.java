@@ -30,7 +30,6 @@ public class PersonalInformationPanel extends ScrollPane {
 	private TextField txtfPhone;
 	@FXML
 	private Button goToPaymentBtn;
-	String city;
 	MainPanel mainPanel;
 	ChoosePayment choosePayment;
 	
@@ -88,7 +87,7 @@ public class PersonalInformationPanel extends ScrollPane {
 		customer.setEmail(txtfEmail.getText());
 		customer.setAddress(txtfAdress.getText());
 		customer.setPostCode(txtfPostcode.getText());
-		this.city = txtfCity.getText();
+		customer.setPostAddress(txtfCity.getText());
 		customer.setPhoneNumber(txtfPhone.getText());
 		mainPanel.changeScreen(choosePayment);		
 	

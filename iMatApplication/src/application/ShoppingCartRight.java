@@ -77,7 +77,7 @@ public class ShoppingCartRight extends BorderPane{
 		
 		return null;
 	}
-	DecimalFormat twoDec = new DecimalFormat("#.00");
+	DecimalFormat twoDec = new DecimalFormat("0.00");
 	
 	public void refreshCart(List<ShoppingItem> list){
 		clear();

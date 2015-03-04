@@ -16,13 +16,17 @@
 	-fx-background-color: linear-gradient(-gradDLR, -gradDDR);
 }
 
-.leftBar {
-	
-}
-
 .redAccordion {
 	-fx-base: -red;
 	-fx-background-color: -gray;
+}
+
+.orangeAccordion {
+	-fx-base: #bf7000;
+}
+
+.grayAccordion{
+	-fx-base: #aeaeae;
 }
 
 .button{
@@ -51,4 +55,12 @@
 
 .text-input, .text-input:focused {
 	-fx-prompt-text-fill:darkgray;
+}
+
+#menuSeparator{
+	-fx-base: #292929;
+}
+
+#menuSeparator:hover{
+	-fx-base: #0e0e0e;
 }

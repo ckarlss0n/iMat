@@ -48,16 +48,19 @@
                <content>
                   <Accordion fx:id="categoryAccordation" styleClass="redAccordion" stylesheets="@application.css" BorderPane.alignment="CENTER">
                     <panes>
-                      <TitledPane animated="false" onMouseClicked="#goToFavorites" stylesheets="@application.css" text="Favoriter" />
-                      <TitledPane animated="false" text="Sparade listor">
+                      <TitledPane animated="false" onMouseClicked="#goToFavorites" styleClass="grayAccordion" stylesheets="@application.css" text="Favoriter" />
+                      <TitledPane animated="false" styleClass="grayAccordion" text="Sparade listor">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>
                       </TitledPane>
-                      <TitledPane animated="false" collapsible="false" disable="true" expanded="false">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                        </content>
+                      <TitledPane id="menuSeparator" alignment="TOP_CENTER" animated="false" collapsible="false" expanded="false">
+                           <graphic>
+                              <Label maxHeight="2.0" minHeight="2.0" prefHeight="2.0" />
+                           </graphic>
+                           <padding>
+                              <Insets bottom="-25.0" />
+                           </padding>
                       </TitledPane>
                     </panes>
                   </Accordion>

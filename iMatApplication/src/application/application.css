@@ -35,7 +35,14 @@
 
 .grayGradient{
 	-fx-background-color: linear-gradient(#f8f8f8, #e7e7e7);
+}
 
+.grayGradientHoverable{
+	-fx-background-color: linear-gradient(#f8f8f8, #e7e7e7);
+}
+
+.grayGradientHoverable:hover{
+	-fx-background-color: linear-gradient(#ededed, #d4d4d4);
 }
 
 .grayBackground{
@@ -43,3 +50,7 @@
 }
 
 .text-input, .text-input:focused { -fx-prompt-text-fill:darkgray; }
+
+.combo-box : focus{
+	-fx-background-color: blue;
+}

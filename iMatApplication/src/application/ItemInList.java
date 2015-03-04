@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +84,15 @@ public class ItemInList extends BorderPane {
         phrases.add("En vinnare på middagsbordet!");
        
         Random random = new Random();
+       
+		File file;
+		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
+			file = new File("icon32/star-full.png");
+		} else {
+			file = new File("icon32/star-empty.png");
+		}
+		Image icon = new Image(file.toURI().toString());
+	    starImage.setImage(icon);
         
         this.sci = sci;
         changeListener = new PropertyChangeSupport(this); 
@@ -131,10 +141,16 @@ public class ItemInList extends BorderPane {
 	public TextField txtAmount;
 	
 	public void addToFavorite(MouseEvent evt) {
-		//IMatDataHandler.getInstance().addFavorite(theProduct);
-		//System.out.println(IMatDataHandler.getInstance().favorites().size());
-		System.out.println("Add to favorites!");
-		changeListener.firePropertyChange("addToFavorite", theProduct, null);
+		File file;
+		if(!IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
+			IMatDataHandler.getInstance().addFavorite(sci.getProduct());
+			file = new File("icon32/star-full.png");
+		} else {
+			IMatDataHandler.getInstance().removeFavorite(sci.getProduct());
+			file = new File("icon32/star-empty.png");
+		}
+		Image image = new Image(file.toURI().toString());
+	    starImage.setImage(image);
 	}
 	
 	

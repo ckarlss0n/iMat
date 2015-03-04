@@ -262,7 +262,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			progressIndicator.progressPersInfo.setProgress(-1);
 		} else if(node.equals(choosePayment)){
 			
-			//choosePayment.setFinalizeText(dataHandler.getShoppingCart().getTotal());
+			choosePayment.setFinalizeText(dataHandler.getShoppingCart().getTotal());
 			
 			progressIndicator.progressPersInfo.setProgress(1);
 			progressIndicator.progressChoosePayment.setProgress(-1);

@@ -26,11 +26,10 @@ public class ShoppingCartBig extends BorderPane {
 	
 	PersonalInformationPanel pInf;
 	MainPanel mainPanel;
-	
 	@FXML
 	private Label bigCartSum;
 	
-	DecimalFormat twoDec = new DecimalFormat("#.00");
+	DecimalFormat twoDec = new DecimalFormat("0.00");
 	
 	public ShoppingCartBig(MainPanel mainPanel, PersonalInformationPanel pInf){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("shoppingCartBig.fxml"));
@@ -48,25 +47,14 @@ public class ShoppingCartBig extends BorderPane {
 	@FXML
 	private GridPane gridPane;
 	@FXML
-	private Button btnLoginCart;
-	@FXML
-	private Button shopWithoutBtn;
+	private Button goToPersInfoBtn;
 	
-	public void shopWithout(ActionEvent evt){
+	public void goToPersInfo(ActionEvent evt){
 		pInf.pInfSetText();
 		mainPanel.changeScreen(pInf);
 		
 	}
-	
-	public void loginCartModal(ActionEvent evt){
-		System.out.println("Open login");
-		shopWithout(evt); // ÄNDRA EFTER ONSDAG!!
-	}
 
-	public void goToRegisterCart(ActionEvent evt){
-		System.out.println("Go to register cart");
-		shopWithout(evt); // ÄNDRA EFTER ONSDAG!!
-	}
 	
 	public void clear(){
 		gridPane.getChildren().clear();
@@ -83,7 +71,7 @@ public class ShoppingCartBig extends BorderPane {
 			addToShoppingCart(si);
 			System.out.println(i);
 			i++;
-			sum = si.getAmount() * si.getProduct().getPrice();
+			sum += si.getAmount() * si.getProduct().getPrice();
 		}
 		
 		setTotalSum(sum);
@@ -110,7 +98,7 @@ public class ShoppingCartBig extends BorderPane {
 			ProductInShoppingCartBig pisc = new ProductInShoppingCartBig(i);
 			gridPane.add(pisc, 0, index);
 			index++;
-			sum = i.getAmount() * i.getProduct().getPrice();
+			sum += i.getAmount() * i.getProduct().getPrice();
 		}
 		
 		setTotalSum(sum);

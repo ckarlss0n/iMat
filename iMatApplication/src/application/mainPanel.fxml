@@ -15,37 +15,37 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="bigBorder" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="bigBorder" prefHeight="331.0" prefWidth="740.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" styleClass="leftBar" stylesheets="@application.css" BorderPane.alignment="CENTER">
-         <content>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
-               <top>
-                  <BorderPane minHeight="54.0" prefHeight="54.0" styleClass="grayGradient" BorderPane.alignment="CENTER">
-                     <center>
-                        <TextField fx:id="searchField" onAction="#searchForProducts" promptText="Sök..." BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets bottom="8.0" left="10.0" top="8.0" />
-                           </BorderPane.margin>
-                        </TextField>
-                     </center>
-                     <right>
-                        <Button fx:id="searchBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#searchForProducts" text="Sök" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
-                              <Insets bottom="8.0" right="10.0" top="8.0" />
-                           </BorderPane.margin>
-                           <graphic>
-                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../icon16/white/search.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </right>
-                  </BorderPane>
-               </top>
+      <BorderPane prefWidth="250.0">
+         <top>
+            <BorderPane minHeight="54.0" prefHeight="54.0" styleClass="grayGradient" BorderPane.alignment="CENTER">
                <center>
+                  <TextField fx:id="searchField" onAction="#searchForProducts" promptText="Sök..." BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="8.0" left="10.0" top="8.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+               <right>
+                  <Button fx:id="searchBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#searchForProducts" text="Sök" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="8.0" right="10.0" top="8.0" />
+                     </BorderPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon16/white/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </right>
+            </BorderPane>
+         </top>
+         <center>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="192.0" prefViewportWidth="202.0">
+               <content>
                   <Accordion fx:id="categoryAccordation" styleClass="redAccordion" stylesheets="@application.css" BorderPane.alignment="CENTER">
                     <panes>
                       <TitledPane animated="false" onMouseClicked="#goToFavorites" stylesheets="@application.css" text="Favoriter" />
@@ -54,17 +54,17 @@
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>
                       </TitledPane>
-                      <TitledPane animated="false" disable="true">
+                      <TitledPane animated="false" collapsible="false" disable="true" expanded="false">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>
                       </TitledPane>
                     </panes>
                   </Accordion>
-               </center>
-            </BorderPane>
-         </content>
-      </ScrollPane>
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
    </left>
    <top>
       <BorderPane styleClass="topBar" stylesheets="@application.css" BorderPane.alignment="CENTER">

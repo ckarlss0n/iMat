@@ -50,7 +50,3 @@
 }
 
 .text-input, .text-input:focused { -fx-prompt-text-fill:darkgray; }
-
-.combo-box : focus{
-	-fx-background-color: blue;
-}

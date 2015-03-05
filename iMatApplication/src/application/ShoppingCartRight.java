@@ -98,6 +98,10 @@ public class ShoppingCartRight extends BorderPane{
 		s = 0;
 	}
 	public void setShoppingCartSum(double amount){
+		FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.8), shoppingCartSum);
+		fadeIn.setFromValue(0.6);
+		fadeIn.setToValue(1.0);
+		fadeIn.play();
 		shoppingCartSum.setText(String.valueOf((twoDec.format(amount))));
 	}
 	

@@ -16,6 +16,7 @@ import se.chalmers.ait.dat215.project.ProductCategory;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.User;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -24,10 +25,14 @@ import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 public class MainPanel extends BorderPane implements ChangeListener, ShoppingCartListener {
 
@@ -55,6 +60,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private TextField searchField;
 	@FXML
 	private Button categoryBtn;
+	@FXML
+	private TitledPane favorites;
 	
 	
 	public MainPanel() { // h�r kommer det beh�vas en if sats som kollar fiall man �r inloggad och g�r checkout, profil och andra panels baserat p� den if satsen! ifall man �ven �r i inte inloggad delen ska man kunna ta sig till inloggad delen.
@@ -189,7 +196,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		//createCategoryPane();
 	}
 	
-	
 
 	public void fillProductView(List<ShoppingItem> productList) {
 		List_Nx1_view l = new List_Nx1_view(productList);
@@ -215,7 +221,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		shoppingCartRight.getGridPane().setPrefHeight((s + 1) * 36);
 		shoppingCartRight.getGridPane().add(sci, 0, s);
-
 		s++;
 		
 	}

@@ -11,9 +11,11 @@ import javax.swing.Timer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
 import sun.awt.im.InputMethodAdapter;
+import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,6 +35,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class ProfilePanel extends ScrollPane{
@@ -99,6 +102,7 @@ public class ProfilePanel extends ScrollPane{
             throw new RuntimeException(exception);
         }
     	
+    	
     	infoAccordion.setExpandedPane(infoPane);
     	firstNameField.setText(IMatDataHandler.getInstance().getCustomer().getFirstName());
     	lastNameField.setText(IMatDataHandler.getInstance().getCustomer().getLastName());
@@ -152,19 +156,38 @@ public class ProfilePanel extends ScrollPane{
 		System.out.println("Save profile information.");
 		System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
 		
+		final String content = "Ändringar sparade!";
+		 
+		 final Animation animation = new Transition() {
+		     {
+		         setCycleDuration(Duration.millis(1000));
+		     }
+		 
+		     protected void interpolate(double frac) {
+		         final int length = content.length();
+		         final int n = Math.round(length * (float) frac);
+		         saveChangesBtn.setText(content.substring(0, n));
+		     }
+		 
+		 };
+		 
 		
-		saveChangesBtn.setText("Ändringar sparade!");
+		animation.play();
 		FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), saveChangesBtn);
 		fadeIn.setOnFinished(event -> saveChangesBtn.setText("Spara ändringar"));
-		fadeIn.setFromValue(0.1);
+		fadeIn.setFromValue(0.5);
 		fadeIn.setToValue(1.0);
 		
 
-		FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.4), saveChangesBtn);
+		FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), saveChangesBtn);
 		fadeOut.setFromValue(1.0);
-        fadeOut.setToValue(0.1);
+        fadeOut.setToValue(0.5);
         fadeOut.setOnFinished(event -> fadeIn.play());
 		fadeOut.play();
+		
+		
+		
+		
 	}
 	
 }

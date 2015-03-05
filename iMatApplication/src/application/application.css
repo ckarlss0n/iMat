@@ -21,10 +21,6 @@
 	-fx-background-color: -gray;
 }
 
-.redAccordion:focus{
-	-fx-base:blue;
-}
-
 .orangeAccordion {
 	-fx-base: #bf7000;
 }
@@ -36,6 +32,10 @@
 .button{
 	-fx-base: #9a0819;
 	-fx-cursor: hand;
+}
+
+.button:pressed{
+	-fx-base: #8e1c29;
 }
 
 .middleToolbar{

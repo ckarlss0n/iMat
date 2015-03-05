@@ -112,7 +112,7 @@
          <top>
             <BorderPane BorderPane.alignment="CENTER">
                <center>
-                  <Label text="Välkommen till iMat, John!" BorderPane.alignment="CENTER">
+                  <Label fx:id="welcomeMessage" text="Välkommen till iMat, John!" BorderPane.alignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>

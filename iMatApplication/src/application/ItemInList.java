@@ -15,6 +15,10 @@ import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
+import javafx.animation.FadeTransition;
+import javafx.animation.PathTransition;
+import javafx.animation.PathTransition.OrientationType;
+import javafx.animation.Timeline;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -28,6 +32,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.shape.CubicCurveTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
 
 public class ItemInList extends BorderPane {
 	@FXML 
@@ -84,7 +92,6 @@ public class ItemInList extends BorderPane {
         phrases.add("En vinnare p� middagsbordet!");
        
         Random random = new Random();
-        
         
         this.sci = sci;
         changeListener = new PropertyChangeSupport(this); 
@@ -156,13 +163,21 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void setToHalfStar(MouseEvent evt){
-		File file;
-		file = new File("icon32/star-half.png");
-		Image image = new Image(file.toURI().toString());
-	    starImage.setImage(image);
+		FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.2), starImage);
+		fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.3);
+		fadeOut.play();
+//		File file;
+//		file = new File("icon32/star-half.png");
+//		Image image = new Image(file.toURI().toString());
+//	    starImage.setImage(image);
 	}
 
 	public void setToNormal(MouseEvent evt){
+		FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), starImage);
+		fadeIn.setFromValue(0.3);
+		fadeIn.setToValue(1.0);
+		fadeIn.play();
 		setStar();
 	}
 	

@@ -37,10 +37,21 @@ public class ShoppingCartItem extends BorderPane {
 		theItem = i;
 		theProduct = i.getProduct();
 		panelId = i.getProduct().getProductId();
-		
 		setName(i.getProduct().getName());
 		setAmount(i.getAmount());
 		setPrice(i.getAmount() * i.getProduct().getPrice());
+//		FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.1), lblName);
+//		fadeIn.setFromValue(0.3);
+//		fadeIn.setToValue(1.0);
+//		fadeIn.play();
+//		FadeTransition fadeIn2 = new FadeTransition(Duration.seconds(0.1), lblAmount);
+//		fadeIn2.setFromValue(0.3);
+//		fadeIn2.setToValue(1.0);
+//		fadeIn2.play();
+//		FadeTransition fadeIn3 = new FadeTransition(Duration.seconds(0.1), lblPrice);
+//		fadeIn3.setFromValue(0.3);
+//		fadeIn3.setToValue(1.0);
+//		fadeIn3.play();
 	}
 
 	@FXML

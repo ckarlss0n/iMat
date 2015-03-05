@@ -2,12 +2,18 @@ package application;
 
 import java.io.IOException;
 
+import se.chalmers.ait.dat215.project.IMatDataHandler;
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
+import javafx.animation.Transition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 public class OnlinePanel extends ScrollPane{
 	
@@ -21,10 +27,15 @@ public class OnlinePanel extends ScrollPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+		
+		welcomeMessage.setText("Välkommen till iMat, " + IMatDataHandler.getInstance().getCustomer().getFirstName() + "!");
 	}
 	
 	@FXML
 	private GridPane gridPane;
+	
+	@FXML
+	private Label welcomeMessage;
 	
 	public void add(Node node, int col){
 		gridPane.setConstraints(node, col, 0); 

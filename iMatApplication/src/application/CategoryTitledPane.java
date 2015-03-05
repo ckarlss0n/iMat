@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -17,8 +18,15 @@ public class CategoryTitledPane extends TitledPane {
 	private List<ShoppingItem> productList;
 	private List_Nx1_view lnxav;
 	
+	
+	
 	private AnchorPane ancPane;
 	private GridPane gridPane;
+	
+	public CategoryTitledPane(String name ,Map<String, Map<String, List<ShoppingItem>>> theMap){
+		this.setText(name);
+		
+	}
 	
 	public CategoryTitledPane(String name, List<ShoppingItem> productList, int i){
 		
@@ -27,7 +35,40 @@ public class CategoryTitledPane extends TitledPane {
 		
 	}
 	
-	public CategoryTitledPane(String name, List<List<ShoppingItem>> productLists){
+	public CategoryTitledPane(String name, List<SubcategoryButton> buttons){
+		this.setText(name);
+		//this.productList = buttons.get(0).getList();
+		
+		gridPane = new GridPane();
+		gridPane.setPadding(new Insets(0,0,0,0));
+		
+		List<ShoppingItem> list = new ArrayList<ShoppingItem>();
+		if(buttons.size() > 1){
+			int i = 0;
+			for(SubcategoryButton b: buttons){
+				list.addAll(b.getList());
+				b.setPrefWidth(250);
+				gridPane.add(b, 0, i);
+				i++;
+				
+			}
+			gridPane.setMaxHeight(i*buttons.get(0).getHeight());
+			this.setContent(gridPane);
+		} else{
+			for(SubcategoryButton b: buttons){
+				list.addAll(b.getList());
+			}
+		}
+		
+		
+		this.productList = list;
+		
+		
+		
+	
+	}
+	
+	/*public CategoryTitledPane(String name, List<List<ShoppingItem>> productLists){
 		
 		
 		gridPane = new GridPane();
@@ -54,6 +95,7 @@ public class CategoryTitledPane extends TitledPane {
 	public List_Nx1_view getListView(){
 		return lnxav;
 	}
+	*/
 	
 	public List<ShoppingItem> getItemsInCategory(){
 		return productList;

@@ -185,7 +185,6 @@ public class ItemInList extends BorderPane {
 			if(IMatDataHandler.getInstance().getShoppingCart().getItems().contains(sci)){ //Already in cart
 			
 				
-				
 				if(selectedValue>0){
 					sci.setAmount(sci.getAmount() + selectedValue+0.0);
 				} else {

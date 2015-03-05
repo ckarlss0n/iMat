@@ -31,5 +31,6 @@ public class CheckoutPanel extends ScrollPane {
 	
 	public void backToStart(ActionEvent evt){
 		mainPanel.changeScreen(onlinePanel);
+		
 	}
 }

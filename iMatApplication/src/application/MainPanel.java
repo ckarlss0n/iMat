@@ -29,7 +29,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
-public class MainPanel extends BorderPane implements PropertyChangeListener, ShoppingCartListener {
+public class MainPanel extends BorderPane implements ChangeListener, ShoppingCartListener {
 
 	private List<ShoppingItem> productList;
 	private IMatDataHandler dataHandler;
@@ -40,6 +40,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	private ShoppingCartRight shoppingCartRight;
 	private CheckoutPanel checkoutPanel = new CheckoutPanel(this, onlinePanel);
 	private ChoosePayment choosePayment = new ChoosePayment(this, checkoutPanel);
+	private ChangeSupport changeSupport;
 	private PersonalInformationPanel pInf;
 	
 	private List<Node> listOfNodes = new ArrayList<Node>();
@@ -67,6 +68,8 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			throw new RuntimeException(exception);
 		}
 		
+		changeSupport = ChangeSupport.getInstance();
+		changeSupport.addListner(this);
 		
 		//dataHandler.getShoppingCart().
 		productList = new ArrayList<ShoppingItem>();
@@ -96,27 +99,68 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 
 		pInf = new PersonalInformationPanel(this, choosePayment, theCustomer);
 		changeScreen(onlinePanel);
-
+		
+		
+		
+		EventHandler<MouseEvent> mousehandler = new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent mouseEvent) {
+					if(mouseEvent.getSource() instanceof CategoryTitledPane){
+						fillProductView(((CategoryTitledPane) mouseEvent
+								.getSource()).getItemsInCategory());
+						
+						categoryBtn.setText(((CategoryTitledPane) mouseEvent
+								.getSource()).getText());
+					} else if(mouseEvent.getSource() instanceof SubcategoryButton){
+						fillProductView(((SubcategoryButton) mouseEvent
+								.getSource()).getList());
+						
+						categoryBtn.setText(((SubcategoryButton) mouseEvent
+								.getSource()).getText());
+					}
+					
+				}
+		};
+		
+		
+		List<String> names = new ArrayList<String>();
 		for (ProductCategory c : ProductCategory.values()) {
-			String name = getCategoryName(c);
+			String mainName = getMainCategoryName(c);
+			
+			if(!names.contains(mainName)){
+				names.add(mainName);
+				
+				List<SubcategoryButton> thebuttons = new ArrayList<SubcategoryButton>();
+			
+					for (ProductCategory pc : ProductCategory.values()) {
+						
+						if(getMainCategoryName(pc).equals(mainName)){
+							
+							List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
+							
+							for (ShoppingItem p : productList) {
+
+								if (p.getProduct().getCategory() == pc) {
+									theCategoryList.add(p);
+								}
+							}
+							
+							SubcategoryButton scb = new SubcategoryButton(getCategoryName(pc), theCategoryList);
+							scb.setOnMouseClicked(mousehandler);
+							thebuttons.add(scb);
+						}
+					}
+					
+					CategoryTitledPane ctp = new CategoryTitledPane(mainName, thebuttons);
+					ctp.setOnMouseClicked(mousehandler);
+					categoryAccordation.getPanes().add(ctp);
+			}	
 			
 
 			// System.out.println(ProductCategory.valueOf(c.toString()));
 			//TitledPane t = new TitledPane(name, new AnchorPane());
 
-			EventHandler<MouseEvent> mousehandler = new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent mouseEvent) {
-
-					fillProductView(((CategoryTitledPane) mouseEvent
-							.getSource()).getItemsInCategory());
-					
-					categoryBtn.setText(((CategoryTitledPane) mouseEvent
-							.getSource()).getText());
-					
-				}
-			};
-
+			/*
 			List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
 			
 			for (ShoppingItem p : productList) {
@@ -125,12 +169,17 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 					theCategoryList.add(p);
 				}
 			}
-			CategoryTitledPane ctp = new CategoryTitledPane(name, theCategoryList, 1);
+			
+			SubcategoryButton scb = new SubcategoryButton(name, theCategoryList);
+			
+			//CategoryTitledPane ctp = new CategoryTitledPane(name, theCategoryList, 1);
 
-			ctp.setOnMouseClicked(mousehandler);
-			categoryAccordation.getPanes().add(ctp);
+			scb.setOnMouseClicked(mousehandler);
+			//categoryAccordation.getPanes().add(ctp);*/
 
 		}
+		
+		
 		
 		
 		shoppingCartRight = new ShoppingCartRight(this);
@@ -161,7 +210,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	int s = 0;
 
 	public void addToShoppingCart(ShoppingItem i) {
-		//dataHandler.getShoppingCart().addProduct(p, 1);
+		
 		ShoppingCartItem sci = new ShoppingCartItem(i);
 		
 		shoppingCartRight.getGridPane().setPrefHeight((s + 1) * 36);
@@ -209,43 +258,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		}	
 	}
 	
-	Map<String, List<List<ShoppingItem>>> category = new HashMap<String, List<List<ShoppingItem>>>();
-	
-	public void createCategoryPane(){
-		
-		fillLists();
-		
-		
-		
-		//List <ShoppingItem> items = new ArrayList<ShoppingItem>();
-		
-		for (ProductCategory c : ProductCategory.values()) {
-			
-			String mainName = getMainCategoryName(c);
-			
-			//if(category.keySet().toArray().length == 0){
-				//category.put(mainName, getListInList(c));
-			//}
-			
-			//for(String key: category.keySet()){
-			//	if(!key.equals(mainName)){
-					category.put(mainName, getListInList(c));
-			//	}
-			//}	
-		}
-		int i = 0;
-		for(String key: category.keySet()){
-			System.out.println(i);
-			CategoryTitledPane ctp = new CategoryTitledPane(key, category.get(key));
-			categoryAccordation.getPanes().add(ctp);
-		}
-		
-		
-		
-	}
-	
-	//private String [] names = {"Bröd", "Frukter och bär", "Baljväxter",  "Drycker", "Grönsaker", "Fisk", "Kött", "Mejeri", 
-	//"Mjöl, socker, salt", "Potatis, ris, pasta", "Nötter, frön", "Godis", "Örter"};
 	
 	private List<List<ShoppingItem>> bread = new ArrayList<List<ShoppingItem>>();
 	private List<List<ShoppingItem>> berryNfruits = new ArrayList<List<ShoppingItem>>();
@@ -365,7 +377,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 					berryNfruits.add(theProductList);
 					break;
 				case "BREAD":
-					System.out.println("Add");
 					bread.add(theProductList);
 					break;
 				case "POD":
@@ -428,15 +439,16 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 			}
 		
 	}
-
+	
+	
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
-			return "B�r";
+			return "Bär";
 		case "BREAD":
-			return "Br�d";
+			return "Bröd";
 		case "POD":
-			return "Baljv�xter";
+			return "Baljväxter";
 		case "CITRUS_FRUIT":
 			return "Citrusfrukter";
 		case "HOT_DRINKS":
@@ -448,19 +460,19 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Gr�nsaksfrukt";
+			return "Grönsaksfrukt";
 		case "CABBAGE":
-			return "K�l";
+			return "Kål";
 		case "MEAT":
-			return "K�tt";
+			return "Kött";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "Mj�l, socker, salt";
+			return "Mjöl, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "N�tter och fr�n";
+			return "Nötter och fr�n";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -472,7 +484,7 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "�rter";
+			return "Örter";
 		}
 		return c.toString();
 	}
@@ -564,17 +576,6 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 	}
 
 	
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-
-		if(evt.getPropertyName().equals("addToFavorite")){
-			System.out.println("lägger till!");
-		}
-		System.out.println("fire");
-
-	}
-	
-
 	
 
 	@Override
@@ -600,6 +601,14 @@ public class MainPanel extends BorderPane implements PropertyChangeListener, Sho
 		
 		
 	
+	}
+
+
+
+	@Override
+	public void eventRecieved(TheEvent evt) {
+		System.out.println(evt.getNameOFEvent());
+		System.out.println("Event happened");
 	}
 
 }

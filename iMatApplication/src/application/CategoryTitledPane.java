@@ -41,6 +41,7 @@ public class CategoryTitledPane extends TitledPane {
 		
 		gridPane = new GridPane();
 		gridPane.setPadding(new Insets(0,0,0,0));
+		gridPane.setPrefHeight(0); //Make sub-categories compact
 		
 		List<ShoppingItem> list = new ArrayList<ShoppingItem>();
 		if(buttons.size() > 1){
@@ -58,6 +59,7 @@ public class CategoryTitledPane extends TitledPane {
 			for(SubcategoryButton b: buttons){
 				list.addAll(b.getList());
 			}
+			this.setCollapsible(false); //Don't show arrow if no sub-categories
 		}
 		
 		

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<fx:root hbarPolicy="NEVER" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <BorderPane minHeight="-Infinity" minWidth="-Infinity">
+         <center>
+            <FlowPane fx:id="flowPane" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </content>
+</fx:root>

@@ -16,16 +16,16 @@ public class ChoosePayment extends ScrollPane {
 	@FXML
 	private Button finalizeBtn;
 	
-	MainPanel mainPanel		;
-	CheckoutPanel checkoutPanel;
+	MainPanel mainPanel;
+	//CheckoutPanel checkoutPanel;
 	DecimalFormat twoDec = new DecimalFormat("0.00");
 	
-	public ChoosePayment(MainPanel mainPanel, CheckoutPanel checkoutPanel){
+	public ChoosePayment(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("choosePayment.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
-		this.mainPanel = mainPanel;
-		this.checkoutPanel = checkoutPanel;
+		
+		//this.checkoutPanel = checkoutPanel;
 		try {
     		fxmlLoader.load();
         } catch (IOException exception) {
@@ -36,11 +36,12 @@ public class ChoosePayment extends ScrollPane {
 	public void finalizeBuy(ActionEvent evt){
 		
 		IMatDataHandler.getInstance().placeOrder(true);
+		CheckoutPanel checkoutPanel = new CheckoutPanel();
 		System.out.println("Placing order");
-		mainPanel.changeScreen(checkoutPanel);	
+		ChangeSupport.getInstance().fireNewEvent("", checkoutPanel);	
 	}
 	
 	public void setFinalizeText(Double sum){
-		finalizeBtn.setText("Slutf�r k�p (" + String.valueOf(twoDec.format(sum)) + " kr)");
+		finalizeBtn.setText("Slutför köp (" + String.valueOf(twoDec.format(sum)) + " kr)");
 	}
 }

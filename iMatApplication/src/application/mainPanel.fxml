@@ -134,8 +134,8 @@
                <center>
                   <ToolBar maxHeight="55.0" minHeight="55.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
                      <items>
-                        <ChoiceBox prefWidth="150.0" />
-                        <ChoiceBox prefWidth="150.0" />
+                        <ChoiceBox fx:id="chbView" prefWidth="150.0" />
+                        <ChoiceBox fx:id="chbSort" prefWidth="150.0" />
                      </items>
                   </ToolBar>
                </center>

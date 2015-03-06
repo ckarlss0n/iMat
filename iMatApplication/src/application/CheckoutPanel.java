@@ -15,12 +15,11 @@ public class CheckoutPanel extends ScrollPane {
 	
 	private MainPanel mainPanel;
 	private OnlinePanel onlinePanel;
-	public CheckoutPanel(MainPanel main, OnlinePanel onlinePanel){
+	public CheckoutPanel(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("checkoutPanel.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
-		this.mainPanel = main;
-		this.onlinePanel = onlinePanel;
+		
 		
 		try {
     		fxmlLoader.load();
@@ -30,7 +29,9 @@ public class CheckoutPanel extends ScrollPane {
 	}
 	
 	public void backToStart(ActionEvent evt){
-		mainPanel.changeScreen(onlinePanel);
+		ChangeSupport.getInstance().fireNewEvent("Home", null);
+		System.out.println("Home");
+		//mainPanel.changeScreen(onlinePanel);
 		
 	}
 }

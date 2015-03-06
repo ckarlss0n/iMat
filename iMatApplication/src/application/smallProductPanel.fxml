@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -8,31 +9,70 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root stylesheets="@application.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane prefHeight="120.0" prefWidth="180.0" stylesheets="@application.css">
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="grayBackground" stylesheets="@application.css">
          <top>
-            <ImageView fx:id="imgProduct" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fx:id="imgProduct" fitHeight="90.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="5.0" />
                </BorderPane.margin></ImageView>
          </top>
          <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" BorderPane.alignment="CENTER">
                <top>
-                  <Label fx:id="lblProductName" text="Produktnamn" BorderPane.alignment="CENTER" />
+                  <Label fx:id="lblProductName" text="Produktnamn" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                </top>
+               <center>
+                  <HBox BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="lblPrice" alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="35.0" prefWidth="73.0" text="489" textAlignment="RIGHT">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="unitSuffix" prefHeight="96.0" text="kg">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ImageView fx:id="starImage" fitHeight="44.0" fitWidth="32.0" onMouseClicked="#addToFavorite" onMouseEntered="#setToHalfStar" onMouseExited="#setToNormal" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../icon32/star-empty.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </center>
             </BorderPane>
          </center>
          <bottom>
-            <AnchorPane prefHeight="52.0" prefWidth="180.0" style="-fx-background-color: lightgray;" BorderPane.alignment="CENTER">
+            <HBox alignment="TOP_RIGHT">
                <children>
-                  <Button layoutX="118.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="42.0" text="Köp" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="15.0" />
-                  <Button layoutX="85.0" layoutY="16.0" mnemonicParsing="false" text="+" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="71.0" />
-                  <TextField layoutX="48.0" layoutY="16.0" prefHeight="26.0" prefWidth="27.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="105.0" />
-                  <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" text="-" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" />
+                  <ComboBox fx:id="productAmount" editable="true" prefHeight="14.0" prefWidth="25.0" promptText="1" stylesheets="@application.css">
+                     <HBox.margin>
+                        <Insets bottom="2.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addToCart" prefHeight="26.0" prefWidth="70.0" text="Lägg till">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
                </children>
-            </AnchorPane>
+            </HBox>
          </bottom>
       </BorderPane>
    </children>

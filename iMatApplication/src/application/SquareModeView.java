@@ -25,8 +25,7 @@ public class SquareModeView extends ScrollPane{
 	@FXML
 	private FlowPane flowPane; 
 	
-	public SquareModeView(List<ShoppingItem> theList){
-		
+	public SquareModeView(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listSquareMode.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,6 +35,15 @@ public class SquareModeView extends ScrollPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        
+        setListner();
+        
+        
+	}
+	
+	public SquareModeView(List<ShoppingItem> theList){
+		
+		
         
         for(ShoppingItem i : theList){ 	
         	SmallProductPanel smp = new SmallProductPanel(i);
@@ -56,6 +64,18 @@ public class SquareModeView extends ScrollPane{
 			}
 			
 		});
+	}
+	
+	public void fillList(List<ShoppingItem> list){
+		
+		flowPane.getChildren().clear();
+		
+		for(ShoppingItem i : list){ 	
+        	SmallProductPanel smp = new SmallProductPanel(i);
+        	add(smp);
+        	smp.setPadding((new Insets(2, 2, 2, 2)));
+        }
+        
 	}
 	
 	public void add(Node node){

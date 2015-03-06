@@ -587,21 +587,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(-1);
-<<<<<<< Updated upstream
-			progressIndicator.progressChoosePayment.setProgress(0);
-			progressIndicator.progressFinished.setProgress(0);
-		} else if(node.equals(choosePayment)){
-			
-			choosePayment.setFinalizeText(dataHandler.getShoppingCart().getTotal());
 
-			progressIndicator.progressOverview.setProgress(1);
-			progressIndicator.progressPersInfo.setProgress(1);
-			progressIndicator.progressChoosePayment.setProgress(-1);
-			progressIndicator.progressFinished.setProgress(0);
-		} else if(node.equals(checkoutPanel)){
-			progressIndicator.progressOverview.setProgress(1);
-			progressIndicator.progressPersInfo.setProgress(1);
-=======
 		} else if(node instanceof ChoosePayment){
 			
 			((ChoosePayment)getCurrentScreen()).setFinalizeText(dataHandler.getShoppingCart().getTotal());
@@ -609,7 +595,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			progressIndicator.progressPersInfo.setProgress(1);
 			progressIndicator.progressChoosePayment.setProgress(-1);
 		} else if(node instanceof CheckoutPanel){
->>>>>>> Stashed changes
 			progressIndicator.progressChoosePayment.setProgress(1);
 			progressIndicator.progressFinished.setProgress(1);
 		} 

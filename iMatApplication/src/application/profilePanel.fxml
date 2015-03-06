@@ -50,7 +50,8 @@
                                                    <left>
                                                       <GridPane alignment="CENTER_LEFT" maxWidth="500.0" minWidth="400.0" BorderPane.alignment="CENTER">
                                                         <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="94.0" />
+                                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="306.0" />
                                                         </columnConstraints>
                                                         <rowConstraints>
                                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -65,24 +66,34 @@
                                                             <Insets right="50.0" />
                                                          </BorderPane.margin>
                                                          <children>
-                                                            <TextField fx:id="firstNameField" promptText="Förnamn" />
-                                                            <TextField fx:id="lastNameField" promptText="Efternamn" GridPane.rowIndex="1" />
-                                                            <TextField fx:id="emailField" promptText="E-post" GridPane.rowIndex="2" />
-                                                            <TextField fx:id="addressField" promptText="Adress" GridPane.rowIndex="3" />
-                                                            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                            <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
+                                                            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                            <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                            <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                            <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                                <left>
-                                                                  <TextField fx:id="postalCodeField" prefHeight="39.0" prefWidth="131.0" promptText="Postkod" BorderPane.alignment="CENTER">
+                                                                  <TextField fx:id="postalCodeField" prefHeight="25.0" prefWidth="82.0" BorderPane.alignment="CENTER">
                                                                      <BorderPane.margin>
                                                                         <Insets right="10.0" />
                                                                      </BorderPane.margin>
                                                                   </TextField>
                                                                </left>
+                                                               <right>
+                                                                  <TextField fx:id="cityField" prefHeight="25.0" prefWidth="187.0" BorderPane.alignment="CENTER" />
+                                                               </right>
                                                                <center>
-                                                                  <TextField fx:id="cityField" promptText="Ort" BorderPane.alignment="CENTER" />
+                                                                  <Label text="Ort: " BorderPane.alignment="CENTER" />
                                                                </center>
                                                             </BorderPane>
-                                                            <PasswordField fx:id="passwordField" promptText="Lösenord" GridPane.rowIndex="6" />
-                                                            <TextField fx:id="phoneField" promptText="Telefon" GridPane.rowIndex="5" />
+                                                            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                            <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                            <Label text="E-post: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                                                            <Label text="Adress: " GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                                                            <Label text="Postkod: " GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                                                            <Label text="Telefon: " GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                                                            <Label text="Lösenord: " GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+                                                            <Label text="Efternamn: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                                                            <Label text="Förnamn: " GridPane.halignment="RIGHT" />
                                                          </children>
                                                       </GridPane>
                                                    </left>

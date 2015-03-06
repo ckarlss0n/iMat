@@ -541,13 +541,19 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(-1);
+			progressIndicator.progressChoosePayment.setProgress(0);
+			progressIndicator.progressFinished.setProgress(0);
 		} else if(node.equals(choosePayment)){
 			
 			choosePayment.setFinalizeText(dataHandler.getShoppingCart().getTotal());
-			
+
+			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(1);
 			progressIndicator.progressChoosePayment.setProgress(-1);
+			progressIndicator.progressFinished.setProgress(0);
 		} else if(node.equals(checkoutPanel)){
+			progressIndicator.progressOverview.setProgress(1);
+			progressIndicator.progressPersInfo.setProgress(1);
 			progressIndicator.progressChoosePayment.setProgress(1);
 			progressIndicator.progressFinished.setProgress(1);
 		} 

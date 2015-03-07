@@ -49,7 +49,7 @@
                   <Accordion fx:id="categoryAccordation" styleClass="redAccordion" stylesheets="@application.css" BorderPane.alignment="CENTER">
                     <panes>
                       <TitledPane fx:id="favorites" animated="false" collapsible="false" expanded="false" onMouseClicked="#goToFavorites" styleClass="grayAccordion" stylesheets="@application.css" text="Favoriter" />
-                      <TitledPane animated="false" styleClass="grayAccordion" text="Sparade listor">
+                      <TitledPane fx:id="savedTitledPane" animated="false" styleClass="grayAccordion" text="Sparade listor">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>

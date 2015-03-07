@@ -29,6 +29,30 @@ public class List_Nx1_view extends ScrollPane{
 	        throw new RuntimeException(exception);
 	    } 
 	}
+	
+	public List_Nx1_view(List<ItemInList> iil, int i){
+		 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("itemListPanel.fxml"));
+		 fxmlLoader.setRoot(this);
+		 fxmlLoader.setController(this);
+
+		 try {
+			 fxmlLoader.load();
+		 } catch (IOException exception) {
+            throw new RuntimeException(exception);
+		 }   
+		 
+		 
+		setHeight(iil.size() * 140);
+			
+			
+		int in = 0;
+		for(ItemInList item : iil){ 	
+	       	add(item, in);
+	        in++;  	
+		}
+	        
+	}
+	
 	public List_Nx1_view(List<ShoppingItem> theItemList){
 		  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("itemListPanel.fxml"));
 	        fxmlLoader.setRoot(this);
@@ -45,7 +69,6 @@ public class List_Nx1_view extends ScrollPane{
 	       setHeight(theItemList.size() * 140);
 	        
 	        for(int i = 0; i < theItemList.size(); i++){ 	
-	        	Product p = theItemList.get(i).getProduct();
 	        	ItemInList itp = new ItemInList(theItemList.get(i));
 	        	add(itp, i);
 	        }
@@ -67,6 +90,7 @@ public class List_Nx1_view extends ScrollPane{
 		return this.theItemList;
 	}
 	
+	ItemInList itp;
 	public void fillList(List<ShoppingItem> list){
 		gridPane.getChildren().clear();
 		theItemList = list;
@@ -75,10 +99,12 @@ public class List_Nx1_view extends ScrollPane{
 		
 		int i = 0;
 		for(ShoppingItem si : theItemList){ 	
-        	ItemInList itp = new ItemInList(si);
+        	itp = new ItemInList(si);
         	add(itp, i);
         	i++;
+        	
         }
+		System.out.println("Finish loop");
 		
 	}
 	

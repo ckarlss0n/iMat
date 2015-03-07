@@ -11,6 +11,7 @@ import java.util.Map;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
@@ -76,6 +77,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private ChoiceBox<String> chbView;
 	@FXML
 	private ChoiceBox<String> chbSort;
+	@FXML
+	private TitledPane savedTitledPane;
 	
 	
 	public MainPanel() { // h�r kommer det beh�vas en if sats som kollar fiall man �r inloggad och g�r checkout, profil och andra panels baserat p� den if satsen! ifall man �ven �r i inte inloggad delen ska man kunna ta sig till inloggad delen.
@@ -97,9 +100,16 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		dataHandler = IMatDataHandler.getInstance();
 		
+		
+		
 		for(Product p: dataHandler.getProducts()){
 			productList.add(new ShoppingItem(p));
 		}
+		
+		Order o = new Order();
+		o.setItems(productList);
+		o.setOrderNumber(1);
+		
 		
 		Customer theCustomer = dataHandler.getCustomer();
 		pInf = new PersonalInformationPanel(theCustomer);
@@ -109,6 +119,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		fixCategories();
 		
 		fillChoiceboxes();
+		
+		for(Order ord : dataHandler.getOrders()){
+			System.out.println(ord.getOrderNumber());
+		}
 	
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
@@ -116,7 +130,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems()); 
 	}
 	
-	
+	public void fillView(List<ItemInList> itemList){
+		List_Nx1_view li = new List_Nx1_view(itemList, 1);
+		changeScreen(li);
+	}
 	
 	
 	EventHandler<MouseEvent> categoryClick = new EventHandler<MouseEvent>() {
@@ -124,23 +141,29 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		public void handle(MouseEvent mouseEvent) {
 			
 			if(mouseEvent.getSource() instanceof CategoryTitledPane){
+				System.out.println("in mouse event");
+				//fillProductView(((CategoryTitledPane) mouseEvent
+					//	.getSource()).getItemsInCategory());
 				
-				fillProductView(((CategoryTitledPane) mouseEvent
-						.getSource()).getItemsInCategory());
-				
-				List<ShoppingItem> si = ((CategoryTitledPane) mouseEvent
-							.getSource()).getItemsInCategory();
-				
-				fillProductView(si);
+				fillView(((CategoryTitledPane) mouseEvent
+							.getSource()).getItemInList());
+				System.out.println(((CategoryTitledPane) mouseEvent
+							.getSource()).getItemInList().size());
 				
 				currentList = ((CategoryTitledPane) mouseEvent
 						.getSource()).getItemsInCategory();
+				System.out.println(currentList.size());
 				
 				categoryBtn.setText(((CategoryTitledPane) mouseEvent
 						.getSource()).getText());
 			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
+				System.out.println("Click button");
 				fillProductView(((SubcategoryButton) mouseEvent
 						.getSource()).getList());
+				
+				System.out.println(((SubcategoryButton) mouseEvent
+						.getSource()).getList().size());
+				
 				
 				currentList = ((SubcategoryButton) mouseEvent
 						.getSource()).getList();
@@ -221,9 +244,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public void fillProductView(List<ShoppingItem> productList) {
 		if(chbView.getSelectionModel().getSelectedItem().equals("Välj vy") || 
 				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
-			
+			System.out.println("if-state");
 			//theView = new List_Nx1_view(productList);
+			
 			lnv.fillList(productList);
+			System.out.println("Fill!");
 			changeScreen(lnv);
 			
 			
@@ -409,6 +434,20 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				return "Örter";
 		}
 		return c.toString();
+	}
+	
+	public void addSavedList(){
+		List<Label> labelList = new ArrayList<Label>();
+		for(Order o: dataHandler.getOrders()){
+			if(o.getOrderNumber()<0){
+				
+				labelList.add(new Label("-1"));
+			}
+		}
+		
+		
+		
+		((AnchorPane)savedTitledPane.getContent()).getChildren().addAll(labelList);
 	}
 
 	

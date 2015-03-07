@@ -18,6 +18,7 @@ public class CategoryTitledPane extends TitledPane {
 	private List<ShoppingItem> productList;
 	private List_Nx1_view lnxav;
 	
+	private List<ItemInList> itemInList = new ArrayList<ItemInList>();
 	
 	
 	private AnchorPane ancPane;
@@ -55,41 +56,18 @@ public class CategoryTitledPane extends TitledPane {
 		} else{
 			this.setCollapsible(false); //Don't show arrow if no sub-categories
 		}
-		
 		this.productList = allProductsInCategory;
 		
-		
-	
-	}
-	
-	/*public CategoryTitledPane(String name, List<List<ShoppingItem>> productLists){
-		
-		
-		gridPane = new GridPane();
-		
-		gridPane.setPadding(new Insets(0,0,0,0));
-		
-		//ancPane.setPrefWidth(250);
-		
-		for (int i = 0; i < productLists.size(); i++){
-			Button btn = new Button(productLists.get(i).get(0).getProduct().getCategory().toString());
-			btn.setPrefWidth(250);
-			gridPane.add(btn, 0, i);
+		for(ShoppingItem i:productList){
+			ItemInList iil = new ItemInList(i);
+			itemInList.add(iil);
 		}
-		
-		//ancPane.getChildren().addAll(buttons);
-		
-		
-		this.setContent(gridPane);
-		
-		
-		this.setText(name);
-	}
+		//System.out.println(itemInList.size());
+	}	
 	
-	public List_Nx1_view getListView(){
-		return lnxav;
+	public List<ItemInList> getItemInList(){
+		return itemInList;
 	}
-	*/
 	
 	public List<ShoppingItem> getItemsInCategory(){
 		return productList;

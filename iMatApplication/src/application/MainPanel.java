@@ -131,8 +131,16 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	}
 	
 	public void fillView(List<ItemInList> itemList){
-		List_Nx1_view li = new List_Nx1_view(itemList, 1);
-		changeScreen(li);
+		if(chbView.getSelectionModel().getSelectedItem().equals("Välj vy") || 
+				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
+			List_Nx1_view li = new List_Nx1_view(itemList, 1);
+			changeScreen(li);
+		} else if(chbView.getSelectionModel().getSelectedItem().equals("Fyrkants vy")){
+			
+			SquareModeView smView = new SquareModeView(getCurrentList());
+			
+			changeScreen(smView);
+		}
 	}
 	
 	
@@ -141,29 +149,23 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		public void handle(MouseEvent mouseEvent) {
 			
 			if(mouseEvent.getSource() instanceof CategoryTitledPane){
-				System.out.println("in mouse event");
 				//fillProductView(((CategoryTitledPane) mouseEvent
 					//	.getSource()).getItemsInCategory());
 				
 				fillView(((CategoryTitledPane) mouseEvent
 							.getSource()).getItemInList());
-				System.out.println(((CategoryTitledPane) mouseEvent
-							.getSource()).getItemInList().size());
+				
 				
 				currentList = ((CategoryTitledPane) mouseEvent
 						.getSource()).getItemsInCategory();
-				System.out.println(currentList.size());
+			
 				
 				categoryBtn.setText(((CategoryTitledPane) mouseEvent
 						.getSource()).getText());
 			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
-				System.out.println("Click button");
+				
 				fillProductView(((SubcategoryButton) mouseEvent
-						.getSource()).getList());
-				
-				System.out.println(((SubcategoryButton) mouseEvent
-						.getSource()).getList().size());
-				
+						.getSource()).getList());	
 				
 				currentList = ((SubcategoryButton) mouseEvent
 						.getSource()).getList();
@@ -244,11 +246,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public void fillProductView(List<ShoppingItem> productList) {
 		if(chbView.getSelectionModel().getSelectedItem().equals("Välj vy") || 
 				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
-			System.out.println("if-state");
 			//theView = new List_Nx1_view(productList);
 			
 			lnv.fillList(productList);
-			System.out.println("Fill!");
 			changeScreen(lnv);
 			
 			

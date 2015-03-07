@@ -53,6 +53,9 @@ public class SquareModeView extends ScrollPane{
         
         setListner();
 	}
+	
+	
+	
 	public void setListner(){
 		this.widthProperty().addListener(new ChangeListener<Number>(){
 

@@ -104,7 +104,6 @@ public class List_Nx1_view extends ScrollPane{
         	i++;
         	
         }
-		System.out.println("Finish loop");
 		
 	}
 	

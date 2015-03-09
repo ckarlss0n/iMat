@@ -183,7 +183,9 @@ public class MainPanel extends BorderPane implements ChangeListener,
 		AnchorPane ap = new AnchorPane();
 		Label lb = new Label("List vy");
 		ap.getChildren().add(lb);
+
 		chbView.setItems(FXCollections.observableArrayList("Standard vy", "Rutnäts vy"));
+
 		chbView.setValue(chbView.getItems().get(0));
 		
 		chbView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
@@ -241,8 +243,7 @@ public class MainPanel extends BorderPane implements ChangeListener,
 	}
 
 	public void fillProductView(List<ShoppingItem> productList) {
-		if (chbView.getSelectionModel().getSelectedItem().equals("Välj vy")
-				|| chbView.getSelectionModel().getSelectedItem()
+		if (chbView.getSelectionModel().getSelectedItem()
 						.equals("Standard vy")) {
 			// theView = new List_Nx1_view(productList);
 
@@ -250,7 +251,7 @@ public class MainPanel extends BorderPane implements ChangeListener,
 			changeScreen(lnv);
 
 		} else if (chbView.getSelectionModel().getSelectedItem()
-				.equals("Fyrkants vy")) {
+				.equals("Rutnäts vy")) {
 
 			sqmv.fillList(productList);
 			changeScreen(sqmv);

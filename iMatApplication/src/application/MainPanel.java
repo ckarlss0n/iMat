@@ -120,9 +120,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		fillChoiceboxes();
 		
-		for(Order ord : dataHandler.getOrders()){
-			System.out.println(ord.getOrderNumber());
-		}
+		
 	
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);

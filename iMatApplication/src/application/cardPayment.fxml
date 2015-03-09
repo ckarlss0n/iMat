@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root prefHeight="175.0" prefWidth="288.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="181.0" prefWidth="300.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="181.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox nodeOrientation="RIGHT_TO_LEFT" prefWidth="126.0">
+            <VBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="181.0" prefWidth="116.0">
                <children>
                   <Label text="Korttyp:">
                      <font>
@@ -55,19 +55,19 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefWidth="185.0">
+            <VBox prefHeight="181.0" prefWidth="183.0">
                <children>
-                  <ChoiceBox prefHeight="26.0" prefWidth="185.0">
+                  <ChoiceBox fx:id="chbCardType" prefHeight="26.0" prefWidth="185.0">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </VBox.margin>
                   </ChoiceBox>
-                  <TextField>
+                  <TextField fx:id="txtfCardHolderName">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField>
+                  <TextField fx:id="txtfCardNumber">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="7.0" />
                      </VBox.margin>
@@ -77,19 +77,19 @@
                         <Insets top="7.0" />
                      </VBox.margin>
                      <children>
-                        <ChoiceBox prefHeight="26.0" prefWidth="85.0">
+                        <ChoiceBox fx:id="chbMonth" prefHeight="26.0" prefWidth="85.0">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
                         </ChoiceBox>
-                        <ChoiceBox prefHeight="26.0" prefWidth="85.0">
+                        <ChoiceBox fx:id="chbYear" prefHeight="26.0" prefWidth="85.0">
                            <HBox.margin>
                               <Insets left="10.0" right="5.0" />
                            </HBox.margin>
                         </ChoiceBox>
                      </children>
                   </HBox>
-                  <TextField prefHeight="26.0" prefWidth="85.0">
+                  <TextField fx:id="txtfCVC" maxWidth="83.0" prefHeight="26.0" prefWidth="85.0">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="7.0" />
                      </VBox.margin>

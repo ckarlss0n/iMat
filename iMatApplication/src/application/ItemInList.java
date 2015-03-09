@@ -79,17 +79,17 @@ public class ItemInList extends BorderPane {
         }  
         
         List<String> adjectives = new ArrayList<String>();
-        adjectives.add("Enastï¿½ende");
+        adjectives.add("Enastående");
         adjectives.add("Kockens");
-        adjectives.add("ï¿½kta");
+        adjectives.add("Äkta");
         adjectives.add("Prima");
         
         List<String> phrases = new ArrayList<String>();
         phrases.add("Perfekt en varm sommardag!");
-        phrases.add("Ett mï¿½ste till fredagsmyset!");
+        phrases.add("Ett måste till fredagsmyset!");
         phrases.add("Barnens favorit!");
         phrases.add("Kockens special!");
-        phrases.add("En vinnare pï¿½ middagsbordet!");
+        phrases.add("En vinnare på middagsbordet!");
        
         Random random = new Random();
         

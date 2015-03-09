@@ -12,7 +12,7 @@
          <content>
             <BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
                <center>
-                  <GridPane minHeight="350.0" BorderPane.alignment="CENTER">
+                  <GridPane minHeight="350.0" prefHeight="406.0" prefWidth="388.0" BorderPane.alignment="CENTER">
                      <children>
                         <TextField fx:id="txtfSurname" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                            <GridPane.margin>
@@ -46,17 +46,9 @@
                         		<Tooltip text="Adress" />
                     	 	</tooltip>
                         </TextField>
-                        <TextField fx:id="txtfPhone" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5">
-                           <GridPane.margin>
-                              <Insets right="100.0" />
-                           </GridPane.margin>
-                           <tooltip>
-                        <Tooltip text="Telefon" />
-                     </tooltip>
-                        </TextField>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                            <left>
-                              <TextField fx:id="txtfPostcode" prefHeight="28.0" prefWidth="98.0" BorderPane.alignment="CENTER_LEFT">
+                              <TextField fx:id="txtfPostcode" prefHeight="28.0" prefWidth="85.0" BorderPane.alignment="CENTER_LEFT">
                                  <BorderPane.margin>
                                     <Insets />
                                  </BorderPane.margin>
@@ -69,7 +61,7 @@
                               <Insets right="100.0" />
                            </GridPane.margin>
                            <right>
-                              <TextField fx:id="txtfCity" prefHeight="25.0" prefWidth="214.0" BorderPane.alignment="CENTER_LEFT">
+                              <TextField fx:id="txtfCity" prefHeight="25.0" prefWidth="207.0" BorderPane.alignment="CENTER_LEFT">
                                  <BorderPane.margin>
                                     <Insets left="10.0" />
                                  </BorderPane.margin>
@@ -109,10 +101,18 @@
                               <Insets right="5.0" />
                            </padding>
                         </Label>
+                        <TextField fx:id="txtfPhone" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <tooltip>
+                              <Tooltip text="Telefon" />
+                           </tooltip>
+                           <GridPane.margin>
+                              <Insets right="100.0" />
+                           </GridPane.margin>
+                        </TextField>
                      </children>
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="126.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="546.0" minWidth="10.0" prefWidth="446.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="65.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="546.0" minWidth="10.0" prefWidth="337.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -122,6 +122,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
                   </GridPane>
                </center>
                <top>
@@ -129,7 +132,7 @@
                      <center>
                         <Label maxHeight="120.0" text="Var vänlig fyll i dina personuppgifter nedan för att gå vidare i betalningen." wrapText="true" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
-                              <Insets left="100.0" right="100.0" />
+                              <Insets left="80.0" right="80.0" />
                            </BorderPane.margin>
                         </Label>
                      </center>

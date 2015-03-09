@@ -100,7 +100,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		dataHandler = IMatDataHandler.getInstance();
 		
-		
+		dataHandler.reset();
 		
 		for(Product p: dataHandler.getProducts()){
 			productList.add(new ShoppingItem(p));
@@ -129,11 +129,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	}
 	
 	public void fillView(List<ItemInList> itemList){
-		if(chbView.getSelectionModel().getSelectedItem().equals("Välj vy") || 
-				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
+		if(chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
 			List_Nx1_view li = new List_Nx1_view(itemList, 1);
 			changeScreen(li);
-		} else if(chbView.getSelectionModel().getSelectedItem().equals("Fyrkants vy")){
+		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnäts vy")){
 			
 			SquareModeView smView = new SquareModeView(getCurrentList());
 			
@@ -186,7 +185,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		AnchorPane ap = new AnchorPane();
 		Label lb = new Label("List vy");
 		ap.getChildren().add(lb);
-		chbView.setItems(FXCollections.observableArrayList("Välj vy", "Standard vy", "Fyrkants vy"));
+		chbView.setItems(FXCollections.observableArrayList("Standard vy", "Rutnäts vy"));
 		chbView.setValue(chbView.getItems().get(0));;
 		
 		chbView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){

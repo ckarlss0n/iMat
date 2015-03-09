@@ -46,14 +46,6 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
-				    <Button fx:id="btnSave" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#saveShoppingCart" text="Save">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <tooltip>
-                        <Tooltip text="Spara din kundvagn så du kan använda den senare" />
-                     </tooltip>
-                  </Button>
                </children>
             </HBox>
          </center>
@@ -90,7 +82,7 @@
             </Label>
          </center>
          <right>
-            <Button fx:id="btnSave" alignment="CENTER_RIGHT" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#saveShoppingCart" text="Clear" BorderPane.alignment="CENTER">
+            <Button fx:id="btnClear" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#fullyClearShoppingCart" text="Clear" BorderPane.alignment="CENTER">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -101,7 +93,7 @@
             </Button>
          </right>
          <left>
-            <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Save" BorderPane.alignment="CENTER">
+            <Button fx:id="btnSave" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#saveShoppingCart" text="Save" BorderPane.alignment="CENTER">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>

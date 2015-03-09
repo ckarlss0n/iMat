@@ -12,11 +12,18 @@ import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBoxBuilder;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class ShoppingCartRight extends BorderPane{
@@ -65,12 +72,16 @@ public class ShoppingCartRight extends BorderPane{
 	}
 	
 	public void clearShoppingCart(){
-		
 		gridPane.getChildren().clear();
 		shoppingCartSum.setText("0.00");
 		s = 0;
 	}
 	
+	public void fullyClearShoppingCart(){ //When clear button clicked
+		System.out.println("SHOW CONFIRMATION DIALOG HERE!");
+		IMatDataHandler.getInstance().getShoppingCart().clear();
+		clearShoppingCart();
+	}
 
 	public ShoppingCartItem getShoppingCartItem(ShoppingItem i){
 		
@@ -101,6 +112,7 @@ public class ShoppingCartRight extends BorderPane{
 		gridPane.getChildren().clear();
 		s = 0;
 	}
+	
 	public void setShoppingCartSum(double amount){
 		FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.8), shoppingCartSum);
 		fadeIn.setFromValue(0.6);

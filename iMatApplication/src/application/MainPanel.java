@@ -384,47 +384,47 @@ public class MainPanel extends BorderPane implements ChangeListener,
 	public String getMainCategoryName(ProductCategory c) {
 		switch (c.toString()) {
 		case "BERRY":
-			return "Frukter och b�r";
+			return "Frukter och bär";
 		case "BREAD":
-			return "Br�d";
+			return "Bröd";
 		case "POD":
-			return "Baljv�xter";
+			return "Baljväxter";
 		case "CITRUS_FRUIT":
-			return "Frukter och b�r";
+			return "Frukter och bär";
 		case "HOT_DRINKS":
 			return "Drycker";
 		case "COLD_DRINKS":
 			return "Drycker";
 		case "EXOTIC_FRUIT":
-			return "Frukter och b�r";
+			return "Frukter och bär";
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
 			return "Gr�nsaker";
 		case "CABBAGE":
-			return "Gr�nsaker";
+			return "Grönsaker";
 		case "MEAT":
-			return "K�tt";
+			return "Kött";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
-			return "Frukter och b�r";
+			return "Frukter och bär";
 		case "FLOUR_SUGAR_SALT":
-			return "Mj�l, socker, salt";
+			return "Mjöl, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "N�tter och fr�n";
+			return "Nötter & Frön";
 		case "PASTA":
 			return "Potatis, ris, pasta";
 		case "POTATO_RICE":
 			return "Potatis, ris, pasta";
 		case "ROOT_VEGETABLE":
-			return "Gr�nsaker";
+			return "Grönsaker";
 		case "FRUIT":
-			return "Frukter och b�r";
+			return "Frukter och bär";
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "�rter";
+			return "Örter";
 		}
 		return c.toString();
 	}
@@ -541,7 +541,7 @@ public class MainPanel extends BorderPane implements ChangeListener,
 		case "FLOUR_SUGAR_SALT":
 			return "Mjöl, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "Nötter och fr�n";
+			return "Nötter & Frön";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":

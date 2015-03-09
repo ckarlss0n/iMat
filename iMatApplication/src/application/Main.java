@@ -40,7 +40,7 @@ public class Main extends Application {
 			root.getChildren().addAll(mp);
 			Scene scene = new Scene(root);
 
-
+			System.setProperty("file.encoding", "UTF-8");
 			String defaultCharacterEncoding = System.getProperty("file.encoding");
 			
 			scene.widthProperty().addListener(new ChangeListener<Number>() {

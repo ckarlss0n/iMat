@@ -104,8 +104,8 @@ public class MainPanel extends BorderPane implements ChangeListener,
 		productList = new ArrayList<ShoppingItem>();
 
 		dataHandler = IMatDataHandler.getInstance();
-
-		for (Product p : dataHandler.getProducts()) {
+		
+		for(Product p: dataHandler.getProducts()){
 			productList.add(new ShoppingItem(p));
 		}
 
@@ -126,16 +126,12 @@ public class MainPanel extends BorderPane implements ChangeListener,
 		dataHandler.getShoppingCart().addShoppingCartListener(this);
 		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
 	}
-
-	public void fillView(List<ItemInList> itemList) {
-		if (chbView.getSelectionModel().getSelectedItem().equals("V‰lj vy")
-				|| chbView.getSelectionModel().getSelectedItem()
-						.equals("Standardvy")) {
+	
+	public void fillView(List<ItemInList> itemList){
+		if(chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
 			List_Nx1_view li = new List_Nx1_view(itemList, 1);
 			changeScreen(li);
-		} else if (chbView.getSelectionModel().getSelectedItem()
-				.equals("Fyrkantsvy")) {
-
+		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutn√§ts vy")){
 			SquareModeView smView = new SquareModeView(getCurrentList());
 
 			changeScreen(smView);
@@ -187,13 +183,10 @@ public class MainPanel extends BorderPane implements ChangeListener,
 		AnchorPane ap = new AnchorPane();
 		Label lb = new Label("List vy");
 		ap.getChildren().add(lb);
-		chbView.setItems(FXCollections.observableArrayList("V‰lj vy",
-				"Standard vy", "Fyrkants vy"));
+		chbView.setItems(FXCollections.observableArrayList("Standard vy", "Rutn‰ts vy"));
 		chbView.setValue(chbView.getItems().get(0));
-		;
-
-		chbView.getSelectionModel().selectedItemProperty()
-				.addListener(new ChangeListener<String>() {
+		
+		chbView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
 					@Override
 					public void changed(
@@ -206,6 +199,7 @@ public class MainPanel extends BorderPane implements ChangeListener,
 
 				});
 	}
+		
 
 	public void fixCategories() {
 		List<String> names = new ArrayList<String>();

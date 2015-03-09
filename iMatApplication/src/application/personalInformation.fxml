@@ -17,6 +17,9 @@
                <BorderPane.margin>
                   <Insets bottom="20.0" left="100.0" right="100.0" top="10.0" />
                </BorderPane.margin>
+               <tooltip>
+                  <Tooltip text="Gå vidare till nästa steg i köpet" />
+               </tooltip>
             </Button>
          </bottom>
          <center>
@@ -26,26 +29,41 @@
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Förnamn" />
+                     </tooltip>
                   </TextField>
                   <TextField fx:id="txtfLastname" promptText="Efternamn" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Efternamn" />
+                     </tooltip>
                   </TextField>
                   <TextField fx:id="txtfEmail" promptText="E-post" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="E-post" />
+                     </tooltip>
                   </TextField>
                   <TextField fx:id="txtfAdress" promptText="Adress" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Adress" />
+                     </tooltip>
                   </TextField>
                   <TextField fx:id="txtfPhone" promptText="Telefon" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="100.0" right="100.0" />
                      </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Telefon" />
+                     </tooltip>
                   </TextField>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                      <left>
@@ -53,6 +71,9 @@
                            <BorderPane.margin>
                               <Insets />
                            </BorderPane.margin>
+                           <tooltip>
+                              <Tooltip text="Postkod" />
+                           </tooltip>
                         </TextField>
                      </left>
                      <center>
@@ -60,6 +81,9 @@
                            <BorderPane.margin>
                               <Insets left="10.0" />
                            </BorderPane.margin>
+                           <tooltip>
+                              <Tooltip text="Ort" />
+                           </tooltip>
                         </TextField>
                      </center>
                      <GridPane.margin>

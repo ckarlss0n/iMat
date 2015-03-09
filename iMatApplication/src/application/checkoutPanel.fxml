@@ -14,7 +14,10 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="toStartBtn" layoutX="382.0" layoutY="187.0" mnemonicParsing="false" onAction="#backToStart" text="Tillbaka till start" />
+            <Button fx:id="toStartBtn" layoutX="382.0" layoutY="187.0" mnemonicParsing="false" onAction="#backToStart" text="Tillbaka till start">
+               <tooltip>
+                  <Tooltip text="Gå tillbaka till startsidan" />
+               </tooltip></Button>
          </children></AnchorPane>
   </content>
 </fx:root>

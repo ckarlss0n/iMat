@@ -52,11 +52,17 @@
          <bottom>
             <HBox alignment="TOP_RIGHT" BorderPane.alignment="CENTER_RIGHT">
                <children>
-                  <ComboBox fx:id="productAmount" editable="true" prefHeight="39.0" prefWidth="80.0" promptText="1" stylesheets="@application.css" />
+                  <ComboBox fx:id="productAmount" editable="true" prefHeight="39.0" prefWidth="80.0" promptText="1" stylesheets="@application.css">
+                     <tooltip>
+                        <Tooltip text="Skriv eller välj antal i listan" />
+                     </tooltip></ComboBox>
                   <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addToCart" prefHeight="39.0" prefWidth="92.0" text="Lägg till">
                      <HBox.margin>
                         <Insets left="5.0" />
-                     </HBox.margin></Button>
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Lägg till i kundvagnen" />
+                     </tooltip></Button>
                </children>
             </HBox>
          </bottom>

@@ -39,6 +39,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <tooltip>
+                        <Tooltip text="Sök" />
+                     </tooltip>
                   </Button>
                </right>
             </BorderPane>
@@ -48,11 +51,17 @@
                <content>
                   <Accordion fx:id="categoryAccordation" styleClass="redAccordion" stylesheets="@application.css" BorderPane.alignment="CENTER">
                     <panes>
-                      <TitledPane fx:id="favorites" animated="false" collapsible="false" expanded="false" onMouseClicked="#goToFavorites" styleClass="grayAccordion" stylesheets="@application.css" text="Favoriter" />
+                      <TitledPane fx:id="favorites" animated="false" collapsible="false" expanded="false" onMouseClicked="#goToFavorites" styleClass="grayAccordion" stylesheets="@application.css" text="Favoriter">
+                           <tooltip>
+                              <Tooltip text="Se sparade favoriter" />
+                           </tooltip></TitledPane>
                       <TitledPane fx:id="savedTitledPane" animated="false" styleClass="grayAccordion" text="Sparade listor">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                         </content>
+                           <tooltip>
+                              <Tooltip text="Se sparade inköpslistor" />
+                           </tooltip>
                       </TitledPane>
                       <TitledPane id="menuSeparator" alignment="TOP_CENTER" animated="false" collapsible="false" expanded="false">
                            <graphic>
@@ -83,6 +92,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <tooltip>
+                  <Tooltip text="Gå till startsidan" />
+               </tooltip>
             </Button>
          </left>
          <center>
@@ -113,6 +125,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <tooltip>
+                  <Tooltip text="Gå till din profil (ändra inställningar och se tidigare köp)" />
+               </tooltip>
             </Button>
          </right>
       </BorderPane>
@@ -134,8 +149,14 @@
                <center>
                   <ToolBar maxHeight="55.0" minHeight="55.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
                      <items>
-                        <ChoiceBox fx:id="chbView" prefWidth="150.0" />
-                        <ChoiceBox fx:id="chbSort" prefWidth="150.0" />
+                        <ChoiceBox fx:id="chbView" prefWidth="150.0">
+                           <tooltip>
+                              <Tooltip text="Välj mellan olika vyer" />
+                           </tooltip></ChoiceBox>
+                        <ChoiceBox fx:id="chbSort" prefWidth="150.0">
+                           <tooltip>
+                              <Tooltip text="Välj vilken ordning varorna ska visas" />
+                           </tooltip></ChoiceBox>
                      </items>
                   </ToolBar>
                </center>

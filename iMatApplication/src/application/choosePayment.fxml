@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="800.0" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <BorderPane stylesheets="@application.css">
+      <BorderPane prefWidth="778.0" stylesheets="@application.css">
          <top>
             <Label text="Välj betalsätt" BorderPane.alignment="CENTER">
                <font>
@@ -44,6 +44,9 @@
                      <content>
                         <ScrollPane fitToHeight="true" fitToWidth="true" />
                      </content>
+                     <tooltip>
+                        <Tooltip text="Betala med faktura som kommer skicaks hem till dig" />
+                     </tooltip>
                 </TitledPane>
                   <TitledPane alignment="CENTER" animated="false">
                      <graphic>
@@ -63,6 +66,9 @@
                      <content>
                         <ScrollPane fx:id="scrlCard" fitToHeight="true" fitToWidth="true" />
                      </content>
+                     <tooltip>
+                        <Tooltip text="Betala med kontokort" />
+                     </tooltip>
                   </TitledPane>
                   <TitledPane alignment="CENTER" animated="false">
                      <graphic>
@@ -82,6 +88,9 @@
                      <content>
                         <ScrollPane fitToHeight="true" fitToWidth="true" />
                      </content>
+                     <tooltip>
+                        <Tooltip text="Betala när du hämtar ut varorna" />
+                     </tooltip>
                   </TitledPane>
               </panes>
             </Accordion>

@@ -627,7 +627,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	public void setIndicator(Node node){
 		if(node.equals(shoppingCartBig)){
-			progressIndicator.progressOverview.setProgress(-1);
+			progressIndicator.progressOverview.setProgress(0);
 			progressIndicator.progressPersInfo.setProgress(0);
 			progressIndicator.progressChoosePayment.setProgress(0);
 			progressIndicator.progressFinished.setProgress(0);
@@ -636,14 +636,14 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			//pInf.pInfSetText(); 
 			
 			progressIndicator.progressOverview.setProgress(1);
-			progressIndicator.progressPersInfo.setProgress(-1);
+			progressIndicator.progressPersInfo.setProgress(0);
 
 		} else if(node instanceof ChoosePayment){
 			
 			((ChoosePayment)getCurrentScreen()).setFinalizeText(dataHandler.getShoppingCart().getTotal());
 			
 			progressIndicator.progressPersInfo.setProgress(1);
-			progressIndicator.progressChoosePayment.setProgress(-1);
+			progressIndicator.progressChoosePayment.setProgress(0);
 		} else if(node instanceof CheckoutPanel){
 			progressIndicator.progressChoosePayment.setProgress(1);
 			progressIndicator.progressFinished.setProgress(1);

@@ -120,9 +120,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		fillChoiceboxes();
 		
-		for(Order ord : dataHandler.getOrders()){
-			System.out.println(ord.getOrderNumber());
-		}
+	
 	
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
@@ -131,11 +129,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	}
 	
 	public void fillView(List<ItemInList> itemList){
-		if(chbView.getSelectionModel().getSelectedItem().equals("VÃ¤lj vy") || 
-				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
+		if( chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
 			List_Nx1_view li = new List_Nx1_view(itemList, 1);
 			changeScreen(li);
-		} else if(chbView.getSelectionModel().getSelectedItem().equals("Fyrkants vy")){
+		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnätsvy")){
 			
 			SquareModeView smView = new SquareModeView(getCurrentList());
 			
@@ -185,10 +182,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	SquareModeView smv;
 	public void fillChoiceboxes(){
 		
-		AnchorPane ap = new AnchorPane();
-		Label lb = new Label("List vy");
-		ap.getChildren().add(lb);
-		chbView.setItems(FXCollections.observableArrayList("VÃ¤lj vy", "Standard vy", "Fyrkants vy"));
+		
+		chbView.setItems(FXCollections.observableArrayList("Standardvy", "Rutnätsvy"));
 		chbView.setValue(chbView.getItems().get(0));;
 		
 		chbView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
@@ -244,16 +239,16 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	
 	public void fillProductView(List<ShoppingItem> productList) {
-		if(chbView.getSelectionModel().getSelectedItem().equals("VÃ¤lj vy") || 
-				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
+		if(chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
 			//theView = new List_Nx1_view(productList);
 			
 			lnv.fillList(productList);
 			changeScreen(lnv);
 			
 			
-		} else if(chbView.getSelectionModel().getSelectedItem().equals("Fyrkants vy")){
+		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnätsvy")){
 			
+			System.out.println(productList.size());
 			sqmv.fillList(productList);
 			changeScreen(sqmv);
 		}

@@ -46,9 +46,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
-<<<<<<< HEAD
-=======
-                  <Button fx:id="btnSave" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#saveShoppingCart" text="Save">
+				    <Button fx:id="btnSave" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#saveShoppingCart" text="Save">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -56,7 +54,6 @@
                         <Tooltip text="Spara din kundvagn så du kan använda den senare" />
                      </tooltip>
                   </Button>
->>>>>>> 7cd087dfd34249bd3578ad8e2c23ea3c5f28f672
                </children>
             </HBox>
          </center>

@@ -63,6 +63,7 @@ public class CardPayment extends BorderPane {
 			chbYear.getItems().add("20" + (15+i));
 		}
 		
+		chbCardType.setValue(chbCardType.getItems().get(0));
 		chbMonth.setValue(chbMonth.getItems().get(0));
 		chbYear.setValue(chbYear.getItems().get(0));
 		

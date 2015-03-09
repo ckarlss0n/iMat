@@ -1,9 +1,12 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.geometry.Insets;
@@ -19,7 +22,6 @@ public class CategoryTitledPane extends TitledPane {
 	private List_Nx1_view lnxav;
 	
 	private List<ItemInList> itemInList = new ArrayList<ItemInList>();
-	
 	
 	private AnchorPane ancPane;
 	private GridPane gridPane;
@@ -38,10 +40,12 @@ public class CategoryTitledPane extends TitledPane {
 	
 	public CategoryTitledPane(String name, List<SubcategoryButton> buttons, List<ShoppingItem> allProductsInCategory){
 		this.setText(name);
+
 		
 		gridPane = new GridPane();
 		gridPane.setPadding(new Insets(0,0,0,0));
 		gridPane.setPrefHeight(0); //Make sub-categories compact
+		gridPane.setMaxHeight(0);
 		
 		if(buttons.size() > 1){
 			int i = 0;

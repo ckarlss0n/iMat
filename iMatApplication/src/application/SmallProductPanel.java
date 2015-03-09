@@ -19,9 +19,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
-public class SmallProductPanel extends AnchorPane {
+public class SmallProductPanel extends BorderPane {
 	
 	@FXML 
 	private Label lblProductName;
@@ -80,7 +81,7 @@ public class SmallProductPanel extends AnchorPane {
 	public void setStar(){
 		File file;
 		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
-			file = new File("icon32/star-full.png");
+			file = new File("icon32/star-full-yellow.png");
 		} else {
 			file = new File("icon32/star-empty.png");
 		}

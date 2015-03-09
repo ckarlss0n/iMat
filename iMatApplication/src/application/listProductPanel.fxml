@@ -76,7 +76,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="starImage" fitHeight="44.0" fitWidth="32.0" onMouseClicked="#addToFavorite" onMouseEntered="#setToHalfStar" onMouseExited="#setToNormal" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="starImage" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#addToFavorite" onMouseEntered="#setToHalfStar" onMouseExited="#setToNormal" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../icon32/star-empty.png" />
                      </image>

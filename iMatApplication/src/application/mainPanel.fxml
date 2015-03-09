@@ -44,7 +44,7 @@
             </BorderPane>
          </top>
          <center>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="192.0" prefViewportWidth="202.0">
+            <ScrollPane fitToWidth="true" prefViewportHeight="192.0" prefViewportWidth="202.0">
                <content>
                   <Accordion fx:id="categoryAccordation" styleClass="redAccordion" stylesheets="@application.css" BorderPane.alignment="CENTER">
                     <panes>

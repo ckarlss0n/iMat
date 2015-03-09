@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.sun.scenario.effect.DropShadow;
+
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
@@ -79,17 +81,17 @@ public class ItemInList extends BorderPane {
         }  
         
         List<String> adjectives = new ArrayList<String>();
-        adjectives.add("Enastående");
+        adjectives.add("Enastï¿½ende");
         adjectives.add("Kockens");
-        adjectives.add("Äkta");
+        adjectives.add("ï¿½kta");
         adjectives.add("Prima");
         
         List<String> phrases = new ArrayList<String>();
         phrases.add("Perfekt en varm sommardag!");
-        phrases.add("Ett måste till fredagsmyset!");
+        phrases.add("Ett mï¿½ste till fredagsmyset!");
         phrases.add("Barnens favorit!");
         phrases.add("Kockens special!");
-        phrases.add("En vinnare på middagsbordet!");
+        phrases.add("En vinnare pï¿½ middagsbordet!");
        
         Random random = new Random();
         
@@ -127,12 +129,16 @@ public class ItemInList extends BorderPane {
 	public void setStar(){
 		File file;
 		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
-			file = new File("icon32/star-full.png");
+			file = new File("icon32/star-full-yellow.png");
 		} else {
 			file = new File("icon32/star-empty.png");
 		}
 		Image icon = new Image(file.toURI().toString());
 	    starImage.setImage(icon);
+	}
+	
+	public String getName(){
+		return this.getName();
 	}
 	
 	public void setProductImage(Image img){
@@ -153,7 +159,7 @@ public class ItemInList extends BorderPane {
 		File file;
 		if(!IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
 			IMatDataHandler.getInstance().addFavorite(sci.getProduct());
-			file = new File("icon32/star-full.png");
+			file = new File("icon32/star-full-yellow.png");
 		} else {
 			IMatDataHandler.getInstance().removeFavorite(sci.getProduct());
 			file = new File("icon32/star-empty.png");

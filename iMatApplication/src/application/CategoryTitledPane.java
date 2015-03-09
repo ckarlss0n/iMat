@@ -18,6 +18,7 @@ public class CategoryTitledPane extends TitledPane {
 	private List<ShoppingItem> productList;
 	private List_Nx1_view lnxav;
 	
+	private List<ItemInList> itemInList = new ArrayList<ItemInList>();
 	
 	
 	private AnchorPane ancPane;
@@ -35,19 +36,16 @@ public class CategoryTitledPane extends TitledPane {
 		
 	}
 	
-	public CategoryTitledPane(String name, List<SubcategoryButton> buttons){
+	public CategoryTitledPane(String name, List<SubcategoryButton> buttons, List<ShoppingItem> allProductsInCategory){
 		this.setText(name);
-		//this.productList = buttons.get(0).getList();
 		
 		gridPane = new GridPane();
 		gridPane.setPadding(new Insets(0,0,0,0));
 		gridPane.setPrefHeight(0); //Make sub-categories compact
 		
-		List<ShoppingItem> list = new ArrayList<ShoppingItem>();
 		if(buttons.size() > 1){
 			int i = 0;
 			for(SubcategoryButton b: buttons){
-				list.addAll(b.getList());
 				b.setPrefWidth(250);
 				gridPane.add(b, 0, i);
 				i++;
@@ -56,48 +54,20 @@ public class CategoryTitledPane extends TitledPane {
 			gridPane.setMaxHeight(i*buttons.get(0).getHeight());
 			this.setContent(gridPane);
 		} else{
-			for(SubcategoryButton b: buttons){
-				list.addAll(b.getList());
-			}
 			this.setCollapsible(false); //Don't show arrow if no sub-categories
 		}
+		this.productList = allProductsInCategory;
 		
-		
-		this.productList = list;
-		
-		
-		
-	
-	}
-	
-	/*public CategoryTitledPane(String name, List<List<ShoppingItem>> productLists){
-		
-		
-		gridPane = new GridPane();
-		
-		gridPane.setPadding(new Insets(0,0,0,0));
-		
-		//ancPane.setPrefWidth(250);
-		
-		for (int i = 0; i < productLists.size(); i++){
-			Button btn = new Button(productLists.get(i).get(0).getProduct().getCategory().toString());
-			btn.setPrefWidth(250);
-			gridPane.add(btn, 0, i);
+		for(ShoppingItem i:productList){
+			ItemInList iil = new ItemInList(i);
+			itemInList.add(iil);
 		}
-		
-		//ancPane.getChildren().addAll(buttons);
-		
-		
-		this.setContent(gridPane);
-		
-		
-		this.setText(name);
-	}
+		//System.out.println(itemInList.size());
+	}	
 	
-	public List_Nx1_view getListView(){
-		return lnxav;
+	public List<ItemInList> getItemInList(){
+		return itemInList;
 	}
-	*/
 	
 	public List<ShoppingItem> getItemsInCategory(){
 		return productList;

@@ -1,6 +1,6 @@
 package application;
 
-public interface ChangeListener {
+public interface ChangeScreenListener {
 	
 	public void eventRecieved(TheEvent evt);
 	

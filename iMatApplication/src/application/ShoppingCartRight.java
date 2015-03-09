@@ -8,10 +8,12 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -24,6 +26,8 @@ public class ShoppingCartRight extends BorderPane{
 	private BorderPane borderPane;
 	@FXML
 	private Label shoppingCartSum;
+	@FXML
+	private Button btnSave;
 	
 	private MainPanel mp;
 	
@@ -119,6 +123,27 @@ public class ShoppingCartRight extends BorderPane{
 
 		s++;
 		
+	}
+	
+	public void saveShoppingCart(ActionEvent evt){
+		int index = 0;
+		int minValue = 0;
+		
+		for(Order o :IMatDataHandler.getInstance().getOrders()){
+			
+			if(o.getOrderNumber() < minValue){
+				minValue = o.getOrderNumber();
+			}
+			
+		}
+		
+		if(minValue < 0){
+				index = minValue-1;
+		} else{
+			index = -1;
+		}
+		
+		IMatDataHandler.getInstance().placeOrder(false).setOrderNumber(index);
 	}
 
 }

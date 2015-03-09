@@ -40,6 +40,11 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
+                  <Button fx:id="btnSave" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#saveShoppingCart" text="Save">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </center>

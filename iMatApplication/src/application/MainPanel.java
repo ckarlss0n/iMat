@@ -11,30 +11,38 @@ import java.util.Map;
 import se.chalmers.ait.dat215.project.CartEvent;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ProductCategory;
 import se.chalmers.ait.dat215.project.ShoppingCartListener;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import se.chalmers.ait.dat215.project.User;
 import javafx.animation.FadeTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-public class MainPanel extends BorderPane implements ChangeListener, ShoppingCartListener {
+public class MainPanel extends BorderPane implements ChangeListener, ShoppingCartListener, ChangeScreenListener {
 
 	private List<ShoppingItem> productList;
 	private IMatDataHandler dataHandler;
@@ -43,12 +51,15 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private OnlinePanel onlinePanel = new OnlinePanel();
 	private ProfilePanel profilePanel;
 	private ShoppingCartRight shoppingCartRight;
-	private CheckoutPanel checkoutPanel = new CheckoutPanel(this, onlinePanel);
-	private ChoosePayment choosePayment = new ChoosePayment(this, checkoutPanel);
+	//private CheckoutPanel checkoutPanel = new CheckoutPanel();
+	//private ChoosePayment choosePayment = new ChoosePayment();
 	private ChangeSupport changeSupport;
 	private PersonalInformationPanel pInf;
-	
+	private boolean isOnline = true;
+	private List<ShoppingItem> currentList;
 	private List<Node> listOfNodes = new ArrayList<Node>();
+	private List_Nx1_view lnv = new List_Nx1_view();
+	private SquareModeView sqmv = new SquareModeView();
 	
 	@FXML
 	private Accordion categoryAccordation;
@@ -62,6 +73,12 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private Button categoryBtn;
 	@FXML
 	private TitledPane favorites;
+	@FXML
+	private ChoiceBox<String> chbView;
+	@FXML
+	private ChoiceBox<String> chbSort;
+	@FXML
+	private TitledPane savedTitledPane;
 	
 	
 	public MainPanel() { // h�r kommer det beh�vas en if sats som kollar fiall man �r inloggad och g�r checkout, profil och andra panels baserat p� den if satsen! ifall man �ven �r i inte inloggad delen ska man kunna ta sig till inloggad delen.
@@ -83,53 +100,111 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		dataHandler = IMatDataHandler.getInstance();
 		
+		
+		
 		for(Product p: dataHandler.getProducts()){
 			productList.add(new ShoppingItem(p));
 		}
-		//productList = dataHandler.getProducts();
 		
-		//gör till shoppingitems
-
-		User theUser = dataHandler.getUser();
-
-//		theUser.setUserName("Emil");
-//		theUser.setPassword("123");
-
+		Order o = new Order();
+		o.setItems(productList);
+		o.setOrderNumber(1);
+		
+		
 		Customer theCustomer = dataHandler.getCustomer();
-//		theCustomer.setFirstName("John");
-//		theCustomer.setLastName("Doe");
-//		theCustomer.setEmail("john.doe@example.com");
-//		theCustomer.setAddress("Ringv�gen 239");
-//		theCustomer.setPostCode("41280");
-//		theCustomer.setPostAddress("G�teborg");
-//		theCustomer.setPhoneNumber("0705326742");
-
-		pInf = new PersonalInformationPanel(this, choosePayment, theCustomer);
+		pInf = new PersonalInformationPanel(theCustomer);
 		changeScreen(onlinePanel);
 		
 		
+		fixCategories();
 		
-		EventHandler<MouseEvent> mousehandler = new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent mouseEvent) {
-					if(mouseEvent.getSource() instanceof CategoryTitledPane){
-						fillProductView(((CategoryTitledPane) mouseEvent
-								.getSource()).getItemsInCategory());
-						
-						categoryBtn.setText(((CategoryTitledPane) mouseEvent
-								.getSource()).getText());
-					} else if(mouseEvent.getSource() instanceof SubcategoryButton){
-						fillProductView(((SubcategoryButton) mouseEvent
-								.getSource()).getList());
-						
-						categoryBtn.setText(((SubcategoryButton) mouseEvent
-								.getSource()).getText());
-					}
-					
-				}
-		};
+		fillChoiceboxes();
 		
+		for(Order ord : dataHandler.getOrders()){
+			System.out.println(ord.getOrderNumber());
+		}
+	
+		shoppingCartRight = new ShoppingCartRight(this);
+		bigBorder.setRight(shoppingCartRight);
+		dataHandler.getShoppingCart().addShoppingCartListener(this);
+		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems()); 
+	}
+	
+	public void fillView(List<ItemInList> itemList){
+		if(chbView.getSelectionModel().getSelectedItem().equals("Välj vy") || 
+				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
+			List_Nx1_view li = new List_Nx1_view(itemList, 1);
+			changeScreen(li);
+		} else if(chbView.getSelectionModel().getSelectedItem().equals("Fyrkants vy")){
+			
+			SquareModeView smView = new SquareModeView(getCurrentList());
+			
+			changeScreen(smView);
+		}
+	}
+	
+	
+	EventHandler<MouseEvent> categoryClick = new EventHandler<MouseEvent>() {
+		@Override
+		public void handle(MouseEvent mouseEvent) {
+			
+			if(mouseEvent.getSource() instanceof CategoryTitledPane){
+				//fillProductView(((CategoryTitledPane) mouseEvent
+					//	.getSource()).getItemsInCategory());
+				
+				fillView(((CategoryTitledPane) mouseEvent
+							.getSource()).getItemInList());
+				
+				
+				currentList = ((CategoryTitledPane) mouseEvent
+						.getSource()).getItemsInCategory();
+			
+				
+				categoryBtn.setText(((CategoryTitledPane) mouseEvent
+						.getSource()).getText());
+			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
+				
+				fillProductView(((SubcategoryButton) mouseEvent
+						.getSource()).getList());	
+				
+				currentList = ((SubcategoryButton) mouseEvent
+						.getSource()).getList();
+				
+				categoryBtn.setText(((SubcategoryButton) mouseEvent
+						.getSource()).getText());
+			}
+			
+		}
+	};
+	
+	
+	public List<ShoppingItem> getCurrentList(){
+		return currentList;
+	}
+	
+	SquareModeView smv;
+	public void fillChoiceboxes(){
 		
+		AnchorPane ap = new AnchorPane();
+		Label lb = new Label("List vy");
+		ap.getChildren().add(lb);
+		chbView.setItems(FXCollections.observableArrayList("Välj vy", "Standard vy", "Fyrkants vy"));
+		chbView.setValue(chbView.getItems().get(0));;
+		
+		chbView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable,
+					String oldValue, String newValue) {
+				
+				fillProductView(getCurrentList());
+				
+			}
+			
+			});
+	}
+	
+	public void fixCategories(){
 		List<String> names = new ArrayList<String>();
 		for (ProductCategory c : ProductCategory.values()) {
 			String mainName = getMainCategoryName(c);
@@ -138,7 +213,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				names.add(mainName);
 				
 				List<SubcategoryButton> thebuttons = new ArrayList<SubcategoryButton>();
-			
+				List<ShoppingItem> allProductsInCategory = new ArrayList<ShoppingItem>();
 					for (ProductCategory pc : ProductCategory.values()) {
 						
 						if(getMainCategoryName(pc).equals(mainName)){
@@ -152,69 +227,54 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 								}
 							}
 							
+							allProductsInCategory.addAll(theCategoryList);
 							SubcategoryButton scb = new SubcategoryButton(getCategoryName(pc), theCategoryList);
-							scb.setOnMouseClicked(mousehandler);
+							scb.setOnMouseClicked(categoryClick);
 							thebuttons.add(scb);
 						}
 					}
 					
-					CategoryTitledPane ctp = new CategoryTitledPane(mainName, thebuttons);
-					ctp.setOnMouseClicked(mousehandler);
+					CategoryTitledPane ctp = new CategoryTitledPane(mainName, thebuttons, allProductsInCategory);
+					ctp.setOnMouseClicked(categoryClick);
 					categoryAccordation.getPanes().add(ctp);
-			}	
-			
-
-			// System.out.println(ProductCategory.valueOf(c.toString()));
-			//TitledPane t = new TitledPane(name, new AnchorPane());
-
-			/*
-			List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
-			
-			for (ShoppingItem p : productList) {
-
-				if (p.getProduct().getCategory() == c) {
-					theCategoryList.add(p);
-				}
 			}
-			
-			SubcategoryButton scb = new SubcategoryButton(name, theCategoryList);
-			
-			//CategoryTitledPane ctp = new CategoryTitledPane(name, theCategoryList, 1);
-
-			scb.setOnMouseClicked(mousehandler);
-			//categoryAccordation.getPanes().add(ctp);*/
-
 		}
-		
-		
-		
-		
-		shoppingCartRight = new ShoppingCartRight(this);
-		bigBorder.setRight(shoppingCartRight);
-		dataHandler.getShoppingCart().addShoppingCartListener(this);
-		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems()); 
-		//createCategoryPane();
 	}
 	
-
+	
+	
 	public void fillProductView(List<ShoppingItem> productList) {
-		List_Nx1_view l = new List_Nx1_view(productList);
-		changeScreen(l);
+		if(chbView.getSelectionModel().getSelectedItem().equals("Välj vy") || 
+				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
+			//theView = new List_Nx1_view(productList);
+			
+			lnv.fillList(productList);
+			changeScreen(lnv);
+			
+			
+		} else if(chbView.getSelectionModel().getSelectedItem().equals("Fyrkants vy")){
+			
+			sqmv.fillList(productList);
+			changeScreen(sqmv);
+		}
+		System.out.println(chbView.getSelectionModel().getSelectedItem());
+		
+		
 	}
 
-	int i = 0;
 
 	public void goToMyProfile(ActionEvent evt) {
 		profilePanel = new ProfilePanel();
 		changeScreen(profilePanel);
 	}
 	
+	
 	public ProfilePanel getProfilePanel(){
 		return profilePanel;
 	}
 
+	
 	int s = 0;
-
 	public void addToShoppingCart(ShoppingItem i) {
 		
 		ShoppingCartItem sci = new ShoppingCartItem(i);
@@ -242,6 +302,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		fillProductView(theList);
 	}
+	
 	
 	public void fillLists(){
 		for (ProductCategory c : ProductCategory.values()) {
@@ -374,6 +435,20 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		}
 		return c.toString();
 	}
+	
+	public void addSavedList(){
+		List<Label> labelList = new ArrayList<Label>();
+		for(Order o: dataHandler.getOrders()){
+			if(o.getOrderNumber()<0){
+				
+				labelList.add(new Label("-1"));
+			}
+		}
+		
+		
+		
+		((AnchorPane)savedTitledPane.getContent()).getChildren().addAll(labelList);
+	}
 
 	
 	public void addToList(ProductCategory c, List<ShoppingItem> theProductList){
@@ -442,7 +517,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 					herbs.add(theProductList);
 					break;
 			}
-		
 	}
 	
 	
@@ -512,14 +586,36 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 
 
 	public void goToHome(ActionEvent evt) {
-		changeScreen(onlinePanel);
+		changeScreen(getHomeScreen());
 	}
 
 	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
+		
+		if(node instanceof OnlinePanel || node instanceof OfflinePanel || node.equals(shoppingCartBig) || node.equals(pInf) || 
+				node instanceof ChoosePayment|| node instanceof CheckoutPanel){
+			categoryBtn.setOpacity(0);
+			categoryBtn.setDisable(true);
+			
+			chbView.setOpacity(0);
+			chbView.setDisable(true);
+			
+			chbSort.setOpacity(0);
+			chbSort.setDisable(true);
+		} else{
+			categoryBtn.setOpacity(100);
+			categoryBtn.setDisable(false);
+			
+			chbView.setOpacity(100);
+			chbView.setDisable(false);
+			
+			chbSort.setOpacity(100);
+			chbSort.setDisable(false);
+		}
+		
 		if (node.equals(shoppingCartBig) || node.equals(pInf) || 
-				node.equals(choosePayment) || node.equals(checkoutPanel)) {
+				node instanceof ChoosePayment|| node instanceof CheckoutPanel) {
 			bigBorder.setRight(progressIndicator);
 			setIndicator(node);
 		}else {
@@ -541,13 +637,14 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(-1);
-		} else if(node.equals(choosePayment)){
+
+		} else if(node instanceof ChoosePayment){
 			
-			choosePayment.setFinalizeText(dataHandler.getShoppingCart().getTotal());
+			((ChoosePayment)getCurrentScreen()).setFinalizeText(dataHandler.getShoppingCart().getTotal());
 			
 			progressIndicator.progressPersInfo.setProgress(1);
 			progressIndicator.progressChoosePayment.setProgress(-1);
-		} else if(node.equals(checkoutPanel)){
+		} else if(node instanceof CheckoutPanel){
 			progressIndicator.progressChoosePayment.setProgress(1);
 			progressIndicator.progressFinished.setProgress(1);
 		} 
@@ -607,13 +704,35 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 	
 	}
+	
+	public Node getHomeScreen(){
+		if(isOnline){
+			return new OnlinePanel();
+		}else{
+			return new OfflinePanel();
+		}
+	}
 
 
 
 	@Override
 	public void eventRecieved(TheEvent evt) {
-		System.out.println(evt.getNameOFEvent());
-		System.out.println("Event happened");
+		if(evt.getScreen() == null){
+			if(evt.getNameOFEvent().equals("Home")){
+				changeScreen(getHomeScreen());
+			}
+			
+		}else{
+			System.out.println("Panel change!");
+			changeScreen(evt.getScreen());
+		}
+	}
+
+	@Override
+	public void changed(ObservableValue observable, Object oldValue,
+			Object newValue) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -31,17 +31,17 @@ public class PersonalInformationPanel extends ScrollPane {
 	@FXML
 	private Button goToPaymentBtn;
 	MainPanel mainPanel;
-	ChoosePayment choosePayment;
+	//ChoosePayment choosePayment;
 	
 	IMatDataHandler imat = IMatDataHandler.getInstance();
 	Customer customer = imat.getCustomer();
 	
-	public PersonalInformationPanel(MainPanel mainPanel, ChoosePayment choosePayment, Customer customer){
+	public PersonalInformationPanel(Customer customer){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("personalInformation.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 		this.mainPanel = mainPanel;
-		this.choosePayment = choosePayment;
+		//this.choosePayment = choosePayment;
 		
 		System.out.println(customer.getFirstName()); //finns inte... customer måste skickas med i konstrucktorn tror jag... -ish
 		System.out.println("asd");
@@ -89,7 +89,10 @@ public class PersonalInformationPanel extends ScrollPane {
 		customer.setPostCode(txtfPostcode.getText());
 		customer.setPostAddress(txtfCity.getText());
 		customer.setPhoneNumber(txtfPhone.getText());
-		mainPanel.changeScreen(choosePayment);		
+		
+		ChoosePayment choosePayment = new ChoosePayment();
+		ChangeSupport.getInstance().fireNewEvent("", choosePayment);
+			
 	
 	}
 }

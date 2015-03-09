@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javafx.scene.Node;
+
 
 public class ChangeSupport {
 	private static ChangeSupport instance = null;
@@ -24,20 +26,26 @@ public class ChangeSupport {
 		return instance;
 	}
 	
-	public synchronized void addListner(ChangeListener listener){
+	public synchronized void addListner(ChangeScreenListener listener){
 		pcs.add(listener);
 	}
 	
-	public synchronized void removeListner(ChangeListener listener){
+	public synchronized void removeListner(ChangeScreenListener listener){
 		pcs.remove(listener);
 
 	}
 	
-	public void fireNewEvent(String nameOfEvent){
-		TheEvent event = new TheEvent(this, nameOfEvent);
+	public void fireNewEvent(String nameOfEvent, Node theScreen){
+		TheEvent event = null;
+		if(theScreen == null){
+			event = new TheEvent(this, nameOfEvent);
+		}else{
+			event = new TheEvent(this, theScreen);
+		}
+		
 		Iterator i = pcs.iterator();
 		while(i.hasNext()){
-			((ChangeListener) i.next()).eventRecieved(event);
+			((ChangeScreenListener) i.next()).eventRecieved(event);
 		}
 	}
 

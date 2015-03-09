@@ -28,6 +28,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -110,7 +111,9 @@ public class ItemInList extends BorderPane {
         
         productImage.setImage(new Image(image.toURI().toString()));
         lblPrice.setText(String.valueOf(twoDec.format(theProduct.getPrice())));
+        lblPrice.setTooltip(new Tooltip(theProduct.getPrice() + "/" + theProduct.getUnit()));
         unitSuffix.setText(theProduct.getUnit());
+        unitSuffix.setTooltip(new Tooltip(theProduct.getPrice() + "/" + theProduct.getUnit()));
         productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " f�r " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
         
         //this.changeListner.addPropertyChangeListener(m);
@@ -128,8 +131,10 @@ public class ItemInList extends BorderPane {
 		File file;
 		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
 			file = new File("icon32/star-full.png");
+		    Tooltip.install(starImage, new Tooltip("Klicka för att ofavorisera"));
 		} else {
 			file = new File("icon32/star-empty.png");
+		    Tooltip.install(starImage, new Tooltip("Klicka för att favorisera"));
 		}
 		Image icon = new Image(file.toURI().toString());
 	    starImage.setImage(icon);

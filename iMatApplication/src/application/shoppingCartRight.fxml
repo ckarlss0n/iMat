@@ -25,6 +25,9 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+               <tooltip>
+                  <Tooltip text="Gå vidare till kassan för att utföra ditt köp" />
+               </tooltip>
             </Button>
          </bottom>
          <center>
@@ -34,6 +37,9 @@
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <tooltip>
+                        <Tooltip text="Totalsumman för ditt köp" />
+                     </tooltip>
                   </Label>
                   <Label text="kr">
                      <HBox.margin>
@@ -44,6 +50,9 @@
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Spara din kundvagn så du kan använda den senare" />
+                     </tooltip>
                   </Button>
                </children>
             </HBox>

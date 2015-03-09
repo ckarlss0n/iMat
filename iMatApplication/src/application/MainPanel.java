@@ -81,7 +81,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private TitledPane savedTitledPane;
 	
 	
-	public MainPanel() { // h�r kommer det beh�vas en if sats som kollar fiall man �r inloggad och g�r checkout, profil och andra panels baserat p� den if satsen! ifall man �ven �r i inte inloggad delen ska man kunna ta sig till inloggad delen.
+	public MainPanel() { // hï¿½r kommer det behï¿½vas en if sats som kollar fiall man ï¿½r inloggad och gï¿½r checkout, profil och andra panels baserat pï¿½ den if satsen! ifall man ï¿½ven ï¿½r i inte inloggad delen ska man kunna ta sig till inloggad delen.
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -131,7 +131,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	}
 	
 	public void fillView(List<ItemInList> itemList){
-		if(chbView.getSelectionModel().getSelectedItem().equals("Välj vy") || 
+		if(chbView.getSelectionModel().getSelectedItem().equals("VÃ¤lj vy") || 
 				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
 			List_Nx1_view li = new List_Nx1_view(itemList, 1);
 			changeScreen(li);
@@ -188,7 +188,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		AnchorPane ap = new AnchorPane();
 		Label lb = new Label("List vy");
 		ap.getChildren().add(lb);
-		chbView.setItems(FXCollections.observableArrayList("Välj vy", "Standard vy", "Fyrkants vy"));
+		chbView.setItems(FXCollections.observableArrayList("VÃ¤lj vy", "Standard vy", "Fyrkants vy"));
 		chbView.setValue(chbView.getItems().get(0));;
 		
 		chbView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
@@ -244,7 +244,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	
 	public void fillProductView(List<ShoppingItem> productList) {
-		if(chbView.getSelectionModel().getSelectedItem().equals("Välj vy") || 
+		if(chbView.getSelectionModel().getSelectedItem().equals("VÃ¤lj vy") || 
 				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
 			//theView = new List_Nx1_view(productList);
 			
@@ -315,7 +315,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				}
 			}
 			if(c == ProductCategory.BREAD){
-				System.out.println("BrödBröd!");
+				System.out.println("BrÃ¶dBrÃ¶d!");
 			}
 			System.out.println(c.toString());
 			
@@ -391,47 +391,47 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public String getMainCategoryName(ProductCategory c){
 		switch(c.toString()){
 			case "BERRY":
-				return "Frukter och bär";
+				return "Frukter och bÃ¤r";
 			case "BREAD":
-				return "Bröd";
+				return "BrÃ¶d";
 			case "POD":
-				return "Baljväxter";
+				return "BaljvÃ¤xter";
 			case "CITRUS_FRUIT":
-				return "Frukter och bär";
+				return "Frukter och bÃ¤r";
 			case "HOT_DRINKS":
 				return "Drycker";
 			case "COLD_DRINKS":
 				return "Drycker";
 			case "EXOTIC_FRUIT":
-				return "Frukter och bär";
+				return "Frukter och bÃ¤r";
 			case "FISH":
 				return "Fisk";
 			case "VEGETABLE_FRUIT":
-				return "Grönsaker";
+				return "GrÃ¶nsaker";
 			case "CABBAGE":
-				return "Grönsaker";
+				return "GrÃ¶nsaker";
 			case "MEAT":
-				return "Kött";
+				return "KÃ¶tt";
 			case "DAIRIES":
 				return "Mejeri";
 			case "MELONS":
-				return "Frukter och bär";
+				return "Frukter och bÃ¤r";
 			case "FLOUR_SUGAR_SALT":
-				return "Mjöl, socker, salt";
+				return "MjÃ¶l, socker, salt";
 			case "NUTS_AND_SEEDS":
-				return "Nötter och frön";
+				return "NÃ¶tter och frÃ¶n";
 			case "PASTA":
 				return "Potatis, ris, pasta";
 			case "POTATO_RICE":
 				return "Potatis, ris, pasta";
 			case "ROOT_VEGETABLE":
-				return "Grönsaker";
+				return "GrÃ¶nsaker";
 			case "FRUIT":
-				return "Frukter och bär";
+				return "Frukter och bÃ¤r";
 			case "SWEET":
 				return "Godis";
 			case "HERB":
-				return "Örter";
+				return "Ã–rter";
 		}
 		return c.toString();
 	}
@@ -523,11 +523,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
-			return "Bär";
+			return "BÃ¤r";
 		case "BREAD":
-			return "Bröd";
+			return "BrÃ¶d";
 		case "POD":
-			return "Baljväxter";
+			return "BaljvÃ¤xter";
 		case "CITRUS_FRUIT":
 			return "Citrusfrukter";
 		case "HOT_DRINKS":
@@ -539,19 +539,19 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Grönsaksfrukt";
+			return "GrÃ¶nsaksfrukt";
 		case "CABBAGE":
-			return "Kål";
+			return "KÃ¥l";
 		case "MEAT":
-			return "Kött";
+			return "KÃ¶tt";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "Mjöl, socker, salt";
+			return "MjÃ¶l, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "Nötter och fr�n";
+			return "NÃ¶tter och frï¿½n";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -563,7 +563,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Örter";
+			return "Ã–rter";
 		}
 		return c.toString();
 	}
@@ -667,7 +667,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				}
 			}
 			List_Nx1_view productView = new List_Nx1_view(foundItems);
-			categoryBtn.setText("S�kresultat: " + searchField.getText());
+			categoryBtn.setText("Sï¿½kresultat: " + searchField.getText());
 			
 			changeScreen(productView);
 		}

@@ -44,6 +44,9 @@
                      <content>
                         <ScrollPane fitToHeight="true" fitToWidth="true" />
                      </content>
+                     <tooltip>
+                        <Tooltip text="Betala med faktura som kommer skicaks hem till dig" />
+                     </tooltip>
                 </TitledPane>
                   <TitledPane alignment="CENTER" animated="false">
                      <graphic>
@@ -63,6 +66,9 @@
                      <content>
                         <ScrollPane fx:id="scrlCard" fitToHeight="true" fitToWidth="true" />
                      </content>
+                     <tooltip>
+                        <Tooltip text="Betala med kontokort" />
+                     </tooltip>
                   </TitledPane>
                   <TitledPane alignment="CENTER" animated="false">
                      <graphic>
@@ -82,6 +88,9 @@
                      <content>
                         <ScrollPane fitToHeight="true" fitToWidth="true" />
                      </content>
+                     <tooltip>
+                        <Tooltip text="Betala när du hämtar ut varorna" />
+                     </tooltip>
                   </TitledPane>
               </panes>
             </Accordion>

@@ -35,7 +35,10 @@ public class ChoosePayment extends ScrollPane {
             throw new RuntimeException(exception);
             
         }
-		scrlCard.setContent(new CardPayment());
+		
+		CardPayment cp = new CardPayment();
+		scrlCard.setMaxHeight(cp.getPrefHeight());
+		scrlCard.setContent(cp);
 	}
 	
 	public void finalizeBuy(ActionEvent evt){

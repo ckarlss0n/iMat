@@ -68,6 +68,7 @@ public class Main extends Application {
 			stage.setTitle("iMat");
 			stage.setScene(scene);
 			stage.show();
+
 			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	            @Override
 	            public void handle(WindowEvent t) {

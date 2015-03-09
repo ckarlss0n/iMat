@@ -302,91 +302,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		fillProductView(theList);
 	}
-	
-	
-	public void fillLists(){
-		for (ProductCategory c : ProductCategory.values()) {
 
-			List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
-			
-			for (ShoppingItem p : productList) {
-				if (p.getProduct().getCategory().toString().equals(c.toString())) {
-					theCategoryList.add(p);
-				}
-			}
-			if(c == ProductCategory.BREAD){
-				System.out.println("BrÃ¶dBrÃ¶d!");
-			}
-			System.out.println(c.toString());
-			
-			
-			addToList(c, theCategoryList);
-		}	
-	}
-	
-	
-	private List<List<ShoppingItem>> bread = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> berryNfruits = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> pod = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> beverage = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> vegtables = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> fish = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> meat = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> dairies = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> flourSugarSalt = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> potatoRicePasta = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> nutsSeeds = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> sweets = new ArrayList<List<ShoppingItem>>();
-	private List<List<ShoppingItem>> herbs = new ArrayList<List<ShoppingItem>>();
-	
-	
-	public List<List<ShoppingItem>> getListInList(ProductCategory p){
-		switch(p.toString()){
-			case "BERRY":
-				return berryNfruits;
-			case "BREAD":
-				return bread;
-			case "POD":
-				return pod;
-			case "CITRUS_FRUIT":
-				return berryNfruits;
-			case "HOT_DRINKS":
-				return beverage;
-			case "COLD_DRINKS":
-				return beverage;
-			case "EXOTIC_FRUIT":
-				return berryNfruits;
-			case "FISH":
-				return fish;
-			case "VEGETABLE_FRUIT":
-				return vegtables;
-			case "CABBAGE":
-				return vegtables;
-			case "MEAT":
-				return meat;
-			case "DAIRIES":
-				return dairies;
-			case "MELONS":
-				return berryNfruits;
-			case "FLOUR_SUGAR_SALT":
-				return flourSugarSalt;
-			case "NUTS_AND_SEEDS":
-				return nutsSeeds;
-			case "PASTA":
-				return potatoRicePasta;
-			case "POTATO_RICE":
-				return potatoRicePasta;
-			case "ROOT_VEGETABLE":
-				return vegtables;
-			case "FRUIT":
-				return berryNfruits;
-			case "SWEET":
-				return sweets;
-			case "HERB":
-				return herbs;
-		}
-		return null;
-	}
 	
 	public String getMainCategoryName(ProductCategory c){
 		switch(c.toString()){
@@ -450,75 +366,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		((AnchorPane)savedTitledPane.getContent()).getChildren().addAll(labelList);
 	}
 
-	
-	public void addToList(ProductCategory c, List<ShoppingItem> theProductList){
-			switch(c.toString()){
-				case "BERRY":
-					berryNfruits.add(theProductList);
-					break;
-				case "BREAD":
-					bread.add(theProductList);
-					break;
-				case "POD":
-					pod.add(theProductList);
-					break;
-				case "CITRUS_FRUIT":
-					berryNfruits.add(theProductList);
-					break;
-				case "HOT_DRINKS":
-					beverage.add(theProductList);
-					break;
-				case "COLD_DRINKS":
-					beverage.add(theProductList);
-					break;
-				case "EXOTIC_FRUIT":
-					berryNfruits.add(theProductList);
-					break;
-				case "FISH":
-					fish.add(theProductList);
-					break;
-				case "VEGETABLE_FRUIT":
-					vegtables.add(theProductList);
-					break;
-				case "CABBAGE":
-					vegtables.add(theProductList);
-					break;
-				case "MEAT":
-					meat.add(theProductList);
-					break;
-				case "DAIRIES":
-					dairies.add(theProductList);
-					break;
-				case "MELONS":
-					berryNfruits.add(theProductList);
-					break;
-				case "FLOUR_SUGAR_SALT":
-					flourSugarSalt.add(theProductList);
-					break;
-				case "NUTS_AND_SEEDS":
-					nutsSeeds.add(theProductList);
-					break;
-				case "PASTA":
-					potatoRicePasta.add(theProductList);
-					break;
-				case "POTATO_RICE":
-					potatoRicePasta.add(theProductList);
-					break;
-				case "ROOT_VEGETABLE":
-					vegtables.add(theProductList);
-					break;
-				case "FRUIT":
-					berryNfruits.add(theProductList);
-					break;
-				case "SWEET":
-					sweets.add(theProductList);
-					break;
-				case "HERB":
-					herbs.add(theProductList);
-					break;
-			}
-	}
-	
+
 	
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
@@ -667,8 +515,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				}
 			}
 			List_Nx1_view productView = new List_Nx1_view(foundItems);
-			categoryBtn.setText("Sï¿½kresultat: " + searchField.getText());
-			
+			categoryBtn.setText("Sökresultat: " + searchField.getText());
 			changeScreen(productView);
 		}
 	}
@@ -724,6 +571,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 		}else{
 			System.out.println("Panel change!");
+			
 			changeScreen(evt.getScreen());
 		}
 	}

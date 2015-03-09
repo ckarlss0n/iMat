@@ -8,6 +8,7 @@
 
 <fx:root fitToHeight="true" fitToWidth="true" prefHeight="307.0" prefWidth="378.0" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <content>
+<<<<<<< HEAD
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
@@ -25,5 +26,19 @@
             </VBox>
          </center>
       </BorderPane>
+=======
+    <AnchorPane minHeight="0.0" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
+         <children>
+            <Label layoutX="285.0" layoutY="21.0" text="Tack för ditt köp!">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="toStartBtn" layoutX="382.0" layoutY="187.0" mnemonicParsing="false" onAction="#backToStart" text="Tillbaka till start">
+               <tooltip>
+                  <Tooltip text="Gå tillbaka till startsidan" />
+               </tooltip></Button>
+         </children></AnchorPane>
+>>>>>>> origin/master
   </content>
 </fx:root>

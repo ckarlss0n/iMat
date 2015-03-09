@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<<<<<<< HEAD
 
 <fx:root prefHeight="200.0" prefWidth="200.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
@@ -39,6 +40,76 @@
                            <GridPane.margin>
                               <Insets left="100.0" right="100.0" />
                            </GridPane.margin>
+=======
+<fx:root id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
+         <bottom>
+            <Button fx:id="goToPaymentBtn" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#register" text="Gå vidare" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="100.0" right="100.0" top="10.0" />
+               </BorderPane.margin>
+               <tooltip>
+                  <Tooltip text="Gå vidare till nästa steg i köpet" />
+               </tooltip>
+            </Button>
+         </bottom>
+         <center>
+            <GridPane minHeight="350.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="txtfSurname" promptText="Förnamn">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Förnamn" />
+                     </tooltip>
+                  </TextField>
+                  <TextField fx:id="txtfLastname" promptText="Efternamn" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Efternamn" />
+                     </tooltip>
+                  </TextField>
+                  <TextField fx:id="txtfEmail" promptText="E-post" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="E-post" />
+                     </tooltip>
+                  </TextField>
+                  <TextField fx:id="txtfAdress" promptText="Adress" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Adress" />
+                     </tooltip>
+                  </TextField>
+                  <TextField fx:id="txtfPhone" promptText="Telefon" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" />
+                     </GridPane.margin>
+                     <tooltip>
+                        <Tooltip text="Telefon" />
+                     </tooltip>
+                  </TextField>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <left>
+                        <TextField fx:id="txtfPostcode" prefHeight="28.0" prefWidth="86.0" promptText="Postkod" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <tooltip>
+                              <Tooltip text="Postkod" />
+                           </tooltip>
+>>>>>>> origin/master
                         </TextField>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
                            <left>
@@ -80,7 +151,14 @@
                            <BorderPane.margin>
                               <Insets left="100.0" right="100.0" />
                            </BorderPane.margin>
+<<<<<<< HEAD
                         </Label>
+=======
+                           <tooltip>
+                              <Tooltip text="Ort" />
+                           </tooltip>
+                        </TextField>
+>>>>>>> origin/master
                      </center>
                      <top>
                         <Label text="Personuppgifter" BorderPane.alignment="CENTER">

@@ -100,7 +100,10 @@
                                                    <center>
                                                       <Label fx:id="bonusLevelLabel" alignment="CENTER" contentDisplay="BOTTOM" text="Bonusnivå: 1" BorderPane.alignment="CENTER">
                                                          <graphic>
-                                                            <ProgressIndicator fx:id="progressIndicator" prefHeight="200.0" prefWidth="200.0" progress="0.16" />
+                                                            <ProgressIndicator fx:id="progressIndicator" prefHeight="200.0" prefWidth="200.0" progress="0.16">
+                                                               <tooltip>
+                                                                  <Tooltip text="Utför köp för att tjäna poäng och kom upp i högre nivåer för att få extra bonusar" />
+                                                               </tooltip></ProgressIndicator>
                                                          </graphic>
                                                          <font>
                                                             <Font size="24.0" />
@@ -111,6 +114,9 @@
                                              </content>
                                           </ScrollPane>
                                        </content>
+                                       <tooltip>
+                                          <Tooltip text="Se och ändra dina personuppgifter och bonusnivå" />
+                                       </tooltip>
                                   </TitledPane>
                                   <TitledPane fx:id="allergyPane" animated="false" expanded="false" text="Allergier">
                                        <content>
@@ -175,6 +181,9 @@
                                              </content>
                                           </ScrollPane>
                                        </content>
+                                       <tooltip>
+                                          <Tooltip text="Se och ändra dina allergier" />
+                                       </tooltip>
                                   </TitledPane>
                                 </panes>
                               </Accordion>
@@ -184,10 +193,16 @@
                                  <BorderPane.margin>
                                     <Insets bottom="10.0" top="10.0" />
                                  </BorderPane.margin>
+                                 <tooltip>
+                                    <Tooltip text="Spara gjorde ändringar" />
+                                 </tooltip>
                               </Button>
                            </bottom>
                         </BorderPane>
                      </content>
+                     <tooltip>
+                        <Tooltip text="Se och ändra personuppgifter, allergier och bonusnivå" />
+                     </tooltip>
                   </Tab>
                   <Tab fx:id="historyTab" closable="false" text="Historik">
                      <content>
@@ -201,6 +216,9 @@
                            </center>
                         </BorderPane>
                      </content>
+                     <tooltip>
+                        <Tooltip text="Se tidigare köp som du kan lägga till i kundvagnen" />
+                     </tooltip>
                   </Tab>
                </tabs>
             </TabPane>

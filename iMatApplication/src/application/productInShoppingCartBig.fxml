@@ -53,15 +53,24 @@
                   <Button fx:id="btnDecrease" mnemonicParsing="false" onAction="#decreaseAmount" prefHeight="39.0" prefWidth="39.0" text="-">
                      <HBox.margin>
                         <Insets right="10.0" />
-                     </HBox.margin></Button>
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Minska antal" />
+                     </tooltip></Button>
                   <TextField fx:id="txtfAmount" prefHeight="39.0" prefWidth="39.0" text="0">
                      <font>
                         <Font size="19.0" />
-                     </font></TextField>
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Skriv antal" />
+                     </tooltip></TextField>
                   <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#increaseAmount" prefHeight="39.0" prefWidth="39.0" text="+">
                      <HBox.margin>
                         <Insets left="10.0" />
-                     </HBox.margin></Button>
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip text="Öka antal" />
+                     </tooltip></Button>
                   <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removeProduct" prefHeight="39.0" prefWidth="39.0">
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -73,6 +82,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <tooltip>
+                        <Tooltip text="Ta bort varan" />
+                     </tooltip>
                   </Button>
                </children>
             </HBox>

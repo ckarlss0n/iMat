@@ -47,6 +47,9 @@
                <HBox.margin>
                   <Insets right="1.0" />
                </HBox.margin>
+               <tooltip>
+                  <Tooltip text="Lägg till i kundvagnen" />
+               </tooltip>
             </Button>
          </children>
       </HBox>

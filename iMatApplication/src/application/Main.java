@@ -1,10 +1,6 @@
 package application;
 	
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
 import java.util.List;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -28,7 +24,6 @@ import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 
 
 public class Main extends Application {
-	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -39,9 +34,6 @@ public class Main extends Application {
 			
 			root.getChildren().addAll(mp);
 			Scene scene = new Scene(root);
-
-			System.setProperty("file.encoding", "UTF-8");
-			String defaultCharacterEncoding = System.getProperty("file.encoding");
 			
 			scene.widthProperty().addListener(new ChangeListener<Number>() {
 			    @Override public void changed(ObservableValue<? extends Number> observableValue, 
@@ -77,7 +69,7 @@ public class Main extends Application {
 			stage.setTitle("iMat");
 			stage.setScene(scene);
 			stage.show();
-			
+
 			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	            @Override
 	            public void handle(WindowEvent t) {

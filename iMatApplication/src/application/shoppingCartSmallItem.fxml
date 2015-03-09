@@ -52,6 +52,9 @@
                <HBox.margin>
                   <Insets right="1.0" />
                </HBox.margin>
+               <tooltip>
+                  <Tooltip text="Minska antal" />
+               </tooltip>
             </Button>
             <Button fx:id="btnIncrease" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="26.0" mnemonicParsing="false" onAction="#increaseAmount" prefHeight="26.0" prefWidth="26.0">
                <graphic>
@@ -64,6 +67,9 @@
                <HBox.margin>
                   <Insets right="1.0" />
                </HBox.margin>
+               <tooltip>
+                  <Tooltip text="Öka antal" />
+               </tooltip>
             </Button>
             <Button fx:id="btnRemove" maxHeight="26.0" maxWidth="26.0" minHeight="26.0" minWidth="26.0" mnemonicParsing="false" onAction="#removeFromCart" prefHeight="26.0" prefWidth="26.0">
                <graphic>
@@ -76,6 +82,9 @@
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <tooltip>
+                  <Tooltip text="Ta bort vara" />
+               </tooltip>
             </Button>
          </children>
       </HBox>

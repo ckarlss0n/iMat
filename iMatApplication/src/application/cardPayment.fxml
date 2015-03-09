@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="175.0" prefWidth="288.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" prefWidth="126.0">
+               <children>
+                  <Label text="Korttyp:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="5.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Namn:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="5.0" top="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Kortnummer:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="5.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Giltighetstid:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="5.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="CVC/CVV-kod:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets right="5.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefWidth="185.0">
+               <children>
+                  <ChoiceBox prefHeight="26.0" prefWidth="185.0">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="10.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <TextField>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="15.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="7.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox prefHeight="35.0" prefWidth="185.0">
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
+                     <children>
+                        <ChoiceBox prefHeight="26.0" prefWidth="85.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                        <ChoiceBox prefHeight="26.0" prefWidth="85.0">
+                           <HBox.margin>
+                              <Insets left="10.0" right="5.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <TextField prefHeight="26.0" prefWidth="85.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="7.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</fx:root>

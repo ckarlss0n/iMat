@@ -1,5 +1,6 @@
 package application;
 	
+import java.io.File;
 import java.util.List;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -16,6 +17,7 @@ import javafx.stage.WindowEvent;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import jdk.internal.org.objectweb.asm.tree.analysis.Value;
@@ -51,6 +53,11 @@ public class Main extends Application {
 			
 			Stage stage = new Stage();
 			
+			File file = new File("iMatLogo.png");
+			Image icon = new Image(file.toURL().toString());
+			
+			stage.getIcons().add(icon);
+			
 			Screen screen = Screen.getPrimary();
 			Rectangle2D bounds = screen.getVisualBounds();
 
@@ -72,6 +79,8 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
 	
 	public static void main(String[] args) {

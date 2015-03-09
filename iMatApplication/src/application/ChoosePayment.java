@@ -16,6 +16,9 @@ public class ChoosePayment extends ScrollPane {
 	@FXML
 	private Button finalizeBtn;
 	
+	@FXML
+	private ScrollPane scrlCard;
+	
 	MainPanel mainPanel;
 	//CheckoutPanel checkoutPanel;
 	DecimalFormat twoDec = new DecimalFormat("0.00");
@@ -30,7 +33,9 @@ public class ChoosePayment extends ScrollPane {
     		fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
+            
         }
+		scrlCard.setContent(new CardPayment());
 	}
 	
 	public void finalizeBuy(ActionEvent evt){

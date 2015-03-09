@@ -400,7 +400,7 @@ public class MainPanel extends BorderPane implements ChangeListener,
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Gr�nsaker";
+			return "Grönsaker";
 		case "CABBAGE":
 			return "Grönsaker";
 		case "MEAT":

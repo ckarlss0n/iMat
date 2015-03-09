@@ -61,7 +61,7 @@
                         </BorderPane>
                      </graphic>
                      <content>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" />
+                        <ScrollPane fx:id="scrlCard" fitToHeight="true" fitToWidth="true" />
                      </content>
                   </TitledPane>
                   <TitledPane alignment="CENTER" animated="false">

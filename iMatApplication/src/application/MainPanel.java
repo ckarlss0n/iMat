@@ -42,7 +42,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
-public class MainPanel extends BorderPane implements ChangeListener, ShoppingCartListener, ChangeScreenListener {
+public class MainPanel extends BorderPane implements ChangeListener,
+		ShoppingCartListener, ChangeScreenListener {
 
 	private List<ShoppingItem> productList;
 	private IMatDataHandler dataHandler;
@@ -51,8 +52,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private OnlinePanel onlinePanel = new OnlinePanel();
 	private ProfilePanel profilePanel;
 	private ShoppingCartRight shoppingCartRight;
-	//private CheckoutPanel checkoutPanel = new CheckoutPanel();
-	//private ChoosePayment choosePayment = new ChoosePayment();
+	// private CheckoutPanel checkoutPanel = new CheckoutPanel();
+	// private ChoosePayment choosePayment = new ChoosePayment();
 	private ChangeSupport changeSupport;
 	private PersonalInformationPanel pInf;
 	private boolean isOnline = true;
@@ -60,7 +61,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private List<Node> listOfNodes = new ArrayList<Node>();
 	private List_Nx1_view lnv = new List_Nx1_view();
 	private SquareModeView sqmv = new SquareModeView();
-	
+
 	@FXML
 	private Accordion categoryAccordation;
 	@FXML
@@ -79,10 +80,14 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private ChoiceBox<String> chbSort;
 	@FXML
 	private TitledPane savedTitledPane;
-	
-	
-	public MainPanel() { // hï¿½r kommer det behï¿½vas en if sats som kollar fiall man ï¿½r inloggad och gï¿½r checkout, profil och andra panels baserat pï¿½ den if satsen! ifall man ï¿½ven ï¿½r i inte inloggad delen ska man kunna ta sig till inloggad delen.
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPanel.fxml"));
+
+	public MainPanel() { // hï¿½r kommer det behï¿½vas en if sats som kollar
+							// fiall man ï¿½r inloggad och gï¿½r checkout,
+							// profil och andra panels baserat pï¿½ den if
+							// satsen! ifall man ï¿½ven ï¿½r i inte inloggad
+							// delen ska man kunna ta sig till inloggad delen.
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
+				"mainPanel.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 
@@ -91,240 +96,235 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
-		
+
 		changeSupport = ChangeSupport.getInstance();
 		changeSupport.addListner(this);
-		
-		//dataHandler.getShoppingCart().
+
+		// dataHandler.getShoppingCart().
 		productList = new ArrayList<ShoppingItem>();
-		
+
 		dataHandler = IMatDataHandler.getInstance();
-		
-		
-		
-		for(Product p: dataHandler.getProducts()){
+
+		for (Product p : dataHandler.getProducts()) {
 			productList.add(new ShoppingItem(p));
 		}
-		
+
 		Order o = new Order();
 		o.setItems(productList);
 		o.setOrderNumber(1);
-		
-		
+
 		Customer theCustomer = dataHandler.getCustomer();
 		pInf = new PersonalInformationPanel(theCustomer);
 		changeScreen(onlinePanel);
-		
-		
+
 		fixCategories();
-		
+
 		fillChoiceboxes();
-		
-		for(Order ord : dataHandler.getOrders()){
-			System.out.println(ord.getOrderNumber());
-		}
-	
+
 		shoppingCartRight = new ShoppingCartRight(this);
 		bigBorder.setRight(shoppingCartRight);
 		dataHandler.getShoppingCart().addShoppingCartListener(this);
-		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems()); 
+		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
 	}
-	
-	public void fillView(List<ItemInList> itemList){
-		if(chbView.getSelectionModel().getSelectedItem().equals("VÃ¤lj vy") || 
-				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
+
+	public void fillView(List<ItemInList> itemList) {
+		if (chbView.getSelectionModel().getSelectedItem().equals("Välj vy")
+				|| chbView.getSelectionModel().getSelectedItem()
+						.equals("Standardvy")) {
 			List_Nx1_view li = new List_Nx1_view(itemList, 1);
 			changeScreen(li);
-		} else if(chbView.getSelectionModel().getSelectedItem().equals("Fyrkants vy")){
-			
+		} else if (chbView.getSelectionModel().getSelectedItem()
+				.equals("Fyrkantsvy")) {
+
 			SquareModeView smView = new SquareModeView(getCurrentList());
-			
+
 			changeScreen(smView);
 		}
 	}
-	
-	
+
 	EventHandler<MouseEvent> categoryClick = new EventHandler<MouseEvent>() {
 		@Override
 		public void handle(MouseEvent mouseEvent) {
-			
-			if(mouseEvent.getSource() instanceof CategoryTitledPane){
-				//fillProductView(((CategoryTitledPane) mouseEvent
-					//	.getSource()).getItemsInCategory());
-				
-				fillView(((CategoryTitledPane) mouseEvent
-							.getSource()).getItemInList());
-				
-				
-				currentList = ((CategoryTitledPane) mouseEvent
-						.getSource()).getItemsInCategory();
-			
-				
+
+			if (mouseEvent.getSource() instanceof CategoryTitledPane) {
+				// fillProductView(((CategoryTitledPane) mouseEvent
+				// .getSource()).getItemsInCategory());
+				System.out.println("VANLIG");
+
+				fillView(((CategoryTitledPane) mouseEvent.getSource())
+						.getItemInList());
+
+				currentList = ((CategoryTitledPane) mouseEvent.getSource())
+						.getItemsInCategory();
+
 				categoryBtn.setText(((CategoryTitledPane) mouseEvent
 						.getSource()).getText());
-			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
-				
-				fillProductView(((SubcategoryButton) mouseEvent
-						.getSource()).getList());	
-				
-				currentList = ((SubcategoryButton) mouseEvent
-						.getSource()).getList();
-				
-				categoryBtn.setText(((SubcategoryButton) mouseEvent
-						.getSource()).getText());
+				System.out.println("VANLIG KLAR");
+			} else if (mouseEvent.getSource() instanceof SubcategoryButton) {
+
+				fillProductView(((SubcategoryButton) mouseEvent.getSource())
+						.getList());
+
+				currentList = ((SubcategoryButton) mouseEvent.getSource())
+						.getList();
+
+				categoryBtn
+						.setText(((SubcategoryButton) mouseEvent.getSource())
+								.getText());
 			}
-			
+
 		}
 	};
-	
-	
-	public List<ShoppingItem> getCurrentList(){
+
+	public List<ShoppingItem> getCurrentList() {
 		return currentList;
 	}
-	
+
 	SquareModeView smv;
-	public void fillChoiceboxes(){
-		
+
+	public void fillChoiceboxes() {
+
 		AnchorPane ap = new AnchorPane();
 		Label lb = new Label("List vy");
 		ap.getChildren().add(lb);
-		chbView.setItems(FXCollections.observableArrayList("VÃ¤lj vy", "Standard vy", "Fyrkants vy"));
-		chbView.setValue(chbView.getItems().get(0));;
-		
-		chbView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+		chbView.setItems(FXCollections.observableArrayList("Välj vy",
+				"Standard vy", "Fyrkants vy"));
+		chbView.setValue(chbView.getItems().get(0));
+		;
 
-			@Override
-			public void changed(ObservableValue<? extends String> observable,
-					String oldValue, String newValue) {
-				
-				fillProductView(getCurrentList());
-				
-			}
-			
-			});
+		chbView.getSelectionModel().selectedItemProperty()
+				.addListener(new ChangeListener<String>() {
+
+					@Override
+					public void changed(
+							ObservableValue<? extends String> observable,
+							String oldValue, String newValue) {
+
+						fillProductView(getCurrentList());
+
+					}
+
+				});
 	}
-	
-	public void fixCategories(){
+
+	public void fixCategories() {
 		List<String> names = new ArrayList<String>();
 		for (ProductCategory c : ProductCategory.values()) {
 			String mainName = getMainCategoryName(c);
-			
-			if(!names.contains(mainName)){
+
+			if (!names.contains(mainName)) {
 				names.add(mainName);
-				
+
 				List<SubcategoryButton> thebuttons = new ArrayList<SubcategoryButton>();
 				List<ShoppingItem> allProductsInCategory = new ArrayList<ShoppingItem>();
-					for (ProductCategory pc : ProductCategory.values()) {
-						
-						if(getMainCategoryName(pc).equals(mainName)){
-							
-							List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
-							
-							for (ShoppingItem p : productList) {
+				for (ProductCategory pc : ProductCategory.values()) {
 
-								if (p.getProduct().getCategory() == pc) {
-									theCategoryList.add(p);
-								}
+					if (getMainCategoryName(pc).equals(mainName)) {
+
+						List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
+
+						for (ShoppingItem p : productList) {
+
+							if (p.getProduct().getCategory() == pc) {
+								theCategoryList.add(p);
 							}
-							
-							allProductsInCategory.addAll(theCategoryList);
-							SubcategoryButton scb = new SubcategoryButton(getCategoryName(pc), theCategoryList);
-							scb.setOnMouseClicked(categoryClick);
-							thebuttons.add(scb);
 						}
+
+						allProductsInCategory.addAll(theCategoryList);
+						SubcategoryButton scb = new SubcategoryButton(
+								getCategoryName(pc), theCategoryList);
+						scb.setOnMouseClicked(categoryClick);
+						thebuttons.add(scb);
 					}
-					
-					CategoryTitledPane ctp = new CategoryTitledPane(mainName, thebuttons, allProductsInCategory);
-					ctp.setOnMouseClicked(categoryClick);
-					categoryAccordation.getPanes().add(ctp);
+				}
+
+				CategoryTitledPane ctp = new CategoryTitledPane(mainName,
+						thebuttons, allProductsInCategory);
+				ctp.setOnMouseClicked(categoryClick);
+				categoryAccordation.getPanes().add(ctp);
 			}
 		}
 	}
-	
-	
-	
+
 	public void fillProductView(List<ShoppingItem> productList) {
-		if(chbView.getSelectionModel().getSelectedItem().equals("VÃ¤lj vy") || 
-				chbView.getSelectionModel().getSelectedItem().equals("Standard vy") ){
-			//theView = new List_Nx1_view(productList);
-			
+		if (chbView.getSelectionModel().getSelectedItem().equals("VÃ¤lj vy")
+				|| chbView.getSelectionModel().getSelectedItem()
+						.equals("Standard vy")) {
+			// theView = new List_Nx1_view(productList);
+
 			lnv.fillList(productList);
 			changeScreen(lnv);
-			
-			
-		} else if(chbView.getSelectionModel().getSelectedItem().equals("Fyrkants vy")){
-			
+
+		} else if (chbView.getSelectionModel().getSelectedItem()
+				.equals("Fyrkants vy")) {
+
 			sqmv.fillList(productList);
 			changeScreen(sqmv);
 		}
 		System.out.println(chbView.getSelectionModel().getSelectedItem());
-		
-		
-	}
 
+	}
 
 	public void goToMyProfile(ActionEvent evt) {
 		profilePanel = new ProfilePanel();
 		changeScreen(profilePanel);
 	}
-	
-	
-	public ProfilePanel getProfilePanel(){
+
+	public ProfilePanel getProfilePanel() {
 		return profilePanel;
 	}
 
-	
 	int s = 0;
+
 	public void addToShoppingCart(ShoppingItem i) {
-		
+
 		ShoppingCartItem sci = new ShoppingCartItem(i);
-		
+
 		shoppingCartRight.getGridPane().setPrefHeight((s + 1) * 36);
 		shoppingCartRight.getGridPane().add(sci, 0, s);
 		s++;
-		
+
 	}
-	
-	public void goToFavorites(MouseEvent evt){
-		
+
+	public void goToFavorites(MouseEvent evt) {
+
 		List<ShoppingItem> theList = new ArrayList<ShoppingItem>();
-		
-		for(Product p: dataHandler.favorites()){
+
+		for (Product p : dataHandler.favorites()) {
 			ShoppingItem sci = new ShoppingItem(p);
-			
-			for(ShoppingItem i: productList){
-				if(i.getProduct().getProductId() == sci.getProduct().getProductId()){
+
+			for (ShoppingItem i : productList) {
+				if (i.getProduct().getProductId() == sci.getProduct()
+						.getProductId()) {
 					sci = i;
 					theList.add(sci);
 				}
 			}
 		}
-		
+
 		fillProductView(theList);
 	}
-	
-	
-	public void fillLists(){
+
+	public void fillLists() {
 		for (ProductCategory c : ProductCategory.values()) {
 
 			List<ShoppingItem> theCategoryList = new ArrayList<ShoppingItem>();
-			
+
 			for (ShoppingItem p : productList) {
-				if (p.getProduct().getCategory().toString().equals(c.toString())) {
+				if (p.getProduct().getCategory().toString()
+						.equals(c.toString())) {
 					theCategoryList.add(p);
 				}
 			}
-			if(c == ProductCategory.BREAD){
+			if (c == ProductCategory.BREAD) {
 				System.out.println("BrÃ¶dBrÃ¶d!");
 			}
 			System.out.println(c.toString());
-			
-			
+
 			addToList(c, theCategoryList);
-		}	
+		}
 	}
-	
-	
+
 	private List<List<ShoppingItem>> bread = new ArrayList<List<ShoppingItem>>();
 	private List<List<ShoppingItem>> berryNfruits = new ArrayList<List<ShoppingItem>>();
 	private List<List<ShoppingItem>> pod = new ArrayList<List<ShoppingItem>>();
@@ -338,190 +338,186 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private List<List<ShoppingItem>> nutsSeeds = new ArrayList<List<ShoppingItem>>();
 	private List<List<ShoppingItem>> sweets = new ArrayList<List<ShoppingItem>>();
 	private List<List<ShoppingItem>> herbs = new ArrayList<List<ShoppingItem>>();
-	
-	
-	public List<List<ShoppingItem>> getListInList(ProductCategory p){
-		switch(p.toString()){
-			case "BERRY":
-				return berryNfruits;
-			case "BREAD":
-				return bread;
-			case "POD":
-				return pod;
-			case "CITRUS_FRUIT":
-				return berryNfruits;
-			case "HOT_DRINKS":
-				return beverage;
-			case "COLD_DRINKS":
-				return beverage;
-			case "EXOTIC_FRUIT":
-				return berryNfruits;
-			case "FISH":
-				return fish;
-			case "VEGETABLE_FRUIT":
-				return vegtables;
-			case "CABBAGE":
-				return vegtables;
-			case "MEAT":
-				return meat;
-			case "DAIRIES":
-				return dairies;
-			case "MELONS":
-				return berryNfruits;
-			case "FLOUR_SUGAR_SALT":
-				return flourSugarSalt;
-			case "NUTS_AND_SEEDS":
-				return nutsSeeds;
-			case "PASTA":
-				return potatoRicePasta;
-			case "POTATO_RICE":
-				return potatoRicePasta;
-			case "ROOT_VEGETABLE":
-				return vegtables;
-			case "FRUIT":
-				return berryNfruits;
-			case "SWEET":
-				return sweets;
-			case "HERB":
-				return herbs;
+
+	public List<List<ShoppingItem>> getListInList(ProductCategory p) {
+		switch (p.toString()) {
+		case "BERRY":
+			return berryNfruits;
+		case "BREAD":
+			return bread;
+		case "POD":
+			return pod;
+		case "CITRUS_FRUIT":
+			return berryNfruits;
+		case "HOT_DRINKS":
+			return beverage;
+		case "COLD_DRINKS":
+			return beverage;
+		case "EXOTIC_FRUIT":
+			return berryNfruits;
+		case "FISH":
+			return fish;
+		case "VEGETABLE_FRUIT":
+			return vegtables;
+		case "CABBAGE":
+			return vegtables;
+		case "MEAT":
+			return meat;
+		case "DAIRIES":
+			return dairies;
+		case "MELONS":
+			return berryNfruits;
+		case "FLOUR_SUGAR_SALT":
+			return flourSugarSalt;
+		case "NUTS_AND_SEEDS":
+			return nutsSeeds;
+		case "PASTA":
+			return potatoRicePasta;
+		case "POTATO_RICE":
+			return potatoRicePasta;
+		case "ROOT_VEGETABLE":
+			return vegtables;
+		case "FRUIT":
+			return berryNfruits;
+		case "SWEET":
+			return sweets;
+		case "HERB":
+			return herbs;
 		}
 		return null;
 	}
-	
-	public String getMainCategoryName(ProductCategory c){
-		switch(c.toString()){
-			case "BERRY":
-				return "Frukter och bär";
-			case "BREAD":
-				return "Bröd";
-			case "POD":
-				return "Baljväxter";
-			case "CITRUS_FRUIT":
-				return "Frukter och bär";
-			case "HOT_DRINKS":
-				return "Drycker";
-			case "COLD_DRINKS":
-				return "Drycker";
-			case "EXOTIC_FRUIT":
-				return "Frukter och bär";
-			case "FISH":
-				return "Fisk";
-			case "VEGETABLE_FRUIT":
-				return "Grönsaker";
-			case "CABBAGE":
-				return "Grönsaker";
-			case "MEAT":
-				return "Kött";
-			case "DAIRIES":
-				return "Mejeri";
-			case "MELONS":
-				return "Frukter och bär";
-			case "FLOUR_SUGAR_SALT":
-				return "Mjöl, socker, salt";
-			case "NUTS_AND_SEEDS":
-				return "Nötter och frön";
-			case "PASTA":
-				return "Potatis, ris, pasta";
-			case "POTATO_RICE":
-				return "Potatis, ris, pasta";
-			case "ROOT_VEGETABLE":
-				return "Grönsaker";
-			case "FRUIT":
-				return "Frukter och bär";
-			case "SWEET":
-				return "Godis";
-			case "HERB":
-				return "Ärter";
+
+	public String getMainCategoryName(ProductCategory c) {
+		switch (c.toString()) {
+		case "BERRY":
+			return "Frukter och bär";
+		case "BREAD":
+			return "Bröd";
+		case "POD":
+			return "Baljväxter";
+		case "CITRUS_FRUIT":
+			return "Frukter och bär";
+		case "HOT_DRINKS":
+			return "Drycker";
+		case "COLD_DRINKS":
+			return "Drycker";
+		case "EXOTIC_FRUIT":
+			return "Frukter och bär";
+		case "FISH":
+			return "Fisk";
+		case "VEGETABLE_FRUIT":
+			return "Grönsaker";
+		case "CABBAGE":
+			return "Grönsaker";
+		case "MEAT":
+			return "Kött";
+		case "DAIRIES":
+			return "Mejeri";
+		case "MELONS":
+			return "Frukter och bär";
+		case "FLOUR_SUGAR_SALT":
+			return "Mjöl, socker, salt";
+		case "NUTS_AND_SEEDS":
+			return "Nötter och frön";
+		case "PASTA":
+			return "Potatis, ris, pasta";
+		case "POTATO_RICE":
+			return "Potatis, ris, pasta";
+		case "ROOT_VEGETABLE":
+			return "Grönsaker";
+		case "FRUIT":
+			return "Frukter och bär";
+		case "SWEET":
+			return "Godis";
+		case "HERB":
+			return "Ärter";
 		}
 		return c.toString();
 	}
-	
-	public void addSavedList(){
+
+	public void addSavedList() {
 		List<Label> labelList = new ArrayList<Label>();
-		for(Order o: dataHandler.getOrders()){
-			if(o.getOrderNumber()<0){
-				
+		for (Order o : dataHandler.getOrders()) {
+			if (o.getOrderNumber() < 0) {
+
 				labelList.add(new Label("-1"));
 			}
 		}
-		
-		
-		
-		((AnchorPane)savedTitledPane.getContent()).getChildren().addAll(labelList);
+
+		((AnchorPane) savedTitledPane.getContent()).getChildren().addAll(
+				labelList);
 	}
 
-	
-	public void addToList(ProductCategory c, List<ShoppingItem> theProductList){
-			switch(c.toString()){
-				case "BERRY":
-					berryNfruits.add(theProductList);
-					break;
-				case "BREAD":
-					bread.add(theProductList);
-					break;
-				case "POD":
-					pod.add(theProductList);
-					break;
-				case "CITRUS_FRUIT":
-					berryNfruits.add(theProductList);
-					break;
-				case "HOT_DRINKS":
-					beverage.add(theProductList);
-					break;
-				case "COLD_DRINKS":
-					beverage.add(theProductList);
-					break;
-				case "EXOTIC_FRUIT":
-					berryNfruits.add(theProductList);
-					break;
-				case "FISH":
-					fish.add(theProductList);
-					break;
-				case "VEGETABLE_FRUIT":
-					vegtables.add(theProductList);
-					break;
-				case "CABBAGE":
-					vegtables.add(theProductList);
-					break;
-				case "MEAT":
-					meat.add(theProductList);
-					break;
-				case "DAIRIES":
-					dairies.add(theProductList);
-					break;
-				case "MELONS":
-					berryNfruits.add(theProductList);
-					break;
-				case "FLOUR_SUGAR_SALT":
-					flourSugarSalt.add(theProductList);
-					break;
-				case "NUTS_AND_SEEDS":
-					nutsSeeds.add(theProductList);
-					break;
-				case "PASTA":
-					potatoRicePasta.add(theProductList);
-					break;
-				case "POTATO_RICE":
-					potatoRicePasta.add(theProductList);
-					break;
-				case "ROOT_VEGETABLE":
-					vegtables.add(theProductList);
-					break;
-				case "FRUIT":
-					berryNfruits.add(theProductList);
-					break;
-				case "SWEET":
-					sweets.add(theProductList);
-					break;
-				case "HERB":
-					herbs.add(theProductList);
-					break;
-			}
+	public void addToList(ProductCategory c, List<ShoppingItem> theProductList) {
+		switch (c.toString()) {
+		case "BERRY":
+			berryNfruits.add(theProductList);
+			break;
+		case "BREAD":
+			bread.add(theProductList);
+			break;
+		case "POD":
+			pod.add(theProductList);
+			break;
+		case "CITRUS_FRUIT":
+			berryNfruits.add(theProductList);
+			break;
+		case "HOT_DRINKS":
+			beverage.add(theProductList);
+			break;
+		case "COLD_DRINKS":
+			beverage.add(theProductList);
+			break;
+		case "EXOTIC_FRUIT":
+			berryNfruits.add(theProductList);
+			break;
+		case "FISH":
+			fish.add(theProductList);
+			break;
+		case "VEGETABLE_FRUIT":
+			vegtables.add(theProductList);
+			break;
+		case "CABBAGE":
+			vegtables.add(theProductList);
+			break;
+		case "MEAT":
+			meat.add(theProductList);
+			break;
+		case "DAIRIES":
+			dairies.add(theProductList);
+			break;
+		case "MELONS":
+			berryNfruits.add(theProductList);
+			break;
+		case "FLOUR_SUGAR_SALT":
+			flourSugarSalt.add(theProductList);
+			break;
+		case "NUTS_AND_SEEDS":
+			nutsSeeds.add(theProductList);
+			break;
+		case "PASTA":
+			potatoRicePasta.add(theProductList);
+			break;
+		case "POTATO_RICE":
+			potatoRicePasta.add(theProductList);
+			break;
+		case "ROOT_VEGETABLE":
+			vegtables.add(theProductList);
+			break;
+		case "FRUIT":
+			berryNfruits.add(theProductList);
+			break;
+		case "SWEET":
+			sweets.add(theProductList);
+			break;
+		case "HERB":
+			herbs.add(theProductList);
+			break;
+		}
 	}
-	
-	
-	public String getCategoryName(ProductCategory c){
-		switch(c.toString()){
+
+	public String getCategoryName(ProductCategory c) {
+		switch (c.toString()) {
 		case "BERRY":
 			return "BÃ¤r";
 		case "BREAD":
@@ -567,23 +563,22 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		}
 		return c.toString();
 	}
-	
 
 	public void goToCheckout() {
 		shoppingCartBig = new ShoppingCartBig(this, pInf);
 		shoppingCartBig.fillShoppingCart();
 		changeScreen(shoppingCartBig);
 		categoryBtn.setText("Tillbaka");
-		
+
 		categoryBtn.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		        changeScreen(listOfNodes.get(listOfNodes.size()-2));
-		        categoryBtn.setOnAction(null);
-		        
-		    }
+			@Override
+			public void handle(ActionEvent e) {
+				changeScreen(listOfNodes.get(listOfNodes.size() - 2));
+				categoryBtn.setOnAction(null);
+
+			}
 		});
 	}
-
 
 	public void goToHome(ActionEvent evt) {
 		changeScreen(getHomeScreen());
@@ -592,75 +587,81 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
-		
-		if(node instanceof OnlinePanel || node instanceof OfflinePanel || node.equals(shoppingCartBig) || node.equals(pInf) || 
-				node instanceof ChoosePayment|| node instanceof CheckoutPanel){
+
+		if (node instanceof OnlinePanel || node instanceof OfflinePanel
+				|| node.equals(shoppingCartBig) || node.equals(pInf)
+				|| node instanceof ChoosePayment
+				|| node instanceof CheckoutPanel) {
 			categoryBtn.setOpacity(0);
 			categoryBtn.setDisable(true);
-			
+
 			chbView.setOpacity(0);
 			chbView.setDisable(true);
-			
+
 			chbSort.setOpacity(0);
 			chbSort.setDisable(true);
-		} else{
+		} else {
 			categoryBtn.setOpacity(100);
 			categoryBtn.setDisable(false);
-			
+
 			chbView.setOpacity(100);
 			chbView.setDisable(false);
-			
+
 			chbSort.setOpacity(100);
 			chbSort.setDisable(false);
 		}
-		
-		if (node.equals(shoppingCartBig) || node.equals(pInf) || 
-				node instanceof ChoosePayment|| node instanceof CheckoutPanel) {
+
+		if (node.equals(shoppingCartBig) || node.equals(pInf)
+				|| node instanceof ChoosePayment
+				|| node instanceof CheckoutPanel) {
 			bigBorder.setRight(progressIndicator);
 			setIndicator(node);
-		}else {
+		} else {
 			bigBorder.setRight(shoppingCartRight);
 		}
-		
+
 		listOfNodes.add(node);
 	}
-	
-	public void setIndicator(Node node){
-		if(node.equals(shoppingCartBig)){
+
+	public void setIndicator(Node node) {
+		if (node.equals(shoppingCartBig)) {
 			progressIndicator.progressOverview.setProgress(-1);
 			progressIndicator.progressPersInfo.setProgress(0);
 			progressIndicator.progressChoosePayment.setProgress(0);
 			progressIndicator.progressFinished.setProgress(0);
-		} else if(node.equals(pInf)){
-			
-			//pInf.pInfSetText(); 
-			
+		} else if (node.equals(pInf)) {
+
+			// pInf.pInfSetText();
+
 			progressIndicator.progressOverview.setProgress(1);
 			progressIndicator.progressPersInfo.setProgress(-1);
 
-		} else if(node instanceof ChoosePayment){
-			
-			((ChoosePayment)getCurrentScreen()).setFinalizeText(dataHandler.getShoppingCart().getTotal());
-			
+		} else if (node instanceof ChoosePayment) {
+
+			((ChoosePayment) getCurrentScreen()).setFinalizeText(dataHandler
+					.getShoppingCart().getTotal());
+
 			progressIndicator.progressPersInfo.setProgress(1);
 			progressIndicator.progressChoosePayment.setProgress(-1);
-		} else if(node instanceof CheckoutPanel){
+		} else if (node instanceof CheckoutPanel) {
 			progressIndicator.progressChoosePayment.setProgress(1);
 			progressIndicator.progressFinished.setProgress(1);
-		} 
+		}
 	}
 
-	//Bug if found product already in shoppingcart. Shows duplicates in list.
-	public void searchForProducts(ActionEvent evt){
-		if(!searchField.getText().isEmpty()){
-			List<Product> foundProducts = dataHandler.findProducts(searchField.getText());
-			
+	// Bug if found product already in shoppingcart. Shows duplicates in list.
+	public void searchForProducts(ActionEvent evt) {
+		if (!searchField.getText().isEmpty()) {
+			List<Product> foundProducts = dataHandler.findProducts(searchField
+					.getText());
+
 			List<ShoppingItem> foundItems = new ArrayList<ShoppingItem>();
-			
-			// To avoid to create a new ShoppingItem, makes it easier in shoppingCart
-			for(Product p: foundProducts){
-				for(ShoppingItem i: productList){
-					if(p.getProductId() == i.getProduct().getProductId()){
+
+			// To avoid to create a new ShoppingItem, makes it easier in
+			// shoppingCart
+			for (Product p : foundProducts) {
+				for (ShoppingItem i : productList) {
+					if (p.getProductId() == i.getProduct().getProductId()) {
 						System.out.println("Hej");
 						foundItems.add(i);
 					}
@@ -668,61 +669,56 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			}
 			List_Nx1_view productView = new List_Nx1_view(foundItems);
 			categoryBtn.setText("Sï¿½kresultat: " + searchField.getText());
-			
+
 			changeScreen(productView);
 		}
 	}
-	
-	public Node getCurrentScreen(){
+
+	public Node getCurrentScreen() {
 		return stackPane.getChildren().get(0);
 	}
 
-	
-	
-
 	@Override
 	public void shoppingCartChanged(CartEvent evt) {
-		
-		if(getCurrentScreen() instanceof ShoppingCartBig){
+
+		if (getCurrentScreen() instanceof ShoppingCartBig) {
 			shoppingCartBig.refresh(dataHandler.getShoppingCart().getItems());
 		}
-		
-		if(dataHandler.getShoppingCart().getItems().size() > 0){
+
+		if (dataHandler.getShoppingCart().getItems().size() > 0) {
 			ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
-			shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
-			
-			//double sum = 0;
-			//for(Node sci: shoppingCartRight.getGridPane().getChildren()){
-				//sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
-			//}
-			//shoppingCartRight.setShoppingCartSum(sum);
-			
-		} else{	
+			shoppingCartRight.refreshCart(dataHandler.getShoppingCart()
+					.getItems());
+
+			// double sum = 0;
+			// for(Node sci: shoppingCartRight.getGridPane().getChildren()){
+			// sum +=
+			// ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
+			// }
+			// shoppingCartRight.setShoppingCartSum(sum);
+
+		} else {
 			shoppingCartRight.clearShoppingCart();
 		}
-		
-		
-	
+
 	}
-	
-	public Node getHomeScreen(){
-		if(isOnline){
+
+	public Node getHomeScreen() {
+		if (isOnline) {
 			return new OnlinePanel();
-		}else{
+		} else {
 			return new OfflinePanel();
 		}
 	}
 
-
-
 	@Override
 	public void eventRecieved(TheEvent evt) {
-		if(evt.getScreen() == null){
-			if(evt.getNameOFEvent().equals("Home")){
+		if (evt.getScreen() == null) {
+			if (evt.getNameOFEvent().equals("Home")) {
 				changeScreen(getHomeScreen());
 			}
-			
-		}else{
+
+		} else {
 			System.out.println("Panel change!");
 			changeScreen(evt.getScreen());
 		}
@@ -732,8 +728,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public void changed(ObservableValue observable, Object oldValue,
 			Object newValue) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
-

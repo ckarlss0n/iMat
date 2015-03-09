@@ -132,11 +132,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		if( chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
 			List_Nx1_view li = new List_Nx1_view(itemList, 1);
 			changeScreen(li);
+		
 		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnätsvy")){
 			
-			SquareModeView smView = new SquareModeView(getCurrentList());
-			
-			changeScreen(smView);
+			fillProductView(getCurrentList());
 		}
 	}
 	
@@ -148,24 +147,24 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			if(mouseEvent.getSource() instanceof CategoryTitledPane){
 				//fillProductView(((CategoryTitledPane) mouseEvent
 					//	.getSource()).getItemsInCategory());
-				
+				currentList = ((CategoryTitledPane) mouseEvent
+						.getSource()).getItemsInCategory();
 				fillView(((CategoryTitledPane) mouseEvent
 							.getSource()).getItemInList());
 				
 				
-				currentList = ((CategoryTitledPane) mouseEvent
-						.getSource()).getItemsInCategory();
+				
 			
 				
 				categoryBtn.setText(((CategoryTitledPane) mouseEvent
 						.getSource()).getText());
 			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
-				
+				currentList = ((SubcategoryButton) mouseEvent
+						.getSource()).getList();
 				fillProductView(((SubcategoryButton) mouseEvent
 						.getSource()).getList());	
 				
-				currentList = ((SubcategoryButton) mouseEvent
-						.getSource()).getList();
+				
 				
 				categoryBtn.setText(((SubcategoryButton) mouseEvent
 						.getSource()).getText());
@@ -240,7 +239,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	public void fillProductView(List<ShoppingItem> productList) {
 		if(chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
-			//theView = new List_Nx1_view(productList);
 			
 			lnv.fillList(productList);
 			changeScreen(lnv);

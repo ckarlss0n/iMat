@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
-<fx:root prefHeight="200.0" prefWidth="200.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="565.0" prefWidth="574.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <ScrollPane id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <content>
@@ -15,49 +14,49 @@
                <center>
                   <GridPane minHeight="350.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField fx:id="txtfSurname" promptText="Förnamn">
+                        <TextField fx:id="txtfSurname" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                            <GridPane.margin>
-                              <Insets left="100.0" right="100.0" />
+                              <Insets right="100.0" />
                            </GridPane.margin>
                          	<tooltip>
                         		<Tooltip text="Förnamn" />
                     		</tooltip>
                         </TextField>
-                        <TextField fx:id="txtfLastname" promptText="Efternamn" GridPane.rowIndex="1">
+                        <TextField fx:id="txtfLastname" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                            <GridPane.margin>
-                              <Insets left="100.0" right="100.0" />
+                              <Insets right="100.0" />
                            </GridPane.margin>
                             <tooltip>
                         		<Tooltip text="Efternamn" />
                      		</tooltip>
                         </TextField>
-                        <TextField fx:id="txtfEmail" promptText="E-post" GridPane.rowIndex="2">
+                        <TextField fx:id="txtfEmail" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                            <GridPane.margin>
-                              <Insets left="100.0" right="100.0" />
+                              <Insets right="100.0" />
                            </GridPane.margin>
                       	<tooltip>
                         	<Tooltip text="E-post" />
                      	</tooltip>
                         </TextField>
-                        <TextField fx:id="txtfAdress" promptText="Adress" GridPane.rowIndex="3">
+                        <TextField fx:id="txtfAdress" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                            <GridPane.margin>
-                              <Insets left="100.0" right="100.0" />
+                              <Insets right="100.0" />
                            </GridPane.margin>
                          	 <tooltip>
                         		<Tooltip text="Adress" />
                     	 	</tooltip>
                         </TextField>
-                        <TextField fx:id="txtfPhone" promptText="Telefon" GridPane.rowIndex="5">
+                        <TextField fx:id="txtfPhone" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                            <GridPane.margin>
-                              <Insets left="100.0" right="100.0" />
+                              <Insets right="100.0" />
                            </GridPane.margin>
                            <tooltip>
                         <Tooltip text="Telefon" />
                      </tooltip>
                         </TextField>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                            <left>
-                              <TextField fx:id="txtfPostcode" prefHeight="28.0" prefWidth="86.0" promptText="Postkod" BorderPane.alignment="CENTER">
+                              <TextField fx:id="txtfPostcode" prefHeight="28.0" prefWidth="98.0" BorderPane.alignment="CENTER_LEFT">
                                  <BorderPane.margin>
                                     <Insets />
                                  </BorderPane.margin>
@@ -66,20 +65,54 @@
                            		</tooltip>
                               </TextField>
                            </left>
-                           <center>
-                              <TextField fx:id="txtfCity" promptText="Ort" BorderPane.alignment="CENTER">
+                           <GridPane.margin>
+                              <Insets right="100.0" />
+                           </GridPane.margin>
+                           <right>
+                              <TextField fx:id="txtfCity" prefHeight="25.0" prefWidth="214.0" BorderPane.alignment="CENTER_LEFT">
                                  <BorderPane.margin>
                                     <Insets left="10.0" />
                                  </BorderPane.margin>
                               </TextField>
+                           </right>
+                           <center>
+                              <Label text="Ort:" BorderPane.alignment="CENTER_RIGHT" />
                            </center>
-                           <GridPane.margin>
-                              <Insets left="100.0" right="100.0" />
-                           </GridPane.margin>
                         </BorderPane>
+                        <Label text="Förnamn:" GridPane.halignment="RIGHT">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Efternamn:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="E-post:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Adress:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Postkod:" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Telefon:" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                           <padding>
+                              <Insets right="5.0" />
+                           </padding>
+                        </Label>
                      </children>
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="126.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="546.0" minWidth="10.0" prefWidth="446.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -124,6 +157,9 @@
          <BorderPane.margin>
             <Insets bottom="20.0" left="100.0" right="100.0" top="10.0" />
          </BorderPane.margin>
+         <tooltip>
+            <Tooltip text="Klicka för att gå vidare till nästa steg i köpet" />
+         </tooltip>
       </Button>
    </bottom>
 </fx:root>

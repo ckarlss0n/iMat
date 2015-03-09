@@ -391,47 +391,47 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public String getMainCategoryName(ProductCategory c){
 		switch(c.toString()){
 			case "BERRY":
-				return "Frukter och bÃ¤r";
+				return "Frukter och bär";
 			case "BREAD":
-				return "BrÃ¶d";
+				return "Bröd";
 			case "POD":
-				return "BaljvÃ¤xter";
+				return "Baljväxter";
 			case "CITRUS_FRUIT":
-				return "Frukter och bÃ¤r";
+				return "Frukter och bär";
 			case "HOT_DRINKS":
 				return "Drycker";
 			case "COLD_DRINKS":
 				return "Drycker";
 			case "EXOTIC_FRUIT":
-				return "Frukter och bÃ¤r";
+				return "Frukter och bär";
 			case "FISH":
 				return "Fisk";
 			case "VEGETABLE_FRUIT":
-				return "GrÃ¶nsaker";
+				return "Grönsaker";
 			case "CABBAGE":
-				return "GrÃ¶nsaker";
+				return "Grönsaker";
 			case "MEAT":
-				return "KÃ¶tt";
+				return "Kött";
 			case "DAIRIES":
 				return "Mejeri";
 			case "MELONS":
-				return "Frukter och bÃ¤r";
+				return "Frukter och bär";
 			case "FLOUR_SUGAR_SALT":
-				return "MjÃ¶l, socker, salt";
+				return "Mjöl, socker, salt";
 			case "NUTS_AND_SEEDS":
-				return "NÃ¶tter och frÃ¶n";
+				return "Nötter och frön";
 			case "PASTA":
 				return "Potatis, ris, pasta";
 			case "POTATO_RICE":
 				return "Potatis, ris, pasta";
 			case "ROOT_VEGETABLE":
-				return "GrÃ¶nsaker";
+				return "Grönsaker";
 			case "FRUIT":
-				return "Frukter och bÃ¤r";
+				return "Frukter och bär";
 			case "SWEET":
 				return "Godis";
 			case "HERB":
-				return "Ã–rter";
+				return "Ärter";
 		}
 		return c.toString();
 	}
@@ -523,11 +523,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public String getCategoryName(ProductCategory c){
 		switch(c.toString()){
 		case "BERRY":
-			return "BÃ¤r";
+			return "Bär";
 		case "BREAD":
-			return "BrÃ¶d";
+			return "Bröd";
 		case "POD":
-			return "BaljvÃ¤xter";
+			return "Baljväxter";
 		case "CITRUS_FRUIT":
 			return "Citrusfrukter";
 		case "HOT_DRINKS":
@@ -539,19 +539,19 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "GrÃ¶nsaksfrukt";
+			return "Grönsaksfrukt";
 		case "CABBAGE":
-			return "KÃ¥l";
+			return "Kål";
 		case "MEAT":
-			return "KÃ¶tt";
+			return "Kött";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
 			return "Melon";
 		case "FLOUR_SUGAR_SALT":
-			return "MjÃ¶l, socker, salt";
+			return "Mjöl, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "NÃ¶tter och frï¿½n";
+			return "Nötter och frön";
 		case "PASTA":
 			return "Pasta";
 		case "POTATO_RICE":
@@ -563,7 +563,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Ã–rter";
+			return "Ärter";
 		}
 		return c.toString();
 	}

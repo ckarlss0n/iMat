@@ -183,7 +183,7 @@ public class MainPanel extends BorderPane implements ChangeListener,
 		AnchorPane ap = new AnchorPane();
 		Label lb = new Label("List vy");
 		ap.getChildren().add(lb);
-		chbView.setItems(FXCollections.observableArrayList("Standard vy", "Rutnäts vy"));
+		chbView.setItems(FXCollections.observableArrayList("Standard vy", "RutnÃ¤ts vy"));
 		chbView.setValue(chbView.getItems().get(0));
 		
 		chbView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
@@ -384,47 +384,47 @@ public class MainPanel extends BorderPane implements ChangeListener,
 	public String getMainCategoryName(ProductCategory c) {
 		switch (c.toString()) {
 		case "BERRY":
-			return "Frukter och bär";
+			return "Frukter och bï¿½r";
 		case "BREAD":
-			return "Bröd";
+			return "Brï¿½d";
 		case "POD":
-			return "Baljväxter";
+			return "Baljvï¿½xter";
 		case "CITRUS_FRUIT":
-			return "Frukter och bär";
+			return "Frukter och bï¿½r";
 		case "HOT_DRINKS":
 			return "Drycker";
 		case "COLD_DRINKS":
 			return "Drycker";
 		case "EXOTIC_FRUIT":
-			return "Frukter och bär";
+			return "Frukter och bï¿½r";
 		case "FISH":
 			return "Fisk";
 		case "VEGETABLE_FRUIT":
-			return "Grönsaker";
+			return "Grï¿½nsaker";
 		case "CABBAGE":
-			return "Grönsaker";
+			return "Grï¿½nsaker";
 		case "MEAT":
-			return "Kött";
+			return "Kï¿½tt";
 		case "DAIRIES":
 			return "Mejeri";
 		case "MELONS":
-			return "Frukter och bär";
+			return "Frukter och bï¿½r";
 		case "FLOUR_SUGAR_SALT":
-			return "Mjöl, socker, salt";
+			return "Mjï¿½l, socker, salt";
 		case "NUTS_AND_SEEDS":
-			return "Nötter och frön";
+			return "Nï¿½tter och frï¿½n";
 		case "PASTA":
 			return "Potatis, ris, pasta";
 		case "POTATO_RICE":
 			return "Potatis, ris, pasta";
 		case "ROOT_VEGETABLE":
-			return "Grönsaker";
+			return "Grï¿½nsaker";
 		case "FRUIT":
-			return "Frukter och bär";
+			return "Frukter och bï¿½r";
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Ärter";
+			return "ï¿½rter";
 		}
 		return c.toString();
 	}

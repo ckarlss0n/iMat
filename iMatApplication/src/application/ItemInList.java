@@ -82,17 +82,17 @@ public class ItemInList extends BorderPane {
         }  
         
         List<String> adjectives = new ArrayList<String>();
-        adjectives.add("Enast�ende");
+        adjectives.add("Enastående");
         adjectives.add("Kockens");
-        adjectives.add("�kta");
+        adjectives.add("Äkta");
         adjectives.add("Prima");
         
         List<String> phrases = new ArrayList<String>();
         phrases.add("Perfekt en varm sommardag!");
-        phrases.add("Ett m�ste till fredagsmyset!");
+        phrases.add("Ett måste till fredagsmyset!");
         phrases.add("Barnens favorit!");
         phrases.add("Kockens special!");
-        phrases.add("En vinnare p� middagsbordet!");
+        phrases.add("En vinnare på middagsbordet!");
        
         Random random = new Random();
         
@@ -116,7 +116,7 @@ public class ItemInList extends BorderPane {
         lblPrice.setTooltip(new Tooltip(theProduct.getPrice() + theProduct.getUnit()));
         unitSuffix.setText(theProduct.getUnit());
         unitSuffix.setTooltip(new Tooltip(theProduct.getPrice() + theProduct.getUnit()));
-        productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " f�r " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
+        productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " för " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
         
         //this.changeListner.addPropertyChangeListener(m);
         

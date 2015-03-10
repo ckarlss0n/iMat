@@ -28,7 +28,7 @@ public class OnlinePanel extends ScrollPane{
             throw new RuntimeException(exception);
         }
 		
-		welcomeMessage.setText("Välkommen till iMat, " + IMatDataHandler.getInstance().getCustomer().getFirstName() + "!");
+		welcomeMessage.setText("VÃ¤lkommen till iMat, " + IMatDataHandler.getInstance().getCustomer().getFirstName() + "!");
 	}
 	
 	@FXML

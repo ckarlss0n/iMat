@@ -34,21 +34,21 @@
                      <content>
                         <BorderPane BorderPane.alignment="CENTER">
                            <center>
-                              <Accordion fx:id="infoAccordion" BorderPane.alignment="CENTER">
+                              <Accordion fx:id="infoAccordion" style="-fx-border-color: gray; -fx-border-width: 2;" BorderPane.alignment="CENTER">
                                 <panes>
                                   <TitledPane fx:id="infoPane" animated="false" text="Mina uppgifter">
                                        <content>
                                           <ScrollPane fitToHeight="true" fitToWidth="true" prefViewportHeight="342.0" prefViewportWidth="862.0">
                                              <content>
-                                                <BorderPane minHeight="397.0">
+                                                <BorderPane minHeight="300.0" minWidth="700.0">
                                                    <right>
                                                       <BorderPane BorderPane.alignment="CENTER" />
                                                    </right>
                                                    <padding>
-                                                      <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+                                                      <Insets bottom="10.0" top="10.0" />
                                                    </padding>
                                                    <left>
-                                                      <GridPane alignment="CENTER_LEFT" maxWidth="500.0" minWidth="400.0" BorderPane.alignment="CENTER">
+                                                      <GridPane alignment="CENTER_LEFT" maxWidth="500.0" minWidth="400.0" BorderPane.alignment="TOP_CENTER">
                                                         <columnConstraints>
                                                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="94.0" />
                                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="306.0" />
@@ -63,7 +63,7 @@
                                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                         </rowConstraints>
                                                          <BorderPane.margin>
-                                                            <Insets right="50.0" />
+                                                            <Insets right="60.0" />
                                                          </BorderPane.margin>
                                                          <children>
                                                             <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
@@ -98,12 +98,13 @@
                                                       </GridPane>
                                                    </left>
                                                    <center>
-                                                      <Label fx:id="bonusLevelLabel" alignment="CENTER" contentDisplay="BOTTOM" text="Bonusnivå: 1" BorderPane.alignment="CENTER">
+                                                      <Label fx:id="bonusLevelLabel" alignment="CENTER" contentDisplay="BOTTOM" text="Bonusnivå: 1" BorderPane.alignment="CENTER_LEFT">
                                                          <graphic>
                                                             <ProgressIndicator fx:id="progressIndicator" prefHeight="200.0" prefWidth="200.0" progress="0.16">
                                                                <tooltip>
                                                                   <Tooltip text="Utför köp för att tjäna poäng och kom upp i högre nivåer för att få extra bonusar" />
-                                                               </tooltip></ProgressIndicator>
+                                                               </tooltip>
+                                                            </ProgressIndicator>
                                                          </graphic>
                                                          <font>
                                                             <Font size="24.0" />

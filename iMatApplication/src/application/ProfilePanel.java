@@ -156,7 +156,8 @@ public class ProfilePanel extends ScrollPane{
 		System.out.println("Save profile information.");
 		System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
 		
-		final String content = "Ändringar sparade!";
+		final String content = ""
+				+ "Ã„ndringar sparade!";
 		 
 		 final Animation animation = new Transition() {
 		     {
@@ -174,7 +175,7 @@ public class ProfilePanel extends ScrollPane{
 		
 		animation.play();
 		FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), saveChangesBtn);
-		fadeIn.setOnFinished(event -> saveChangesBtn.setText("Spara ändringar"));
+		fadeIn.setOnFinished(event -> saveChangesBtn.setText("Spara Ã¤ndringar"));
 		fadeIn.setFromValue(0.5);
 		fadeIn.setToValue(1.0);
 		

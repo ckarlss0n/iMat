@@ -389,7 +389,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			case "BREAD":
 				return "Bröd";
 			case "POD":
-				return "Baljväxter";
+				return "Bönor och linser";
 			case "CITRUS_FRUIT":
 				return "Frukter och bär";
 			case "HOT_DRINKS":
@@ -425,7 +425,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			case "SWEET":
 				return "Godis";
 			case "HERB":
-				return "Ärter";
+				return "Örter";
 		}
 		return c.toString();
 	}
@@ -453,7 +453,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		case "BREAD":
 			return "Bröd";
 		case "POD":
-			return "Baljväxter";
+			return "Bönor och linser";
 		case "CITRUS_FRUIT":
 			return "Citrusfrukter";
 		case "HOT_DRINKS":
@@ -489,7 +489,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		case "SWEET":
 			return "Godis";
 		case "HERB":
-			return "Ärter";
+			return "Örter";
 		}
 		return c.toString();
 	}

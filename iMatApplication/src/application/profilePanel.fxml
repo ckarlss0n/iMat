@@ -85,7 +85,6 @@
                                                                   <Label text="Ort: " BorderPane.alignment="CENTER" />
                                                                </center>
                                                             </BorderPane>
-                                                            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                             <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                                             <Label text="E-post: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                                                             <Label text="Adress: " GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
@@ -94,6 +93,7 @@
                                                             <Label text="Lösenord: " GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
                                                             <Label text="Efternamn: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                                                             <Label text="Förnamn: " GridPane.halignment="RIGHT" />
+                                                            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                          </children>
                                                       </GridPane>
                                                    </left>

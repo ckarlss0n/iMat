@@ -80,6 +80,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private ChoiceBox<String> chbSort;
 	@FXML
 	private TitledPane savedTitledPane;
+	@FXML
+	private Label lblSort;
+	@FXML
+	private Label lblView;
 	
 	
 	public MainPanel() { // hï¿½r kommer det behï¿½vas en if sats som kollar fiall man ï¿½r inloggad och gï¿½r checkout, profil och andra panels baserat pï¿½ den if satsen! ifall man ï¿½ven ï¿½r i inte inloggad delen ska man kunna ta sig till inloggad delen.
@@ -525,6 +529,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			chbSort.setOpacity(0);
 			chbSort.setDisable(true);
+			
+			lblSort.setVisible(false);
+			lblView.setVisible(false);
 		}else{
 			categoryBtn.setOpacity(100);
 			categoryBtn.setDisable(false);
@@ -534,6 +541,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			chbSort.setOpacity(100);
 			chbSort.setDisable(false);
+			
+			lblSort.setVisible(true);
+			lblView.setVisible(true);
 		}
 	}
 

@@ -116,7 +116,7 @@ public class ProfilePanel extends ScrollPane{
     	fillHistory();
     	
     	double userLevel = (IMatDataHandler.getInstance().getOrders().size()/100.0)%1;
-    	bonusLevelLabel.setText("Bonusniv�: " + IMatDataHandler.getInstance().getOrders().size()/100);
+    	bonusLevelLabel.setText("Bonusnivå: " + IMatDataHandler.getInstance().getOrders().size()/100);
     	progressIndicator.setProgress(userLevel);
     	
 	}

@@ -148,39 +148,48 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	public List<ItemInList> getSortedList(List<ItemInList> itemList){
 		
-		List <ItemInList> newItemList = new ArrayList<ItemInList>();
-		if(chbSort.getSelectionModel().getSelectedItem().equals("A-Ö") ||chbSort.getSelectionModel().getSelectedItem().equals("Ö-A")){
-				System.out.println("Sort!!");
-				
-			List<String> names = getSortByNames(getCurrentList());
 		
-			for(String str:names){
-				for(ItemInList iil : itemList){
-					if(iil.getShoppingItem().getProduct().getName().equals(str)){
-						newItemList.add(iil);
-					}
-				}
-			}	
-			
-			if(chbSort.getSelectionModel().getSelectedItem().equals("Ö-A")){
-				List<ItemInList> tempList = new ArrayList<ItemInList>();
-				for(int i = newItemList.size()-1; i>=0; i--){
-					tempList.add(newItemList.get(i));
-				}
-				newItemList = tempList;
-			}
-		}else if(chbSort.getSelectionModel().getSelectedItem().equals("Pris stigande") 
-				||chbSort.getSelectionModel().getSelectedItem().equals("Pris fallande")){
+		if(chbSort.getSelectionModel().getSelectedItem().equals("A-Ö")){
 			
 			Collections.sort(itemList, new Comparator<ItemInList>() {
 			    public int compare(ItemInList il1, ItemInList il2) {
-			        return Double.compare(il1.getShoppingItem().getProduct().getPrice(), il2.getShoppingItem().getProduct().getPrice());
+			        return il1.getShoppingItem().getProduct().getName()
+			        		.compareTo(il2.getShoppingItem().getProduct().getName());
+			        		
 			    }
 			});
 			
-			newItemList = itemList;
+		}else if(chbSort.getSelectionModel().getSelectedItem().equals("Ö-A")){
+			
+			Collections.sort(itemList, new Comparator<ItemInList>() {
+			    public int compare(ItemInList il1, ItemInList il2) {
+			        return -1*(il1.getShoppingItem().getProduct().getName()
+			        		.compareTo(il2.getShoppingItem().getProduct().getName()));
+			        		
+			    }
+			});
+			
+		}else if(chbSort.getSelectionModel().getSelectedItem().equals("Pris stigande")){
+			
+			Collections.sort(itemList, new Comparator<ItemInList>() {
+			    public int compare(ItemInList il1, ItemInList il2) {
+			        return Double.compare(il1.getShoppingItem().getProduct().getPrice(), 
+			        		il2.getShoppingItem().getProduct().getPrice());
+			    }
+			});
+			
+		}else if(chbSort.getSelectionModel().getSelectedItem().equals("Pris fallande")){
+			Collections.sort(itemList, new Comparator<ItemInList>() {
+			    public int compare(ItemInList il1, ItemInList il2) {
+			        return -1*(Double.compare(il1.getShoppingItem().getProduct().getPrice(), 
+			        		il2.getShoppingItem().getProduct().getPrice()));
+			    }
+			});
+			
 		}
-		return newItemList;
+		
+		
+		return itemList;
 	}
 	
 	public void fillView(List<ItemInList> itemList){
@@ -235,11 +244,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 						.getSource()).getItemsInCategory();
 				fillView(currentItemList);
 				
-				//fillProductView(((CategoryTitledPane) mouseEvent
-					//	.getSource()).getItemsInCategory());
-				
-			
-				
 				categoryBtn.setText(((CategoryTitledPane) mouseEvent
 						.getSource()).getText());
 			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
@@ -249,8 +253,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				
 				currentList = ((SubcategoryButton) mouseEvent
 						.getSource()).getList();
-				//fillProductView(((SubcategoryButton) mouseEvent
-					//	.getSource()).getList());	
+
 				fillView(currentItemList);
 				
 				
@@ -284,19 +287,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 					String oldValue, String newValue) {
 				
 				fillView(getCurrentItemList());
-				
-				/*if(newValue.equals("Standaryvy")){
-					fillView(getCurrentItemList());
-				}else if(newValue.equals("Rutnätsvy")){
-					fillProductView(getCurrentList());
-				}*/
-				
-			
 			}
 			
 			});
 		
-		chbSort.setItems(FXCollections.observableArrayList("Populära","A-Ö", "Ö-A", "Pris fallande"));
+		chbSort.setItems(FXCollections.observableArrayList("Populära","A-Ö", "Ö-A","Pris stigande" , "Pris fallande"));
 		chbSort.setValue(chbSort.getItems().get(1));
 		
 		chbSort.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
@@ -306,8 +301,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 					String oldValue, String newValue) {
 				
 				fillView(getCurrentItemList());
-				
-				
 				
 			}
 			
@@ -541,7 +534,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 		if(node instanceof OnlinePanel || node instanceof CheckoutPanel){
 			//listOfNodes.clear();
-			//categoryBtn.setOnAction(null);
+			categoryBtn.setOnAction(null);
 			categoryBtn.setOpacity(0);
 			categoryBtn.setDisable(true);
 			
@@ -570,7 +563,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			lblSort.setVisible(false);
 			lblView.setVisible(false);
 		}else{
-			//categoryBtn.setOnAction(null);
+			categoryBtn.setOnAction(null);
 			categoryBtn.setOpacity(100);
 			categoryBtn.setDisable(false);
 			
@@ -584,8 +577,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			lblView.setVisible(true);
 		}
 	}
-	List<Node> backList = new ArrayList<Node>();
-	Node lastNode = null;
+	
 	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
@@ -606,26 +598,37 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	public void setIndicator(Node node){
 		if(node.equals(shoppingCartBig)){
-			progressIndicator.progressOverview.setProgress(0);
-			progressIndicator.progressPersInfo.setProgress(0);
-			progressIndicator.progressChoosePayment.setProgress(0);
-			progressIndicator.progressFinished.setProgress(0);
+
+			progressIndicator.setOverview(0, 1);
+			progressIndicator.setPersInfo(0, 0.5);
+			progressIndicator.setChoosePayment(0, 0.5);
+			progressIndicator.setFinished(0, 0.5);
+			
 		} else if(node.equals(pInf)){
-			
-			//pInf.pInfSetText(); 
-			
-			progressIndicator.progressOverview.setProgress(1);
-			progressIndicator.progressPersInfo.setProgress(0);
+
+			progressIndicator.setOverview(1, 1);
+			progressIndicator.setPersInfo(0, 1);
+			progressIndicator.setChoosePayment(0, 0.5);
+			progressIndicator.setFinished(0, 0.5);
 
 		} else if(node instanceof ChoosePayment){
 			
 			((ChoosePayment)getCurrentScreen()).setFinalizeText(dataHandler.getShoppingCart().getTotal());
 			
-			progressIndicator.progressPersInfo.setProgress(1);
-			progressIndicator.progressChoosePayment.setProgress(0);
+			progressIndicator.setOverview(1, 1);
+			progressIndicator.setPersInfo(1, 1);
+			progressIndicator.setChoosePayment(0, 1);
+			progressIndicator.setFinished(0, 0.5);
+			//progressIndicator.progressPersInfo.setProgress(1);
+			//progressIndicator.progressChoosePayment.setProgress(0);
 		} else if(node instanceof CheckoutPanel){
-			progressIndicator.progressChoosePayment.setProgress(1);
-			progressIndicator.progressFinished.setProgress(1);
+			
+			progressIndicator.setOverview(1, 1);
+			progressIndicator.setPersInfo(1, 1);
+			progressIndicator.setChoosePayment(1, 1);
+			progressIndicator.setFinished(1, 1);
+			//progressIndicator.progressChoosePayment.setProgress(1);
+			//progressIndicator.progressFinished.setProgress(1);
 		} 
 	}
 

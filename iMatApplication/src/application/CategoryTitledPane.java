@@ -53,7 +53,6 @@ public class CategoryTitledPane extends TitledPane {
 				b.setPrefWidth(250);
 				gridPane.add(b, 0, i);
 				i++;
-				
 			}
 			gridPane.setMaxHeight(i*buttons.get(0).getHeight());
 			this.setContent(gridPane);

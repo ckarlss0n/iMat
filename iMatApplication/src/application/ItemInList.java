@@ -173,6 +173,10 @@ public class ItemInList extends BorderPane {
 	    starImage.setImage(image);
 	}
 	
+	public ShoppingItem getShoppingItem(){
+		return sci;
+	}
+	
 	public void setToHalfStar(MouseEvent evt){
 		FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.2), starImage);
 		fadeOut.setFromValue(1.0);

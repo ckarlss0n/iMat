@@ -4,6 +4,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,42 +129,113 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems()); 
 	}
 	
+	public List<String> getSortByNames(List<ShoppingItem> list){
+		List<String> names = new ArrayList<String>();
+		for(ShoppingItem i : list){
+			names.add(i.getProduct().getName());
+		}
+		
+		Collections.sort(names);
+		return names;
+		
+		
+	}
+	
+	public List<ItemInList> getSortedList(List<ItemInList> itemList){
+		
+		List <ItemInList> newItemList = new ArrayList<ItemInList>();
+		if(chbSort.getSelectionModel().getSelectedItem().equals("A-Ö") ||chbSort.getSelectionModel().getSelectedItem().equals("Ö-A")){
+				System.out.println("Sort!!");
+				
+			List<String> names = getSortByNames(getCurrentList());
+		
+			for(String str:names){
+				for(ItemInList iil : itemList){
+					if(iil.getShoppingItem().getProduct().getName().equals(str)){
+						newItemList.add(iil);
+					}
+				}
+			}	
+			
+			if(chbSort.getSelectionModel().getSelectedItem().equals("Ö-A")){
+				List<ItemInList> tempList = new ArrayList<ItemInList>();
+				for(int i = newItemList.size()-1; i>=0; i--){
+					tempList.add(newItemList.get(i));
+				}
+				newItemList = tempList;
+			}
+		}
+		return newItemList;
+	}
+	
 	public void fillView(List<ItemInList> itemList){
+		
+		itemList = getSortedList(itemList);
+		
 		if( chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
+			
 			List_Nx1_view li = new List_Nx1_view(itemList, 1);
 			changeScreen(li);
 		
 		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnätsvy")){
+			List<ShoppingItem> theItems = new ArrayList<ShoppingItem>();
+			
+			for(ItemInList iil : itemList){
+				theItems.add(iil.getShoppingItem());
+			}
 			
 			fillProductView(getCurrentList());
+			sqmv.fillList(theItems);
 		}
 	}
-	
+	public void fillProductView(List<ShoppingItem> productList) {
+		if(chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
+			
+			lnv.fillList(productList);
+			changeScreen(lnv);
+			
+			
+		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnätsvy")){
+			
+			System.out.println(productList.size());
+			sqmv.fillList(productList);
+			changeScreen(sqmv);
+		}
+		System.out.println(chbView.getSelectionModel().getSelectedItem());
+		
+		
+	}
 	
 	EventHandler<MouseEvent> categoryClick = new EventHandler<MouseEvent>() {
 		@Override
 		public void handle(MouseEvent mouseEvent) {
 			
 			if(mouseEvent.getSource() instanceof CategoryTitledPane){
-				//fillProductView(((CategoryTitledPane) mouseEvent
-					//	.getSource()).getItemsInCategory());
+				
+				currentItemList = (((CategoryTitledPane) mouseEvent
+						.getSource()).getItemInList());
+				
 				currentList = ((CategoryTitledPane) mouseEvent
 						.getSource()).getItemsInCategory();
-				fillView(((CategoryTitledPane) mouseEvent
-							.getSource()).getItemInList());
+				fillView(currentItemList);
 				
-				
+				//fillProductView(((CategoryTitledPane) mouseEvent
+					//	.getSource()).getItemsInCategory());
 				
 			
 				
 				categoryBtn.setText(((CategoryTitledPane) mouseEvent
 						.getSource()).getText());
 			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
+				
+				currentItemList = ((SubcategoryButton) mouseEvent
+						.getSource()).getItemList();
+				
 				currentList = ((SubcategoryButton) mouseEvent
 						.getSource()).getList();
-				fillProductView(((SubcategoryButton) mouseEvent
-						.getSource()).getList());	
-				
+				//fillProductView(((SubcategoryButton) mouseEvent
+					//	.getSource()).getList());	
+				fillView(currentItemList);
 				
 				
 				categoryBtn.setText(((SubcategoryButton) mouseEvent
@@ -172,6 +244,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 		}
 	};
+	private List<ItemInList> currentItemList;
+	public List<ItemInList> getCurrentItemList(){
+		return currentItemList;
+	}
 	
 	
 	public List<ShoppingItem> getCurrentList(){
@@ -191,11 +267,36 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			public void changed(ObservableValue<? extends String> observable,
 					String oldValue, String newValue) {
 				
-				fillProductView(getCurrentList());
+				fillView(getCurrentItemList());
+				
+				/*if(newValue.equals("Standaryvy")){
+					fillView(getCurrentItemList());
+				}else if(newValue.equals("Rutnätsvy")){
+					fillProductView(getCurrentList());
+				}*/
+				
+			
+			}
+			
+			});
+		
+		chbSort.setItems(FXCollections.observableArrayList("Populära","A-Ö", "Ö-A"));
+		chbSort.setValue(chbSort.getItems().get(1));
+		
+		chbSort.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable,
+					String oldValue, String newValue) {
+				
+				fillView(getCurrentItemList());
+				
+				
 				
 			}
 			
 			});
+		
 	}
 	
 	public void fixCategories(){
@@ -237,23 +338,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	
 	
-	public void fillProductView(List<ShoppingItem> productList) {
-		if(chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
-			
-			lnv.fillList(productList);
-			changeScreen(lnv);
-			
-			
-		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnätsvy")){
-			
-			System.out.println(productList.size());
-			sqmv.fillList(productList);
-			changeScreen(sqmv);
-		}
-		System.out.println(chbView.getSelectionModel().getSelectedItem());
-		
-		
-	}
+	
 
 
 	public void goToMyProfile(ActionEvent evt) {
@@ -429,13 +514,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public void goToHome(ActionEvent evt) {
 		changeScreen(getHomeScreen());
 	}
-
-	public void changeScreen(Node node) {
-		stackPane.getChildren().clear();
-		stackPane.getChildren().add(node);
-		
-		if(node instanceof OnlinePanel || node instanceof OfflinePanel || node.equals(shoppingCartBig) || node.equals(pInf) || 
-				node instanceof ChoosePayment|| node instanceof CheckoutPanel){
+	
+	public void setHideViewEtc(boolean truFal, int i){
+		if(truFal){
 			categoryBtn.setOpacity(0);
 			categoryBtn.setDisable(true);
 			
@@ -444,7 +525,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			chbSort.setOpacity(0);
 			chbSort.setDisable(true);
-		} else{
+		}else{
 			categoryBtn.setOpacity(100);
 			categoryBtn.setDisable(false);
 			
@@ -453,6 +534,19 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			chbSort.setOpacity(100);
 			chbSort.setDisable(false);
+		}
+	}
+
+	public void changeScreen(Node node) {
+		stackPane.getChildren().clear();
+		stackPane.getChildren().add(node);
+		
+		if(node instanceof OnlinePanel || node instanceof OfflinePanel || node.equals(shoppingCartBig) || node.equals(pInf) || 
+				node instanceof ChoosePayment|| node instanceof CheckoutPanel){
+			
+			setHideViewEtc(true, 1);
+		} else{
+			setHideViewEtc(false, 1);
 		}
 		
 		if (node.equals(shoppingCartBig) || node.equals(pInf) || 

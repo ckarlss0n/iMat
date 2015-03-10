@@ -149,14 +149,34 @@
                <center>
                   <ToolBar maxHeight="55.0" minHeight="55.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
                      <items>
-                        <ChoiceBox fx:id="chbView" prefWidth="150.0">
-                           <tooltip>
-                              <Tooltip text="Välj mellan olika vyer" />
-                           </tooltip></ChoiceBox>
-                        <ChoiceBox fx:id="chbSort" prefWidth="150.0">
-                           <tooltip>
-                              <Tooltip text="Välj vilken ordning varorna ska visas" />
-                           </tooltip></ChoiceBox>
+                        <VBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="Vy:">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="chbView" prefWidth="150.0">
+                                 <tooltip>
+                                    <Tooltip text="Välj mellan olika vyer" />
+                                 </tooltip>
+                              </ChoiceBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_RIGHT">
+                           <children>
+                              <Label text="Sortering:">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="chbSort" prefWidth="150.0">
+                                 <tooltip>
+                                    <Tooltip text="Välj vilken ordning varorna ska visas" />
+                                 </tooltip>
+                              </ChoiceBox>
+                           </children>
+                        </VBox>
                      </items>
                   </ToolBar>
                </center>

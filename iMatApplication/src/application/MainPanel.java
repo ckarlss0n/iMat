@@ -5,6 +5,7 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -168,6 +169,16 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				}
 				newItemList = tempList;
 			}
+		}else if(chbSort.getSelectionModel().getSelectedItem().equals("Pris stigande") 
+				||chbSort.getSelectionModel().getSelectedItem().equals("Pris fallande")){
+			
+			Collections.sort(itemList, new Comparator<ItemInList>() {
+			    public int compare(ItemInList il1, ItemInList il2) {
+			        return Double.compare(il1.getShoppingItem().getProduct().getPrice(), il2.getShoppingItem().getProduct().getPrice());
+			    }
+			});
+			
+			newItemList = itemList;
 		}
 		return newItemList;
 	}
@@ -192,6 +203,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			sqmv.fillList(theItems);
 		}
 	}
+	
 	public void fillProductView(List<ShoppingItem> productList) {
 		if(chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
 			
@@ -284,7 +296,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			});
 		
-		chbSort.setItems(FXCollections.observableArrayList("Populära","A-Ö", "Ö-A"));
+		chbSort.setItems(FXCollections.observableArrayList("Populära","A-Ö", "Ö-A", "Pris fallande"));
 		chbSort.setValue(chbSort.getItems().get(1));
 		
 		chbSort.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
@@ -514,8 +526,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				changeScreen(listOfNodes.get(listOfNodes.size()-2));
 				listOfNodes.remove(listOfNodes.size()-1);
 				listOfNodes.remove(listOfNodes.size()-1);
-				
-				
+
 			}
 			
 		});
@@ -580,11 +591,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		stackPane.getChildren().add(node);
 		
 		setHideViewEtc(node);
-		
-		
-			
-		
-			
+	
 		if (node instanceof ShoppingCartBig || node instanceof PersonalInformationPanel || 
 				node instanceof ChoosePayment|| node instanceof CheckoutPanel) {
 			

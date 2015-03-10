@@ -493,20 +493,27 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		}
 		return c.toString();
 	}
-	
 
 	public void goToCheckout() {
 		shoppingCartBig = new ShoppingCartBig(this, pInf);
 		shoppingCartBig.fillShoppingCart();
-		changeScreen(shoppingCartBig);
-		categoryBtn.setText("Tillbaka");
 		
-		categoryBtn.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		        changeScreen(listOfNodes.get(listOfNodes.size()-2));
-		        categoryBtn.setOnAction(null);
-		        
-		    }
+		changeScreen(shoppingCartBig);
+		categoryBtn.setOpacity(100);
+		categoryBtn.setText("Tillbaka");
+		categoryBtn.setOnAction(new EventHandler<ActionEvent>(){
+
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("Handle!!");
+				
+				changeScreen(listOfNodes.get(listOfNodes.size()-2));
+				listOfNodes.remove(listOfNodes.size()-1);
+				listOfNodes.remove(listOfNodes.size()-1);
+				
+				
+			}
+			
 		});
 	}
 
@@ -515,8 +522,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		changeScreen(getHomeScreen());
 	}
 	
-	public void setHideViewEtc(boolean truFal, int i){
-		if(truFal){
+	public void setHideViewEtc(Node node){
+		
+		if(node instanceof OnlinePanel || node instanceof CheckoutPanel){
+			//listOfNodes.clear();
+			//categoryBtn.setOnAction(null);
 			categoryBtn.setOpacity(0);
 			categoryBtn.setDisable(true);
 			
@@ -525,7 +535,22 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 			chbSort.setOpacity(0);
 			chbSort.setDisable(true);
+		
+		}else if(node instanceof ShoppingCartBig || node instanceof ChoosePayment
+			|| node instanceof PersonalInformationPanel){
+			
+			categoryBtn.setOpacity(100);
+			categoryBtn.setText("Tillbaka");
+			categoryBtn.setDisable(false);
+			
+			
+			chbView.setOpacity(0);
+			chbView.setDisable(false);
+			
+			chbSort.setOpacity(0);
+			chbSort.setDisable(false);
 		}else{
+			//categoryBtn.setOnAction(null);
 			categoryBtn.setOpacity(100);
 			categoryBtn.setDisable(false);
 			
@@ -536,21 +561,21 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			chbSort.setDisable(false);
 		}
 	}
-
+	List<Node> backList = new ArrayList<Node>();
+	Node lastNode = null;
 	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
 		
-		if(node instanceof OnlinePanel || node instanceof OfflinePanel || node.equals(shoppingCartBig) || node.equals(pInf) || 
-				node instanceof ChoosePayment|| node instanceof CheckoutPanel){
-			
-			setHideViewEtc(true, 1);
-		} else{
-			setHideViewEtc(false, 1);
-		}
+		setHideViewEtc(node);
 		
-		if (node.equals(shoppingCartBig) || node.equals(pInf) || 
+		
+			
+		
+			
+		if (node instanceof ShoppingCartBig || node instanceof PersonalInformationPanel || 
 				node instanceof ChoosePayment|| node instanceof CheckoutPanel) {
+			
 			bigBorder.setRight(progressIndicator);
 			setIndicator(node);
 		}else {

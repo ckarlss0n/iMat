@@ -94,19 +94,9 @@ public class CardPayment extends BorderPane {
 		    }
 		    @Override
 		    protected boolean computeValue() {
-		    	if(txtfCardNumber.getText().length() > 4 && txtfCVC.getText().length() == 3
-			            && !chbCardType.getSelectionModel().getSelectedItem().equals("Välj korttyp") 
-			            && !chbMonth.getSelectionModel().getSelectedItem().equals("Månad")
-			            && !chbYear.getSelectionModel().getSelectedItem().equals("År")
-			            && txtfCardHolderName.getText().length() > 4){
-		    		System.out.println("Detta stämmer!!");
-		    		
-		    	}
-		      return (!(txtfCardNumber.getText().length() > 1 && txtfCVC.getText().length() == 3
-		            && !chbCardType.getSelectionModel().getSelectedItem().equals("Välj korttyp") 
-		            && !chbMonth.getSelectionModel().getSelectedItem().equals("Månad")
-		            && !chbYear.getSelectionModel().getSelectedItem().equals("År")
-		            && txtfCardHolderName.getText().length() > 4));
+		    	
+		      return (!(txtfCardNumber.getText().length() > 0 && txtfCVC.getText().length() >0
+		            && txtfCardHolderName.getText().length() > 0));
 		    }
 		    
 		};
@@ -140,8 +130,10 @@ public class CardPayment extends BorderPane {
 			isFilledCorrect = true;
 		} catch(Exception e){
 			lblErrorCardNbr.setOpacity(1);
+			if(isFilledCorrect = true){
+				isFilledCorrect = false;
+			}
 			
-			isFilledCorrect = false;
 		}
 		
 		try{
@@ -150,7 +142,10 @@ public class CardPayment extends BorderPane {
 			isFilledCorrect = true;
 		} catch(Exception e){
 			lblErrorCVC.setOpacity(1);
-			isFilledCorrect = false;
+			if(isFilledCorrect = true){
+				isFilledCorrect = false;
+			}
+			//isFilledCorrect = false;
 		}
 		
 		try{
@@ -162,7 +157,10 @@ public class CardPayment extends BorderPane {
 			isFilledCorrect = true;
 		} catch(Exception e){
 			lblErrorType.setOpacity(1);
-			isFilledCorrect = false;
+			if(isFilledCorrect = true){
+				isFilledCorrect = false;
+			}
+			//isFilledCorrect = false;
 		}
 		
 		try{
@@ -172,7 +170,10 @@ public class CardPayment extends BorderPane {
 			lblErrorDate.setOpacity(0);
 		} catch(Exception e){
 			lblErrorDate.setOpacity(1);
-			isFilledCorrect = false;
+			if(isFilledCorrect = true){
+				isFilledCorrect = false;
+			}
+			//isFilledCorrect = false;
 		}
 		
 		try{
@@ -181,10 +182,14 @@ public class CardPayment extends BorderPane {
 			isFilledCorrect = true;
 			
 		} catch(Exception e){
-			isFilledCorrect = false;
+			if(isFilledCorrect = true){
+				isFilledCorrect = false;
+			}
+			//isFilledCorrect = false;
 			lblErrorYear.setOpacity(1);
 		}
-
+		
+		System.out.println(isFilledCorrect);
 		if(isFilledCorrect){
 			IMatDataHandler.getInstance().getCreditCard().setHoldersName(txtfCardHolderName.getText());
 			IMatDataHandler.getInstance().getCreditCard().setCardNumber(txtfCardNumber.getText());

@@ -57,6 +57,7 @@ public class ChoosePayment extends ScrollPane {
 	@FXML
 	private Label lblInvoiceDisc;
 	
+	private BooleanBinding bb;
 	
 	private CardPayment cp;
 	private FPayment fp;
@@ -95,6 +96,7 @@ public class ChoosePayment extends ScrollPane {
 	
 		IMatDataHandler.getInstance().placeOrder(true);
 		cp.fillCardInfo();
+		
 		if(cp.getIsCorrect()){
 			CheckoutPanel checkoutPanel = new CheckoutPanel();
 			System.out.println("Placing order");
@@ -104,8 +106,10 @@ public class ChoosePayment extends ScrollPane {
 	}
 	
 	public void setBinding(BooleanBinding bp){
-		finalizeBtn.disableProperty().bind(bp);
-		
+		if(bp != null){
+			bb = bp;
+		}
+		finalizeBtn.disableProperty().bind(bb);
 	}
 	
 	public Button getBtn(){
@@ -148,6 +152,9 @@ public class ChoosePayment extends ScrollPane {
 		lblCOD.setFont(Font.font ("System", FontWeight.BOLD, 13));
 		lblCODDisc.setOpacity(0);
 		lblCODDisc.setPadding(new Insets(-15, 0, 0, 0));
+		
+		finalizeBtn.disableProperty().unbind();
+		finalizeBtn.setDisable(false);
 		setTitles();
 	}
 	
@@ -165,7 +172,9 @@ public class ChoosePayment extends ScrollPane {
 		lblCOD.setFont(Font.font ("System", FontWeight.BOLD, 13));
 		lblCODDisc.setOpacity(0);
 		lblCODDisc.setPadding(new Insets(-15, 0, 0, 0));
+		setBinding(bb);
 		setTitles();
+		
 	}
 	public void codClicked(MouseEvent e){
 		

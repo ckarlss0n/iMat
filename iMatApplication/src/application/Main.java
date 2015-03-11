@@ -27,10 +27,12 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			long startTime = System.currentTimeMillis();
+			
+			
+			
 			Pane root = new Pane();
 			MainPanel mp = new MainPanel();
-			mp.setPrefWidth(1366);
-			mp.setPrefHeight(768);
 			
 			root.getChildren().addAll(mp);
 			Scene scene = new Scene(root);
@@ -63,13 +65,14 @@ public class Main extends Application {
 
 			stage.setX(bounds.getMinX());
 			stage.setY(bounds.getMinY());
-			stage.setWidth(bounds.getWidth()*0.8);
-			stage.setHeight(bounds.getHeight()*0.8);
+			stage.setWidth(bounds.getWidth()*0.72);
+			stage.setHeight(bounds.getHeight()*0.85);
 			stage.centerOnScreen();
 			stage.setTitle("iMat");
 			stage.setScene(scene);
 			stage.show();
-
+			long estimatedTime = System.currentTimeMillis() - startTime;
+			System.out.println(estimatedTime);
 			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	            @Override
 	            public void handle(WindowEvent t) {

@@ -23,7 +23,7 @@
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                        <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                            <content>
                               <BorderPane>
                                  <center>
@@ -35,7 +35,7 @@
                                           <RowConstraints vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <padding>
-                                          <Insets bottom="10.0" top="10.0" />
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
                                     </GridPane>
                                  </center>
@@ -54,7 +54,7 @@
                         </Label>
                      </top>
                      <left>
-                        <Button mnemonicParsing="false" prefHeight="9000.0" styleClass="grayGradientHoverable" BorderPane.alignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#slideBackward" prefHeight="9000.0" styleClass="grayGradientHoverable" BorderPane.alignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -65,7 +65,7 @@
                         </Button>
                      </left>
                      <right>
-                        <Button mnemonicParsing="false" prefHeight="9000.0" styleClass="grayGradientHoverable" BorderPane.alignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#slideForward" prefHeight="9000.0" styleClass="grayGradientHoverable" BorderPane.alignment="CENTER">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -78,23 +78,50 @@
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <center>
-                        <ScrollPane hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                        <ScrollPane fx:id="scrollPaneFav" fitToHeight="true" fitToWidth="true" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                            <content>
-                              <GridPane prefHeight="132.0" prefWidth="750.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                              </GridPane>
-                           </content></ScrollPane>
+                              <BorderPane>
+                                 <center>
+                                    <GridPane fx:id="gridPaneFav" alignment="CENTER" hgap="10.0" BorderPane.alignment="CENTER">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                                       </columnConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                       <rowConstraints>
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
+                           </content>
+                        </ScrollPane>
                      </center>
+                     <left>
+                        <Button mnemonicParsing="false" onAction="#slideBackwardFav" prefHeight="9000.0" styleClass="grayGradientHoverable" BorderPane.alignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon32/circle-left.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </left>
+                     <right>
+                        <Button mnemonicParsing="false" onAction="#slideForwardFav" prefHeight="9000.0" styleClass="grayGradientHoverable" BorderPane.alignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon32/circle-right.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </right>
                      <top>
-                        <Label alignment="CENTER" prefWidth="9000.0" styleClass="grayGradient" text="Favoriter" BorderPane.alignment="CENTER">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="9000.0" styleClass="grayGradient" text="Dina favoriter" textAlignment="CENTER" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>

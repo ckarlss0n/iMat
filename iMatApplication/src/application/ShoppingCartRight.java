@@ -37,6 +37,8 @@ public class ShoppingCartRight extends BorderPane{
 	private Label shoppingCartSum;
 	@FXML
 	private Button btnSave;
+	@FXML
+	private Button goToCheckoutBtn;
 	
 	private MainPanel mp;
 	
@@ -51,6 +53,7 @@ public class ShoppingCartRight extends BorderPane{
 
         try {
             fxmlLoader.load();
+			setGoToCheckBtn();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -73,10 +76,15 @@ public class ShoppingCartRight extends BorderPane{
 		return borderPane;
 	}
 	
+	public void setGoToCheckBtn(){
+		goToCheckoutBtn.setDisable(IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty());
+	}
+	
 	public void clearShoppingCart(){
 		gridPane.getChildren().clear();
 		shoppingCartSum.setText("0.00");
 		s = 0;
+		setGoToCheckBtn();
 	}
 	
 	public void fullyClearShoppingCart(){ //When clear button clicked
@@ -104,6 +112,8 @@ public class ShoppingCartRight extends BorderPane{
 	
 	public void refreshCart(List<ShoppingItem> list){
 		clear();
+		
+		setGoToCheckBtn();
 		int sum = 0;
 		for(ShoppingItem si: list){
 			addToShoppingCart(si);

@@ -4,8 +4,12 @@ import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class CartConfirmDialog extends BorderPane{
 	
@@ -24,6 +28,15 @@ public class CartConfirmDialog extends BorderPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+		
+		Stage stage = new Stage();
+		
+		stage.setScene(new Scene(this));
+		stage.setTitle("My modal window");
+		stage.initModality(Modality.WINDOW_MODAL);
+		stage.initStyle(StageStyle.UTILITY);
+		stage.showAndWait();
+
 	}
 	
 	public void clearCartCD(){

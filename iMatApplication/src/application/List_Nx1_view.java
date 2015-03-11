@@ -8,12 +8,16 @@ import java.util.List;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 public class List_Nx1_view extends ScrollPane{
 	private List<ShoppingItem> theItemList;
@@ -100,10 +104,16 @@ public class List_Nx1_view extends ScrollPane{
 		int i = 0;
 		for(ShoppingItem si : theItemList){ 	
         	itp = new ItemInList(si);
-        	add(itp, i);
+        	gridPane.add(itp, 0, i);
         	i++;
         	
         }
+		/*
+		Timeline tl = new Timeline(new KeyFrame(Duration.millis(200)));
+		for(int k = 0; k < 5; k++){
+			itp = new ItemInList(theItemList.get(k));
+			add(itp, k);
+		}*/
 		
 	}
 	

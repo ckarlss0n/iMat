@@ -96,7 +96,7 @@ public class ItemInList extends BorderPane {
         Random random = new Random();
         
         this.sci = sci;
-        changeListener = new PropertyChangeSupport(this); 
+        //changeListener = new PropertyChangeSupport(this); 
         
         for(int i=0; i<10; i++){
         	productAmount.getItems().add(i, i+1+"");

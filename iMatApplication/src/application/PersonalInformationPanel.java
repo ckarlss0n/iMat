@@ -41,7 +41,6 @@ public class PersonalInformationPanel extends BorderPane {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("personalInformation.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
-		this.mainPanel = mainPanel;
 		//this.choosePayment = choosePayment;
 		
 		System.out.println(customer.getFirstName()); 

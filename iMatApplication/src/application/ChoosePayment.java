@@ -18,8 +18,11 @@ public class ChoosePayment extends ScrollPane {
 	
 	@FXML
 	private ScrollPane scrlCard;
+	@FXML
+	private ScrollPane scrlF;
 	
 	private CardPayment cp;
+	private FPayment fp;
 	MainPanel mainPanel;
 	//CheckoutPanel checkoutPanel;
 	DecimalFormat twoDec = new DecimalFormat("0.00");
@@ -38,10 +41,12 @@ public class ChoosePayment extends ScrollPane {
         }
 		
 		cp = new CardPayment();
-		
 		scrlCard.setMaxHeight(cp.getPrefHeight());
 		scrlCard.setContent(cp);
 		
+		fp = new FPayment();
+		scrlF.setMaxHeight(fp.getPrefHeight());
+		scrlF.setContent(fp);
 		
 	}
 	

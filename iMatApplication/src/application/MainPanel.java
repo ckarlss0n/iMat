@@ -50,7 +50,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private IMatDataHandler dataHandler;
 	private ShoppingCartBig shoppingCartBig;
 	private ProcessIndicator progressIndicator = new ProcessIndicator();
-	private OnlinePanel onlinePanel = new OnlinePanel();
+	private OnlinePanel onlinePanel;
 	private ProfilePanel profilePanel;
 	private ShoppingCartRight shoppingCartRight;
 	//private CheckoutPanel checkoutPanel = new CheckoutPanel();
@@ -111,6 +111,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		for(Product p: dataHandler.getProducts()){
 			productList.add(new ShoppingItem(p));
 		}
+		onlinePanel =  new OnlinePanel(productList);
 		
 		Order o = new Order();
 		o.setItems(productList);
@@ -146,7 +147,12 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 	}
 	
+	public List<ShoppingItem> getShoppingItems(){
+		return productList;
+	}
+	
 	public List<ItemInList> getSortedItemList(List<ItemInList> itemList){
+
 		
 		
 		if(chbSort.getSelectionModel().getSelectedItem().equals("A-Ö")){
@@ -709,7 +715,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 
 	@Override
 	public void shoppingCartChanged(CartEvent evt) {
-		
 		if(getCurrentScreen() instanceof ShoppingCartBig){
 			shoppingCartBig.refresh(dataHandler.getShoppingCart().getItems());
 		}
@@ -717,7 +722,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		if(dataHandler.getShoppingCart().getItems().size() > 0){
 			ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
 			shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
-			
 			//double sum = 0;
 			//for(Node sci: shoppingCartRight.getGridPane().getChildren()){
 				//sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();
@@ -734,7 +738,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	public Node getHomeScreen(){
 		if(isOnline){
-			return new OnlinePanel();
+			return new OnlinePanel(productList);
 		}else{
 			return new OfflinePanel();
 		}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="223.0" prefWidth="300.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox>
+         <children>
+            <HBox alignment="CENTER" prefHeight="223.0" prefWidth="311.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="181.0" prefWidth="116.0">
+                     <children>
+                        <Label text="Förnamn:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets right="5.0" top="11.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Efternamn:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets right="5.0" top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Adress:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets right="5.0" top="24.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Postkod:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets right="5.0" top="24.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label text="Ort:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" right="5.0" top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="181.0" prefWidth="187.0">
+                     <children>
+                        <TextField fx:id="txtfFSurName">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="txtfFLastName">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="txtfFAdress">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="txtfFPostCode">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="txtfFCity">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="5.0" right="5.0" top="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</fx:root>

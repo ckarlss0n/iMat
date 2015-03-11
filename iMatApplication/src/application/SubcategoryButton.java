@@ -16,11 +16,9 @@ public class SubcategoryButton extends Button{
 	
 	public SubcategoryButton(String name, List<ShoppingItem> theProductList){
 		
-		
 		this.setText("    - " + name);
 		theList = theProductList;
 		this.setAlignment(Pos.CENTER_LEFT);
-	
 
 		/*
 		for(ShoppingItem i:theProductList){

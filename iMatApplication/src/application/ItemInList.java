@@ -62,14 +62,30 @@ public class ItemInList extends BorderPane {
 	@FXML
 	private Label productDescription;
 	
+	@FXML
+	private Label warnLabel;
+
+	
+	
 	private Product theProduct;
 	
 	private PropertyChangeSupport changeListener;
 	
-	private MainPanel mainPanel;
 	private ShoppingItem sci;
 	
-	
+	private static List<Product> ao;
+
+    static{
+        ao = new ArrayList<Product>();
+    	for(Order o : IMatDataHandler.getInstance().getOrders()){
+        	if(o.getOrderNumber() == 1336){
+        		for(ShoppingItem si : o.getItems()){
+        			ao.add(si.getProduct());
+        		}
+        	}
+    	}
+    }
+    
 	public ItemInList(ShoppingItem sci){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listProductPanel.fxml"));
         fxmlLoader.setRoot(this);
@@ -113,10 +129,12 @@ public class ItemInList extends BorderPane {
         
         productImage.setImage(new Image(image.toURI().toString()));
         lblPrice.setText(String.valueOf(twoDec.format(theProduct.getPrice())));
-        lblPrice.setTooltip(new Tooltip(theProduct.getPrice() + theProduct.getUnit()));
         unitSuffix.setText(theProduct.getUnit());
-        unitSuffix.setTooltip(new Tooltip(theProduct.getPrice() + theProduct.getUnit()));
         productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " för " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
+		
+        if(ao.contains(theProduct)){
+        	setWarnLabel();
+        }
         
         //this.changeListner.addPropertyChangeListener(m);
         
@@ -133,10 +151,10 @@ public class ItemInList extends BorderPane {
 		File file;
 		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
 			file = new File("icon32/star-full-yellow.png");
-		    Tooltip.install(starImage, new Tooltip("Ta bort " + sci.getProduct().getName() + " från favoriter"));
+		    Tooltip.install(starImage, new Tooltip("Ta bort från favoriter"));
 		} else {
 			file = new File("icon32/star-empty.png");
-		    Tooltip.install(starImage, new Tooltip("Lägg till " + sci.getProduct().getName() + " i favoriter"));
+		    Tooltip.install(starImage, new Tooltip("Lägg till i favoriter"));
 		}
 		Image icon = new Image(file.toURI().toString());
 	    starImage.setImage(icon);
@@ -150,10 +168,17 @@ public class ItemInList extends BorderPane {
 		productImage.setImage(img);
 	}
 	
+	public void setWarnLabel(){
+		File imgFile = new File("icon16/warning.png");
+		Image img = new Image(imgFile.toURI().toString());
+    	warnLabel.setGraphic(new ImageView(img));
+		warnLabel.setText("Varning! Innehåller vald allergi");
+	}
+	
 	public void setProductName(String name){
 		lblProductName.setText(name);
 	}
-	
+		
 	public void setPrice(double price){
 		lblPrice.setText(twoDec.format(price));
 	}
@@ -195,6 +220,8 @@ public class ItemInList extends BorderPane {
 		fadeIn.play();
 		setStar();
 	}
+	
+
 	
 	public void addToCart(ActionEvent evt){
 		int selectedValue;

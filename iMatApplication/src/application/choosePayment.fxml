@@ -86,7 +86,7 @@
                         </BorderPane>
                      </graphic>
                      <content>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" />
+                        <ScrollPane fx:id="scrlPost" fitToHeight="true" fitToWidth="true" />
                      </content>
                      <tooltip>
                         <Tooltip text="Betala när du hämtar ut varorna" />

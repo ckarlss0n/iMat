@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<fx:root minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <Label text="Betala när du tar emot ditt paket" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </center>
+</fx:root>

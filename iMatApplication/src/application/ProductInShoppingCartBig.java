@@ -7,17 +7,22 @@ import java.text.DecimalFormat;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 
 public class ProductInShoppingCartBig extends BorderPane {
+	
 	
 	private Product theProduct;
 	
@@ -46,9 +51,56 @@ public class ProductInShoppingCartBig extends BorderPane {
         labelAmountAndPrice.setText(noDec.format(item.getAmount()) + " " + theProduct.getUnitSuffix() + " * " + twoDec.format(theProduct.getPrice()) + " kr");
         txtfAmount.setText(String.valueOf(noDec.format(item.getAmount())));
         //itemDesc.setText("Amount: " + item.getAmount() + " " + item.getProduct().getUnitSuffix());
-        
-        
+        setStar();
+     
 	}
+	
+	public void setStar(){
+		File file;
+		if(IMatDataHandler.getInstance().isFavorite(theItem.getProduct())){
+			file = new File("icon32/star-full-yellow.png");
+		    Tooltip.install(starImgBig, new Tooltip("Ta bort från favoriter"));
+		} else {
+			file = new File("icon32/star-empty.png");
+		    Tooltip.install(starImgBig, new Tooltip("Lägg till i favoriter"));
+		}
+		Image icon = new Image(file.toURI().toString());
+	    starImgBig.setImage(icon);
+	}
+	
+	public void addToFavorite(MouseEvent evt) {
+		File file;
+		if(!IMatDataHandler.getInstance().isFavorite(theItem.getProduct())){
+			IMatDataHandler.getInstance().addFavorite(theItem.getProduct());
+			file = new File("icon32/star-full-yellow.png");
+		} else {
+			IMatDataHandler.getInstance().removeFavorite(theItem.getProduct());
+			file = new File("icon32/star-empty.png");
+		}
+		Image image = new Image(file.toURI().toString());
+	    starImgBig.setImage(image);
+	}
+	
+	public void setToHalfStar(MouseEvent evt){
+		FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.2), starImgBig);
+		fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.3);
+		fadeOut.play();
+//		File file;
+//		file = new File("icon32/star-half.png");
+//		Image image = new Image(file.toURI().toString());
+//	    starImage.setImage(image);
+	}
+
+	public void setToNormal(MouseEvent evt){
+		FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.5), starImgBig);
+		fadeIn.setFromValue(0.3);
+		fadeIn.setToValue(1.0);
+		fadeIn.play();
+		setStar();
+	}
+	
+	
 	DecimalFormat noDec = new DecimalFormat("#");
 	DecimalFormat twoDec = new DecimalFormat("#.00");
 	
@@ -68,6 +120,10 @@ public class ProductInShoppingCartBig extends BorderPane {
 	
 	@FXML
 	private Label itemDesc;
+	
+	@FXML
+	private ImageView starImgBig;
+	
 	
 	public void decreaseAmount(ActionEvent evt){
 		if(theItem.getAmount()-1>0){

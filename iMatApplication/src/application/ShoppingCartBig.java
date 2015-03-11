@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBoxBuilder;
@@ -28,7 +29,7 @@ public class ShoppingCartBig extends BorderPane {
 	MainPanel mainPanel;
 	@FXML
 	private Label bigCartSum;
-	
+
 	DecimalFormat twoDec = new DecimalFormat("0.00");
 	
 	public ShoppingCartBig(MainPanel mainPanel, PersonalInformationPanel pInf){

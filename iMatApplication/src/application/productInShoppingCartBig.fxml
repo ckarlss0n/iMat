@@ -90,21 +90,26 @@
             </HBox>
          </bottom>
          <center>
-            <Label fx:id="lblPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="489 kr " textAlignment="RIGHT" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="36.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+            <HBox>
+               <children>
+                  <Label fx:id="lblPrice" alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="489 kr " textAlignment="RIGHT" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </Label>
+                  <ImageView fx:id="starImgBig" fitHeight="32.0" fitWidth="32.0" onMouseClicked="#addToFavorite" onMouseEntered="#setToHalfStar" onMouseExited="#setToNormal" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../icon32/heart.png" />
+                        <Image url="@../../icon32/star-empty.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </ImageView>
-               </graphic>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-            </Label>
+               </children>
+            </HBox>
          </center>
          <top>
             <Label fx:id="labelAmountAndPrice" text="amount * price" BorderPane.alignment="CENTER">

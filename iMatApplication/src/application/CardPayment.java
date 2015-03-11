@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -49,8 +50,8 @@ public class CardPayment extends BorderPane {
 	
 	private boolean isFilledCorrect;
 	
-	
-	public CardPayment(){
+	private ChoosePayment cp;
+	public CardPayment(ChoosePayment cp){
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cardPayment.fxml"));
 		fxmlLoader.setRoot(this);
@@ -61,6 +62,8 @@ public class CardPayment extends BorderPane {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+		
+		this.cp = cp;
     
 		int sum = 0;
 		for(ShoppingItem i: IMatDataHandler.getInstance().getShoppingCart().getItems()){
@@ -82,15 +85,55 @@ public class CardPayment extends BorderPane {
 		chbMonth.setValue(chbMonth.getItems().get(0));
 		chbYear.setValue(chbYear.getItems().get(0));
 		
+		
+		BooleanBinding bb = new BooleanBinding() {
+		    {
+		       super.bind(txtfCardNumber.textProperty(),txtfCVC.textProperty(),
+		    		   chbCardType.getSelectionModel().selectedItemProperty(),chbMonth.getSelectionModel().selectedItemProperty(),
+		    		   chbYear.getSelectionModel().selectedItemProperty(), txtfCardHolderName.textProperty());
+		    }
+		    @Override
+		    protected boolean computeValue() {
+		    	if(txtfCardNumber.getText().length() > 4 && txtfCVC.getText().length() == 3
+			            && !chbCardType.getSelectionModel().getSelectedItem().equals("Välj korttyp") 
+			            && !chbMonth.getSelectionModel().getSelectedItem().equals("Månad")
+			            && !chbYear.getSelectionModel().getSelectedItem().equals("År")
+			            && txtfCardHolderName.getText().length() > 4){
+		    		System.out.println("Detta stämmer!!");
+		    		
+		    	}
+		      return (!(txtfCardNumber.getText().length() > 1 && txtfCVC.getText().length() == 3
+		            && !chbCardType.getSelectionModel().getSelectedItem().equals("Välj korttyp") 
+		            && !chbMonth.getSelectionModel().getSelectedItem().equals("Månad")
+		            && !chbYear.getSelectionModel().getSelectedItem().equals("År")
+		            && txtfCardHolderName.getText().length() > 4));
+		    }
+		    
+		};
+		cp.setBinding(bb);
+		
+		
 	}
 	
 	public void fillCardInfo(){
 		int cardNbr = 0;
 		int CVC = 0;
 		String type = "";
+		String cardHolder = "";
 		int validMonth = 0;
 		int validYear = 0;
-		
+		try{
+			if(txtfCardHolderName.getText().equals("")){
+				throw new IllegalArgumentException();
+			}
+			cardHolder = txtfCardHolderName.getText();
+			lblErrorName.setOpacity(0);
+			isFilledCorrect = true;
+		} catch(Exception e){
+			lblErrorName.setOpacity(1);
+			//txtfCardNumber.setStyle("-fx-border-color: red ; -fx-border-width: 1px ;");
+			isFilledCorrect = false;
+		}
 		try{
 			cardNbr = Integer.parseInt(txtfCardNumber.getText());
 			lblErrorCardNbr.setOpacity(0);
@@ -149,6 +192,7 @@ public class CardPayment extends BorderPane {
 			IMatDataHandler.getInstance().getCreditCard().setCardType(type);
 			IMatDataHandler.getInstance().getCreditCard().setValidMonth(validMonth);
 			IMatDataHandler.getInstance().getCreditCard().setValidMonth(validYear);
+			
 		}
 		
 			

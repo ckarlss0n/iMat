@@ -160,6 +160,7 @@ public class ShoppingCartRight extends BorderPane{
 		} else{
 			index = -1;
 		}
+		System.out.println(index);
 		
 		IMatDataHandler.getInstance().placeOrder(false).setOrderNumber(index);
 	}

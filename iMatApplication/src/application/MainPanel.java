@@ -762,6 +762,52 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		// TODO Auto-generated method stub
 		
 	}
+	@FXML
+	private GridPane gridSavedLists;
+	public void openSaved(){
+		List<Order> savedLists = new ArrayList<Order>();
+		for(Order o: dataHandler.getOrders()){
+			if(o.getOrderNumber()<0){
+				
+				
+				savedLists.add(o);
+			}
+		}
+		System.out.println(savedLists.size());
+		//gridSavedLists.setPrefHeight(savedLists.size()*);
+		gridSavedLists.setPadding(new Insets(0,0,0,0));
+		
+		int i = 0;
+		for(Order o: savedLists){
+			List<ShoppingItem> theSavedList = new ArrayList<ShoppingItem>();
+			for(ShoppingItem item: o.getItems()){
+					for(ShoppingItem i2 : productList){
+						if(item.getProduct().getProductId() == i2.getProduct().getProductId()){
+							item = i2;
+							theSavedList.add(item);
+							
+					}
+				}
+			}
+			
+			SavedListButton btn = new SavedListButton(o.getDate().toGMTString(), theSavedList);
+			btn.setOnAction(new EventHandler<ActionEvent>(){
+
+				@Override
+				public void handle(ActionEvent event) {
+					
+					fillProductView(btn.getList());
+
+				}
+				
+			});
+			btn.setPrefWidth(250);
+			gridSavedLists.add(btn, 0, i);
+			i++;
+		}
+		
+		
+	}
 
 }
 

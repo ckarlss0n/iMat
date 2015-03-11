@@ -425,7 +425,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	}
 	
 	public void goToFavorites(MouseEvent evt){
-		
 		List<ShoppingItem> theList = new ArrayList<ShoppingItem>();
 		
 		for(Product p: dataHandler.favorites()){

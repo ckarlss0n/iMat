@@ -158,9 +158,9 @@ public class ProfilePanel extends ScrollPane{
 	private Boolean checkTextFieldsBoolean = false;
 	
 	public void checkTextFields(){
-		if(firstNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?") 
+		if(firstNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?") 
 				&& lastNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?") 
-				&& emailField.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]") 
+				&& emailField.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]") //kunna ta in "+" framför "@"?
 				&& addressField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*(\\s\\d+$)?") 
 				&& postalCodeField.getText().matches("[0-9]{5}")
 				&& cityField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?") 

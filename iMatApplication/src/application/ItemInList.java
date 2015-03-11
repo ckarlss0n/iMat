@@ -114,7 +114,7 @@ public class ItemInList extends BorderPane {
         Random random = new Random();
         
         this.sci = sci;
-        changeListener = new PropertyChangeSupport(this); 
+        //changeListener = new PropertyChangeSupport(this); 
         
         for(int i=0; i<10; i++){
         	productAmount.getItems().add(i, i+1+"");
@@ -153,7 +153,7 @@ public class ItemInList extends BorderPane {
 	public void setStar(){
 		File file;
 		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
-			file = new File("icon32/star-full.png");
+			file = new File("icon32/star-full-yellow.png");
 		    Tooltip.install(starImage, new Tooltip("Ta bort " + sci.getProduct().getName() + " från favoriter"));
 		} else {
 			file = new File("icon32/star-empty.png");

@@ -26,7 +26,7 @@
          <center>
             <Accordion BorderPane.alignment="CENTER">
               <panes>
-                <TitledPane alignment="CENTER" animated="false">
+                <TitledPane fx:id="titledInvoice" alignment="CENTER" animated="false">
                      <graphic>
                         <BorderPane>
                            <top>
@@ -48,7 +48,7 @@
                         <Tooltip text="Betala med faktura som kommer skicaks hem till dig" />
                      </tooltip>
                 </TitledPane>
-                  <TitledPane alignment="CENTER" animated="false">
+                  <TitledPane fx:id="titledCard" alignment="CENTER" animated="false">
                      <graphic>
                         <BorderPane>
                            <bottom>
@@ -70,7 +70,7 @@
                         <Tooltip text="Betala med kontokort" />
                      </tooltip>
                   </TitledPane>
-                  <TitledPane alignment="CENTER" animated="false">
+                  <TitledPane fx:id="TitledCashOnDelivery" alignment="CENTER" animated="false">
                      <graphic>
                         <BorderPane>
                            <bottom>

@@ -34,7 +34,7 @@
                         <Font size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="5.0" top="15.0" />
+                        <Insets right="5.0" top="25.0" />
                      </VBox.margin>
                   </Label>
                   <Label text="Giltighetstid:">
@@ -42,7 +42,7 @@
                         <Font size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="5.0" top="15.0" />
+                        <Insets right="5.0" top="25.0" />
                      </VBox.margin>
                   </Label>
                   <Label text="CVC/CVV-kod:">
@@ -50,31 +50,55 @@
                         <Font size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets right="5.0" top="15.0" />
+                        <Insets right="5.0" top="25.0" />
                      </VBox.margin>
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="181.0" prefWidth="183.0">
+            <VBox prefHeight="181.0" prefWidth="187.0">
                <children>
                   <ChoiceBox fx:id="chbCardType" prefHeight="26.0" prefWidth="185.0">
                      <VBox.margin>
                         <Insets left="5.0" right="5.0" top="10.0" />
                      </VBox.margin>
                   </ChoiceBox>
+                  <Label fx:id="lblErrorType" opacity="0.0" text="*Du måste välja korttyp" textFill="RED">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                   <TextField fx:id="txtfCardHolderName">
                      <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="15.0" />
+                        <Insets left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </TextField>
+                  <Label fx:id="lblErrorName" opacity="0.0" text="*Ogiltigt namn" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </Label>
                   <TextField fx:id="txtfCardNumber">
                      <VBox.margin>
-                        <Insets left="5.0" right="5.0" top="7.0" />
+                        <Insets left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </TextField>
+                  <Label fx:id="lblErrorCardNbr" opacity="0.0" text="*Ogiltigt kortnummer" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </Label>
                   <HBox prefHeight="35.0" prefWidth="185.0">
                      <VBox.margin>
-                        <Insets top="7.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                      <children>
                         <ChoiceBox fx:id="chbMonth" prefHeight="26.0" prefWidth="85.0">
@@ -89,11 +113,39 @@
                         </ChoiceBox>
                      </children>
                   </HBox>
+                  <HBox>
+                     <children>
+                        <Label fx:id="lblErrorDate" opacity="0.0" text="*Välj datum" textFill="RED">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="lblErrorYear" opacity="0.0" text="*Välj år" textFill="RED">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="42.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                   <TextField fx:id="txtfCVC" maxWidth="83.0" prefHeight="26.0" prefWidth="85.0">
                      <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="7.0" />
+                        <Insets left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </TextField>
+                  <Label fx:id="lblErrorCVC" opacity="0.0" text="*Ogiltigt kortnummer" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
          </children>

@@ -9,9 +9,11 @@ import java.util.List;
 
 
 
+
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
+import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingCart;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.animation.Animation;
@@ -101,7 +103,7 @@ public class ProfilePanel extends ScrollPane{
 	
 	List<ShoppingItem> currentCart;
 
-	
+	List<Product> ao;
 
 	public ProfilePanel(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profilePanel.fxml"));
@@ -113,7 +115,23 @@ public class ProfilePanel extends ScrollPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-    	
+        
+        ao = new ArrayList<Product>();
+        
+        for(Order o : IMatDataHandler.getInstance().getOrders()){
+        	if(o.getOrderNumber() == 1336){
+        		for(ShoppingItem si : o.getItems()){
+           			ao.add(si.getProduct());
+           			}
+           		}
+           	}
+		nutBox.setSelected(ao.contains(IMatDataHandler.getInstance().getProduct(97)));
+		beanBox.setSelected(ao.contains(IMatDataHandler.getInstance().getProduct(1)));
+		wheatBox.setSelected(ao.contains(IMatDataHandler.getInstance().getProduct(96)));
+		shellBox.setSelected(ao.contains(IMatDataHandler.getInstance().getProduct(49)));
+		eggBox.setSelected(ao.contains(IMatDataHandler.getInstance().getProduct(85)));
+
+        
     	infoAccordion.setExpandedPane(infoPane);
     	firstNameField.setText(IMatDataHandler.getInstance().getCustomer().getFirstName());
     	lastNameField.setText(IMatDataHandler.getInstance().getCustomer().getLastName());

@@ -51,7 +51,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private ShoppingCartBig shoppingCartBig;
 	private ProcessIndicator progressIndicator = new ProcessIndicator();
 	private OnlinePanel onlinePanel;
-	private ProfilePanel profilePanel;
+	private ProfilePanel profilePanel = new ProfilePanel();
 	private ShoppingCartRight shoppingCartRight;
 	//private CheckoutPanel checkoutPanel = new CheckoutPanel();
 	//private ChoosePayment choosePayment = new ChoosePayment();
@@ -405,7 +405,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 
 
 	public void goToMyProfile(ActionEvent evt) {
-		profilePanel = new ProfilePanel();
+		//profilePanel = new ProfilePanel();
 		changeScreen(profilePanel);
 	}
 	

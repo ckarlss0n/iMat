@@ -26,36 +26,36 @@
          <center>
             <Accordion BorderPane.alignment="CENTER">
               <panes>
-                <TitledPane fx:id="titledInvoice" alignment="CENTER" animated="false">
+                <TitledPane fx:id="titledInvoice" alignment="CENTER" animated="false" onMouseClicked="#invoiceClicked">
                      <graphic>
                         <BorderPane>
                            <top>
-                              <Label text="Faktura" BorderPane.alignment="CENTER">
+                              <Label fx:id="lblInvoice" text="Faktura" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </Label>
                            </top>
                            <bottom>
-                              <Label text="Kort beskrivning av faktura" BorderPane.alignment="CENTER" />
+                              <Label fx:id="lblInvoiceDisc" text="KortBeskrivning om faktura" BorderPane.alignment="CENTER" />
                            </bottom>
                         </BorderPane>
                      </graphic>
                      <content>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" />
+                        <ScrollPane fx:id="scrlF" fitToHeight="true" fitToWidth="true" />
                      </content>
                      <tooltip>
                         <Tooltip text="Betala med faktura som kommer skicaks hem till dig" />
                      </tooltip>
                 </TitledPane>
-                  <TitledPane fx:id="titledCard" alignment="CENTER" animated="false">
+                  <TitledPane fx:id="titledCard" alignment="CENTER" animated="false" onMouseClicked="#cardClicked">
                      <graphic>
                         <BorderPane>
                            <bottom>
-                              <Label text="Kort beskrivning av kortbetalning" BorderPane.alignment="CENTER" />
+                              <Label fx:id="lblCardDisc" text="Kort beskrivning av kortbetalning" BorderPane.alignment="CENTER" />
                            </bottom>
                            <top>
-                              <Label text="Kortbetalning" BorderPane.alignment="CENTER">
+                              <Label fx:id="lblCard" text="Kortbetalning" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
@@ -70,14 +70,14 @@
                         <Tooltip text="Betala med kontokort" />
                      </tooltip>
                   </TitledPane>
-                  <TitledPane fx:id="TitledCashOnDelivery" alignment="CENTER" animated="false">
+                  <TitledPane fx:id="titledCOD" alignment="CENTER" animated="false" onMouseClicked="#codClicked">
                      <graphic>
                         <BorderPane>
                            <bottom>
-                              <Label text="Kort beskrivning av postförskott" BorderPane.alignment="CENTER" />
+                              <Label fx:id="lblCODDisc" text="Kort beskrivning av postförskott" BorderPane.alignment="CENTER" />
                            </bottom>
                            <top>
-                              <Label text="Postförskott" BorderPane.alignment="CENTER">
+                              <Label fx:id="lblCOD" text="Postförskott" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
@@ -86,7 +86,7 @@
                         </BorderPane>
                      </graphic>
                      <content>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" />
+                        <ScrollPane fx:id="scrlPost" fitToHeight="true" fitToWidth="true" />
                      </content>
                      <tooltip>
                         <Tooltip text="Betala när du hämtar ut varorna" />

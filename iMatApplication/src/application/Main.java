@@ -28,9 +28,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			long startTime = System.currentTimeMillis();
-			
-			
-			
+
 			Pane root = new Pane();
 			MainPanel mp = new MainPanel();
 			
@@ -71,6 +69,8 @@ public class Main extends Application {
 			stage.setTitle("iMat");
 			stage.setScene(scene);
 			stage.show();
+			
+			
 			long estimatedTime = System.currentTimeMillis() - startTime;
 			System.out.println(estimatedTime);
 			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {

@@ -55,9 +55,16 @@
                            <tooltip>
                               <Tooltip text="Se sparade favoriter" />
                            </tooltip></TitledPane>
-                      <TitledPane fx:id="savedTitledPane" animated="false" styleClass="grayAccordion" text="Sparade listor">
+                      <TitledPane fx:id="savedTitledPane" animated="false" onMouseClicked="#openSaved" styleClass="grayAccordion" text="Sparade listor">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              <GridPane fx:id="gridSavedLists">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
                         </content>
                            <tooltip>
                               <Tooltip text="Se sparade inköpslistor" />

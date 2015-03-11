@@ -33,9 +33,6 @@
          <effect>
             <DropShadow />
          </effect>
-         <image>
-            <Image url="@../../questionmark.png" />
-         </image>
          <BorderPane.margin>
             <Insets right="20.0" />
          </BorderPane.margin>

@@ -146,7 +146,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		
 	}
 	
-	public List<ItemInList> getSortedList(List<ItemInList> itemList){
+	public List<ItemInList> getSortedItemList(List<ItemInList> itemList){
 		
 		
 		if(chbSort.getSelectionModel().getSelectedItem().equals("A-Ö")){
@@ -192,9 +192,55 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		return itemList;
 	}
 	
+	public List<ShoppingItem> getSortedShoppingItemList(List<ShoppingItem> itemList){
+		
+		
+		if(chbSort.getSelectionModel().getSelectedItem().equals("A-Ö")){
+			
+			Collections.sort(itemList, new Comparator<ShoppingItem>() {
+			    public int compare(ShoppingItem il1, ShoppingItem il2) {
+			        return il1.getProduct().getName()
+			        		.compareTo(il2.getProduct().getName());
+			        		
+			    }
+			});
+			
+		}else if(chbSort.getSelectionModel().getSelectedItem().equals("Ö-A")){
+			
+			Collections.sort(itemList, new Comparator<ShoppingItem>() {
+			    public int compare(ShoppingItem il1, ShoppingItem il2) {
+			        return -1*(il1.getProduct().getName()
+			        		.compareTo(il2.getProduct().getName()));
+			        		
+			    }
+			});
+			
+		}else if(chbSort.getSelectionModel().getSelectedItem().equals("Pris stigande")){
+			
+			Collections.sort(itemList, new Comparator<ShoppingItem>() {
+			    public int compare(ShoppingItem il1, ShoppingItem il2) {
+			        return Double.compare(il1.getProduct().getPrice(), 
+			        		il2.getProduct().getPrice());
+			    }
+			});
+			
+		}else if(chbSort.getSelectionModel().getSelectedItem().equals("Pris fallande")){
+			Collections.sort(itemList, new Comparator<ShoppingItem>() {
+			    public int compare(ShoppingItem il1, ShoppingItem il2) {
+			        return -1*(Double.compare(il1.getProduct().getPrice(), 
+			        		il2.getProduct().getPrice()));
+			    }
+			});
+			
+		}
+		
+		
+		return itemList;
+	}
+	
 	public void fillView(List<ItemInList> itemList){
 		
-		itemList = getSortedList(itemList);
+		itemList = getSortedItemList(itemList);
 		
 		if( chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
 			
@@ -208,18 +254,17 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				theItems.add(iil.getShoppingItem());
 			}
 			
-			fillProductView(getCurrentList());
-			sqmv.fillList(theItems);
+		fillProductView(getCurrentList());
+			//sqmv.fillList(theItems);
 		}
 	}
 	
 	public void fillProductView(List<ShoppingItem> productList) {
+		productList = getSortedShoppingItemList(productList);
 		if(chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
 			
-			lnv.fillList(productList);
 			changeScreen(lnv);
-			
-			
+			lnv.fillList(productList);
 		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnätsvy")){
 			
 			System.out.println(productList.size());
@@ -243,7 +288,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				currentList = ((CategoryTitledPane) mouseEvent
 						.getSource()).getItemsInCategory();
 				fillView(currentItemList);
-				
+				//fillProductView(currentList);
 				categoryBtn.setText(((CategoryTitledPane) mouseEvent
 						.getSource()).getText());
 			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
@@ -253,8 +298,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				
 				currentList = ((SubcategoryButton) mouseEvent
 						.getSource()).getList();
-
-				fillView(currentItemList);
+				
+				fillProductView(currentList);
+				//fillView(currentItemList);
 				
 				
 				categoryBtn.setText(((SubcategoryButton) mouseEvent

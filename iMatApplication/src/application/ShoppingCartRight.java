@@ -83,6 +83,8 @@ public class ShoppingCartRight extends BorderPane{
 
 	
 		System.out.println("OPEN CONFIRMATION DIALOG HERE!");
+		CartConfirmDialog ccd = new CartConfirmDialog();
+		
 		IMatDataHandler.getInstance().getShoppingCart().clear();
 		clearShoppingCart();
 	}

@@ -14,10 +14,11 @@ public class SubcategoryButton extends Button{
 		this.setText(name);
 		theList = theProductList;
 		
+		/*
 		for(ShoppingItem i:theProductList){
 			ItemInList iil = new ItemInList(i);
 			theItemList.add(iil);
-		}
+		}*/
 	}
 	
 	public List<ShoppingItem> getList(){

@@ -131,7 +131,7 @@ public class CardPayment extends BorderPane {
 			isFilledCorrect = true;
 		} catch(Exception e){
 			lblErrorName.setOpacity(1);
-			//txtfCardNumber.setStyle("-fx-border-color: red ; -fx-border-width: 1px ;");
+			
 			isFilledCorrect = false;
 		}
 		try{
@@ -140,7 +140,7 @@ public class CardPayment extends BorderPane {
 			isFilledCorrect = true;
 		} catch(Exception e){
 			lblErrorCardNbr.setOpacity(1);
-			//txtfCardNumber.setStyle("-fx-border-color: red ; -fx-border-width: 1px ;");
+			
 			isFilledCorrect = false;
 		}
 		
@@ -198,6 +198,9 @@ public class CardPayment extends BorderPane {
 			
 	}
 	
+	public boolean getIsCorrect(){
+		return isFilledCorrect;
+	}
 	
 	
 	

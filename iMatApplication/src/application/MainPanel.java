@@ -267,10 +267,12 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	public void fillProductView(List<ShoppingItem> productList) {
 		productList = getSortedShoppingItemList(productList);
+		
 		if(chbView.getSelectionModel().getSelectedItem().equals("Standardvy") ){
-			
-			changeScreen(lnv);
+			System.out.println(productList.size());
 			lnv.fillList(productList);
+			changeScreen(lnv);
+			
 		} else if(chbView.getSelectionModel().getSelectedItem().equals("Rutnätsvy")){
 			
 			System.out.println(productList.size());
@@ -337,11 +339,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			@Override
 			public void changed(ObservableValue<? extends String> observable,
 					String oldValue, String newValue) {
-				
-				fillView(getCurrentItemList());
+				fillProductView(getCurrentList());
+				//fillView(getCurrentItemList());
 			}
 			
-			});
+		});
 		
 		chbSort.setItems(FXCollections.observableArrayList("Populära","A-Ö", "Ö-A","Pris stigande" , "Pris fallande"));
 		chbSort.setValue(chbSort.getItems().get(1));
@@ -351,8 +353,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			@Override
 			public void changed(ObservableValue<? extends String> observable,
 					String oldValue, String newValue) {
-				
-				fillView(getCurrentItemList());
+				fillProductView(getCurrentList());
+				//fillView(getCurrentItemList());
 				
 			}
 			
@@ -695,14 +697,15 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			for(Product p: foundProducts){
 				for(ShoppingItem i: productList){
 					if(p.getProductId() == i.getProduct().getProductId()){
-						System.out.println("Hej");
 						foundItems.add(i);
 					}
 				}
 			}
-			List_Nx1_view productView = new List_Nx1_view(foundItems);
+			currentList = foundItems;
+			fillProductView(getCurrentList());
+			//List_Nx1_view productView = new List_Nx1_view(foundItems);
 			categoryBtn.setText("Sökresultat: " + searchField.getText());
-			changeScreen(productView);
+			//changeScreen(productView);
 		}
 	}
 	
@@ -799,8 +802,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 
 				@Override
 				public void handle(ActionEvent event) {
-					
-					fillProductView(btn.getList());
+					currentList = btn.getList();
+					System.out.println(currentList.size());
+					fillProductView(currentList);
 
 				}
 				

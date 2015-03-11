@@ -79,15 +79,15 @@ public class ChoosePayment extends ScrollPane {
         }
 		
 		cp = new CardPayment(this);
-		scrlCard.setMaxHeight(cp.getPrefHeight());
+		//scrlCard.setMaxHeight(cp.getPrefHeight());
 		scrlCard.setContent(cp);
 		
 		fp = new FPayment();
-		scrlF.setMaxHeight(fp.getPrefHeight());
+		//scrlF.setMaxHeight(fp.getPrefHeight());
 		scrlF.setContent(fp);
 		
 		pp = new PostPayment();
-		scrlPost.setMaxHeight(pp.getPrefHeight());
+		//scrlPost.setMaxHeight(pp.getPrefHeight());
 		scrlPost.setContent(pp);
 	}
 	
@@ -95,9 +95,12 @@ public class ChoosePayment extends ScrollPane {
 	
 		IMatDataHandler.getInstance().placeOrder(true);
 		cp.fillCardInfo();
-		CheckoutPanel checkoutPanel = new CheckoutPanel();
-		System.out.println("Placing order");
-		ChangeSupport.getInstance().fireNewEvent("", checkoutPanel);	
+		if(cp.getIsCorrect()){
+			CheckoutPanel checkoutPanel = new CheckoutPanel();
+			System.out.println("Placing order");
+			ChangeSupport.getInstance().fireNewEvent("", checkoutPanel);
+		} 
+			
 	}
 	
 	public void setBinding(BooleanBinding bp){

@@ -109,20 +109,10 @@ public class List_Nx1_view extends ScrollPane{
 		int i = 0;
 		for(ShoppingItem si : theItemList){ 	
 			itp = new ItemInList(si);
-
 			add(itp, i);
-
         	i++;
-			
-
-        	
         }
 		
-		Timeline tl = new Timeline(new KeyFrame(Duration.millis(200)));
-		for(int k = 0; k < 5; k++){
-			itp = new ItemInList(theItemList.get(k));
-			add(itp, k);
-		}
 		
 	}
 	

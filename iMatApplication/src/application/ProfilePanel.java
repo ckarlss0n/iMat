@@ -121,7 +121,7 @@ public class ProfilePanel extends ScrollPane{
     	
 	}
 	
-	public void fillHistory(){
+	public void fillHistory(){	
 		List<Order> orders = IMatDataHandler.getInstance().getOrders();
 		
 		
@@ -142,51 +142,105 @@ public class ProfilePanel extends ScrollPane{
 		System.out.println("HEJ");
 	}
 	
+	private Boolean checkTextFieldsBoolean = false;
+	
+	public void checkTextFields(){
+		if(firstNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?") 
+				&& lastNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?") 
+				&& emailField.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]") 
+				&& addressField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*\\s\\d+$") 
+				&& postalCodeField.getText().matches("[0-9]{5}")
+				&& cityField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?") 
+				&& phoneField.getText().matches("[0-9]+")){ 
+			
+			checkTextFieldsBoolean = true;
+			
+		}else{
+			checkTextFieldsBoolean = false;
+			
+		}
+	}
+	
 	public void saveProfile(ActionEvent evt){ 
+		checkTextFields(); 
+    	if(checkTextFieldsBoolean){
+    		
+    		IMatDataHandler.getInstance().getCustomer().setFirstName(firstNameField.getText());
+        	IMatDataHandler.getInstance().getCustomer().setLastName(lastNameField.getText());
+        	IMatDataHandler.getInstance().getCustomer().setEmail(emailField.getText());
+        	IMatDataHandler.getInstance().getCustomer().setAddress(addressField.getText());
+        	IMatDataHandler.getInstance().getCustomer().setPostCode(postalCodeField.getText());
+        	IMatDataHandler.getInstance().getCustomer().setPostAddress(cityField.getText());
+        	IMatDataHandler.getInstance().getCustomer().setPhoneNumber(phoneField.getText());
+        	IMatDataHandler.getInstance().getUser().setPassword(passwordField.getText());
     	
-    	IMatDataHandler.getInstance().getCustomer().setFirstName(firstNameField.getText());
-    	IMatDataHandler.getInstance().getCustomer().setLastName(lastNameField.getText());
-    	IMatDataHandler.getInstance().getCustomer().setEmail(emailField.getText());
-    	IMatDataHandler.getInstance().getCustomer().setAddress(addressField.getText());
-    	IMatDataHandler.getInstance().getCustomer().setPostCode(postalCodeField.getText());
-    	IMatDataHandler.getInstance().getCustomer().setPostAddress(cityField.getText());
-    	IMatDataHandler.getInstance().getCustomer().setPhoneNumber(phoneField.getText());
-    	IMatDataHandler.getInstance().getUser().setPassword(passwordField.getText());
     	
-		System.out.println("Save profile information.");
-		System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
+			System.out.println("Save profile information.");
+			System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
+			
+			final String content = ""
+					+ "Ändringar sparade!";
+			 
+			 final Animation animation = new Transition() {
+			     {
+			         setCycleDuration(Duration.millis(1000));
+			     }
+			 
+			     protected void interpolate(double frac) {
+			         final int length = content.length();
+			         final int n = Math.round(length * (float) frac);
+			         saveChangesBtn.setText(content.substring(0, n));
+			     }
+			 
+			 };
+			 
+			
+			animation.play();
+			FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), saveChangesBtn);
+			fadeIn.setOnFinished(event -> saveChangesBtn.setText("Spara ändringar"));
+			fadeIn.setFromValue(0.5);
+			fadeIn.setToValue(1.0);
+			
+	
+			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), saveChangesBtn);
+			fadeOut.setFromValue(1.0);
+	        fadeOut.setToValue(0.5);
+	        fadeOut.setOnFinished(event -> fadeIn.play());
+			fadeOut.play();
 		
-		final String content = ""
-				+ "Ändringar sparade!";
-		 
-		 final Animation animation = new Transition() {
-		     {
-		         setCycleDuration(Duration.millis(1000));
-		     }
-		 
-		     protected void interpolate(double frac) {
-		         final int length = content.length();
-		         final int n = Math.round(length * (float) frac);
-		         saveChangesBtn.setText(content.substring(0, n));
-		     }
-		 
-		 };
-		 
-		
-		animation.play();
-		FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), saveChangesBtn);
-		fadeIn.setOnFinished(event -> saveChangesBtn.setText("Spara ändringar"));
-		fadeIn.setFromValue(0.5);
-		fadeIn.setToValue(1.0);
-		
-
-		FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), saveChangesBtn);
-		fadeOut.setFromValue(1.0);
-        fadeOut.setToValue(0.5);
-        fadeOut.setOnFinished(event -> fadeIn.play());
-		fadeOut.play();
-		
-		
+    	}else{
+    		System.out.println("sparades inte och gick inte igenom");
+    		
+    		final String content2 = ""
+					+ "Ändringar sparades inte!";
+			 
+			 final Animation animation = new Transition() {
+			     {
+			         setCycleDuration(Duration.millis(1000));
+			     }
+			 
+			     protected void interpolate(double frac) {
+			         final int length = content2.length();
+			         final int n = Math.round(length * (float) frac);
+			         saveChangesBtn.setText(content2.substring(0, n));
+			     }
+			 
+			 };
+			 
+			
+			animation.play();
+			FadeTransition fadeIn = new FadeTransition(Duration.seconds(3), saveChangesBtn);
+			fadeIn.setOnFinished(event -> saveChangesBtn.setText("Spara ändringar"));
+			fadeIn.setFromValue(0.5);
+			fadeIn.setToValue(1.0);
+			
+	
+			FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), saveChangesBtn);
+			fadeOut.setFromValue(1.0);
+	        fadeOut.setToValue(0.5);
+	        fadeOut.setOnFinished(event -> fadeIn.play());
+			fadeOut.play();
+    	}
 		
 		
 	}

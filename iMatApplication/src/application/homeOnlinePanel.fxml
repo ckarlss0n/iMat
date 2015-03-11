@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -18,24 +19,27 @@
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
-                        <ScrollPane hbarPolicy="ALWAYS" prefWidth="1300.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                            <content>
-                              <GridPane fx:id="gridPane" prefHeight="132.0" prefWidth="750.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                              </GridPane>
+                              <BorderPane>
+                                 <center>
+                                    <GridPane fx:id="gridPane" alignment="CENTER" hgap="10.0" BorderPane.alignment="CENTER">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </padding>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
                            </content>
                         </ScrollPane>
                      </center>
@@ -49,36 +53,30 @@
                            </padding>
                         </Label>
                      </top>
+                     <left>
+                        <Button mnemonicParsing="false" prefHeight="9000.0" styleClass="grayGradientHoverable" BorderPane.alignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon32/circle-left.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </left>
+                     <right>
+                        <Button mnemonicParsing="false" prefHeight="9000.0" styleClass="grayGradientHoverable" BorderPane.alignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon32/circle-right.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </right>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                     <center>
-                        <ScrollPane hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
-                           <content>
-                              <GridPane prefHeight="132.0" prefWidth="750.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                              </GridPane>
-                           </content></ScrollPane>
-                     </center>
-                     <top>
-                        <Label alignment="CENTER" prefWidth="9000.0" styleClass="grayGradient" text="Tidigare köp" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="10.0" top="10.0" />
-                           </padding>
-                        </Label>
-                     </top>
-                  </BorderPane>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <center>
                         <ScrollPane hbarPolicy="ALWAYS" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
                            <content>
@@ -109,23 +107,6 @@
                </children>
             </GridPane>
          </center>
-         <top>
-            <BorderPane BorderPane.alignment="CENTER">
-               <center>
-                  <Label fx:id="welcomeMessage" text="Välkommen till iMat, John!" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                     <padding>
-                        <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </Label>
-               </center>
-            </BorderPane>
-         </top>
       </BorderPane>
    </content>
 </fx:root>

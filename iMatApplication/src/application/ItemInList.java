@@ -66,7 +66,6 @@ public class ItemInList extends BorderPane {
 	
 	private PropertyChangeSupport changeListener;
 	
-	private MainPanel mainPanel;
 	private ShoppingItem sci;
 	
 	

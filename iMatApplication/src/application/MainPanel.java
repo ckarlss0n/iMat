@@ -50,7 +50,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private IMatDataHandler dataHandler;
 	private ShoppingCartBig shoppingCartBig;
 	private ProcessIndicator progressIndicator = new ProcessIndicator();
-	private OnlinePanel onlinePanel = new OnlinePanel();
+	private OnlinePanel onlinePanel;
 	private ProfilePanel profilePanel;
 	private ShoppingCartRight shoppingCartRight;
 	//private CheckoutPanel checkoutPanel = new CheckoutPanel();
@@ -111,6 +111,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		for(Product p: dataHandler.getProducts()){
 			productList.add(new ShoppingItem(p));
 		}
+		onlinePanel =  new OnlinePanel(productList);
 		
 		Order o = new Order();
 		o.setItems(productList);
@@ -144,6 +145,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		return names;
 		
 		
+	}
+	
+	public List<ShoppingItem> getShoppingItems(){
+		return productList;
 	}
 	
 	public List<ItemInList> getSortedList(List<ItemInList> itemList){
@@ -253,8 +258,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				
 				currentList = ((SubcategoryButton) mouseEvent
 						.getSource()).getList();
-
-				fillView(currentItemList);
+				
+				fillProductView(productList);
+				//fillView(currentItemList);
 				
 				
 				categoryBtn.setText(((SubcategoryButton) mouseEvent
@@ -688,7 +694,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	public Node getHomeScreen(){
 		if(isOnline){
-			return new OnlinePanel();
+			return new OnlinePanel(productList);
 		}else{
 			return new OfflinePanel();
 		}

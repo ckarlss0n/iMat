@@ -701,7 +701,13 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			}
 			List_Nx1_view productView = new List_Nx1_view(foundItems);
 			categoryBtn.setText("Sökresultat: " + searchField.getText());
-			changeScreen(productView);
+			if(foundProducts.isEmpty()){
+				NoSearchResultPanel nrsp = new NoSearchResultPanel();
+				nrsp.setNoSearchResultLbl(searchField.getText());
+				changeScreen(nrsp);
+			} else {
+				changeScreen(productView);
+			}
 		}
 	}
 	

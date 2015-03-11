@@ -37,7 +37,7 @@ public class ShoppingCartBig extends BorderPane {
         fxmlLoader.setController(this);
         this.mainPanel = mainPanel;
         this.pInf = pInf;
-
+        
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
@@ -48,6 +48,10 @@ public class ShoppingCartBig extends BorderPane {
 	private GridPane gridPane;
 	@FXML
 	private Button goToPersInfoBtn;
+	
+	public void setGoBtn(){
+		goToPersInfoBtn.setDisable(IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty());
+	}
 
 	public void goToPersInfo(ActionEvent evt){
 		pInf.pInfSetText();// denna metod hämtar info från profilen till betalnings-personuppgifterna 
@@ -67,6 +71,8 @@ public class ShoppingCartBig extends BorderPane {
 		clear();
 		int i = 0;
 		double sum = 0;
+
+		setGoBtn();
 		for(ShoppingItem si: list){
 			addToShoppingCart(si);
 			System.out.println(i);

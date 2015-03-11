@@ -34,6 +34,7 @@ public class Main extends Application {
 			
 			root.getChildren().addAll(mp);
 			Scene scene = new Scene(root);
+			
 			scene.widthProperty().addListener(new ChangeListener<Number>() {
 			    @Override public void changed(ObservableValue<? extends Number> observableValue, 
 			    		Number oldSceneWidth, Number newSceneWidth) {

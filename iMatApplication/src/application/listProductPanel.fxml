@@ -22,6 +22,10 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Label>
+            <Label fx:id="warnLabel" prefHeight="17.0" prefWidth="238.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Label>
          </children>
          <BorderPane.margin>
             <Insets right="20.0" />
@@ -33,9 +37,6 @@
          <effect>
             <DropShadow />
          </effect>
-         <image>
-            <Image url="@../../questionmark.png" />
-         </image>
          <BorderPane.margin>
             <Insets right="20.0" />
          </BorderPane.margin>

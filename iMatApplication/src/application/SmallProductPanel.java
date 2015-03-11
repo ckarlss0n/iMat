@@ -3,10 +3,13 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.animation.FadeTransition;
@@ -15,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -41,10 +45,25 @@ public class SmallProductPanel extends BorderPane {
 	
 	@FXML
 	private ImageView imgProduct;
+	@FXML
+	private ImageView warnIcon;
 	
 	private ShoppingItem sci;
 	private Product theProduct;
 	
+	private static List<Product> ao;
+
+    static{
+        ao = new ArrayList<Product>();
+    	for(Order o : IMatDataHandler.getInstance().getOrders()){
+        	if(o.getOrderNumber() == 1336){
+        		for(ShoppingItem si : o.getItems()){
+        			ao.add(si.getProduct());
+        		}
+        	}
+    	}
+    }
+    
 	public SmallProductPanel(ShoppingItem sci){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("smallProductPanel.fxml"));
 		fxmlLoader.setRoot(this);
@@ -73,6 +92,10 @@ public class SmallProductPanel extends BorderPane {
 	     unitSuffix.setText(theProduct.getUnit());
 	     
 	     setStar();
+	     
+	     if(ao.contains(theProduct)){
+	       	setWarnIcon();
+	     }
 	}
 	
 	DecimalFormat noDec = new DecimalFormat("#");
@@ -82,13 +105,22 @@ public class SmallProductPanel extends BorderPane {
 		File file;
 		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
 			file = new File("icon32/star-full-yellow.png");
+			Tooltip.install(starImage, new Tooltip("Ta bort från favoriter"));
 		} else {
 			file = new File("icon32/star-empty.png");
+			Tooltip.install(starImage, new Tooltip("Lägg till i favoriter"));
 		}
 		Image icon = new Image(file.toURI().toString());
 	    starImage.setImage(icon);
+	    
 	}
 	
+	public void setWarnIcon(){
+		File warnFile = new File("icon32/warning.png");
+		Image warnImg = new Image(warnFile.toURI().toString());
+		warnIcon.setImage(warnImg);
+		Tooltip.install(warnIcon, new Tooltip("Varning! Innehåller vald allergi"));
+	}
 	
 	public void setProductImage(Image img){
 		imgProduct.setImage(img);

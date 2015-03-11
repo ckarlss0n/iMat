@@ -19,6 +19,7 @@ public class ChoosePayment extends ScrollPane {
 	@FXML
 	private ScrollPane scrlCard;
 	
+	private CardPayment cp;
 	MainPanel mainPanel;
 	//CheckoutPanel checkoutPanel;
 	DecimalFormat twoDec = new DecimalFormat("0.00");
@@ -36,20 +37,26 @@ public class ChoosePayment extends ScrollPane {
             
         }
 		
-		CardPayment cp = new CardPayment();
+		cp = new CardPayment();
+		
 		scrlCard.setMaxHeight(cp.getPrefHeight());
 		scrlCard.setContent(cp);
+		
+		
 	}
 	
 	public void finalizeBuy(ActionEvent evt){
-		
+	
 		IMatDataHandler.getInstance().placeOrder(true);
-		CheckoutPanel checkoutPanel = new CheckoutPanel();
+		cp.fillCardInfo();
+		//CheckoutPanel checkoutPanel = new CheckoutPanel();
 		System.out.println("Placing order");
-		ChangeSupport.getInstance().fireNewEvent("", checkoutPanel);	
+		//ChangeSupport.getInstance().fireNewEvent("", checkoutPanel);	
 	}
 	
 	public void setFinalizeText(Double sum){
 		finalizeBtn.setText("Slutför köp (" + String.valueOf(twoDec.format(sum)) + " kr)");
 	}
+	
+	
 }

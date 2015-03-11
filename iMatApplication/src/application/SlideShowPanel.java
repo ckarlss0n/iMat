@@ -1,35 +1,37 @@
 package application;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
-import javafx.animation.Animation;
-import javafx.animation.FadeTransition;
-import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 
-public class OnlinePanel extends ScrollPane{
-	
+public class SlideShowPanel extends BorderPane{
 	@FXML
-	private GridPane gridPane;
+	private Button addToCartBtn;
+	@FXML
+	private Button forwardBtn;
+	@FXML
+	private ImageView slideImg;
+	@FXML
+	private Button backwardBtn;
+	@FXML
+	private Label productName;
 	
 	private List<ShoppingItem> shoppingItems;
 	
-	public OnlinePanel(List<ShoppingItem> shoppingItems){
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("homeOnlinePanel.fxml"));
+	public SlideShowPanel(List<ShoppingItem> shoppingItems){
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("slideShowPanel.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 		
@@ -38,16 +40,16 @@ public class OnlinePanel extends ScrollPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-		
+
 		this.shoppingItems = shoppingItems;
-		//generateProducts();
+		generateProducts();
 	}
 	
 	public void generateProducts(){
-		gridPane.setPrefWidth(10*300);
-		for(int i = 0; i<10; i++){
-        	add(new SmallProductPanel(shoppingItems.get(i)), i);
-        }
+		Product theProduct = shoppingItems.get(0).getProduct();
+		File image = new File(IMatDataHandler.getInstance().getImageIcon(theProduct).getDescription());
+        productName.setText(theProduct.getName());
+        slideImg.setImage(new Image(image.toURI().toString()));
 	}
 	
 	public void slideBackward(ActionEvent evt){
@@ -62,11 +64,4 @@ public class OnlinePanel extends ScrollPane{
 		System.out.println("Add to cart");
 	}
 	
-	public void add(Node node, int col){
-		gridPane.add(node, col, 0);
-	}
-	
-	public void setWidth(int i){
-		gridPane.setPrefWidth(i);
-	}
 }

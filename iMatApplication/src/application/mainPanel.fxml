@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="bigBorder" prefHeight="331.0" prefWidth="740.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="bigBorder" prefHeight="415.0" prefWidth="952.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <BorderPane prefWidth="250.0">
          <top>
@@ -149,34 +149,24 @@
                <center>
                   <ToolBar maxHeight="55.0" minHeight="55.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="55.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
                      <items>
-                        <VBox alignment="CENTER_RIGHT">
-                           <children>
-                              <Label text="Vy:">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                              <ChoiceBox fx:id="chbView" prefWidth="150.0">
+                        <Label fx:id="lblView" text="Vy:">
+                           <graphic>
+                              <ChoiceBox fx:id="chbView">
                                  <tooltip>
                                     <Tooltip text="Välj mellan olika vyer" />
                                  </tooltip>
                               </ChoiceBox>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER_RIGHT">
-                           <children>
-                              <Label text="Sortering:">
-                                 <font>
-                                    <Font size="11.0" />
-                                 </font>
-                              </Label>
-                              <ChoiceBox fx:id="chbSort" prefWidth="150.0">
+                           </graphic>
+                        </Label>
+                        <Label fx:id="lblSort" text="Sortering:">
+                           <graphic>
+                              <ChoiceBox fx:id="chbSort">
                                  <tooltip>
                                     <Tooltip text="Välj vilken ordning varorna ska visas" />
                                  </tooltip>
                               </ChoiceBox>
-                           </children>
-                        </VBox>
+                           </graphic>
+                        </Label>
                      </items>
                   </ToolBar>
                </center>

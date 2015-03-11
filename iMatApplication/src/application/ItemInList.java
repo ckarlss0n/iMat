@@ -172,7 +172,7 @@ public class ItemInList extends BorderPane {
 		File imgFile = new File("icon16/warning.png");
 		Image img = new Image(imgFile.toURI().toString());
     	warnLabel.setGraphic(new ImageView(img));
-		warnLabel.setText("Varning! Innehåller vald allergi");
+		warnLabel.setText("Allergivarning!");
 	}
 	
 	public void setProductName(String name){

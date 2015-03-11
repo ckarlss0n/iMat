@@ -427,7 +427,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	}
 	
 	public void goToFavorites(MouseEvent evt){
-		
 		List<ShoppingItem> theList = new ArrayList<ShoppingItem>();
 		
 		for(Product p: dataHandler.favorites()){
@@ -702,10 +701,18 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				}
 			}
 			currentList = foundItems;
-			fillProductView(getCurrentList());
+			
 			//List_Nx1_view productView = new List_Nx1_view(foundItems);
 			categoryBtn.setText("Sökresultat: " + searchField.getText());
 			//changeScreen(productView);
+			if(foundProducts.isEmpty()){
+				NoSearchResultPanel nrsp = new NoSearchResultPanel();
+				nrsp.setNoSearchResultLbl(searchField.getText());
+				changeScreen(nrsp);
+			} else {
+				fillProductView(getCurrentList());
+				
+			}
 		}
 	}
 	

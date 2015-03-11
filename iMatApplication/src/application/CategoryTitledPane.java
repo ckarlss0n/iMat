@@ -64,7 +64,6 @@ public class CategoryTitledPane extends TitledPane {
 		for(ShoppingItem i:productList){
 			itemInList.add(new ItemInList(i));
 		}
-
 	}	
 	
 	public List<ItemInList> getItemInList(){

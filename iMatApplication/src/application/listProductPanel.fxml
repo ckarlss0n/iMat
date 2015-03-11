@@ -22,7 +22,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="warnLabel" prefHeight="17.0" prefWidth="238.0">
+            <Label fx:id="warnLabel" prefHeight="17.0" textFill="#950b1b">
                <VBox.margin>
                   <Insets />
                </VBox.margin></Label>

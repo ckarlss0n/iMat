@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root fitToHeight="true" fitToWidth="true" prefHeight="307.0" prefWidth="378.0" stylesheets="@application.css" type="ScrollPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="noSearchResultFor" alignment="CENTER" contentDisplay="CENTER" text="Inga sökresultat hittades för:" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="noSearchResultLbl" alignment="CENTER" contentDisplay="CENTER" text="Label">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <Button fx:id="searchToStartBtn" alignment="CENTER" mnemonicParsing="false" onAction="#searchToStart" text="Tillbaka till start" BorderPane.alignment="TOP_CENTER">
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
+            </Button>
+         </center>
+      </BorderPane>
+   </content>
+</fx:root>

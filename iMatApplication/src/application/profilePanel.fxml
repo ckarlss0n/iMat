@@ -170,7 +170,7 @@
                                           </ScrollPane>
                                        </content>
                                        <tooltip>
-                                          <Tooltip text="Se och ändra dina allergier" />
+                                          <Tooltip text="Ändra allergiinställningar" />
                                        </tooltip>
                                   </TitledPane>
                                 </panes>

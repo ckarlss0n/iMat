@@ -64,7 +64,7 @@ public class ItemInList extends BorderPane {
 	
 	@FXML
 	private Label warnLabel;
-	
+
 	
 	
 	private Product theProduct;
@@ -129,14 +129,12 @@ public class ItemInList extends BorderPane {
         
         productImage.setImage(new Image(image.toURI().toString()));
         lblPrice.setText(String.valueOf(twoDec.format(theProduct.getPrice())));
-        lblPrice.setTooltip(new Tooltip(theProduct.getPrice() + theProduct.getUnit()));
         unitSuffix.setText(theProduct.getUnit());
-        unitSuffix.setTooltip(new Tooltip(theProduct.getPrice() + theProduct.getUnit()));
         productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " för " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
 		
-        
-        setAllergy();
-        
+        if(ao.contains(theProduct)){
+        	setWarnLabel();
+        }
         
         //this.changeListner.addPropertyChangeListener(m);
         
@@ -153,10 +151,10 @@ public class ItemInList extends BorderPane {
 		File file;
 		if(IMatDataHandler.getInstance().isFavorite(sci.getProduct())){
 			file = new File("icon32/star-full-yellow.png");
-		    Tooltip.install(starImage, new Tooltip("Ta bort " + sci.getProduct().getName() + " från favoriter"));
+		    Tooltip.install(starImage, new Tooltip("Ta bort från favoriter"));
 		} else {
 			file = new File("icon32/star-empty.png");
-		    Tooltip.install(starImage, new Tooltip("Lägg till " + sci.getProduct().getName() + " i favoriter"));
+		    Tooltip.install(starImage, new Tooltip("Lägg till i favoriter"));
 		}
 		Image icon = new Image(file.toURI().toString());
 	    starImage.setImage(icon);
@@ -171,6 +169,9 @@ public class ItemInList extends BorderPane {
 	}
 	
 	public void setWarnLabel(){
+		File imgFile = new File("icon16/warning.png");
+		Image img = new Image(imgFile.toURI().toString());
+    	warnLabel.setGraphic(new ImageView(img));
 		warnLabel.setText("Varning! Innehåller vald allergi");
 	}
 	
@@ -220,12 +221,7 @@ public class ItemInList extends BorderPane {
 		setStar();
 	}
 	
-	public void setAllergy(){
-        if(ao.contains(sci.getProduct())){
-			setWarnLabel();
-		}
-	}
-	
+
 	
 	public void addToCart(ActionEvent evt){
 		int selectedValue;

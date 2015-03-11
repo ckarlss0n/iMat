@@ -715,7 +715,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 
 	@Override
 	public void shoppingCartChanged(CartEvent evt) {
-		
 		if(getCurrentScreen() instanceof ShoppingCartBig){
 			shoppingCartBig.refresh(dataHandler.getShoppingCart().getItems());
 		}
@@ -723,7 +722,6 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		if(dataHandler.getShoppingCart().getItems().size() > 0){
 			ShoppingItem theItem = (ShoppingItem) evt.getShoppingItem();
 			shoppingCartRight.refreshCart(dataHandler.getShoppingCart().getItems());
-			
 			//double sum = 0;
 			//for(Node sci: shoppingCartRight.getGridPane().getChildren()){
 				//sum += ((ShoppingCartItem)sci).getItem().getAmount()*((ShoppingCartItem)sci).getItem().getProduct().getPrice();

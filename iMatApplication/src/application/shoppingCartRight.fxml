@@ -11,7 +11,7 @@
    <bottom>
       <BorderPane stylesheets="@application.css" BorderPane.alignment="CENTER">
          <bottom>
-            <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#goToCheckOutv" prefHeight="39.0" prefWidth="9000.0" text="Gå till kassan" BorderPane.alignment="CENTER">
+            <Button fx:id="goToCheckoutBtn" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#goToCheckOutv" prefHeight="39.0" prefWidth="9000.0" text="Gå till kassan" BorderPane.alignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

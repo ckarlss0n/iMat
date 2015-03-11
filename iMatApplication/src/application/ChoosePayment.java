@@ -75,7 +75,7 @@ public class ChoosePayment extends ScrollPane {
             
         }
 		
-		cp = new CardPayment();
+		cp = new CardPayment(this);
 		scrlCard.setMaxHeight(cp.getPrefHeight());
 		scrlCard.setContent(cp);
 		

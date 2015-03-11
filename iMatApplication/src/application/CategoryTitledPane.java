@@ -61,10 +61,10 @@ public class CategoryTitledPane extends TitledPane {
 		}
 		this.productList = allProductsInCategory;
 		
-//		for(ShoppingItem i:productList){
-//			itemInList.add(new ItemInList(i));
-//		}
-		//System.out.println(itemInList.size());
+		for(ShoppingItem i:productList){
+			itemInList.add(new ItemInList(i));
+		}
+		
 	}	
 	
 	public List<ItemInList> getItemInList(){

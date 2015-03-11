@@ -62,6 +62,11 @@ public class ItemInList extends BorderPane {
 	@FXML
 	private Label productDescription;
 	
+	@FXML
+	private Label warnLabel;
+	
+	
+	
 	private Product theProduct;
 	
 	private PropertyChangeSupport changeListener;
@@ -69,7 +74,19 @@ public class ItemInList extends BorderPane {
 	private MainPanel mainPanel;
 	private ShoppingItem sci;
 	
-	
+	private static List<Product> ao;
+
+    static{
+        ao = new ArrayList<Product>();
+    	for(Order o : IMatDataHandler.getInstance().getOrders()){
+        	if(o.getOrderNumber() == 1336){
+        		for(ShoppingItem si : o.getItems()){
+        			ao.add(si.getProduct());
+        		}
+        	}
+    	}
+    }
+    
 	public ItemInList(ShoppingItem sci){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listProductPanel.fxml"));
         fxmlLoader.setRoot(this);
@@ -117,6 +134,10 @@ public class ItemInList extends BorderPane {
         unitSuffix.setText(theProduct.getUnit());
         unitSuffix.setTooltip(new Tooltip(theProduct.getPrice() + theProduct.getUnit()));
         productDescription.setText(adjectives.get(random.nextInt(adjectives.size())) + " " + theProduct.getName().toLowerCase() + " för " + theProduct.getPrice() + " " + theProduct.getUnit() + ". " + phrases.get(random.nextInt(phrases.size())));
+		
+        
+        setAllergy();
+        
         
         //this.changeListner.addPropertyChangeListener(m);
         
@@ -150,10 +171,14 @@ public class ItemInList extends BorderPane {
 		productImage.setImage(img);
 	}
 	
+	public void setWarnLabel(){
+		warnLabel.setText("Varning! Innehåller vald allergi");
+	}
+	
 	public void setProductName(String name){
 		lblProductName.setText(name);
 	}
-	
+		
 	public void setPrice(double price){
 		lblPrice.setText(twoDec.format(price));
 	}
@@ -195,6 +220,13 @@ public class ItemInList extends BorderPane {
 		fadeIn.play();
 		setStar();
 	}
+	
+	public void setAllergy(){
+        if(ao.contains(sci.getProduct())){
+			setWarnLabel();
+		}
+	}
+	
 	
 	public void addToCart(ActionEvent evt){
 		int selectedValue;

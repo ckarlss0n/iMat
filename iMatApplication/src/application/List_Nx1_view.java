@@ -2,10 +2,12 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import se.chalmers.ait.dat215.project.IMatDataHandler;
+import se.chalmers.ait.dat215.project.Order;
 import se.chalmers.ait.dat215.project.Product;
 import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.fxml.FXML;
@@ -92,6 +94,9 @@ public class List_Nx1_view extends ScrollPane{
 	
 	ItemInList itp;
 	public void fillList(List<ShoppingItem> list){
+		
+
+        
 		gridPane.getChildren().clear();
 		theItemList = list;
 		setHeight(list.size() * 140);
@@ -99,9 +104,12 @@ public class List_Nx1_view extends ScrollPane{
 		
 		int i = 0;
 		for(ShoppingItem si : theItemList){ 	
-        	itp = new ItemInList(si);
-        	add(itp, i);
+			itp = new ItemInList(si);
+
+			add(itp, i);
         	i++;
+			
+
         	
         }
 		

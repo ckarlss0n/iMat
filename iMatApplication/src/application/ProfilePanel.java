@@ -1,41 +1,39 @@
 package application;
 
-import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.swing.Timer;
 
+
+
+import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.Order;
-import sun.awt.im.InputMethodAdapter;
+import se.chalmers.ait.dat215.project.ShoppingCart;
+import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.animation.Transition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class ProfilePanel extends ScrollPane{
@@ -90,7 +88,21 @@ public class ProfilePanel extends ScrollPane{
 	
 	@FXML
 	private Button saveChangesBtn;
+	@FXML
+	private CheckBox nutBox;
+	@FXML
+	private CheckBox beanBox;
+	@FXML
+	private CheckBox wheatBox;
+	@FXML
+	private CheckBox shellBox;
+	@FXML
+	private CheckBox eggBox;
 	
+	List<ShoppingItem> currentCart;
+
+	
+
 	public ProfilePanel(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profilePanel.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -101,7 +113,6 @@ public class ProfilePanel extends ScrollPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-    	
     	
     	infoAccordion.setExpandedPane(infoPane);
     	firstNameField.setText(IMatDataHandler.getInstance().getCustomer().getFirstName());
@@ -116,7 +127,7 @@ public class ProfilePanel extends ScrollPane{
     	fillHistory();
     	
     	double userLevel = (IMatDataHandler.getInstance().getOrders().size()/100.0)%1;
-    	bonusLevelLabel.setText("Bonusniv�: " + IMatDataHandler.getInstance().getOrders().size()/100);
+    	bonusLevelLabel.setText("Bonusnivå: " + IMatDataHandler.getInstance().getOrders().size()/100);
     	progressIndicator.setProgress(userLevel);
     	
 	}
@@ -133,7 +144,9 @@ public class ProfilePanel extends ScrollPane{
 		
     	for(Order order : orders){
     		if(order.getItems().size()!=0){ //Only show valid orders
-    			historyAccordion.getPanes().add(new HistoryTitledPanel(order));
+    			if(order.getOrderNumber() != 1336){
+    				historyAccordion.getPanes().add(new HistoryTitledPanel(order));
+    			}
     		}
     	}
 	}
@@ -185,8 +198,68 @@ public class ProfilePanel extends ScrollPane{
         fadeOut.setToValue(0.5);
         fadeOut.setOnFinished(event -> fadeIn.play());
 		fadeOut.play();
+
 		
+		if(nutBox.isSelected() || beanBox.isSelected() || wheatBox.isSelected() || shellBox.isSelected() || eggBox.isSelected()){
+			currentCart = new ArrayList();
+			
+			for(ShoppingItem sci : IMatDataHandler.getInstance().getShoppingCart().getItems()){
+				currentCart.add(sci);
+			}
+			
+			IMatDataHandler.getInstance().getShoppingCart().clear();
+			
+			fixAllergies();
 		
+		}
+		
+	}
+	
+	public void fixAllergies(){
+
+		if(nutBox.isSelected()){
+			for(int i = 97; i <= 103; i++){
+				IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(i));
+			}
+		}
+		
+		if(beanBox.isSelected()){
+			for(int i = 1; i <= 7; i++){
+				IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(i));
+			}
+		}
+		
+		if(wheatBox.isSelected()){
+			
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(96));
+			for(int i = 106; i <= 112; i++){
+				IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(i));
+			}
+			for(int i = 8; i <= 14; i++){
+				IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(i));
+			}
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(134));
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(136));
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(137));
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(138));
+		}
+		
+		if(shellBox.isSelected()){
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(49));
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(51));
+		}
+		
+		if(eggBox.isSelected()){
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(85));
+			IMatDataHandler.getInstance().getShoppingCart().addProduct(IMatDataHandler.getInstance().getProduct(136));
+		}
+		
+		IMatDataHandler.getInstance().placeOrder(true).setOrderNumber(1336);
+		
+		for(ShoppingItem sci : currentCart){
+			IMatDataHandler.getInstance().getShoppingCart().addItem(sci);
+			IMatDataHandler.getInstance().getShoppingCart().fireShoppingCartChanged(sci, false);
+		}
 		
 		
 	}

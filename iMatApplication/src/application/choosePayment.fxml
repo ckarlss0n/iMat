@@ -103,7 +103,7 @@
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../icon32/checkmark.png" />
+                        <Image url="@../../icon32/white/checkmark.png" />
                      </image>
                   </ImageView>
                </graphic>

@@ -105,7 +105,7 @@
             </Button>
          </left>
          <center>
-            <ImageView fitHeight="45.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="45.0" fitWidth="113.0" onMouseClicked="#goToHomeLogo" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@../../iMatLogo.png" />
                </image>

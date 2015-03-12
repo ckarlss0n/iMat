@@ -14,7 +14,6 @@
                <center>
                   <HBox alignment="CENTER" BorderPane.alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#showDetails" text="Visa detaljer" />
                         <Button mnemonicParsing="false" onAction="#addAllProducts" text="Lägg till alla">
                            <HBox.margin>
                               <Insets left="5.0" />

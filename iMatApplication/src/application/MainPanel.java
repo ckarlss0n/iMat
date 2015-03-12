@@ -345,8 +345,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 		});
 		
-		chbSort.setItems(FXCollections.observableArrayList("Populära","A-Ö", "Ö-A","Pris stigande" , "Pris fallande"));
-		chbSort.setValue(chbSort.getItems().get(1));
+		chbSort.setItems(FXCollections.observableArrayList("A-Ö", "Ö-A","Pris stigande" , "Pris fallande"));
+		chbSort.setValue(chbSort.getItems().get(0));
 		
 		chbSort.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
 
@@ -439,7 +439,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				}
 			}
 		}
-		
+		currentList = theList;
 		fillProductView(theList);
 	}
 
@@ -776,6 +776,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void goToHomeLogo(MouseEvent evt){
+		changeScreen(getHomeScreen());
+	}
+	
 	@FXML
 	private GridPane gridSavedLists;
 	public void openSaved(){
@@ -787,8 +792,14 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				savedLists.add(o);
 			}
 		}
-		System.out.println(savedLists.size());
-		//gridSavedLists.setPrefHeight(savedLists.size()*);
+		
+		Collections.sort(savedLists, new Comparator<Order>() {
+		    public int compare(Order o1, Order o2) {
+		        return -1*(o1.getDate().compareTo(o2.getDate())); //-1 for reverse order
+		    }
+		});
+		
+		
 		gridSavedLists.setPadding(new Insets(0,0,0,0));
 		
 		int i = 0;

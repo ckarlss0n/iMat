@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import se.chalmers.ait.dat215.project.ShoppingItem;
@@ -86,6 +87,7 @@ public class CardPayment extends BorderPane {
 		chbYear.setValue(chbYear.getItems().get(0));
 		
 		
+		
 		BooleanBinding bb = new BooleanBinding() {
 		    {
 		       super.bind(txtfCardNumber.textProperty(),txtfCVC.textProperty(),
@@ -101,6 +103,11 @@ public class CardPayment extends BorderPane {
 		    
 		};
 		cp.setBinding(bb);
+		
+		
+		txtfCardHolderName.setText(IMatDataHandler.getInstance().getCreditCard().getHoldersName());
+		txtfCardNumber.setText(IMatDataHandler.getInstance().getCreditCard().getCardNumber());
+		
 		
 		
 	}
@@ -206,6 +213,8 @@ public class CardPayment extends BorderPane {
 	public boolean getIsCorrect(){
 		return isFilledCorrect;
 	}
+	
+	
 	
 	
 	

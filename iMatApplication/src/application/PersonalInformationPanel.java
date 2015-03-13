@@ -105,7 +105,7 @@ public class PersonalInformationPanel extends BorderPane {
 		}else{
 			goToChoosePayment = false;
 		}
-		if(goToChoosePayment){
+		if(goToChoosePayment){ //BEHÖVER ANIMATION!!!	
 			ChoosePayment choosePayment = new ChoosePayment();
 			ChangeSupport.getInstance().fireNewEvent("", choosePayment);
 		}

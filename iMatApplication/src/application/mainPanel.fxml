@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="bigBorder" prefHeight="415.0" prefWidth="952.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="bigBorder" onMouseDragExited="#blur" prefHeight="415.0" prefWidth="952.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <BorderPane prefWidth="250.0">
          <top>

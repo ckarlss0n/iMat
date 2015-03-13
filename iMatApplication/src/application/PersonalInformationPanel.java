@@ -148,6 +148,8 @@ public class PersonalInformationPanel extends BorderPane {
         }
 	}
 	
+	
+	
 	public void pInfSetText(){
 		txtfSurname.setText(customer.getFirstName());
 		txtfLastname.setText(customer.getLastName());
@@ -158,19 +160,37 @@ public class PersonalInformationPanel extends BorderPane {
 		txtfPhone.setText(customer.getPhoneNumber());
 	}
 	
+	private Boolean goToChoosePayment = true;
 	public void register(ActionEvent evt){
-		if(rBtnProfile.isSelected()){ 
-		customer.setFirstName(txtfSurname.getText());
-		customer.setLastName(txtfLastname.getText());
-		customer.setEmail(txtfEmail.getText());
-		customer.setAddress(txtfAdress.getText());
-		customer.setPostCode(txtfPostcode.getText());
-		customer.setPostAddress(txtfCity.getText());
-		customer.setPhoneNumber(txtfPhone.getText());
-		}
-		ChoosePayment choosePayment = new ChoosePayment();
-		ChangeSupport.getInstance().fireNewEvent("", choosePayment);
+
+
+		if(txtfSurname.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?") 
+				&& txtfLastname.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?") 
+				&& txtfEmail.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]") //kunna ta in "+" framför "@"?
+				&& txtfAdress.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?(\\s\\d+$)*?") 
+				&& txtfPostcode.getText().matches("[0-9]{5}")
+				&& txtfCity.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?") 
+				&& txtfPhone.getText().matches("[0-9]+")){ 
+				
+			if(rBtnProfile.isSelected()){ 
+				customer.setFirstName(txtfSurname.getText());
+				customer.setLastName(txtfLastname.getText());
+				customer.setEmail(txtfEmail.getText());
+				customer.setAddress(txtfAdress.getText());
+				customer.setPostCode(txtfPostcode.getText());
+				customer.setPostAddress(txtfCity.getText());
+				customer.setPhoneNumber(txtfPhone.getText());
+				}
 			
+			goToChoosePayment = true;
+		}else{
+			goToChoosePayment = false;
+			
+		}
+		if(goToChoosePayment){ //BEHÖVER ANIMATION!!!	
+			ChoosePayment choosePayment = new ChoosePayment();
+			ChangeSupport.getInstance().fireNewEvent("", choosePayment);
+		}
 	
 	}
 	

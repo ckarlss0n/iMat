@@ -54,7 +54,7 @@ public class CardPayment extends BorderPane {
 	private ChoosePayment cp;
 	public CardPayment(ChoosePayment cp){
 		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cardPayment.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cardPaymentNew.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 
@@ -72,7 +72,7 @@ public class CardPayment extends BorderPane {
 		}
 		
 		
-		chbCardType.setItems(FXCollections.observableArrayList("Välj korttyp","Visa", "MasterCard"));
+		//chbCardType.setItems(FXCollections.observableArrayList("Välj korttyp","Visa", "MasterCard"));
 		
 		chbMonth.setItems(FXCollections.observableArrayList("Månad", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10","11","12"));
 		
@@ -82,22 +82,45 @@ public class CardPayment extends BorderPane {
 			chbYear.getItems().add("20" + (15+i));
 		}
 		
-		chbCardType.setValue(chbCardType.getItems().get(0));
+		
 		chbMonth.setValue(chbMonth.getItems().get(0));
 		chbYear.setValue(chbYear.getItems().get(0));
+		
+		txtfCardHolderName.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(txtfCardHolderName.getText().matches(".+")){
+    	            	txtfCardHolderName.setStyle("-fx-border-width: 0px ;");
+    	            	lblErrorName.setOpacity(0);
+    	            }else{
+    	            	txtfCardHolderName.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	lblErrorName.setOpacity(1);
+    	            	
+    	            }
+    	        }
+    	    }
+    	});
+		
+		
 		
 		
 		
 		BooleanBinding bb = new BooleanBinding() {
 		    {
-		       super.bind(txtfCardNumber.textProperty(),txtfCVC.textProperty(),
-		    		   chbCardType.getSelectionModel().selectedItemProperty(),chbMonth.getSelectionModel().selectedItemProperty(),
+		       super.bind(txtfCVC.textProperty(),
+		    		   chbMonth.getSelectionModel().selectedItemProperty(),
 		    		   chbYear.getSelectionModel().selectedItemProperty(), txtfCardHolderName.textProperty());
 		    }
 		    @Override
 		    protected boolean computeValue() {
 		    	
-		      return (!(txtfCardNumber.getText().length() > 0 && txtfCVC.getText().length() >0
+		      return (!(txtfCVC.getText().length() >0
 		            && txtfCardHolderName.getText().length() > 0));
 		    }
 		    
@@ -106,7 +129,7 @@ public class CardPayment extends BorderPane {
 		
 		
 		txtfCardHolderName.setText(IMatDataHandler.getInstance().getCreditCard().getHoldersName());
-		txtfCardNumber.setText(IMatDataHandler.getInstance().getCreditCard().getCardNumber());
+		//txtfCardNumber.setText(IMatDataHandler.getInstance().getCreditCard().getCardNumber());
 		
 		
 		
@@ -131,6 +154,7 @@ public class CardPayment extends BorderPane {
 			
 			isFilledCorrect = false;
 		}
+		/*
 		try{
 			cardNbr = Integer.parseInt(txtfCardNumber.getText());
 			lblErrorCardNbr.setOpacity(0);
@@ -141,7 +165,7 @@ public class CardPayment extends BorderPane {
 				isFilledCorrect = false;
 			}
 			
-		}
+		}*/
 		
 		try{
 			CVC = Integer.parseInt(txtfCVC.getText());
@@ -155,20 +179,6 @@ public class CardPayment extends BorderPane {
 			//isFilledCorrect = false;
 		}
 		
-		try{
-			type = chbCardType.getSelectionModel().getSelectedItem();
-			lblErrorType.setOpacity(0);
-			if(type.equals("Välj korttyp")){
-				throw new IllegalArgumentException();
-			}
-			isFilledCorrect = true;
-		} catch(Exception e){
-			lblErrorType.setOpacity(1);
-			if(isFilledCorrect = true){
-				isFilledCorrect = false;
-			}
-			//isFilledCorrect = false;
-		}
 		
 		try{
 			
@@ -193,7 +203,7 @@ public class CardPayment extends BorderPane {
 				isFilledCorrect = false;
 			}
 			//isFilledCorrect = false;
-			lblErrorYear.setOpacity(1);
+			//lblErrorYear.setOpacity(1);
 		}
 		
 		System.out.println(isFilledCorrect);
@@ -211,7 +221,7 @@ public class CardPayment extends BorderPane {
 	}
 	
 	public boolean getIsCorrect(){
-		return isFilledCorrect;
+		return true;
 	}
 	
 	

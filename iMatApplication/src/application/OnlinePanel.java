@@ -40,7 +40,8 @@ public class OnlinePanel extends ScrollPane{
 	
 	private List<ShoppingItem> shoppingItemsFav = new ArrayList<ShoppingItem>();
 	private int indexFav = 0;
-	private int numberOfProductsToShowFav = 3;
+	private int numberOfProductsToShowFav;
+	
 	
 	public OnlinePanel(List<ShoppingItem> shoppingItems){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("homeOnlinePanel.fxml"));
@@ -58,6 +59,17 @@ public class OnlinePanel extends ScrollPane{
 		for(Product p : IMatDataHandler.getInstance().favorites()){
 			shoppingItemsFav.add(new ShoppingItem(p));
 		}
+		
+		if(shoppingItemsFav.size() < 1){
+			numberOfProductsToShowFav = 0;
+		} else if(shoppingItemsFav.size() < 2){
+			numberOfProductsToShowFav = 1;
+		} else if(shoppingItemsFav.size() < 3){
+			numberOfProductsToShowFav = 2;
+		}else{
+			numberOfProductsToShowFav = 3;
+		}
+		
 		generateProducts();
 		generateProductsFav();
 	}

@@ -83,7 +83,7 @@ public class PersonalInformationPanel extends BorderPane {
 	}
 	
 	public void register(ActionEvent evt){
-		 
+		
 		customer.setFirstName(txtfSurname.getText());
 		customer.setLastName(txtfLastname.getText());
 		customer.setEmail(txtfEmail.getText());

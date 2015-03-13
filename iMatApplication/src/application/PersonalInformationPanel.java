@@ -101,9 +101,9 @@ public class PersonalInformationPanel extends BorderPane {
 			customer.setPhoneNumber(txtfPhone.getText()); 
 			
 			goToChoosePayment = true;
-			
 		}else{
 			goToChoosePayment = false;
+			
 		}
 		if(goToChoosePayment){ //BEHÖVER ANIMATION!!!	
 			ChoosePayment choosePayment = new ChoosePayment();

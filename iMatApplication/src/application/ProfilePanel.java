@@ -162,10 +162,12 @@ public class ProfilePanel extends ScrollPane{
     	        	
     	        }
     	        else{
-    	            if(firstNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?")){
-    	            	firstNameField.setStyle("-fx-border-color: green ; -fx-border-width: 2px ;");
+    	            if(firstNameField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
+    	            	firstNameField.setStyle("-fx-border-width: 0px ;");
+    	            	saveChangesBtn.setDisable(false);
     	            }else{
     	            	firstNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }
@@ -180,10 +182,12 @@ public class ProfilePanel extends ScrollPane{
     	        	
     	        }
     	        else{
-    	            if(lastNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?")){
-    	            	lastNameField.setStyle("-fx-border-color: green ; -fx-border-width: 2px ;");
+    	            if(lastNameField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
+    	            	lastNameField.setStyle("-fx-border-width: 0px ;");
+    	            	saveChangesBtn.setDisable(false);
     	            }else{
     	            	lastNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }
@@ -200,8 +204,10 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(emailField.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]")){
     	            	emailField.setStyle("-fx-border-width: 0px ;");
+    	            	saveChangesBtn.setDisable(false);
     	            }else{
     	            	emailField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }
@@ -216,10 +222,12 @@ public class ProfilePanel extends ScrollPane{
     	        	
     	        }
     	        else{
-    	            if(addressField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*(\\s\\d+$)?")){
+    	            if(addressField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?(\\s\\d+$)*?")){
     	            	addressField.setStyle("-fx-border-width: 0px ;");
+    	            	saveChangesBtn.setDisable(false);
     	            }else{
     	            	addressField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }
@@ -238,6 +246,7 @@ public class ProfilePanel extends ScrollPane{
     	            	postalCodeField.setStyle("-fx-border-width: 0px ;");
     	            }else{
     	            	postalCodeField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }
@@ -252,10 +261,11 @@ public class ProfilePanel extends ScrollPane{
     	        	
     	        }
     	        else{
-    	            if(cityField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?")){
+    	            if(cityField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
     	            	cityField.setStyle("-fx-border-width: 0px ;");
     	            }else{
     	            	cityField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }
@@ -274,6 +284,7 @@ public class ProfilePanel extends ScrollPane{
     	            	phoneField.setStyle("-fx-border-width: 0px ;");
     	            }else{
     	            	phoneField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }
@@ -292,6 +303,7 @@ public class ProfilePanel extends ScrollPane{
     	            	passwordField.setStyle("-fx-border-width: 0px ;");
     	            }else{
     	            	passwordField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root prefHeight="337.0" prefWidth="931.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane alignment="TOP_CENTER" BorderPane.alignment="CENTER_RIGHT">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BorderPane GridPane.columnIndex="1">
+               <bottom>
+                  <Label fx:id="lblErrorType" opacity="0.0" text="*Du måste välja korttyp" textFill="RED" BorderPane.alignment="CENTER_RIGHT">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </bottom>
+               <left>
+                  <ChoiceBox fx:id="chbCardType" maxWidth="300.0" prefHeight="26.0" prefWidth="300.0" BorderPane.alignment="CENTER_LEFT" />
+               </left>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <bottom>
+                  <Label fx:id="lblErrorName" opacity="0.0" text="*Ogiltigt namn" textFill="RED" BorderPane.alignment="CENTER_RIGHT">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </bottom>
+               <center>
+                  <TextField fx:id="txtfCardHolderName" maxWidth="300.0" prefHeight="0.0" prefWidth="300.0" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <bottom>
+                  <Label fx:id="lblErrorCardNbr" opacity="0.0" text="*Ogiltigt kortnummer" textFill="RED" BorderPane.alignment="CENTER_RIGHT">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </bottom>
+               <center>
+                  <TextField fx:id="txtfCardNumber" maxWidth="300.0" prefHeight="0.0" prefWidth="300.0" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+            </BorderPane>
+            <BorderPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <center>
+                  <HBox alignment="CENTER_LEFT" maxWidth="300.0" prefHeight="35.0" prefWidth="300.0" BorderPane.alignment="CENTER_LEFT">
+                     <children>
+                        <ChoiceBox fx:id="chbMonth" prefHeight="39.0" prefWidth="145.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ChoiceBox>
+                        <ChoiceBox fx:id="chbYear" prefHeight="39.0" prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+               </center>
+            </BorderPane>
+            <BorderPane nodeOrientation="LEFT_TO_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <bottom>
+                  <Label fx:id="lblErrorCVC" opacity="0.0" text="*Ogiltigt kortnummer" textFill="RED" BorderPane.alignment="CENTER_RIGHT">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </bottom>
+               <center>
+                  <TextField fx:id="txtfCVC" maxWidth="300.0" prefHeight="0.0" prefWidth="300.0" BorderPane.alignment="CENTER_LEFT" />
+               </center>
+            </BorderPane>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="9000.0" text="Korttyp:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="15.0" right="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="9000.0" text="Namn:" GridPane.rowIndex="1">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets bottom="15.0" right="5.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="9000.0" text="Kortnummer:" GridPane.rowIndex="2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets bottom="15.0" right="5.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="9000.0" text="Giltighetstid:" GridPane.rowIndex="3">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets bottom="15.0" right="5.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefWidth="9000.0" text="CVC/CVV-kod:" GridPane.rowIndex="4">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets bottom="15.0" right="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </GridPane>
+   </center>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</fx:root>

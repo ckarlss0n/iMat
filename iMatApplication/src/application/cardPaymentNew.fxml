@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <center>
+      <HBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_RIGHT" spacing="10.0">
+               <children>
+                  <Label maxHeight="56.0" minHeight="56.0" prefHeight="56.0" text="Namn:">
+                     <padding>
+                        <Insets bottom="17.0" />
+                     </padding>
+                  </Label>
+                  <Label maxHeight="56.0" minHeight="56.0" prefHeight="56.0" text="Kortnummer:">
+                     <padding>
+                        <Insets bottom="17.0" />
+                     </padding>
+                  </Label>
+                  <Label maxHeight="56.0" minHeight="56.0" prefHeight="56.0" text="Giltighetstid:">
+                     <padding>
+                        <Insets bottom="17.0" />
+                     </padding>
+                  </Label>
+                  <Label maxHeight="56.0" minHeight="56.0" prefHeight="56.0" text="CVC/CVV:">
+                     <padding>
+                        <Insets bottom="17.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox spacing="10.0">
+               <children>
+                  <VBox>
+                     <children>
+                        <TextField fx:id="txtfCardHolderName" promptText="Förnamn Efternamn" />
+                        <Label fx:id="lblErrorName" text="* Du måste fylla i ditt för- och efternamn." textFill="#d73232">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <HBox spacing="5.0">
+                           <children>
+                              <TextField fx:id="txtfNbr1" minWidth="65.0" prefWidth="65.0" promptText="XXXX" />
+                              <TextField fx:id="txtfNbr2" minWidth="65.0" prefWidth="65.0" promptText="XXXX" />
+                              <TextField fx:id="txtfNbr3" minWidth="65.0" prefWidth="65.0" promptText="XXXX" />
+                              <TextField fx:id="txtfNbr4" minWidth="65.0" prefWidth="65.0" promptText="XXXX" />
+                              <ImageView fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../icon32/visa.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblErrorCardNbr" text="* Var vänlig kontrollera kortnumret!" textFill="#d73232">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <HBox spacing="5.0">
+                           <children>
+                              <ChoiceBox fx:id="chbMonth" prefWidth="85.0" />
+                              <ChoiceBox fx:id="chbYear" prefWidth="85.0" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblErrorDate" text="* Var vänlig kontrollera giltighetstiden!" textFill="#d73232">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <TextField fx:id="txtfCVC" maxWidth="55.0" prefWidth="55.0" promptText="XXX" />
+                        <Label fx:id="lblErrorCVC" text="* Var vänlig kontrollera CVC/CVV-koden!" textFill="#d73232">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

@@ -832,7 +832,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			i++;
 		}
 		
-		
+
 	}
 
 }

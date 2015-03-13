@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-public class ShoppingCartRight extends BorderPane{
+public class ShoppingCartRight extends BorderPane implements ChangeScreenListener {
 	@FXML
 	private GridPane gridPane;
 	@FXML
@@ -65,6 +65,8 @@ public class ShoppingCartRight extends BorderPane{
         
         setShoppingCartSum(sum);
         
+        ChangeSupport.getInstance().addListner(this);
+        
         this.mp = mp;
 	}
 	
@@ -88,14 +90,19 @@ public class ShoppingCartRight extends BorderPane{
 	}
 	
 	public void fullyClearShoppingCart(){ //When clear button clicked
-
+		clearCart = false;
 	
 		System.out.println("OPEN CONFIRMATION DIALOG HERE!");
 		CartConfirmDialog ccd = new CartConfirmDialog();
 		
-		IMatDataHandler.getInstance().getShoppingCart().clear();
-		clearShoppingCart();
+		if(clearCart){
+			IMatDataHandler.getInstance().getShoppingCart().clear();
+			clearShoppingCart();
+		}
+		
 	}
+	
+	boolean clearCart = false;
 	
 	public ShoppingCartItem getShoppingCartItem(ShoppingItem i){
 		
@@ -173,6 +180,19 @@ public class ShoppingCartRight extends BorderPane{
 		System.out.println(index);
 		
 		IMatDataHandler.getInstance().placeOrder(false).setOrderNumber(index);
+	}
+
+	@Override
+	public void eventRecieved(TheEvent evt) {
+		
+		if(evt.getScreen() == null){
+			if(evt.getNameOFEvent().equals("Clearcart")){
+				clearCart = true;
+			}
+			if(evt.getNameOFEvent().equals("Cancel")){
+				clearCart = false;
+			}
+		}
 	}
 
 }

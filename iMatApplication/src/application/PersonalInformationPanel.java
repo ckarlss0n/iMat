@@ -70,6 +70,8 @@ public class PersonalInformationPanel extends BorderPane {
         }
 	}
 	
+	
+	
 	public void pInfSetText(){
 		txtfSurname.setText(customer.getFirstName());
 		txtfLastname.setText(customer.getLastName());

@@ -1,10 +1,16 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+
+
+
+
 
 
 
@@ -19,6 +25,8 @@ import se.chalmers.ait.dat215.project.ShoppingItem;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.Transition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +44,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class ProfilePanel extends ScrollPane{
@@ -142,6 +152,155 @@ public class ProfilePanel extends ScrollPane{
     	phoneField.setText(IMatDataHandler.getInstance().getCustomer().getPhoneNumber());
     	passwordField.setText(IMatDataHandler.getInstance().getUser().getPassword());
     	
+    	
+    	firstNameField.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(firstNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?")){
+    	            	firstNameField.setStyle("-fx-border-color: green ; -fx-border-width: 2px ;");
+    	            }else{
+    	            	firstNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	lastNameField.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(lastNameField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?")){
+    	            	lastNameField.setStyle("-fx-border-color: green ; -fx-border-width: 2px ;");
+    	            }else{
+    	            	lastNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	emailField.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(emailField.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]")){
+    	            	emailField.setStyle("-fx-border-width: 0px ;");
+    	            }else{
+    	            	emailField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	addressField.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(addressField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*(\\s\\d+$)?")){
+    	            	addressField.setStyle("-fx-border-width: 0px ;");
+    	            }else{
+    	            	addressField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	postalCodeField.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if( postalCodeField.getText().matches("[0-9]{5}")){
+    	            	postalCodeField.setStyle("-fx-border-width: 0px ;");
+    	            }else{
+    	            	postalCodeField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	cityField.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(cityField.getText().matches("^[A-ZÅÄÖ]+[a-zåäö]*([-][A-ZÅÄÖ]*[a-zåäö]*)?(\\s[A-ZÅÄÖ]*[a-zåäö]*)?")){
+    	            	cityField.setStyle("-fx-border-width: 0px ;");
+    	            }else{
+    	            	cityField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	phoneField.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(phoneField.getText().matches("[0-9]+")){
+    	            	phoneField.setStyle("-fx-border-width: 0px ;");
+    	            }else{
+    	            	phoneField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	passwordField.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(passwordField.getText().matches(".+")){
+    	            	passwordField.setStyle("-fx-border-width: 0px ;");
+    	            }else{
+    	            	passwordField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            }
+    	        }
+    	    }
+    	});
+    	
+    	
+    	
+    	
+    	
     	fillHistory();
     	
     	double userLevel = (IMatDataHandler.getInstance().getOrders().size()/100.0)%1;
@@ -149,6 +308,23 @@ public class ProfilePanel extends ScrollPane{
     	progressIndicator.setProgress(userLevel);
     	
 	}
+	
+	@FXML
+	private ImageView imgFname;
+	@FXML
+	private ImageView imgLname;
+	@FXML
+	private ImageView imgEmail;
+	@FXML
+	private ImageView imgAddress;
+	@FXML
+	private ImageView imgPostcode;
+	@FXML
+	private ImageView imgOrt;
+	@FXML
+	private ImageView imgPhone;
+	@FXML
+	private ImageView imgPassword;
 	
 	public void fillHistory(){	
 		List<Order> orders = IMatDataHandler.getInstance().getOrders();
@@ -287,6 +463,10 @@ public class ProfilePanel extends ScrollPane{
 		
 		}
 		
+	}
+	
+	public void surnameAction(ActionEvent evt){
+		//lastNameField.setText("Haha, de trodde du väll!");
 	}
 	
 	public void fixAllergies(){

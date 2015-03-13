@@ -577,6 +577,10 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			
 		});
 	}
+	
+	public void blur(){
+		setEffect(new GaussianBlur());
+	}
 
 
 	public void goToHome(ActionEvent evt) {
@@ -761,6 +765,12 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		if(evt.getScreen() == null){
 			if(evt.getNameOFEvent().equals("Home")){
 				changeScreen(getHomeScreen());
+			}
+			if(evt.getNameOFEvent().equals("Blur")){
+				blur();
+			}
+			if(evt.getNameOFEvent().equals("Unblur")){
+				setEffect(null);
 			}
 			
 		}else{

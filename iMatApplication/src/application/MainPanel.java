@@ -62,7 +62,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private List<Node> listOfNodes = new ArrayList<Node>();
 	private List_Nx1_view lnv = new List_Nx1_view();
 	private SquareModeView sqmv = new SquareModeView();
-	
+	private List<SubcategoryButton> buttonC = new ArrayList<SubcategoryButton>();
+
 	@FXML
 	private Accordion categoryAccordation;
 	@FXML
@@ -289,6 +290,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		public void handle(MouseEvent mouseEvent) {
 			
 			if(mouseEvent.getSource() instanceof CategoryTitledPane){
+				CategoryTitledPane ctp = (CategoryTitledPane)mouseEvent.getSource();
+				
+
 				
 				currentItemList = (((CategoryTitledPane) mouseEvent
 						.getSource()).getItemInList());
@@ -296,11 +300,17 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				currentList = ((CategoryTitledPane) mouseEvent
 						.getSource()).getItemsInCategory();
 				fillView(currentItemList);
+				for(TitledPane cattp : categoryAccordation.getPanes()){
+					cattp.setStyle("-fx-base: #7a0613;");
+				}
+				favorites.setStyle("-fx-base: #aeaeae;");
+				ctp.setStyle("-fx-base: red;");
+				savedTitledPane.setStyle("-fx-base: #aeaeae");
 				//fillProductView(currentList);
 				//categoryBtn.setText(((CategoryTitledPane) mouseEvent
 					//	.getSource()).getText());
 			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
-				
+				SubcategoryButton scb = (SubcategoryButton)mouseEvent.getSource();
 				currentItemList = ((SubcategoryButton) mouseEvent
 						.getSource()).getItemList();
 				
@@ -308,6 +318,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 						.getSource()).getList();
 				
 				fillProductView(currentList);
+				scb.setStyle("-fx-base: red;");
 				//fillView(currentItemList);
 				
 				
@@ -391,6 +402,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 							thebuttons.add(scb);
 						}
 					}
+					buttonC.addAll(thebuttons);
 					
 					CategoryTitledPane ctp = new CategoryTitledPane(mainName, thebuttons, allProductsInCategory);
 					ctp.setOnMouseClicked(categoryClick);
@@ -429,6 +441,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public void goToFavorites(MouseEvent evt){
 		List<ShoppingItem> theList = new ArrayList<ShoppingItem>();
 		
+
 		for(Product p: dataHandler.favorites()){
 			ShoppingItem sci = new ShoppingItem(p);
 			
@@ -441,6 +454,12 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		}
 		currentList = theList;
 		fillProductView(theList);
+		for(TitledPane cattp : categoryAccordation.getPanes()){
+			cattp.setStyle("-fx-base: #7a0613;");
+		}
+		favorites.setStyle("-fx-base: gray;");
+		savedTitledPane.setStyle("-fx-base: #aeaeae;");
+		savedTitledPane.setExpanded(false);
 	}
 
 	
@@ -638,12 +657,12 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	public void changeScreen(Node node) {
 		stackPane.getChildren().clear();
 		stackPane.getChildren().add(node);
-		
+		setStandardColors();
+		setStandardButtons();
 		setHideViewEtc(node);
 	
 		if (node instanceof ShoppingCartBig || node instanceof PersonalInformationPanel || 
 				node instanceof ChoosePayment|| node instanceof CheckoutPanel) {
-			
 			bigBorder.setRight(progressIndicator);
 			setIndicator(node);
 		}else {
@@ -692,6 +711,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	//Bug if found product already in shoppingcart. Shows duplicates in list.
 	public void searchForProducts(ActionEvent evt){
 		if(!searchField.getText().isEmpty()){
+			setStandardColors();
+			setStandardButtons();
 			List<Product> foundProducts = dataHandler.findProducts(searchField.getText());
 			
 			List<ShoppingItem> foundItems = new ArrayList<ShoppingItem>();
@@ -795,6 +816,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	private GridPane gridSavedLists;
 	public void openSaved(){
 		List<Order> savedLists = new ArrayList<Order>();
+
 		for(Order o: dataHandler.getOrders()){
 			if(o.getOrderNumber()<0){
 				
@@ -833,6 +855,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 					currentList = btn.getList();
 					System.out.println(currentList.size());
 					fillProductView(currentList);
+					for(TitledPane cattp : categoryAccordation.getPanes()){
+						cattp.setStyle("-fx-base: #7a0613;");
+					}
+					favorites.setStyle("-fx-base: #aeaeae;");
+					savedTitledPane.setStyle("-fx-base: gray;");
 
 				}
 				
@@ -843,7 +870,24 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		}
 		
 
-	}
 
+	}
+	
+	public void setStandardColors(){
+		for(TitledPane cattp : categoryAccordation.getPanes()){
+			cattp.setStyle("-fx-base: #7a0613;");
+		}
+		favorites.setStyle("-fx-base: #aeaeae;");
+		savedTitledPane.setStyle("-fx-base: #aeaeae;");
+	
+	}
+	public void setStandardButtons(){
+		int i = 0;
+		for(SubcategoryButton scb : buttonC){
+			i++;
+			System.out.println(i);
+			scb.setStyle("-fx-base: #7a0613;");
+		}
+	}
 }
 

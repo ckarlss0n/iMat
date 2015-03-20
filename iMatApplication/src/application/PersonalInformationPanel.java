@@ -8,6 +8,8 @@ import java.util.List;
 import se.chalmers.ait.dat215.project.Customer;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,6 +53,14 @@ public class PersonalInformationPanel extends BorderPane {
 	ToggleGroup tg;
 	Customer customer = IMatDataHandler.getInstance().getCustomer();
 	
+	private Boolean pInfSurname = true;
+	private Boolean pInfLastname = true;
+	private Boolean pInfEmail = true;
+	private Boolean pInfAdress = true;
+	private Boolean pInfPostcode = true;
+	private Boolean pInfCity = true;
+	private Boolean pInfPhone = true;
+	
 	public PersonalInformationPanel(Customer customer){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("personalInformation.fxml"));
 		fxmlLoader.setRoot(this);
@@ -66,7 +76,7 @@ public class PersonalInformationPanel extends BorderPane {
     		rBtnOther.setToggleGroup(tg);
     		
     		rBtnProfile.setSelected(true);
-    		BooleanBinding bb = new BooleanBinding() {
+    		BooleanBinding bb = new BooleanBinding() {	
     		    {
     		       super.bind(txtfSurname.textProperty(),txtfLastname.textProperty(),
     		    		   txtfEmail.textProperty(),txtfAdress.textProperty(),
@@ -140,15 +150,172 @@ public class PersonalInformationPanel extends BorderPane {
 
     		    choiceTime.setValue(choiceTime.getItems().get(0));
 
-    			choiceDay.setValue(choiceDay.getItems().get(0));
-
+    			choiceDay.setValue(choiceDay.getItems().get(0));			
     		    
 		} catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+		
+		txtfSurname.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(txtfSurname.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
+    	            	txtfSurname.setStyle("-fx-border-width: 0px ;");
+    	            	pInfSurname = true;
+    	            	pInfSetBtnVisible();
+    	            }else{
+    	            	txtfSurname.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	pInfSurname = false;
+    	            	goToPaymentBtn.setDisable(true);
+    	            }
+    	        }
+    	    }
+    	});
+    	
+		txtfLastname.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(txtfLastname.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
+    	            	txtfLastname.setStyle("-fx-border-width: 0px ;");
+    	            	pInfLastname = true;
+    	            	pInfSetBtnVisible();
+    	            }else{
+    	            	txtfLastname.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	pInfLastname = false;
+    	            	goToPaymentBtn.setDisable(true);
+    	            }
+    	        }
+    	    }
+    	});
+    	
+		txtfEmail.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(txtfEmail.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]")){
+    	            	txtfEmail.setStyle("-fx-border-width: 0px ;");
+    	            	pInfEmail = true;
+    	            	pInfSetBtnVisible();
+    	            }else{
+    	            	txtfEmail.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	pInfEmail = false;
+    	            	goToPaymentBtn.setDisable(true);
+    	            }
+    	        }
+    	    }
+    	});
+    	
+		txtfAdress.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(txtfAdress.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?(\\s\\d+$)*?")){
+    	            	txtfAdress.setStyle("-fx-border-width: 0px ;");
+    	            	pInfAdress = true;
+    	            	pInfSetBtnVisible();
+    	            }else{
+    	            	txtfAdress.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	pInfAdress = false;
+    	            	goToPaymentBtn.setDisable(true);
+    	            }
+    	        }
+    	    }
+    	});
+    	
+		txtfPostcode.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if( txtfPostcode.getText().matches("[0-9]{5}")){
+    	            	txtfPostcode.setStyle("-fx-border-width: 0px ;");
+    	            	pInfPostcode = true;
+    	            	pInfSetBtnVisible();
+    	            }else{
+    	            	txtfPostcode.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	pInfPostcode = true;
+    	            	goToPaymentBtn.setDisable(true);
+    	            }
+    	        }
+    	    }
+    	});
+    	
+		txtfCity.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(txtfCity.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
+    	            	txtfCity.setStyle("-fx-border-width: 0px ;");
+    	            	pInfCity = true;
+    	            	pInfSetBtnVisible();
+    	            }else{
+    	            	txtfCity.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	pInfCity = false;
+    	            	goToPaymentBtn.setDisable(true);
+    	            }
+    	        }
+    	    }
+    	});
+    	
+		txtfPhone.focusedProperty().addListener(new ChangeListener<Boolean>()
+    			{
+    	    @Override
+    	    public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+    	    {
+    	        if (newPropertyValue){
+    	        	
+    	        }
+    	        else{
+    	            if(txtfPhone.getText().matches("[0-9]+")){
+    	            	txtfPhone.setStyle("-fx-border-width: 0px ;");
+    	            	pInfPhone = true;
+    	            	pInfSetBtnVisible();
+    	            }else{
+    	            	txtfPhone.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	pInfPhone = false;
+    	            	goToPaymentBtn.setDisable(true);
+    	            }
+    	        }
+    	    }
+    	});
 	}
 	
-	
+	public void pInfSetBtnVisible(){
+		if(pInfSurname && pInfLastname && pInfEmail && pInfAdress && pInfPostcode && pInfCity && pInfPhone){
+			goToPaymentBtn.setDisable(false);
+    	}
+	}
 	
 	public void pInfSetText(){
 		txtfSurname.setText(customer.getFirstName());
@@ -160,10 +327,13 @@ public class PersonalInformationPanel extends BorderPane {
 		txtfPhone.setText(customer.getPhoneNumber());
 	}
 	
-	private Boolean goToChoosePayment = true;
+	//private Boolean goToChoosePayment = true; 
 	public void register(ActionEvent evt){
+		
+		ChoosePayment choosePayment = new ChoosePayment();
+		ChangeSupport.getInstance().fireNewEvent("", choosePayment);
 
-
+		/*
 		if(txtfSurname.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?") 
 				&& txtfLastname.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?") 
 				&& txtfEmail.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]") //kunna ta in "+" framför "@"?
@@ -190,7 +360,7 @@ public class PersonalInformationPanel extends BorderPane {
 		if(goToChoosePayment){ //BEHÖVER ANIMATION!!!	
 			ChoosePayment choosePayment = new ChoosePayment();
 			ChangeSupport.getInstance().fireNewEvent("", choosePayment);
-		}
+		} */
 	
 	}
 	

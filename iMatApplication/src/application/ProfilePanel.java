@@ -114,7 +114,16 @@ public class ProfilePanel extends ScrollPane{
 	List<ShoppingItem> currentCart;
 
 	List<Product> ao;
-
+	
+	private Boolean firstName = true;
+	private Boolean lastName = true;
+	private Boolean email = true;
+	private Boolean address = true;
+	private Boolean postalCode = true;
+	private Boolean city = true;
+	private Boolean phone = true;
+	private Boolean password = true;
+	
 	public ProfilePanel(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profilePanel.fxml"));
 	    fxmlLoader.setRoot(this);
@@ -164,9 +173,11 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(firstNameField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
     	            	firstNameField.setStyle("-fx-border-width: 0px ;");
-    	            	saveChangesBtn.setDisable(false);
+    	            	firstName = true;
+    	            	setBtnVisible();
     	            }else{
     	            	firstNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	firstName = false;
     	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
@@ -184,9 +195,11 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(lastNameField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
     	            	lastNameField.setStyle("-fx-border-width: 0px ;");
-    	            	saveChangesBtn.setDisable(false);
+    	            	lastName = true;
+    	            	setBtnVisible();
     	            }else{
     	            	lastNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	lastName = false;
     	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
@@ -204,9 +217,11 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(emailField.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]")){
     	            	emailField.setStyle("-fx-border-width: 0px ;");
-    	            	saveChangesBtn.setDisable(false);
+    	            	email = true;
+    	            	setBtnVisible();
     	            }else{
     	            	emailField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	email = false;
     	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
@@ -224,9 +239,11 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(addressField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?(\\s\\d+$)*?")){
     	            	addressField.setStyle("-fx-border-width: 0px ;");
-    	            	saveChangesBtn.setDisable(false);
+    	            	address = true;
+    	            	setBtnVisible();
     	            }else{
     	            	addressField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	address = false;
     	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
@@ -244,8 +261,11 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if( postalCodeField.getText().matches("[0-9]{5}")){
     	            	postalCodeField.setStyle("-fx-border-width: 0px ;");
+    	            	postalCode = true;
+    	            	setBtnVisible();
     	            }else{
     	            	postalCodeField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	postalCode = false;
     	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
@@ -263,8 +283,11 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(cityField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
     	            	cityField.setStyle("-fx-border-width: 0px ;");
+    	            	city = true;
+    	            	setBtnVisible();
     	            }else{
     	            	cityField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	city = false;
     	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
@@ -282,8 +305,11 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(phoneField.getText().matches("[0-9]+")){
     	            	phoneField.setStyle("-fx-border-width: 0px ;");
+    	            	phone = true;
+    	            	setBtnVisible();
     	            }else{
     	            	phoneField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	phone = false;
     	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
@@ -301,17 +327,16 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(passwordField.getText().matches(".+")){
     	            	passwordField.setStyle("-fx-border-width: 0px ;");
+    	            	password = true;
+    	            	setBtnVisible();
     	            }else{
     	            	passwordField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+    	            	password = false;
     	            	saveChangesBtn.setDisable(true);
     	            }
     	        }
     	    }
     	});
-    	
-    	
-    	
-    	
     	
     	fillHistory();
     	
@@ -319,6 +344,12 @@ public class ProfilePanel extends ScrollPane{
     	bonusLevelLabel.setText("Bonusnivå: " + IMatDataHandler.getInstance().getOrders().size()/100);
     	progressIndicator.setProgress(userLevel);
     	
+	}
+	
+	public void setBtnVisible(){
+		if(firstName && lastName && email && address && postalCode && city && phone && password){
+    		saveChangesBtn.setDisable(false);
+    	}
 	}
 	
 	@FXML
@@ -361,39 +392,8 @@ public class ProfilePanel extends ScrollPane{
 		System.out.println("HEJ");
 	}
 	
-	private Boolean checkTextFieldsBoolean = false;
-	
-	public void checkTextFields(){
-		if(firstNameField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?") 
-				&& lastNameField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?") 
-				&& emailField.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]") //kunna ta in "+" framför "@"?
-				&& addressField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?(\\s\\d+$)*?") 
-				&& postalCodeField.getText().matches("[0-9]{5}")
-				&& cityField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?") 
-				&& phoneField.getText().matches("[0-9]+")
-				&& passwordField.getText().matches(".+")){ 
-			
-			checkTextFieldsBoolean = true;
-			
-		}else{
-			checkTextFieldsBoolean = false;
-			
-		}
-	}
-	
 	public void saveProfile(ActionEvent evt){ 
-		checkTextFields(); 
-    	if(checkTextFieldsBoolean){
-    		
-    		IMatDataHandler.getInstance().getCustomer().setFirstName(firstNameField.getText());
-        	IMatDataHandler.getInstance().getCustomer().setLastName(lastNameField.getText());
-        	IMatDataHandler.getInstance().getCustomer().setEmail(emailField.getText());
-        	IMatDataHandler.getInstance().getCustomer().setAddress(addressField.getText());
-        	IMatDataHandler.getInstance().getCustomer().setPostCode(postalCodeField.getText());
-        	IMatDataHandler.getInstance().getCustomer().setPostAddress(cityField.getText());
-        	IMatDataHandler.getInstance().getCustomer().setPhoneNumber(phoneField.getText());
-        	IMatDataHandler.getInstance().getUser().setPassword(passwordField.getText());
-    	
+		
 			System.out.println("Save profile information.");
 			System.out.println(IMatDataHandler.getInstance().getCustomer().getFirstName());
 			
@@ -426,41 +426,6 @@ public class ProfilePanel extends ScrollPane{
 	        fadeOut.setToValue(0.5);
 	        fadeOut.setOnFinished(event -> fadeIn.play());
 			fadeOut.play();
-		
-    	}else{
-    		System.out.println("sparades inte och gick inte igenom");
-    		
-    		final String content2 = ""
-					+ "Ändringar sparades inte!";
-			 
-			 final Animation animation = new Transition() {
-			     {
-			         setCycleDuration(Duration.millis(1000));
-			     }
-			 
-			     protected void interpolate(double frac) {
-			         final int length = content2.length();
-			         final int n = Math.round(length * (float) frac);
-			         saveChangesBtn.setText(content2.substring(0, n));
-			     }
-			 
-			 };
-			 
-			
-			animation.play();
-			FadeTransition fadeIn2 = new FadeTransition(Duration.seconds(3), saveChangesBtn);
-			fadeIn2.setOnFinished(event -> saveChangesBtn.setText("Spara ändringar"));
-			fadeIn2.setFromValue(0.5);
-			fadeIn2.setToValue(1.0);
-			
-	
-			FadeTransition fadeOut2 = new FadeTransition(Duration.seconds(0.3), saveChangesBtn);
-			fadeOut2.setFromValue(1.0);
-	        fadeOut2.setToValue(0.5);
-	        fadeOut2.setOnFinished(event -> fadeIn2.play());
-			fadeOut2.play();
-    	
-    	}
 		
 		if(nutBox.isSelected() || beanBox.isSelected() || wheatBox.isSelected() || shellBox.isSelected() || eggBox.isSelected()){
 			currentCart = new ArrayList();

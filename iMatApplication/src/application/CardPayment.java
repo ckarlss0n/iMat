@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.beans.binding.BooleanBinding;
@@ -12,6 +13,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import se.chalmers.ait.dat215.project.IMatDataHandler;
@@ -61,6 +64,9 @@ public class CardPayment extends BorderPane {
 	private Label lblErrorYear;
 	@FXML
 	private Label lblErrorCVC;
+	
+	@FXML
+	private ImageView imgCard;
 	
 	private boolean isFilledCorrect;
 	
@@ -222,7 +228,7 @@ public class CardPayment extends BorderPane {
 		
 		
 	}
-	
+	File file;
 	public void setTextfieldsMaxLength(){
 		int maxLength = 4;
 		txtfNbr1.setAlignment(Pos.CENTER);
@@ -230,6 +236,15 @@ public class CardPayment extends BorderPane {
 	        @Override
 	        public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
 	        	if(txtfNbr1.getText().length()==maxLength){
+	        		if(txtfNbr1.getText().substring(0, 1).equals("5")){
+	        			file = new File("icon32/mastercard.png");
+	        			imgCard.setImage(new Image(file.toURI().toString()));
+	        			imgCard.setOpacity(1);
+	        		}else if(txtfNbr1.getText().substring(0, 1).equals("4")){
+	        			file = new File("icon32/visa.png");
+	        			imgCard.setImage(new Image(file.toURI().toString()));
+	        			imgCard.setOpacity(1);
+	        		}
 	        		txtfNbr2.requestFocus();
 	        	}
 	        	if (txtfNbr1.getText().length() > maxLength) {

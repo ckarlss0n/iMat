@@ -62,7 +62,7 @@
                                     <TextField fx:id="txtfNbr2" minWidth="65.0" prefWidth="65.0" promptText="XXXX" />
                                     <TextField fx:id="txtfNbr3" minWidth="65.0" prefWidth="65.0" promptText="XXXX" />
                                     <TextField fx:id="txtfNbr4" minWidth="65.0" prefWidth="65.0" promptText="XXXX" />
-                                    <ImageView fitHeight="26.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fx:id="imgCard" fitHeight="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../icon32/visa.png" />
                                        </image>

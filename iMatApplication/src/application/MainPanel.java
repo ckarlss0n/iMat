@@ -297,8 +297,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 						.getSource()).getItemsInCategory();
 				fillView(currentItemList);
 				//fillProductView(currentList);
-				categoryBtn.setText(((CategoryTitledPane) mouseEvent
-						.getSource()).getText());
+				//categoryBtn.setText(((CategoryTitledPane) mouseEvent
+					//	.getSource()).getText());
 			} else if(mouseEvent.getSource() instanceof SubcategoryButton){
 				
 				currentItemList = ((SubcategoryButton) mouseEvent
@@ -311,8 +311,8 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 				//fillView(currentItemList);
 				
 				
-				categoryBtn.setText(((SubcategoryButton) mouseEvent
-						.getSource()).getText());
+				//categoryBtn.setText(((SubcategoryButton) mouseEvent
+					//	.getSource()).getText());
 			}
 			
 		}
@@ -621,7 +621,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			lblView.setVisible(false);
 		}else{
 			categoryBtn.setOnAction(null);
-			categoryBtn.setOpacity(100);
+			categoryBtn.setOpacity(0);
 			categoryBtn.setDisable(false);
 			
 			chbView.setOpacity(100);

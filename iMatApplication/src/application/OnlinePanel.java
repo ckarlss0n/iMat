@@ -98,42 +98,51 @@ public class OnlinePanel extends ScrollPane{
 	}
 	
 	public void backward(){
-		setNumberOfProductsToShow();
-		index -= numberOfProductsToShow;
-		System.out.println("Slide backward");
-		gridPane.getChildren().clear();
-		gridPane.setPrefWidth(numberOfProductsToShow*300);
-		for(int i = 0; i<numberOfProductsToShow; i++){
-			add(new SmallProductPanel(shoppingItems.get((shoppingItems.size()+index-numberOfProductsToShow+i)%shoppingItems.size())), i);
-        }
-		FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPane);
-		fadeIn.setFromValue(0.0);
-		fadeIn.setToValue(1.0);
-		fadeIn.play();
+		
+			
+		if(shoppingItems.size()!=0){
+			setNumberOfProductsToShow();
+			index -= numberOfProductsToShow;
+		
+			System.out.println("Slide backward");
+			gridPane.getChildren().clear();
+			gridPane.setPrefWidth(numberOfProductsToShow*300);
+			for(int i = 0; i<numberOfProductsToShow; i++){
+				add(new SmallProductPanel(shoppingItems.get((shoppingItems.size()+index-numberOfProductsToShow+i)%shoppingItems.size())), i);
+	        }
+			FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPane);
+			fadeIn.setFromValue(0.0);
+			fadeIn.setToValue(1.0);
+			fadeIn.play();
+		}
 	}
 	
 	public void slideForward(ActionEvent evt){
+		
 		setNumberOfProductsToShow();
 		FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPane);
 		fadeIn.setOnFinished(event -> forward());
 		fadeIn.setFromValue(1.0);
 		fadeIn.setToValue(0.0);
 		fadeIn.play();
+		
 	}
 	
 	public void forward(){
-		setNumberOfProductsToShow();
-		index += numberOfProductsToShow;
-		System.out.println("Slide forward");
-		gridPane.getChildren().clear();
-		gridPane.setPrefWidth(numberOfProductsToShow*300);
-		for(int i = 0; i<numberOfProductsToShow; i++){
-			add(new SmallProductPanel(shoppingItems.get((shoppingItems.size()+index-numberOfProductsToShow+i)%shoppingItems.size())), i);
-        }
-		FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPane);
-		fadeIn.setFromValue(0.0);
-		fadeIn.setToValue(1.0);
-		fadeIn.play();
+		if(shoppingItems.size()!=0){
+			setNumberOfProductsToShow();
+			index += numberOfProductsToShow;
+			System.out.println("Slide forward");
+			gridPane.getChildren().clear();
+			gridPane.setPrefWidth(numberOfProductsToShow*300);
+			for(int i = 0; i<numberOfProductsToShow; i++){
+				add(new SmallProductPanel(shoppingItems.get((shoppingItems.size()+index-numberOfProductsToShow+i)%shoppingItems.size())), i);
+	        }
+			FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPane);
+			fadeIn.setFromValue(0.0);
+			fadeIn.setToValue(1.0);
+			fadeIn.play();
+		}
 	}
 	
 	//FAVORITES
@@ -165,19 +174,21 @@ public class OnlinePanel extends ScrollPane{
 	}
 	
 	public void backwardFav(){
-		System.out.println("backwardFav");
-		setNumberOfProductsToShowFav();
-		indexFav -= numberOfProductsToShowFav;
-		System.out.println("Slide backward");
-		gridPaneFav.getChildren().clear();
-		gridPaneFav.setPrefWidth(numberOfProductsToShowFav*300);
-		for(int i = 0; i<numberOfProductsToShowFav; i++){
-			addFav(new SmallProductPanel(shoppingItemsFav.get((shoppingItemsFav.size()+indexFav-numberOfProductsToShowFav+i)%shoppingItemsFav.size())), i);
-        }
-		FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPaneFav);
-		fadeIn.setFromValue(0.0);
-		fadeIn.setToValue(1.0);
-		fadeIn.play();
+		if(shoppingItemsFav.size()!=0){
+			System.out.println("backwardFav");
+			setNumberOfProductsToShowFav();
+			indexFav -= numberOfProductsToShowFav;
+			System.out.println("Slide backward");
+			gridPaneFav.getChildren().clear();
+			gridPaneFav.setPrefWidth(numberOfProductsToShowFav*300);
+			for(int i = 0; i<numberOfProductsToShowFav; i++){
+				addFav(new SmallProductPanel(shoppingItemsFav.get((shoppingItemsFav.size()+indexFav-numberOfProductsToShowFav+i)%shoppingItemsFav.size())), i);
+	        }
+			FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPaneFav);
+			fadeIn.setFromValue(0.0);
+			fadeIn.setToValue(1.0);
+			fadeIn.play();
+		}
 	}
 	
 	public void slideForwardFav(ActionEvent evt){
@@ -191,19 +202,21 @@ public class OnlinePanel extends ScrollPane{
 	}
 	
 	public void forwardFav(){
-		System.out.println("forwardFav");
-		setNumberOfProductsToShowFav();
-		indexFav += numberOfProductsToShowFav;
-		System.out.println("Slide forward");
-		gridPaneFav.getChildren().clear();
-		gridPaneFav.setPrefWidth(numberOfProductsToShowFav*300);
-		for(int i = 0; i<numberOfProductsToShowFav; i++){
-			addFav(new SmallProductPanel(shoppingItemsFav.get((shoppingItemsFav.size()+indexFav-numberOfProductsToShowFav+i)%shoppingItemsFav.size())), i);
-        }
-		FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPaneFav);
-		fadeIn.setFromValue(0.0);
-		fadeIn.setToValue(1.0);
-		fadeIn.play();
+		if(shoppingItemsFav.size()!=0){
+			System.out.println("forwardFav");
+			setNumberOfProductsToShowFav();
+			indexFav += numberOfProductsToShowFav;
+			System.out.println("Slide forward");
+			gridPaneFav.getChildren().clear();
+			gridPaneFav.setPrefWidth(numberOfProductsToShowFav*300);
+			for(int i = 0; i<numberOfProductsToShowFav; i++){
+				addFav(new SmallProductPanel(shoppingItemsFav.get((shoppingItemsFav.size()+indexFav-numberOfProductsToShowFav+i)%shoppingItemsFav.size())), i);
+	        }
+			FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), gridPaneFav);
+			fadeIn.setFromValue(0.0);
+			fadeIn.setToValue(1.0);
+			fadeIn.play();
+		}
 	}
 	
 	public void add(Node node, int col){

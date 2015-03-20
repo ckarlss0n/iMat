@@ -28,7 +28,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			long startTime = System.currentTimeMillis();
-
+			IMatDataHandler.getInstance().reset();
+			IMatDataHandler.getInstance().resetFirstRun();
 			Pane root = new Pane();
 			MainPanel mp = new MainPanel();
 			
@@ -69,6 +70,7 @@ public class Main extends Application {
 			stage.setTitle("iMat");
 			stage.setScene(scene);
 			stage.show();
+			
 			
 			
 			long estimatedTime = System.currentTimeMillis() - startTime;

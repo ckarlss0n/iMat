@@ -28,8 +28,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			long startTime = System.currentTimeMillis();
-			IMatDataHandler.getInstance().reset();
-			IMatDataHandler.getInstance().resetFirstRun();
 			Pane root = new Pane();
 			MainPanel mp = new MainPanel();
 			

@@ -162,6 +162,30 @@ public class ProfilePanel extends ScrollPane{
     	passwordField.setText(IMatDataHandler.getInstance().getUser().getPassword());
     	
     	
+    	if(firstNameField.getText().matches("^[A-ZÅÄÖa-zåäöé+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
+			firstName = true;
+			lastName = true;
+			email = true;
+			address = true;
+			postalCode = true;
+			city = true;
+			phone = true;
+			password = true;
+        }else{
+        	firstName = false;
+			lastName = false;
+			email = false;
+			address = false;
+			postalCode = false;
+			city = false;
+			phone = false;
+			password = false;
+        }
+    	
+    	saveChangesBtn.setDisable(true);
+		setBtnVisible();
+    	
+    	
     	firstNameField.focusedProperty().addListener(new ChangeListener<Boolean>()
     			{
     	    @Override

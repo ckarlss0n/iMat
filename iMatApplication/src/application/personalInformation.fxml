@@ -6,166 +6,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root prefHeight="565.0" prefWidth="574.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="698.0" prefWidth="649.0" stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <ScrollPane id="Register" fitToHeight="true" fitToWidth="true" prefHeight="655.0" prefWidth="866.0" stylesheets="@application.css" BorderPane.alignment="CENTER">
+      <ScrollPane id="Register" fitToHeight="true" fitToWidth="true" stylesheets="@application.css" BorderPane.alignment="CENTER">
          <content>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" stylesheets="@application.css">
-               <center>
-                  <GridPane minHeight="350.0" prefHeight="406.0" prefWidth="388.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <TextField fx:id="txtfSurname" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets right="100.0" />
-                           </GridPane.margin>
-                         	<tooltip>
-                        		<Tooltip text="Förnamn" />
-                    		</tooltip>
-                        </TextField>
-                        <TextField fx:id="txtfLastname" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets right="100.0" />
-                           </GridPane.margin>
-                            <tooltip>
-                        		<Tooltip text="Efternamn" />
-                     		</tooltip>
-                        </TextField>
-                        <TextField fx:id="txtfEmail" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets right="100.0" />
-                           </GridPane.margin>
-                      	<tooltip>
-                        	<Tooltip text="E-post" />
-                     	</tooltip>
-                        </TextField>
-                        <TextField fx:id="txtfAdress" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets right="100.0" />
-                           </GridPane.margin>
-                         	 <tooltip>
-                        		<Tooltip text="Adress" />
-                    	 	</tooltip>
-                        </TextField>
-                        <BorderPane prefHeight="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5">
-                           <left>
-                              <TextField fx:id="txtfPostcode" prefHeight="28.0" prefWidth="85.0" BorderPane.alignment="CENTER_LEFT">
-                                 <BorderPane.margin>
-                                    <Insets />
-                                 </BorderPane.margin>
-                                 <tooltip>
-                             		 <Tooltip text="Postkod" />
-                           		</tooltip>
-                              </TextField>
-                           </left>
-                           <GridPane.margin>
-                              <Insets right="100.0" />
-                           </GridPane.margin>
-                           <right>
-                              <TextField fx:id="txtfCity" prefHeight="25.0" prefWidth="202.0" BorderPane.alignment="CENTER_LEFT">
-                                 <BorderPane.margin>
-                                    <Insets left="10.0" />
-                                 </BorderPane.margin>
-                              </TextField>
-                           </right>
-                           <center>
-                              <Label text="Ort:" BorderPane.alignment="CENTER_LEFT">
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding></Label>
-                           </center>
-                        </BorderPane>
-                        <Label text="Förnamn:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                           <padding>
-                              <Insets right="5.0" />
-                           </padding>
-                        </Label>
-                        <Label text="Efternamn:" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-                           <padding>
-                              <Insets right="5.0" />
-                           </padding>
-                        </Label>
-                        <Label text="E-post:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                           <padding>
-                              <Insets right="5.0" />
-                           </padding>
-                        </Label>
-                        <Label text="Adress:" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                           <padding>
-                              <Insets right="5.0" />
-                           </padding>
-                        </Label>
-                        <Label text="Postkod:" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-                           <padding>
-                              <Insets right="5.0" />
-                           </padding>
-                        </Label>
-                        <Label text="Telefon:" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-                           <padding>
-                              <Insets right="5.0" />
-                           </padding>
-                        </Label>
-                        <TextField fx:id="txtfPhone" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <tooltip>
-                              <Tooltip text="Telefon" />
-                           </tooltip>
-                           <GridPane.margin>
-                              <Insets right="100.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="422.0" GridPane.columnIndex="1">
-                           <children>
-                              <RadioButton fx:id="rBtnProfile" mnemonicParsing="false" onMouseReleased="#useProfile" text="Använd profilinställningar" />
-                              <RadioButton fx:id="rBtnOther" mnemonicParsing="false" onMouseReleased="#useOther" text="Leverera till annan adress">
-                                 <padding>
-                                    <Insets left="10.0" />
-                                 </padding>
-                              </RadioButton>
-                           </children>
-                        </HBox>
-                        <Label text="Välj leveransdatum:" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                              <Insets right="5.0" />
-                           </GridPane.margin>
-                        </Label>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <children>
-                              <ChoiceBox fx:id="choiceDay" prefHeight="25.0" prefWidth="150.0" />
-                              <ChoiceBox fx:id="choiceTime" prefWidth="150.0">
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </ChoiceBox>
-                              <Label prefHeight="34.0" prefWidth="292.0" text="Väljer du inte kommer varorna levereras så fort som möjligt ( vanligen inom 2 timmar)" wrapText="true">
-                                 <HBox.margin>
-                                    <Insets left="5.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="65.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="546.0" minWidth="10.0" prefWidth="337.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin>
-                  </GridPane>
-               </center>
+            <BorderPane stylesheets="@application.css">
                <top>
                   <BorderPane BorderPane.alignment="CENTER">
                      <center>
-                        <Label maxHeight="120.0" text="Var vänlig fyll i personuppgifter nedan för att gå vidare i betalningen." wrapText="true" BorderPane.alignment="CENTER">
+                        <Label maxHeight="60.0" text="Var vänlig fyll i personuppgifter nedan för att gå vidare i betalningen." wrapText="true" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets left="80.0" right="80.0" />
                            </BorderPane.margin>
@@ -177,14 +26,145 @@
                               <Font size="36.0" />
                            </font>
                            <BorderPane.margin>
-                              <Insets top="20.0" />
+                              <Insets top="10.0" />
                            </BorderPane.margin>
                         </Label>
                      </top>
+                     <bottom>
+                        <VBox>
+                           <children>
+                              <Separator prefWidth="200.0" />
+                              <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <RadioButton fx:id="rBtnProfile" mnemonicParsing="false" onMouseReleased="#useProfile" text="Använd profilinställningar" />
+                                    <RadioButton fx:id="rBtnOther" mnemonicParsing="false" onMouseReleased="#useOther" text="Leverera till annan adress" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </bottom>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
                   </BorderPane>
                </top>
+               <center>
+                  <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox alignment="TOP_RIGHT" spacing="10.0">
+                           <children>
+                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Förnamn:">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Efternamn:">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="E-post:">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Adress:">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Telefon:">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Postkod:">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Leveransdatum:">
+                                 <padding>
+                                    <Insets right="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox spacing="10.0">
+                           <children>
+                              <TextField fx:id="txtfPhone" promptText="Förnamn">
+                                 <tooltip>
+                                    <Tooltip text="Telefon" />
+                                 </tooltip>
+                              </TextField>
+                              <TextField fx:id="txtfEmail" promptText="Efternamn">
+                            	<tooltip>
+                              	<Tooltip text="E-post" />
+                           	</tooltip>
+                              </TextField>
+                              <TextField fx:id="txtfSurname" promptText="E-post">
+                               	<tooltip>
+                              		<Tooltip text="Förnamn" />
+                          		</tooltip>
+                              </TextField>
+                              <TextField fx:id="txtfLastname" promptText="Adress">
+                                  <tooltip>
+                              		<Tooltip text="Efternamn" />
+                           		</tooltip>
+                              </TextField>
+                              <TextField fx:id="txtfAdress" promptText="Telefon">
+                               	 <tooltip>
+                              		<Tooltip text="Adress" />
+                          	 	</tooltip>
+                              </TextField>
+                              <HBox fillHeight="false" spacing="10.0">
+                                 <children>
+                                    <TextField fx:id="txtfPostcode" prefWidth="110.0" promptText="Postkod">
+                                       <tooltip>
+                                   		 <Tooltip text="Postkod" />
+                                 		</tooltip>
+                                    </TextField>
+                                    <Label maxHeight="39.0" maxWidth="30.0" minHeight="39.0" minWidth="30.0" prefHeight="39.0" text="Ort:" />
+                                    <TextField fx:id="txtfCity" prefHeight="39.0" prefWidth="270.0" promptText="Ort" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <ChoiceBox fx:id="choiceDay" prefWidth="150.0" />
+                                    <ChoiceBox fx:id="choiceTime" prefHeight="39.0" prefWidth="270.0">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </ChoiceBox>
+                                 </children>
+                              </HBox>
+                              <Label prefWidth="419.0" text="Väljer du inte kommer varorna levereras så fort som möjligt (vanligen inom 2 timmar)" wrapText="true">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </center>
             </BorderPane>
          </content>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </ScrollPane>
    </center>
    <bottom>

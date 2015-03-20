@@ -318,7 +318,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 						.getSource()).getList();
 				
 				fillProductView(currentList);
-				scb.setStyle("-fx-base: b81126");
+				scb.setStyle("-fx-base: #b81126");
 				//fillView(currentItemList);
 				
 				

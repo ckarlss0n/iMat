@@ -19,7 +19,7 @@ public class FPayment extends BorderPane {
 	@FXML
 	private Label paymentFlabel2;
 	@FXML
-	private TextField txtfFSurName;
+	private TextField txtfFName;
 	@FXML
 	private TextField txtfFLastName;
 	@FXML
@@ -31,15 +31,15 @@ public class FPayment extends BorderPane {
 	
 	
 	public FPayment(){
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fPayment.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fPaymentNew.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 		
 		try {
 			fxmlLoader.load();
-			
-			txtfFSurName.setText(IMatDataHandler.getInstance().getCustomer().getFirstName());
-			txtfFLastName.setText(IMatDataHandler.getInstance().getCustomer().getLastName());
+			txtfFName.setText(IMatDataHandler.getInstance().getCustomer().getFirstName() + " " + IMatDataHandler.getInstance().getCustomer().getLastName());
+			//txtfFSurName.setText(IMatDataHandler.getInstance().getCustomer().getFirstName());
+			//txtfFLastName.setText(IMatDataHandler.getInstance().getCustomer().getLastName());
 			txtfFAdress.setText(IMatDataHandler.getInstance().getCustomer().getAddress());
 			txtfFPostCode.setText(IMatDataHandler.getInstance().getCustomer().getPostCode());
 			txtfFCity.setText(IMatDataHandler.getInstance().getCustomer().getPostAddress());

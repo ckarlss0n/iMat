@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
@@ -8,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root stylesheets="@../Documents/GitHub/iMat/iMat/iMatApplication/src/application/application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root stylesheets="@application.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
@@ -43,7 +44,7 @@
                <children>
                   <VBox minHeight="0.0">
                      <children>
-                        <TextField fx:id="txtfFName" prefWidth="344.0" promptText="Förnamn Efternamn" />
+                        <TextField fx:id="txtfFName" prefWidth="344.0" promptText="Förnamn Efternamn" stylesheets="@application.css" />
                         <Label fx:id="lblErrorName" opacity="0.0" text="* Du måste fylla i ditt för- och efternamn." textFill="#d73232">
                            <font>
                               <Font size="12.0" />

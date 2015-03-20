@@ -304,7 +304,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 					cattp.setStyle("-fx-base: #7a0613;");
 				}
 				favorites.setStyle("-fx-base: #aeaeae;");
-				ctp.setStyle("-fx-base: red;");
+				ctp.setStyle("-fx-base: #b02739;");
 				savedTitledPane.setStyle("-fx-base: #aeaeae");
 				//fillProductView(currentList);
 				//categoryBtn.setText(((CategoryTitledPane) mouseEvent
@@ -318,7 +318,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 						.getSource()).getList();
 				
 				fillProductView(currentList);
-				scb.setStyle("-fx-base: red;");
+				scb.setStyle("-fx-base: b81126");
 				//fillView(currentItemList);
 				
 				
@@ -882,11 +882,9 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 	
 	}
 	public void setStandardButtons(){
-		int i = 0;
 		for(SubcategoryButton scb : buttonC){
-			i++;
-			System.out.println(i);
-			scb.setStyle("-fx-base: #7a0613;");
+
+			scb.setStyle("-fx-base: #9a0819;");
 		}
 	}
 }

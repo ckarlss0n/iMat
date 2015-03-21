@@ -202,6 +202,8 @@ public class ChoosePayment extends ScrollPane {
 		lblCODDisc.setOpacity(1);
 		lblCODDisc.setPadding(new Insets(0, 0, 0, 0));
 		setTitles();
+		finalizeBtn.disableProperty().unbind();
+		finalizeBtn.setDisable(false);
 	}
 	
 	

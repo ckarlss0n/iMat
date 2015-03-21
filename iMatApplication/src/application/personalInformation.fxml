@@ -225,37 +225,37 @@
                      <children>
                         <VBox alignment="TOP_RIGHT" spacing="10.0">
                            <children>
-                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Förnamn:">
+                              <Label maxHeight="26.0" minHeight="26.0" prefHeight="26.0" text="Förnamn:">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Efternamn:">
+                              <Label maxHeight="26.0" minHeight="26.0" prefHeight="26.0" text="Efternamn:">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="E-post:">
+                              <Label maxHeight="26.0" minHeight="26.0" prefHeight="26.0" text="E-post:">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Adress:">
+                              <Label maxHeight="26.0" minHeight="26.0" prefHeight="26.0" text="Adress:">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Telefon:">
+                              <Label maxHeight="26.0" minHeight="26.0" prefHeight="26.0" text="Telefon:">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Postkod:">
+                              <Label maxHeight="26.0" minHeight="26.0" prefHeight="26.0" text="Postkod:">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
                               </Label>
-                              <Label maxHeight="39.0" minHeight="39.0" prefHeight="39.0" text="Leveransdatum:">
+                              <Label maxHeight="25.0" minHeight="25.0" prefHeight="25.0" text="Leveransdatum:">
                                  <padding>
                                     <Insets right="5.0" />
                                  </padding>
@@ -264,27 +264,27 @@
                         </VBox>
                         <VBox spacing="10.0">
                            <children>
-                              <TextField fx:id="txtfPhone" promptText="Förnamn">
+                              <TextField fx:id="txtfSurname" promptText="Förnamn">
                                  <tooltip>
                                     <Tooltip text="Telefon" />
                                  </tooltip>
                               </TextField>
-                              <TextField fx:id="txtfEmail" promptText="Efternamn">
+                              <TextField fx:id="txtfLastname" promptText="Efternamn">
                             	<tooltip>
                               	<Tooltip text="E-post" />
                            	</tooltip>
                               </TextField>
-                              <TextField fx:id="txtfSurname" promptText="E-post">
+                              <TextField fx:id="txtfEmail" promptText="E-post">
                                	<tooltip>
                               		<Tooltip text="Förnamn" />
                           		</tooltip>
                               </TextField>
-                              <TextField fx:id="txtfLastname" promptText="Adress">
+                              <TextField fx:id="txtfAdress" promptText="Adress">
                                   <tooltip>
                               		<Tooltip text="Efternamn" />
                            		</tooltip>
                               </TextField>
-                              <TextField fx:id="txtfAdress" promptText="Telefon">
+                              <TextField fx:id="txtfPhone" promptText="Telefon">
                                	 <tooltip>
                               		<Tooltip text="Adress" />
                           	 	</tooltip>
@@ -296,14 +296,14 @@
                                    		 <Tooltip text="Postkod" />
                                  		</tooltip>
                                     </TextField>
-                                    <Label maxHeight="39.0" maxWidth="30.0" minHeight="39.0" minWidth="30.0" prefHeight="39.0" text="Ort:" />
-                                    <TextField fx:id="txtfCity" prefHeight="39.0" prefWidth="270.0" promptText="Ort" />
+                                    <Label maxHeight="27.0" maxWidth="30.0" minHeight="27.0" minWidth="30.0" prefHeight="27.0" text="Ort:" />
+                                    <TextField fx:id="txtfCity" prefWidth="270.0" promptText="Ort" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT">
                                  <children>
                                     <ChoiceBox fx:id="choiceDay" prefWidth="150.0" />
-                                    <ChoiceBox fx:id="choiceTime" prefHeight="39.0" prefWidth="270.0">
+                                    <ChoiceBox fx:id="choiceTime" prefWidth="270.0">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin>

@@ -62,7 +62,7 @@ public class Main extends Application {
 
 			stage.setX(bounds.getMinX());
 			stage.setY(bounds.getMinY());
-			stage.setWidth(bounds.getWidth()*0.82);
+			stage.setWidth(bounds.getWidth()*0.83);
 			stage.setHeight(bounds.getHeight()*0.85);
 			stage.centerOnScreen();
 			stage.setTitle("iMat");

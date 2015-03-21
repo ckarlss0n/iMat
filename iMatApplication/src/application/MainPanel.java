@@ -98,7 +98,11 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
-		
+		//System.out.println(IMatDataHandler.getInstance().getOrders().size());
+		//for(int i = IMatDataHandler.getInstance().getOrders().size()-1; i>=0; i--){
+			//IMatDataHandler.getInstance().getOrders().remove(i);
+		//}
+		//IMatDataHandler.getInstance().reset();
 		changeSupport = ChangeSupport.getInstance();
 		changeSupport.addListner(this);
 		
@@ -106,7 +110,7 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 		productList = new ArrayList<ShoppingItem>();
 		
 		dataHandler = IMatDataHandler.getInstance();
-		
+		System.out.println(dataHandler.getOrders().size());
 		
 		
 		for(Product p: dataHandler.getProducts()){

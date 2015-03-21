@@ -198,6 +198,7 @@ public class ProfilePanel extends ScrollPane{
     	            if(firstNameField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
     	            	firstNameField.setStyle("-fx-border-width: 0px ;");
     	            	firstName = true;
+    	            	IMatDataHandler.getInstance().getCustomer().setFirstName(firstNameField.getText());
     	            	setBtnVisible();
     	            }else{
     	            	firstNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
@@ -219,6 +220,7 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(lastNameField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
     	            	lastNameField.setStyle("-fx-border-width: 0px ;");
+    	            	IMatDataHandler.getInstance().getCustomer().setLastName(lastNameField.getText());
     	            	lastName = true;
     	            	setBtnVisible();
     	            }else{
@@ -241,6 +243,7 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(emailField.getText().matches("^[a-zA-Z0-9+_.-]+[@][a-zA-Z0-9_-]+\\.([a-zA-Z0-9+_.-]*)?[a-zA-Z0-9+_-]")){
     	            	emailField.setStyle("-fx-border-width: 0px ;");
+    	            	IMatDataHandler.getInstance().getCustomer().setEmail(emailField.getText());
     	            	email = true;
     	            	setBtnVisible();
     	            }else{
@@ -263,6 +266,7 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(addressField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?(\\s\\d+$)*?")){
     	            	addressField.setStyle("-fx-border-width: 0px ;");
+    	            	IMatDataHandler.getInstance().getCustomer().setAddress(addressField.getText());
     	            	address = true;
     	            	setBtnVisible();
     	            }else{
@@ -285,6 +289,7 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if( postalCodeField.getText().matches("[0-9]{5}")){
     	            	postalCodeField.setStyle("-fx-border-width: 0px ;");
+    	            	IMatDataHandler.getInstance().getCustomer().setPostCode(postalCodeField.getText());
     	            	postalCode = true;
     	            	setBtnVisible();
     	            }else{
@@ -307,6 +312,8 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(cityField.getText().matches("^[A-ZÅÄÖa-zåäö+-]+(\\s[A-ZÅÄÖa-zåäö+-]*)*?")){
     	            	cityField.setStyle("-fx-border-width: 0px ;");
+    	            	IMatDataHandler.getInstance().getCustomer().setPostAddress(cityField.getText());
+
     	            	city = true;
     	            	setBtnVisible();
     	            }else{
@@ -330,6 +337,7 @@ public class ProfilePanel extends ScrollPane{
     	            if(phoneField.getText().matches("[0-9]+")){
     	            	phoneField.setStyle("-fx-border-width: 0px ;");
     	            	phone = true;
+    	            	IMatDataHandler.getInstance().getCustomer().setPhoneNumber(phoneField.getText());
     	            	setBtnVisible();
     	            }else{
     	            	phoneField.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
@@ -351,6 +359,7 @@ public class ProfilePanel extends ScrollPane{
     	        else{
     	            if(passwordField.getText().matches(".+")){
     	            	passwordField.setStyle("-fx-border-width: 0px ;");
+    	            	IMatDataHandler.getInstance().getUser().setPassword(passwordField.getText());
     	            	password = true;
     	            	setBtnVisible();
     	            }else{

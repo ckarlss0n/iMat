@@ -100,7 +100,13 @@ public class PersonalInformationPanel extends BorderPane {
 				pInfPhone = false;
 	        } 
     		
-    		goToPaymentBtn.setDisable(true);
+    		//goToPaymentBtn.setDisable(true);
+    		if(txtfSurname.getText().length() == 0 || txtfLastname.getText().length() == 0 || txtfEmail.getText().length() == 0 ||
+    				txtfAdress.getText().length() == 0 || txtfPostcode.getText().length() == 0	|| txtfCity.getText().length() == 0 ||
+    				txtfPhone.getText().length() == 0){
+    			
+    			goToPaymentBtn.setDisable(true);
+    		}
     		pInfSetBtnVisible();
     		
     		txtfSurname.focusedProperty().addListener(new ChangeListener<Boolean>()

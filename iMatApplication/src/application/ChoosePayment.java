@@ -94,14 +94,26 @@ public class ChoosePayment extends ScrollPane {
 	
 	public void finalizeBuy(ActionEvent evt){
 	
-		IMatDataHandler.getInstance().placeOrder(true);
-		cp.fillCardInfo();
-		
-		if(cp.getIsCorrect()){
+		if(titledInvoice.isExpanded()){
 			CheckoutPanel checkoutPanel = new CheckoutPanel();
+			IMatDataHandler.getInstance().placeOrder(true);
+			ChangeSupport.getInstance().fireNewEvent("", checkoutPanel);
+		}else if(titledCOD.isExpanded()){
+			CheckoutPanel checkoutPanel = new CheckoutPanel();
+			IMatDataHandler.getInstance().placeOrder(true);
 			System.out.println("Placing order");
 			ChangeSupport.getInstance().fireNewEvent("", checkoutPanel);
-		} 
+		} else if(titledCard.isExpanded()){
+			cp.fillCardInfo();
+		
+			if(cp.getIsCorrect()){
+				CheckoutPanel checkoutPanel = new CheckoutPanel();
+				IMatDataHandler.getInstance().placeOrder(true);
+				System.out.println("Placing order");
+				ChangeSupport.getInstance().fireNewEvent("", checkoutPanel);
+			} 
+		}
+		
 			
 	}
 	

@@ -38,6 +38,9 @@ public class FPayment extends BorderPane {
 		try {
 			fxmlLoader.load();
 			txtfFName.setText(IMatDataHandler.getInstance().getCustomer().getFirstName() + " " + IMatDataHandler.getInstance().getCustomer().getLastName());
+			if(txtfFName.getText().equals(" ")){
+				txtfFName.setText("");
+			}
 			//txtfFSurName.setText(IMatDataHandler.getInstance().getCustomer().getFirstName());
 			//txtfFLastName.setText(IMatDataHandler.getInstance().getCustomer().getLastName());
 			txtfFAdress.setText(IMatDataHandler.getInstance().getCustomer().getAddress());

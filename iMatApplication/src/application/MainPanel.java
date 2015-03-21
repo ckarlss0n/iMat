@@ -797,12 +797,46 @@ public class MainPanel extends BorderPane implements ChangeListener, ShoppingCar
 			if(evt.getNameOFEvent().equals("Unblur")){
 				setEffect(null);
 			}
+			if(evt.getNameOFEvent().equals("flashSaved")){
+				flashOn(savedTitledPane);
+				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), savedTitledPane);
+				fadeOut.setFromValue(0.5);
+		        fadeOut.setToValue(1.0);
+		        flashOff(savedTitledPane);
+		        
+				FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.1), savedTitledPane);
+				fadeIn.setOnFinished(event -> fadeOut.play());
+				fadeIn.setFromValue(1.0);
+				fadeIn.setToValue(0.5);
+				fadeIn.play();
+			}
+			if(evt.getNameOFEvent().equals("flashFavorites")){
+				flashOn(savedTitledPane);
+				FadeTransition fadeOut = new FadeTransition(Duration.seconds(0.3), favorites);
+				fadeOut.setFromValue(0.5);
+		        fadeOut.setToValue(1.0);
+		        flashOff(savedTitledPane);
+		        
+				FadeTransition fadeIn = new FadeTransition(Duration.seconds(0.1), favorites);
+				fadeIn.setOnFinished(event -> fadeOut.play());
+				fadeIn.setFromValue(1.0);
+				fadeIn.setToValue(0.5);
+				fadeIn.play();
+			}
 			
 		}else{
 			System.out.println("Panel change!");
 			
 			changeScreen(evt.getScreen());
 		}
+	}
+	
+	public void flashOn(TitledPane tp){
+		tp.setStyle("-fx-base: white;");
+	}
+	
+	public void flashOff(TitledPane tp){
+		tp.setStyle("-fx-base: #aeaeae;");
 	}
 
 	@Override

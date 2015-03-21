@@ -180,6 +180,7 @@ public class ShoppingCartRight extends BorderPane implements ChangeScreenListene
 		System.out.println(index);
 		
 		IMatDataHandler.getInstance().placeOrder(false).setOrderNumber(index);
+		ChangeSupport.getInstance().fireNewEvent("flashSaved", null);
 	}
 
 	@Override

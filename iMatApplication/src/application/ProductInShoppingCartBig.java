@@ -79,6 +79,7 @@ public class ProductInShoppingCartBig extends BorderPane {
 		}
 		Image image = new Image(file.toURI().toString());
 	    starImgBig.setImage(image);
+	    ChangeSupport.getInstance().fireNewEvent("flashFavorites", null);
 	}
 	
 	public void setToHalfStar(MouseEvent evt){

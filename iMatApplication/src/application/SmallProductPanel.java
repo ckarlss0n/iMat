@@ -147,6 +147,7 @@ public class SmallProductPanel extends BorderPane {
 		}
 		Image image = new Image(file.toURI().toString());
 	    starImage.setImage(image);
+	    ChangeSupport.getInstance().fireNewEvent("flashFavorites", null);
 	}
 	
 	public void setToHalfStar(MouseEvent evt){

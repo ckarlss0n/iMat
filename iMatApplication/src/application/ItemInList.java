@@ -196,6 +196,7 @@ public class ItemInList extends BorderPane {
 		}
 		Image image = new Image(file.toURI().toString());
 	    starImage.setImage(image);
+	    ChangeSupport.getInstance().fireNewEvent("flashFavorites", null);
 	}
 	
 	public ShoppingItem getShoppingItem(){
